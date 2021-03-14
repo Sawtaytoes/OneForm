@@ -231,5 +231,29 @@ describe(
 				)
 			}
 		)
+
+		test(
+			'should maintain the value that was published',
+			() => {
+				const observable = (
+					createObservable()
+				)
+
+				const value = {}
+
+				observable
+				.publish(
+					value
+				)
+
+				expect(
+					observable
+					.getState()
+				)
+				.toBe(
+					value
+				)
+			}
+		)
 	}
 )

@@ -1,11 +1,25 @@
 const createObservable = () => {
+	const stateRef = {
+		current: null,
+	}
+
 	const subscribersRef = {
 		current: [],
 	}
 
+	const getState = () => (
+		stateRef
+		.current
+	)
+
 	const publish = (
 		value,
 	) => {
+		stateRef
+		.current = (
+			value
+		)
+
 		subscribersRef
 		.current
 		.forEach((
@@ -60,6 +74,7 @@ const createObservable = () => {
 
 	return {
 		_subscribersRef: subscribersRef,
+		getState,
 		publish,
 		subscribe,
 	}
