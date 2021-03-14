@@ -4,11 +4,11 @@
   "description": "The OneForm library you need.",
   "scripts": {
     "build:storybook": "build-storybook",
-    "build:test": "jest",
+    "build:test": "jest --errorOnDeprecated",
     "dev": "npm-run-all --parallel dev:storybook dev:cypress",
     "dev:cypress": "cypress open",
     "dev:storybook": "start-storybook -p 6006",
-    "dev:test": "jest --watch",
+    "dev:test": "jest --cache --onlyChanged --errorOnDeprecated --watch",
     "start": "yarn && yarn dev"
   },
   "main": "index.js",
