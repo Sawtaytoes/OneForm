@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types'
 import {
 	memo,
+	useMemo,
 } from 'react'
+
+import OneFormErrorContext from './OneFormErrorContext.jsx'
+import OneFormValueContext from './OneFormValueContext.jsx'
+import useObservableState from './useObservableState.js'
 
 const validationTypes = {
 	CHANGE: 'CHANGE',
@@ -70,20 +75,70 @@ const OneForm = ({
 		.values
 	),
 }) => {
-	errors
-	groupValidations
-	hasFieldChangeValidation
-	onChange
-	onSubmit
-	updatedErrors
-	updatedValues
-	validations
-	values
+	const {
+		getValue: getFieldValue,
+		setValue: setFieldValue,
+		subscribeToValue: subscribeToFieldValue,
+	} = (
+		useObservableState({
+			updatedValues,
+			values,
+		})
+	)
+
+	const {
+		getValue: getErrorMessages,
+		setValue: setErrorMessages,
+		subscribeToValue: subscribeToErrorMessages,
+	} = (
+		useObservableState({
+			updatedValues: updatedErrors,
+			values: errors,
+		})
+	)
+
+	const errorProviderValue = (
+		useMemo(
+			() => ({
+				getErrorMessages,
+				setErrorMessages,
+				subscribeToErrorMessages,
+			}),
+			[
+				getErrorMessages,
+				setErrorMessages,
+				subscribeToErrorMessages,
+			],
+		)
+	)
+
+	const valueProviderValue = (
+		useMemo(
+			() => ({
+				getFieldValue,
+				setFieldValue,
+				subscribeToFieldValue,
+			}),
+			[
+				getFieldValue,
+				setFieldValue,
+				subscribeToFieldValue,
+			],
+		)
+	)
 
 	return (
-		<form>
-			<div />
-		</form>
+		<OneFormErrorContext.Provider
+			value={errorProviderValue}
+		>
+			<OneFormValueContext.Provider
+				value={valueProviderValue}
+			>
+				<form>
+					<div />
+				</form>
+			</OneFormValueContext.Provider>
+		</OneFormErrorContext.Provider>
 	)
 }
 
