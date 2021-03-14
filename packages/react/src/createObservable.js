@@ -1,5 +1,5 @@
 const createObservable = () => {
-	const stateRef = {
+	const valueRef = {
 		current: null,
 	}
 
@@ -7,15 +7,15 @@ const createObservable = () => {
 		current: [],
 	}
 
-	const getState = () => (
-		stateRef
+	const getValue = () => (
+		valueRef
 		.current
 	)
 
 	const publish = (
 		value,
 	) => {
-		stateRef
+		valueRef
 		.current = (
 			value
 		)
@@ -74,7 +74,7 @@ const createObservable = () => {
 
 	return {
 		_subscribersRef: subscribersRef,
-		getState,
+		getValue,
 		publish,
 		subscribe,
 	}

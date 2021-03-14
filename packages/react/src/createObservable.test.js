@@ -248,7 +248,7 @@ describe(
 
 				expect(
 					observable
-					.getState()
+					.getValue()
 				)
 				.toBe(
 					value
