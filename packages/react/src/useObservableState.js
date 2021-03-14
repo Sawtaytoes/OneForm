@@ -4,7 +4,7 @@ import {
 	useRef,
 } from 'react'
 
-import createObservable from './createObservable'
+import createObservable from './createObservable.js'
 
 const initialValueObservables = {}
 

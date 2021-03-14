@@ -14,12 +14,15 @@ describe(
 				const {
 					result,
 				} = (
-					renderHook(() => (
-						useObservableState({
-							updatedValues: {},
-							values: {},
-						})
-					))
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								updatedValues: {},
+								values: {},
+							},
+						},
+					)
 				)
 
 				const subscriber = (
@@ -107,12 +110,15 @@ describe(
 				const {
 					result,
 				} = (
-					renderHook(() => (
-						useObservableState({
-							updatedValues: {},
-							values: {},
-						})
-					))
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								updatedValues: {},
+								values: {},
+							},
+						},
+					)
 				)
 
 				const subscriber = (
@@ -227,12 +233,15 @@ describe(
 				const {
 					result,
 				} = (
-					renderHook(() => (
-						useObservableState({
-							updatedValues: {},
-							values: {},
-						})
-					))
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								updatedValues: {},
+								values: {},
+							},
+						},
+					)
 				)
 
 				const subscriber = (
@@ -304,12 +313,15 @@ describe(
 				const {
 					result,
 				} = (
-					renderHook(() => (
-						useObservableState({
-							updatedValues: {},
-							values: {},
-						})
-					))
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								updatedValues: {},
+								values: {},
+							},
+						},
+					)
 				)
 
 				const value = 'John Smith'
@@ -354,12 +366,15 @@ describe(
 				const {
 					result,
 				} = (
-					renderHook(() => (
-						useObservableState({
-							updatedValues: {},
-							values: {},
-						})
-					))
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								updatedValues: {},
+								values: {},
+							},
+						},
+					)
 				)
 
 				const valueRef = {
