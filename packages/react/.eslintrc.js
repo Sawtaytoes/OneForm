@@ -1,4 +1,4 @@
-module.exports = {
+const eslintConfig = {
 	env: {
 		'cypress/globals': true,
 		'jest/globals': true,
@@ -44,3 +44,6 @@ module.exports = {
 		},
 	},
 }
+
+
+module.exports = eslintConfig
