@@ -11,35 +11,24 @@ const validationTypes = {
 const propTypes = {
 	errors: PropTypes.object,
 	groupValidations: PropTypes.array,
+	hasFieldChangeValidation: PropTypes.bool,
 	onChange: PropTypes.func,
 	onSubmit: PropTypes.func,
 	updatedErrors: PropTypes.object,
 	updatedValues: PropTypes.object,
 	validations: PropTypes.object,
-	validationType: (
-		PropTypes
-		.oneOf(
-			Object
-			.keys(
-				validationTypes
-			)
-		)
-	),
 	values: PropTypes.object,
 }
 
 const initialProps = {
 	errors: {},
 	groupValidations: [],
+	hasFieldChangeValidation: false,
 	onChange: Function.prototype,
 	onSubmit: Function.prototype,
 	updatedErrors: {},
 	updatedValues: {},
 	validations: {},
-	validationType: (
-		validationTypes
-		.CHANGE
-	),
 	values: {},
 }
 
@@ -51,6 +40,10 @@ const OneForm = ({
 	groupValidations = (
 		initialProps
 		.groupValidations
+	),
+	hasFieldChangeValidation = (
+		initialProps
+		.hasFieldChangeValidation
 	),
 	onChange = (
 		initialProps
@@ -72,10 +65,6 @@ const OneForm = ({
 		initialProps
 		.validations
 	),
-	validationType = (
-		initialProps
-		.validationType
-	),
 	values = (
 		initialProps
 		.values
@@ -83,12 +72,12 @@ const OneForm = ({
 }) => {
 	errors
 	groupValidations
+	hasFieldChangeValidation
 	onChange
 	onSubmit
 	updatedErrors
 	updatedValues
 	validations
-	validationType
 	values
 
 	return (
