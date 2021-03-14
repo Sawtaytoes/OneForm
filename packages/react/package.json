@@ -2,6 +2,11 @@
   "name": "@oneform/react",
   "version": "0.0.0",
   "description": "The OneForm library you need.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
