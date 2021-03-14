@@ -13,6 +13,8 @@ const propTypes = {
 	groupValidations: PropTypes.array,
 	onChange: PropTypes.func,
 	onSubmit: PropTypes.func,
+	updatedErrors: PropTypes.object,
+	updatedValues: PropTypes.object,
 	validations: PropTypes.object,
 	validationType: (
 		PropTypes
@@ -31,6 +33,8 @@ const initialProps = {
 	groupValidations: [],
 	onChange: Function.prototype,
 	onSubmit: Function.prototype,
+	updatedErrors: {},
+	updatedValues: {},
 	validations: {},
 	validationType: (
 		validationTypes
@@ -56,6 +60,14 @@ const OneForm = ({
 		initialProps
 		.onSubmit
 	),
+	updatedErrors = (
+		initialProps
+		.updatedErrors
+	),
+	updatedValues = (
+		initialProps
+		.updatedValues
+	),
 	validations = (
 		initialProps
 		.validations
@@ -73,6 +85,8 @@ const OneForm = ({
 	groupValidations
 	onChange
 	onSubmit
+	updatedErrors
+	updatedValues
 	validations
 	validationType
 	values
