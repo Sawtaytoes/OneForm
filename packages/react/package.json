@@ -14,12 +14,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@babel/preset-env": "^7.13.10",
-    "@babel/preset-react": "^7.12.13",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
     "@testing-library/cypress": "^7.0.4",
     "@testing-library/react": "^11.2.5",
     "@babel/core": "^7.13.10",
