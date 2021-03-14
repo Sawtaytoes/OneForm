@@ -14,7 +14,7 @@ const propTypes = {
 	onChange: PropTypes.func,
 	onSubmit: PropTypes.func,
 	validations: PropTypes.object,
-	validationTypes: (
+	validationType: (
 		PropTypes
 		.oneOf(
 			Object
@@ -32,7 +32,7 @@ const initialProps = {
 	onChange: Function.prototype,
 	onSubmit: Function.prototype,
 	validations: {},
-	validationTypes: (
+	validationType: (
 		validationTypes
 		.CHANGE
 	),
@@ -60,9 +60,9 @@ const OneForm = ({
 		initialProps
 		.validations
 	),
-	validationTypes = (
+	validationType = (
 		initialProps
-		.validationTypes
+		.validationType
 	),
 	values = (
 		initialProps
@@ -74,7 +74,7 @@ const OneForm = ({
 	onChange
 	onSubmit
 	validations
-	validationTypes
+	validationType
 	values
 
 	return (
