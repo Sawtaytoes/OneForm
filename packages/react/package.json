@@ -20,6 +20,8 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.4",
+    "@testing-library/react": "^11.2.5",
     "@babel/core": "^7.13.10",
     "@ghadyani-eslint/eslint-config-node": "^2.2.1",
     "@ghadyani-eslint/eslint-config-web": "^2.2.1",
@@ -30,7 +32,6 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "cypress": "^6.6.0",
-    "cypress-testing-library": "^4.0.0",
     "eslint": "^7.22.0",
     "eslint-plugin-compat": "^3.9.0",
     "eslint-plugin-cypress": "^2.11.2",
