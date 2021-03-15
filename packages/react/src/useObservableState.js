@@ -6,7 +6,7 @@ import {
 
 import createObservable from './createObservable.js'
 
-const initialObservablesState = {}
+const initialObservables = {}
 const initialValues = {}
 
 const useObservableState = (
@@ -28,6 +28,16 @@ const useObservableState = (
 	const localValuesRef = (
 		useRef(
 			initialValues
+		)
+	)
+
+	const getAllLocalValues = (
+		useCallback(
+			() => (
+				localValuesRef
+				.current
+			),
+			[],
 		)
 	)
 
@@ -67,7 +77,7 @@ const useObservableState = (
 
 	const observablesRef = (
 		useRef(
-			initialObservablesState
+			initialObservables
 		)
 	)
 
@@ -259,6 +269,7 @@ const useObservableState = (
 	)
 
 	return {
+		getAllValues: getAllLocalValues,
 		getValue: getLocalValue,
 		setValue: changeValue,
 		subscribeToValue,
