@@ -401,7 +401,7 @@ describe(
 		)
 
 		test(
-			'update values',
+			'clearing values',
 			() => {
 				const values = {}
 
@@ -498,7 +498,7 @@ describe(
 		)
 
 		test(
-			'initialize with overwritten values',
+			'initializes with merged values',
 			() => {
 				const emailValue = 'john.smith@test.com'
 				const nameValue = 'John Smith'
@@ -569,7 +569,7 @@ describe(
 		)
 
 		test(
-			'overwrite values',
+			'merges values',
 			() => {
 				const updatedValuesState = {}
 
