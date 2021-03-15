@@ -4,7 +4,7 @@ describe(
 	'createObservable',
 	() => {
 		test(
-			'should create an observable',
+			'create an observable',
 			() => {
 				const observable = (
 					createObservable()
@@ -40,7 +40,7 @@ describe(
 		)
 
 		test(
-			'should unsubscribe from a subscriber',
+			'unsubscribe from a subscriber',
 			() => {
 				const observable = (
 					createObservable()
@@ -65,7 +65,7 @@ describe(
 		)
 
 		test(
-			'should unsubscribe from no subscriber',
+			'unsubscribe from no subscriber',
 			() => {
 				const observable = (
 					createObservable()
@@ -88,7 +88,7 @@ describe(
 		)
 
 		test(
-			'should unsubscribe from all subscribers',
+			'unsubscribe from all subscribers',
 			() => {
 				const observable = (
 					createObservable()
@@ -125,7 +125,7 @@ describe(
 		)
 
 		test(
-			'should unsubscribe from all subscribers when unsubscribed out of order',
+			'unsubscribe from all subscribers when unsubscribed out of order',
 			() => {
 				const observable = (
 					createObservable()
@@ -162,7 +162,7 @@ describe(
 		)
 
 		test(
-			'should publish to all subscribers',
+			'publish to all subscribers',
 			() => {
 				const observable = (
 					createObservable()
@@ -233,7 +233,7 @@ describe(
 		)
 
 		test(
-			'should maintain the value that was published',
+			'maintain the value that was published',
 			() => {
 				const observable = (
 					createObservable()

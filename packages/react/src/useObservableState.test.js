@@ -9,7 +9,7 @@ describe(
 	'useObservableState',
 	() => {
 		test(
-			'should publish values to subscribers',
+			'publish values to subscribers',
 			() => {
 				const {
 					result,
@@ -105,7 +105,7 @@ describe(
 		)
 
 		test(
-			'should publish multiple values to subscribers',
+			'publish multiple values to subscribers',
 			() => {
 				const {
 					result,
@@ -228,7 +228,7 @@ describe(
 		)
 
 		test(
-			'should set values on a single identifier',
+			'set values on a single identifier',
 			() => {
 				const {
 					result,
@@ -308,7 +308,7 @@ describe(
 		)
 
 		test(
-			'should get the set value',
+			'get the set value',
 			() => {
 				const {
 					result,
@@ -361,7 +361,7 @@ describe(
 		)
 
 		test(
-			'should have no value when none set',
+			'have no value when none set',
 			() => {
 				const {
 					result,
@@ -401,7 +401,7 @@ describe(
 		)
 
 		test(
-			'should update values',
+			'update values',
 			() => {
 				const values = {}
 
@@ -498,7 +498,7 @@ describe(
 		)
 
 		test(
-			'should overwrite values',
+			'overwrite values',
 			() => {
 				const updatedValues = {}
 
