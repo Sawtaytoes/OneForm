@@ -106,7 +106,15 @@ const OneForm = ({
 		subscribeToValue: subscribeToFieldValue,
 	} = (
 		useObservableState({
-			onChange,
+			onChange: ({
+				identifier,
+				values,
+			}) => {
+				onChange({
+					changedFieldValue: identifier,
+					values,
+				})
+			},
 			updatedValues,
 			values,
 		})
