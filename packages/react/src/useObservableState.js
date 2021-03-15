@@ -101,6 +101,13 @@ const useObservableState = ({
 					)
 				}
 
+				// TODO: Remove if this doesn't need to be here.
+				// Subscribers need values, but they also need to initialize state on their own.
+				// subscriber(
+				// 	getValue(
+				// 		identifier
+				// 	)
+				// )
 				return (
 					observablesRef
 					.current
