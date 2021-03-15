@@ -2,7 +2,6 @@ import {
 	render,
 	screen,
 } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/extend-expect'
 
 import OneForm from './OneForm.jsx'
@@ -12,175 +11,56 @@ describe(
 	'FieldValue',
 	() => {
 		test(
-			'keeps the props that were passed',
+			'contains the given value when in context',
 			() => {
-				const props = {
-					id: 'email',
-					name: 'email',
-					placeholder: 'Email',
-				}
+				const emailValue = 'john.smith@test.com'
 
 				render(
-					<OneForm>
-						<FieldValue>
-							<input
-								{...props}
-							/>
-						</FieldValue>
+					<OneForm
+						valuesState={{
+							email: emailValue,
+						}}
+					>
+						<FieldValue
+							name="email"
+						/>
 					</OneForm>
 				)
 
-				const domElement = (
+				expect(
 					screen
-					.getByRole(
-						'textbox'
+					.getByText(
+						emailValue
 					)
 				)
-
-				expect({
-					id: (
-						domElement
-						.id
-					),
-					name: (
-						domElement
-						.name
-					),
-					placeholder: (
-						domElement
-						.placeholder
-					),
-				})
-				.toStrictEqual(
-					props
-				)
+				.toBeTruthy()
 			},
 		)
 
 		test(
-			'contains the given value when changed',
+			'contains the given value when merged in context',
 			() => {
+				const emailValue = 'john.smith@test.com'
+
 				render(
-					<OneForm>
-						<FieldValue>
-							<input
-								name="email"
-							/>
-						</FieldValue>
+					<OneForm
+						updatedValuesState={{
+							email: emailValue,
+						}}
+					>
+						<FieldValue
+							name="email"
+						/>
 					</OneForm>
 				)
 
-				const domElement = (
+				expect(
 					screen
-					.getByRole(
-						'textbox'
+					.getByText(
+						emailValue
 					)
 				)
-
-				const value = 'a'
-
-				userEvent
-				.type(
-					domElement,
-					value,
-				)
-
-				expect(
-					domElement
-					.value
-				)
-				.toBe(
-					value
-				)
-			},
-		)
-
-		test(
-			'contains the last given value',
-			() => {
-				render(
-					<OneForm>
-						<FieldValue>
-							<input
-								name="email"
-							/>
-						</FieldValue>
-					</OneForm>
-				)
-
-				const domElement = (
-					screen
-					.getByRole(
-						'textbox'
-					)
-				)
-
-				userEvent
-				.type(
-					domElement,
-					'a',
-				)
-
-				userEvent
-				.type(
-					domElement,
-					'b',
-				)
-
-				expect(
-					domElement
-					.value
-				)
-				.toBe(
-					'ab'
-				)
-			},
-		)
-
-		test(
-			'calls the given function on change',
-			() => {
-				const valueChanged = (
-					jest
-					.fn()
-				)
-
-				render(
-					<OneForm>
-						<FieldValue>
-							<input
-								name="email"
-								onChange={valueChanged}
-							/>
-						</FieldValue>
-					</OneForm>
-				)
-
-				const domElement = (
-					screen
-					.getByRole(
-						'textbox'
-					)
-				)
-
-				userEvent
-				.type(
-					domElement,
-					'a',
-				)
-
-				userEvent
-				.type(
-					domElement,
-					'b',
-				)
-
-				expect(
-					valueChanged
-				)
-				.toHaveBeenCalledTimes(
-					2
-				)
+				.toBeTruthy()
 			},
 		)
 	}

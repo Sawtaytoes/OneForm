@@ -1,30 +1,18 @@
 import PropTypes from 'prop-types'
 import {
-	cloneElement,
 	memo,
-	useCallback,
-	useMemo,
 } from 'react'
 
 import useFieldValue from './useFieldValue'
 
 const propTypes = {
-	children: PropTypes.node.isRequired,
+	name: PropTypes.string.isRequired,
 }
 
 const FieldValue = ({
-	children,
+	name,
 }) => {
 	const {
-		name,
-		onChange: onChildChange,
-	} = (
-		children
-		.props
-	)
-
-	const {
-		setValue,
 		value = '',
 	} = (
 		useFieldValue({
@@ -32,64 +20,8 @@ const FieldValue = ({
 		})
 	)
 
-	const valueChanged = (
-		useCallback(
-			(
-				event,
-			) => {
-				if (
-					(
-						event
-						.target
-						.type
-					)
-					=== 'checkbox'
-				) {
-					setValue(
-						event
-						.target
-						.checked
-					)
-				}
-				else {
-					setValue(
-						event
-						.target
-						.value
-					)
-				}
-
-				onChildChange?.(
-					event
-				)
-			},
-			[
-				onChildChange,
-				setValue,
-			],
-		)
-	)
-
-	const childProps = (
-		useMemo(
-			() => ({
-				name,
-				onChange: valueChanged,
-				value,
-			}),
-			[
-				name,
-				value,
-				valueChanged,
-			],
-		)
-	)
-
 	return (
-		cloneElement(
-			children,
-			childProps,
-		)
+		value
 	)
 }
 
