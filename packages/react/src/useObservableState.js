@@ -6,15 +6,15 @@ import {
 
 import createObservable from './createObservable.js'
 
-const initialValueObservables = {}
+const initialObservables = {}
 
 const useObservableState = ({
-	updatedValues,
-	values,
+	updatedValuesState,
+	valuesState,
 }) => {
 	const observablesRef = (
 		useRef(
-			initialValueObservables
+			initialObservables
 		)
 	)
 
@@ -120,7 +120,7 @@ const useObservableState = ({
 		() => {
 			Object
 			.entries(
-				updatedValues
+				updatedValuesState
 			)
 			.forEach(([
 				identifier,
@@ -134,7 +134,7 @@ const useObservableState = ({
 		},
 		[
 			setValue,
-			updatedValues,
+			updatedValuesState,
 		],
 	)
 
@@ -146,7 +146,7 @@ const useObservableState = ({
 					observablesRef
 					.current
 				),
-				...values,
+				...valuesState,
 			})
 			.forEach(([
 				identifier,
@@ -169,7 +169,7 @@ const useObservableState = ({
 		},
 		[
 			setValue,
-			values,
+			valuesState,
 		],
 	)
 

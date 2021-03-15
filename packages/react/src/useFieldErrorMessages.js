@@ -5,7 +5,7 @@ import {
 	useState,
 } from 'react'
 
-import FieldErrorMessagesContext from './FieldErrorMessagesContext.jsx'
+import errorMessagesStateContext from './errorMessagesStateContext.js'
 
 const useFieldErrorMessages = ({
 	name,
@@ -16,7 +16,7 @@ const useFieldErrorMessages = ({
 		subscribeToFieldErrorMessages,
 	} = (
 		useContext(
-			FieldErrorMessagesContext
+			errorMessagesStateContext
 		)
 	)
 

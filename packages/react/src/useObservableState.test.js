@@ -18,8 +18,8 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValues: {},
-								values: {},
+								updatedValuesState: {},
+								valuesState: {},
 							},
 						},
 					)
@@ -114,8 +114,8 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValues: {},
-								values: {},
+								updatedValuesState: {},
+								valuesState: {},
 							},
 						},
 					)
@@ -237,8 +237,8 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValues: {},
-								values: {},
+								updatedValuesState: {},
+								valuesState: {},
 							},
 						},
 					)
@@ -317,8 +317,8 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValues: {},
-								values: {},
+								updatedValuesState: {},
+								valuesState: {},
 							},
 						},
 					)
@@ -370,8 +370,8 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValues: {},
-								values: {},
+								updatedValuesState: {},
+								valuesState: {},
 							},
 						},
 					)
@@ -413,7 +413,7 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValues: {},
+								updatedValuesState: {},
 								values,
 							},
 						},
@@ -443,7 +443,7 @@ describe(
 				const nameValue = 'Jane of the Jungle'
 
 				rerender({
-					updatedValues: {
+					updatedValuesState: {
 						name: nameValue,
 					},
 					values,
@@ -500,7 +500,7 @@ describe(
 		test(
 			'overwrite values',
 			() => {
-				const updatedValues = {}
+				const updatedValuesState = {}
 
 				const {
 					rerender,
@@ -510,8 +510,8 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValues,
-								values: {},
+								updatedValuesState,
+								valuesState: {},
 							},
 						},
 					)
@@ -540,8 +540,8 @@ describe(
 				const nameValue = 'Jane of the Jungle'
 
 				rerender({
-					updatedValues,
-					values: {
+					updatedValuesState,
+					valuesState: {
 						name: nameValue,
 					},
 				})
