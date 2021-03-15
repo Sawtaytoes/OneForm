@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types'
 import {
 	memo,
-	useEffect,
 	useMemo,
-	useRef,
 } from 'react'
 
-import createObservable from './createObservable.js'
 import ErrorMessagesContext from './ErrorMessagesContext.js'
 import useObservableState from './useObservableState.js'
 import ValuesContext from './ValuesContext.js'
@@ -15,9 +12,6 @@ const validationTypes = {
 	CHANGE: 'CHANGE',
 	SUBMIT: 'SUBMIT',
 }
-
-const initialLocalValues = {}
-const initialValueUnsubscribes = []
 
 const propTypes = {
 	children: PropTypes.node.isRequired,
@@ -83,12 +77,6 @@ const OneForm = ({
 		.values
 	),
 }) => {
-	const valueUnsubscribesRef = (
-		useRef(
-			initialValueUnsubscribes
-		)
-	)
-
 	const {
 		getValue: getFieldErrorMessages,
 		setValue: setFieldErrorMessages,
@@ -118,19 +106,6 @@ const OneForm = ({
 			updatedValues,
 			values,
 		})
-	)
-
-	useEffect(
-		() => {
-			valueUnsubscribesRef
-			.current
-			.forEach((
-				unsubscribe,
-			) => {
-				unsubscribe()
-			})
-		},
-		[],
 	)
 
 	const errorMessagesProviderValue = (
