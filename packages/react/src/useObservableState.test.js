@@ -498,6 +498,77 @@ describe(
 		)
 
 		test(
+			'initialize with overwritten values',
+			() => {
+				const emailValue = 'john.smith@test.com'
+				const nameValue = 'John Smith'
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								updatedValuesState: {
+									email: emailValue,
+									name: nameValue,
+								},
+								valuesState: {},
+							},
+						},
+					)
+				)
+
+				const nameValueRef = {
+					current: null,
+				}
+
+				act(() => {
+					nameValueRef
+					.current = (
+						result
+						.current
+						.getValue(
+							'name',
+						)
+					)
+				})
+
+				const emailValueRef = {
+					current: null,
+				}
+
+				act(() => {
+					emailValueRef
+					.current = (
+						result
+						.current
+						.getValue(
+							'email',
+						)
+					)
+				})
+
+				expect(
+					emailValueRef
+					.current
+				)
+				.toBe(
+					emailValue
+				)
+
+				expect(
+					nameValueRef
+					.current
+				)
+				.toBe(
+					nameValue
+				)
+			}
+		)
+
+		test(
 			'overwrite values',
 			() => {
 				const updatedValuesState = {}
