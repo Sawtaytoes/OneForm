@@ -5,7 +5,7 @@ import {
 	useState,
 } from 'react'
 
-import ValuesStateContext from './ValuesStateContext.js'
+import ValuesContext from './ValuesContext.js'
 
 const useFieldValue = ({
 	name,
@@ -16,7 +16,7 @@ const useFieldValue = ({
 		subscribeToFieldValue,
 	} = (
 		useContext(
-			ValuesStateContext
+			ValuesContext
 		)
 	)
 

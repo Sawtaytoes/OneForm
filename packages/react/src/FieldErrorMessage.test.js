@@ -25,7 +25,7 @@ describe(
 
 				render(
 					<OneForm
-						errorMessagesState={fieldErrorMessages}
+						errorMessages={fieldErrorMessages}
 					>
 						<FieldErrorMessage
 							name="email"

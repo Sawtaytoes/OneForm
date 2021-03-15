@@ -17,7 +17,7 @@ describe(
 
 				render(
 					<OneForm
-						valuesState={{
+						values={{
 							email: emailValue,
 						}}
 					>
@@ -44,7 +44,7 @@ describe(
 
 				render(
 					<OneForm
-						updatedValuesState={{
+						updatedValues={{
 							email: emailValue,
 						}}
 					>

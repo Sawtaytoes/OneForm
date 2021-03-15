@@ -16,12 +16,6 @@ describe(
 				} = (
 					renderHook(
 						useObservableState,
-						{
-							initialProps: {
-								updatedValuesState: {},
-								valuesState: {},
-							},
-						},
 					)
 				)
 
@@ -112,12 +106,6 @@ describe(
 				} = (
 					renderHook(
 						useObservableState,
-						{
-							initialProps: {
-								updatedValuesState: {},
-								valuesState: {},
-							},
-						},
 					)
 				)
 
@@ -235,12 +223,6 @@ describe(
 				} = (
 					renderHook(
 						useObservableState,
-						{
-							initialProps: {
-								updatedValuesState: {},
-								valuesState: {},
-							},
-						},
 					)
 				)
 
@@ -315,12 +297,6 @@ describe(
 				} = (
 					renderHook(
 						useObservableState,
-						{
-							initialProps: {
-								updatedValuesState: {},
-								valuesState: {},
-							},
-						},
 					)
 				)
 
@@ -368,12 +344,6 @@ describe(
 				} = (
 					renderHook(
 						useObservableState,
-						{
-							initialProps: {
-								updatedValuesState: {},
-								valuesState: {},
-							},
-						},
 					)
 				)
 
@@ -401,103 +371,6 @@ describe(
 		)
 
 		test(
-			'clearing values',
-			() => {
-				const values = {}
-
-				const {
-					rerender,
-					result,
-				} = (
-					renderHook(
-						useObservableState,
-						{
-							initialProps: {
-								updatedValuesState: {},
-								values,
-							},
-						},
-					)
-				)
-
-				act(() => {
-					result
-					.current
-					.setValue(
-						'name',
-						'John Smith',
-					)
-				})
-
-				const emailValue = 'john.smith@test.com'
-
-				act(() => {
-					result
-					.current
-					.setValue(
-						'email',
-						emailValue,
-					)
-				})
-
-				const nameValue = 'Jane of the Jungle'
-
-				rerender({
-					updatedValuesState: {
-						name: nameValue,
-					},
-					values,
-				})
-
-				const nameValueRef = {
-					current: null,
-				}
-
-				act(() => {
-					nameValueRef
-					.current = (
-						result
-						.current
-						.getValue(
-							'name',
-						)
-					)
-				})
-
-				const emailValueRef = {
-					current: null,
-				}
-
-				act(() => {
-					emailValueRef
-					.current = (
-						result
-						.current
-						.getValue(
-							'email',
-						)
-					)
-				})
-
-				expect(
-					nameValueRef
-					.current
-				)
-				.toBe(
-					nameValue
-				)
-
-				expect(
-					emailValueRef
-					.current
-				)
-				.toBe(
-					emailValue
-				)
-			}
-		)
-
-		test(
 			'initializes with merged values',
 			() => {
 				const emailValue = 'john.smith@test.com'
@@ -510,11 +383,10 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								updatedValuesState: {
+								updatedValues: {
 									email: emailValue,
 									name: nameValue,
 								},
-								valuesState: {},
 							},
 						},
 					)
@@ -569,22 +441,14 @@ describe(
 		)
 
 		test(
-			'merges values',
+			'merges values when values updates',
 			() => {
-				const updatedValuesState = {}
-
 				const {
 					rerender,
 					result,
 				} = (
 					renderHook(
 						useObservableState,
-						{
-							initialProps: {
-								updatedValuesState,
-								valuesState: {},
-							},
-						},
 					)
 				)
 
@@ -611,11 +475,80 @@ describe(
 				const nameValue = 'Jane of the Jungle'
 
 				rerender({
-					updatedValuesState,
-					valuesState: {
+					updatedValues: {
 						name: nameValue,
 					},
 				})
+
+				const emailValueRef = {
+					current: null,
+				}
+
+				act(() => {
+					emailValueRef
+					.current = (
+						result
+						.current
+						.getValue(
+							'email',
+						)
+					)
+				})
+
+				const nameValueRef = {
+					current: null,
+				}
+
+				act(() => {
+					nameValueRef
+					.current = (
+						result
+						.current
+						.getValue(
+							'name',
+						)
+					)
+				})
+
+				expect(
+					emailValueRef
+					.current
+				)
+				.toBe(
+					emailValue
+				)
+
+				expect(
+					nameValueRef
+					.current
+				)
+				.toBe(
+					nameValue
+				)
+			}
+		)
+
+		test(
+			'initializes with overwritten values',
+			() => {
+				const emailValue = 'john.smith@test.com'
+				const nameValue = 'John Smith'
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								values: {
+									email: emailValue,
+									name: nameValue,
+								},
+							},
+						},
+					)
+				)
 
 				const nameValueRef = {
 					current: null,
@@ -648,18 +581,104 @@ describe(
 				})
 
 				expect(
+					emailValueRef
+					.current
+				)
+				.toBe(
+					emailValue
+				)
+
+				expect(
 					nameValueRef
 					.current
 				)
 				.toBe(
 					nameValue
 				)
+			}
+		)
+
+		test(
+			'overwrites all values when given new values',
+			() => {
+				const {
+					rerender,
+					result,
+				} = (
+					renderHook(
+						useObservableState,
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.setValue(
+						'name',
+						'Jane of the Jungle',
+					)
+				})
+
+				act(() => {
+					result
+					.current
+					.setValue(
+						'email',
+						'john.smith@test.com',
+					)
+				})
+
+				const nameValue = 'John Smith'
+
+				rerender({
+					values: {
+						name: nameValue,
+					},
+				})
+
+				const emailValueRef = {
+					current: null,
+				}
+
+				act(() => {
+					emailValueRef
+					.current = (
+						result
+						.current
+						.getValue(
+							'email',
+						)
+					)
+				})
+
+				const nameValueRef = {
+					current: null,
+				}
+
+				act(() => {
+					nameValueRef
+					.current = (
+						result
+						.current
+						.getValue(
+							'name',
+						)
+					)
+				})
 
 				expect(
 					emailValueRef
 					.current
 				)
 				.toBeUndefined()
+
+				expect(
+					nameValueRef
+					.current
+				)
+				.toBe(
+					nameValue
+				)
 			}
 		)
 	}

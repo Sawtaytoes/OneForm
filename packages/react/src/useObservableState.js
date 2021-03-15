@@ -6,31 +6,58 @@ import {
 
 import createObservable from './createObservable.js'
 
-const initialObservables = {}
+const initialValues = {}
+const initialObservablesState = {}
 
-const useObservableState = ({
-	updatedValuesState,
-	valuesState,
-}) => {
-	const observablesRef = (
+const useObservableState = (
+	{
+		onChange = Function.prototype,
+		updatedValues = initialValues,
+		values = initialValues,
+	} = {}
+) => {
+	const onChangeRef = (
+		useRef()
+	)
+
+	onChangeRef
+	.current = (
+		onChange
+	)
+
+	const localValuesRef = (
 		useRef(
-			initialObservables
+			initialValues
 		)
 	)
 
-	const createValueObservable = (
+	const getLocalValue = (
 		useCallback(
 			(
 				identifier,
+			) => (
+				localValuesRef
+				.current
+				[identifier]
+			),
+			[],
+		)
+	)
+
+	const setLocalValue = (
+		useCallback(
+			(
+				identifier,
+				value,
 			) => {
-				observablesRef
+				localValuesRef
 				.current = {
 					...(
-						observablesRef
+						localValuesRef
 						.current
 					),
 					[identifier]: (
-						createObservable()
+						value
 					),
 				}
 			},
@@ -38,25 +65,16 @@ const useObservableState = ({
 		)
 	)
 
-	const getValue = (
-		useCallback(
-			(
-				identifier,
-			) => (
-				observablesRef
-				.current
-				[identifier]
-				?.getValue()
-			),
-			[],
+	const observablesRef = (
+		useRef(
+			initialObservablesState
 		)
 	)
 
-	const setValue = (
+	const getObservable = (
 		useCallback(
 			(
 				identifier,
-				value,
 			) => {
 				if (
 					!(
@@ -65,20 +83,103 @@ const useObservableState = ({
 						[identifier]
 					)
 				) {
-					createValueObservable(
-						identifier
-					)
+					observablesRef
+					.current = {
+						...(
+							observablesRef
+							.current
+						),
+						[identifier]: (
+							createObservable()
+						),
+					}
 				}
 
-				observablesRef
-				.current
-				[identifier]
+				return (
+					observablesRef
+					.current
+					[identifier]
+				)
+			},
+			[],
+		)
+	)
+
+	const publishValue = (
+		useCallback(
+			(
+				identifier,
+				value,
+			) => {
+				setLocalValue(
+					identifier,
+					value,
+				)
+
+				getObservable(
+					identifier
+				)
 				.publish(
 					value
 				)
 			},
 			[
-				createValueObservable,
+				getObservable,
+				setLocalValue,
+			],
+		)
+	)
+
+	const publishUpdatedValues = (
+		useCallback(
+			(
+				updatedValues = {},
+			) => {
+				Object
+				.entries(
+					updatedValues
+				)
+				.forEach(([
+					identifier,
+					value,
+				]) => {
+					publishValue(
+						identifier,
+						value,
+					)
+				})
+			},
+			[
+				publishValue,
+			],
+		)
+	)
+
+	const changeValue = (
+		useCallback(
+			(
+				identifier,
+				value,
+			) => {
+				publishValue(
+					identifier,
+					value,
+				)
+
+				publishUpdatedValues(
+					onChangeRef
+					.current({
+						identifier,
+						values: (
+							localValuesRef
+							.current
+						),
+					})
+				)
+			},
+			[
+				publishUpdatedValues,
+				publishValue,
 			],
 		)
 	)
@@ -88,37 +189,16 @@ const useObservableState = ({
 			({
 				identifier,
 				subscriber,
-			}) => {
-				if (
-					!(
-						observablesRef
-						.current
-						[identifier]
-					)
-				) {
-					createValueObservable(
-						identifier
-					)
-				}
-
-				// TODO: Remove if this doesn't need to be here.
-				// Subscribers need values, but they also need to initialize state on their own.
-				// subscriber(
-				// 	getValue(
-				// 		identifier
-				// 	)
-				// )
-				return (
-					observablesRef
-					.current
-					[identifier]
-					.subscribe(
-						subscriber
-					)
+			}) => (
+				getObservable(
+					identifier
 				)
-			},
+				.subscribe(
+					subscriber
+				)
+			),
 			[
-				createValueObservable,
+				getObservable,
 			],
 		)
 	)
@@ -131,58 +211,56 @@ const useObservableState = ({
 					observablesRef
 					.current
 				),
-				...valuesState,
+				...values,
 			})
-			.forEach(([
+			.map(([
 				identifier,
 				value,
-			]) => {
-				if (
-					value
-					?.publish
-				) {
-					value
-					.publish()
-				}
-				else {
-					setValue(
-						identifier,
-						value,
+			]) => ({
+				identifier,
+				value: (
+					(
+						getObservable(
+							identifier
+						)
+						=== value
 					)
-				}
-			})
-		},
-		[
-			setValue,
-			valuesState,
-		],
-	)
-
-	useEffect(
-		() => {
-			Object
-			.entries(
-				updatedValuesState
-			)
-			.forEach(([
+					? undefined
+					: value
+				),
+			}))
+			.forEach(({
 				identifier,
 				value,
-			]) => {
-				setValue(
+			}) => {
+				publishValue(
 					identifier,
 					value,
 				)
 			})
 		},
 		[
-			setValue,
-			updatedValuesState,
+			getObservable,
+			publishValue,
+			values,
+		],
+	)
+
+	useEffect(
+		() => {
+			publishUpdatedValues(
+				updatedValues
+			)
+		},
+		[
+			publishUpdatedValues,
+			updatedValues,
 		],
 	)
 
 	return {
-		getValue,
-		setValue,
+		getValue: getLocalValue,
+		setValue: changeValue,
 		subscribeToValue,
 	}
 }

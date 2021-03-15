@@ -1,48 +1,54 @@
 import PropTypes from 'prop-types'
 import {
 	memo,
+	useEffect,
 	useMemo,
+	useRef,
 } from 'react'
 
-import ErrorMessagesStateContext from './ErrorMessagesStateContext.js'
+import createObservable from './createObservable.js'
+import ErrorMessagesContext from './ErrorMessagesContext.js'
 import useObservableState from './useObservableState.js'
-import ValuesStateContext from './ValuesStateContext.js'
+import ValuesContext from './ValuesContext.js'
 
 const validationTypes = {
 	CHANGE: 'CHANGE',
 	SUBMIT: 'SUBMIT',
 }
 
+const initialLocalValues = {}
+const initialValueUnsubscribes = []
+
 const propTypes = {
 	children: PropTypes.node.isRequired,
-	errorMessagesState: PropTypes.object,
+	errorMessages: PropTypes.object,
 	groupValidations: PropTypes.array,
 	hasFieldChangeValidation: PropTypes.bool,
 	onChange: PropTypes.func,
 	onSubmit: PropTypes.func,
-	updatedErrorMessagesState: PropTypes.object,
-	updatedValuesState: PropTypes.object,
+	updatedErrorMessages: PropTypes.object,
+	updatedValues: PropTypes.object,
 	validations: PropTypes.object,
-	valuesState: PropTypes.object,
+	values: PropTypes.object,
 }
 
 const initialProps = {
-	errorMessagesState: {},
+	errorMessages: {},
 	groupValidations: [],
 	hasFieldChangeValidation: false,
 	onChange: Function.prototype,
 	onSubmit: Function.prototype,
-	updatedErrorMessagesState: {},
-	updatedValuesState: {},
+	updatedErrorMessages: {},
+	updatedValues: {},
 	validations: {},
-	valuesState: {},
+	values: {},
 }
 
 const OneForm = ({
 	children,
-	errorMessagesState = (
+	errorMessages = (
 		initialProps
-		.errorMessagesState
+		.errorMessages
 	),
 	groupValidations = (
 		initialProps
@@ -60,31 +66,37 @@ const OneForm = ({
 		initialProps
 		.onSubmit
 	),
-	updatedErrorMessagesState = (
+	updatedErrorMessages = (
 		initialProps
-		.updatedErrorMessagesState
+		.updatedErrorMessages
 	),
-	updatedValuesState = (
+	updatedValues = (
 		initialProps
-		.updatedValuesState
+		.updatedValues
 	),
 	validations = (
 		initialProps
 		.validations
 	),
-	valuesState = (
+	values = (
 		initialProps
-		.valuesState
+		.values
 	),
 }) => {
+	const valueUnsubscribesRef = (
+		useRef(
+			initialValueUnsubscribes
+		)
+	)
+
 	const {
 		getValue: getFieldErrorMessages,
 		setValue: setFieldErrorMessages,
 		subscribeToValue: subscribeToFieldErrorMessages,
 	} = (
 		useObservableState({
-			updatedValuesState: updatedErrorMessagesState,
-			valuesState: errorMessagesState,
+			updatedValues: updatedErrorMessages,
+			values: errorMessages,
 		})
 	)
 
@@ -94,12 +106,26 @@ const OneForm = ({
 		subscribeToValue: subscribeToFieldValue,
 	} = (
 		useObservableState({
-			updatedValuesState,
-			valuesState,
+			onChange,
+			updatedValues,
+			values,
 		})
 	)
 
-	const errorProviderValue = (
+	useEffect(
+		() => {
+			valueUnsubscribesRef
+			.current
+			.forEach((
+				unsubscribe,
+			) => {
+				unsubscribe()
+			})
+		},
+		[],
+	)
+
+	const errorMessagesProviderValue = (
 		useMemo(
 			() => ({
 				getFieldErrorMessages,
@@ -114,7 +140,7 @@ const OneForm = ({
 		)
 	)
 
-	const valueProviderValue = (
+	const valuesProviderValue = (
 		useMemo(
 			() => ({
 				getFieldValue,
@@ -130,17 +156,17 @@ const OneForm = ({
 	)
 
 	return (
-		<ErrorMessagesStateContext.Provider
-			value={errorProviderValue}
+		<ErrorMessagesContext.Provider
+			value={errorMessagesProviderValue}
 		>
-			<ValuesStateContext.Provider
-				value={valueProviderValue}
+			<ValuesContext.Provider
+				value={valuesProviderValue}
 			>
 				<form>
 					{children}
 				</form>
-			</ValuesStateContext.Provider>
-		</ErrorMessagesStateContext.Provider>
+			</ValuesContext.Provider>
+		</ErrorMessagesContext.Provider>
 	)
 }
 
