@@ -5,7 +5,9 @@ import {
 } from 'react'
 
 import ErrorMessagesContext from './ErrorMessagesContext.js'
+import RegistrationContext from './RegistrationContext.js'
 import useObservableState from './useObservableState.js'
+import useRegistrationState from './useRegistrationState.js'
 import ValuesContext from './ValuesContext.js'
 
 const validationTypes = {
@@ -89,6 +91,7 @@ const OneForm = ({
 	)
 
 	const {
+		getAllValues: getAllFieldValues,
 		getValue: getFieldValue,
 		setValue: setFieldValue,
 		subscribeToValue: subscribeToFieldValue,
@@ -108,6 +111,13 @@ const OneForm = ({
 		})
 	)
 
+	const {
+		getAllRegistrations: getAllFieldRegistrations,
+		register: registerField,
+	} = (
+		useRegistrationState()
+	)
+
 	const errorMessagesProviderValue = (
 		useMemo(
 			() => ({
@@ -119,6 +129,17 @@ const OneForm = ({
 				getFieldErrorMessages,
 				setFieldErrorMessages,
 				subscribeToFieldErrorMessages,
+			],
+		)
+	)
+
+	const registrationProviderValue = (
+		useMemo(
+			() => ({
+				registerField,
+			}),
+			[
+				registerField,
 			],
 		)
 	)
@@ -139,17 +160,21 @@ const OneForm = ({
 	)
 
 	return (
-		<ErrorMessagesContext.Provider
-			value={errorMessagesProviderValue}
+		<RegistrationContext.Provider
+			value={registrationProviderValue}
 		>
-			<ValuesContext.Provider
-				value={valuesProviderValue}
+			<ErrorMessagesContext.Provider
+				value={errorMessagesProviderValue}
 			>
-				<form>
-					{children}
-				</form>
-			</ValuesContext.Provider>
-		</ErrorMessagesContext.Provider>
+				<ValuesContext.Provider
+					value={valuesProviderValue}
+				>
+					<form>
+						{children}
+					</form>
+				</ValuesContext.Provider>
+			</ErrorMessagesContext.Provider>
+		</RegistrationContext.Provider>
 	)
 }
 
