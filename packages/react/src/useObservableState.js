@@ -119,28 +119,6 @@ const useObservableState = ({
 	useEffect(
 		() => {
 			Object
-			.entries(
-				updatedValuesState
-			)
-			.forEach(([
-				identifier,
-				value,
-			]) => {
-				setValue(
-					identifier,
-					value,
-				)
-			})
-		},
-		[
-			setValue,
-			updatedValuesState,
-		],
-	)
-
-	useEffect(
-		() => {
-			Object
 			.entries({
 				...(
 					observablesRef
@@ -170,6 +148,28 @@ const useObservableState = ({
 		[
 			setValue,
 			valuesState,
+		],
+	)
+
+	useEffect(
+		() => {
+			Object
+			.entries(
+				updatedValuesState
+			)
+			.forEach(([
+				identifier,
+				value,
+			]) => {
+				setValue(
+					identifier,
+					value,
+				)
+			})
+		},
+		[
+			setValue,
+			updatedValuesState,
 		],
 	)
 
