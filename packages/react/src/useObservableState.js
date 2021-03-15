@@ -6,8 +6,8 @@ import {
 
 import createObservable from './createObservable.js'
 
-const initialValues = {}
 const initialObservablesState = {}
+const initialValues = {}
 
 const useObservableState = (
 	{
