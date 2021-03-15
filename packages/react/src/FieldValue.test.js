@@ -1,0 +1,187 @@
+import {
+	render,
+	screen,
+} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import '@testing-library/jest-dom/extend-expect'
+
+import OneForm from './OneForm.jsx'
+import FieldValue from './FieldValue.jsx'
+
+describe(
+	'FieldValue',
+	() => {
+		test(
+			'keeps the props that were passed',
+			() => {
+				const props = {
+					id: 'email',
+					name: 'email',
+					placeholder: 'Email',
+				}
+
+				render(
+					<OneForm>
+						<FieldValue>
+							<input
+								{...props}
+							/>
+						</FieldValue>
+					</OneForm>
+				)
+
+				const domElement = (
+					screen
+					.getByRole(
+						'textbox'
+					)
+				)
+
+				expect({
+					id: (
+						domElement
+						.id
+					),
+					name: (
+						domElement
+						.name
+					),
+					placeholder: (
+						domElement
+						.placeholder
+					),
+				})
+				.toStrictEqual(
+					props
+				)
+			},
+		)
+
+		test(
+			'contains the given value when changed',
+			() => {
+				render(
+					<OneForm>
+						<FieldValue>
+							<input
+								name="email"
+							/>
+						</FieldValue>
+					</OneForm>
+				)
+
+				const domElement = (
+					screen
+					.getByRole(
+						'textbox'
+					)
+				)
+
+				const value = 'a'
+
+				userEvent
+				.type(
+					domElement,
+					value,
+				)
+
+				expect(
+					domElement
+					.value
+				)
+				.toBe(
+					value
+				)
+			},
+		)
+
+		test(
+			'contains the last given value',
+			() => {
+				render(
+					<OneForm>
+						<FieldValue>
+							<input
+								name="email"
+							/>
+						</FieldValue>
+					</OneForm>
+				)
+
+				const domElement = (
+					screen
+					.getByRole(
+						'textbox'
+					)
+				)
+
+				userEvent
+				.type(
+					domElement,
+					'a',
+				)
+
+				userEvent
+				.type(
+					domElement,
+					'b',
+				)
+
+				expect(
+					domElement
+					.value
+				)
+				.toBe(
+					'ab'
+				)
+			},
+		)
+
+		test(
+			'calls the given function on change',
+			() => {
+				const valueChanged = (
+					jest
+					.fn()
+				)
+
+				render(
+					<OneForm>
+						<FieldValue>
+							<input
+								name="email"
+								onChange={valueChanged}
+							/>
+						</FieldValue>
+					</OneForm>
+				)
+
+				const domElement = (
+					screen
+					.getByRole(
+						'textbox'
+					)
+				)
+
+				userEvent
+				.type(
+					domElement,
+					'a',
+				)
+
+				userEvent
+				.type(
+					domElement,
+					'b',
+				)
+
+				expect(
+					valueChanged
+				)
+				.toHaveBeenCalledTimes(
+					2
+				)
+			},
+		)
+	}
+)
