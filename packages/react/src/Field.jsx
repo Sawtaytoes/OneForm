@@ -24,6 +24,7 @@ const Field = ({
 	)
 
 	const {
+		errorMessages,
 		setValue,
 		value = '',
 	} = (
@@ -73,11 +74,16 @@ const Field = ({
 	const childProps = (
 		useMemo(
 			() => ({
+				error: (
+					errorMessages
+					?.[0]
+				),
 				name,
 				onChange: valueChanged,
 				value,
 			}),
 			[
+				errorMessages,
 				name,
 				value,
 				valueChanged,
