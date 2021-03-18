@@ -1,0 +1,42 @@
+import {
+  Meta,
+  Preview,
+  Story,
+} from '@storybook/addon-docs/blocks'
+
+import Field from './Field.jsx'
+import FieldValue from './FieldValue.jsx'
+import OneForm from './OneForm.jsx'
+
+<Meta title="Examples/OneForm" />
+
+<Preview>
+<OneForm>
+  <div>
+    <Field>
+      <input name="message1" />
+    </Field>
+    <FieldValue name="message1" />
+  </div>
+  <Field>
+    <input name="message2" />
+  </Field>
+  <div>
+    <FieldValue name="message2" />
+  </div>
+  <div>
+    <FieldValue name="message2" />
+  </div>
+</OneForm>
+</Preview>
+
+<Preview>
+<OneForm>
+  <div>
+    <Field>
+      <input name="message1" />
+    </Field>
+    <FieldValue name="message1" />
+  </div>
+</OneForm>
+</Preview>
