@@ -145,7 +145,6 @@ describe(
 			}
 		)
 
-
 		test(
 			'allows registering different identifiers',
 			() => {
