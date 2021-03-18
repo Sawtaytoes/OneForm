@@ -31,12 +31,27 @@ import OneForm from './OneForm.jsx'
 </Preview>
 
 <Preview>
-<OneForm>
+<OneForm
+  values={{
+    submitButton: 'Submit Form',
+  }}
+>
   <div>
-    <Field>
-      <input name="message1" />
-    </Field>
-    <FieldValue name="message1" />
+    <div>
+      <Field>
+        <input name="email" />
+      </Field>
+    </div>
+    <div>
+      <Field>
+        <input name="submitButton" />
+      </Field>
+    </div>
+    <div>
+      <button type="submit">
+        <FieldValue name="submitButton" />
+      </button>
+    </div>
   </div>
 </OneForm>
 </Preview>
