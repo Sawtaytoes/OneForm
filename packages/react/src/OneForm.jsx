@@ -112,8 +112,8 @@ const OneForm = ({
 	)
 
 	const {
-		getAllRegistrations: getAllFieldRegistrations,
-		register: registerField,
+		getAllRegistrations: getAllFieldNameRegistrations,
+		register: registerFieldName,
 	} = (
 		useRegistrationState()
 	)
@@ -136,10 +136,10 @@ const OneForm = ({
 	const registrationProviderValue = (
 		useMemo(
 			() => ({
-				registerField,
+				registerFieldName,
 			}),
 			[
-				registerField,
+				registerFieldName,
 			],
 		)
 	)
