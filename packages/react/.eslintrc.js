@@ -30,7 +30,11 @@ const eslintConfig = {
 		],
 		'import/no-unresolved': [
 			'warn',
-			{ ignore: ['\\$'] },
+			{
+				ignore: [
+				'\\$',
+			],
+		},
 		],
 		'indent': 'off', // TEMP. Remove 'off' when fixed in @ghadyani-eslint
 		'no-unexpected-multiline': 'off',
@@ -44,6 +48,5 @@ const eslintConfig = {
 		},
 	},
 }
-
 
 module.exports = eslintConfig
