@@ -12,6 +12,7 @@ const initialValues = {}
 const useObservableState = (
 	{
 		onChange = Function.prototype,
+		onPublish = Function.prototype,
 		updatedValues = initialValues,
 		values = initialValues,
 	} = {}
@@ -23,6 +24,15 @@ const useObservableState = (
 	onChangeRef
 	.current = (
 		onChange
+	)
+
+	const onPublishRef = (
+		useRef()
+	)
+
+	onPublishRef
+	.current = (
+		onPublish
 	)
 
 	const localValuesRef = (
@@ -132,8 +142,23 @@ const useObservableState = (
 				.publish(
 					value
 				)
+
+				onPublishRef
+				.current({
+					identifier,
+					value: (
+						getLocalValue(
+							identifier
+						)
+					),
+					values: (
+						getAllLocalValues()
+					),
+				})
 			},
 			[
+				getAllLocalValues,
+				getLocalValue,
 				getObservable,
 				setLocalValue,
 			],
