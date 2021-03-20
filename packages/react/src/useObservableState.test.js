@@ -551,6 +551,186 @@ describe(
 			}
 		)
 
+		test(
+			'notifies when changes occur',
+			() => {
+				const callback = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								onChange: callback,
+							},
+						}
+					)
+				)
+
+				const identifier = 'email'
+				const value1 = 'jane.of.the.jungle@test.com'
+
+				act(() => {
+					result
+					.current
+					.setValue(
+						identifier,
+						value1,
+					)
+				})
+
+				const value2 = 'john.smith@test.com'
+
+				act(() => {
+					result
+					.current
+					.setValue(
+						identifier,
+						value2,
+					)
+				})
+
+				expect(
+					callback
+				)
+				.toHaveBeenCalledTimes(
+					2
+				)
+
+				expect(
+					callback
+				)
+				.toHaveBeenNthCalledWith(
+					1,
+					{
+						identifier,
+						value: value1,
+						values: {
+							[identifier]: (
+								value1
+							),
+						},
+					},
+				)
+
+				expect(
+					callback
+				)
+				.toHaveBeenNthCalledWith(
+					2,
+					{
+						identifier,
+						value: value2,
+						values: {
+							[identifier]: (
+								value2
+							),
+						},
+					},
+				)
+			}
+		)
+
+		test(
+			'notifies newest callback when a change occurs',
+			() => {
+				const callback1 = (
+					jest
+					.fn()
+				)
+
+				const {
+					rerender,
+					result,
+				} = (
+					renderHook(
+						useObservableState,
+						{
+							initialProps: {
+								onChange: callback1,
+							},
+						}
+					)
+				)
+
+				const identifier = 'email'
+				const value1 = 'jane.of.the.jungle@test.com'
+
+				act(() => {
+					result
+					.current
+					.setValue(
+						identifier,
+						value1,
+					)
+				})
+
+				const callback2 = (
+					jest
+					.fn()
+				)
+
+				rerender({
+					onChange: callback2,
+				})
+
+				const value2 = 'john.smith@test.com'
+
+				act(() => {
+					result
+					.current
+					.setValue(
+						identifier,
+						value2,
+					)
+				})
+
+				expect(
+					callback1
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+
+				expect(
+					callback1
+				)
+				.toHaveBeenCalledWith({
+					identifier,
+					value: value1,
+					values: {
+						[identifier]: (
+							value1
+						),
+					},
+				})
+
+				expect(
+					callback2
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+
+				expect(
+					callback2
+				)
+				.toHaveBeenCalledWith({
+					identifier,
+					value: value2,
+					values: {
+						[identifier]: (
+							value2
+						),
+					},
+				})
+			}
+		)
 
 		test(
 			'notifies when a returned changes occur',
