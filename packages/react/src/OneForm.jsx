@@ -119,12 +119,12 @@ const OneForm = ({
 			onChange: ({
 				identifier,
 				values,
-			}) => {
+			}) => (
 				onChange({
 					changedFieldValue: identifier,
 					values,
 				})
-			},
+			),
 			updatedValues,
 			values,
 		})
