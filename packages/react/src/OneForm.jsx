@@ -97,7 +97,7 @@ const OneForm = ({
 		subscribeToValue: subscribeToFieldErrorMessages,
 	} = (
 		useObservableState({
-			onChange: ({
+			onPublish: ({
 				identifier,
 			}) => {
 				setFieldVisited(
@@ -134,7 +134,9 @@ const OneForm = ({
 		subscriber: (
 			resetAllFieldVisitations
 		),
-		value: values,
+		value: (
+			values
+		),
 	})
 
 	const {
