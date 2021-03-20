@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import {
 	cloneElement,
 	memo,
-	useCallback,
 	useMemo,
 } from 'react'
 
@@ -25,50 +24,15 @@ const Field = ({
 
 	const {
 		errorMessages,
-		setValue,
-		value = '',
+		value,
+		valueChanged,
 	} = (
 		useField({
 			name,
+			onChange: (
+				onChildChange
+			),
 		})
-	)
-
-	const valueChanged = (
-		useCallback(
-			(
-				event,
-			) => {
-				if (
-					(
-						event
-						.target
-						.type
-					)
-					=== 'checkbox'
-				) {
-					setValue(
-						event
-						.target
-						.checked
-					)
-				}
-				else {
-					setValue(
-						event
-						.target
-						.value
-					)
-				}
-
-				onChildChange?.(
-					event
-				)
-			},
-			[
-				onChildChange,
-				setValue,
-			],
-		)
 	)
 
 	const childProps = (
@@ -76,7 +40,10 @@ const Field = ({
 			() => ({
 				error: (
 					errorMessages
-					?.[0]
+					[0]
+				),
+				errors: (
+					errorMessages
 				),
 				name,
 				onChange: valueChanged,
