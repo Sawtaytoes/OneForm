@@ -83,6 +83,15 @@ const OneForm = ({
 	),
 }) => {
 	const {
+		getIsVisited: getIsFieldVisited,
+		resetAllVisitations: resetAllFieldVisitations,
+		setVisited: setFieldVisited,
+		subscribeToIsVisited: subscribeToIsFieldVisited,
+	} = (
+		useVisitationState()
+	)
+
+	const {
 		getValue: getFieldErrorMessages,
 		setValue: setFieldErrorMessages,
 		subscribeToValue: subscribeToFieldErrorMessages,
@@ -114,14 +123,12 @@ const OneForm = ({
 		})
 	)
 
-	const {
-		getIsVisited: getIsFieldVisited,
-		resetAllVisitations: resetAllFieldVisitations,
-		setVisited: setFieldVisited,
-		subscribeToIsVisited: subscribeToIsFieldVisited,
-	} = (
-		useVisitationState()
-	)
+	useSubscriptionEffect({
+		subscriber: (
+			resetAllFieldVisitations
+		),
+		value: values,
+	})
 
 	const {
 		getAllRegistrations: getAllFieldNameRegistrations,
@@ -129,13 +136,6 @@ const OneForm = ({
 	} = (
 		useRegistrationState()
 	)
-
-	useSubscriptionEffect({
-		subscriber: (
-			resetAllFieldVisitations
-		),
-		value: values,
-	})
 
 	const errorMessagesProviderValue = (
 		useMemo(
