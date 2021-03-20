@@ -5,7 +5,7 @@ import {
 
 import useUpdateEffect from './useUpdateEffect.js'
 
-describe.only(
+describe(
 	'useUpdateEffect',
 	() => {
 		test(
