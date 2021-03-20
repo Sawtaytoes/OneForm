@@ -6,10 +6,12 @@ import useFieldData from './useFieldData.js'
 
 const useField = ({
 	name,
+	onBlur,
 	onChange,
 }) => {
 	const {
 		errorMessages = [],
+		isVisited = false,
 		setValue,
 		setVisited,
 		value = '',
@@ -17,6 +19,24 @@ const useField = ({
 		useFieldData({
 			name,
 		})
+	)
+
+	const fieldVisited = (
+		useCallback(
+			(
+				event,
+			) => {
+				setVisited()
+
+				onBlur?.(
+					event
+				)
+			},
+			[
+				onBlur,
+				setVisited,
+			],
+		)
 	)
 
 	const valueChanged = (
@@ -59,6 +79,11 @@ const useField = ({
 
 	return {
 		errorMessages,
+		fieldVisited,
+		isVisited: (
+			isVisited
+			.toString()
+		),
 		value,
 		valueChanged,
 	}

@@ -16,6 +16,7 @@ const Field = ({
 }) => {
 	const {
 		name,
+		onBlur: onChildBlur,
 		onChange: onChildChange,
 	} = (
 		children
@@ -24,11 +25,16 @@ const Field = ({
 
 	const {
 		errorMessages,
+		fieldVisited,
+		isVisited,
 		value,
 		valueChanged,
 	} = (
 		useField({
 			name,
+			onBlur: (
+				onChildBlur
+			),
 			onChange: (
 				onChildChange
 			),
@@ -38,6 +44,7 @@ const Field = ({
 	const childProps = (
 		useMemo(
 			() => ({
+				dirty: isVisited,
 				error: (
 					errorMessages
 					[0]
@@ -46,11 +53,16 @@ const Field = ({
 					errorMessages
 				),
 				name,
+				onBlur: fieldVisited,
 				onChange: valueChanged,
+				touched: isVisited,
 				value,
+				visited: isVisited,
 			}),
 			[
 				errorMessages,
+				fieldVisited,
+				isVisited,
 				name,
 				value,
 				valueChanged,

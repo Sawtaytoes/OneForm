@@ -23,10 +23,21 @@ const useFieldData = ({
 		})
 	)
 
+	const {
+		isVisited,
+		setVisited,
+	} = (
+		useFieldVisitation({
+			name,
+		})
+	)
+
 	return {
 		errorMessages,
+		isVisited,
 		setErrorMessages,
 		setValue,
+		setVisited,
 		value,
 	}
 }
