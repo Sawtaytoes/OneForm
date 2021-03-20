@@ -3,7 +3,7 @@ import {
 	renderHook,
 } from '@testing-library/react-hooks'
 
-import useVisitationState from './useVisitationState'
+import useVisitationState from './useVisitationState.js'
 
 describe(
 	'useVisitationState',

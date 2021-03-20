@@ -3,7 +3,7 @@ import {
 	renderHook,
 } from '@testing-library/react-hooks'
 
-import useObservableState from './useObservableState'
+import useObservableState from './useObservableState.js'
 
 describe(
 	'useObservableState',
