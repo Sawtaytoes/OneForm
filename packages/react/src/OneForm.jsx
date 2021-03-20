@@ -97,6 +97,13 @@ const OneForm = ({
 		subscribeToValue: subscribeToFieldErrorMessages,
 	} = (
 		useObservableState({
+			onChange: ({
+				identifier,
+			}) => {
+				setFieldVisited(
+					identifier
+				)
+			},
 			updatedValues: updatedErrorMessages,
 			values: errorMessages,
 		})

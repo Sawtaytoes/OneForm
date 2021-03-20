@@ -7,7 +7,11 @@ import useObservableState from './useObservableState'
 
 const initialValues = {}
 
-const useVisitationState = () => {
+const useVisitationState = (
+	{
+		onChange,
+	} = {}
+) => {
 	const [
 		values,
 		setValues,
@@ -23,6 +27,7 @@ const useVisitationState = () => {
 		subscribeToValue: subscribeToIsVisited,
 	} = (
 		useObservableState({
+			onChange,
 			values,
 		})
 	)
