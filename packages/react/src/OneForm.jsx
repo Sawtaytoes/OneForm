@@ -8,8 +8,9 @@ import ErrorMessagesContext from './ErrorMessagesContext.js'
 import RegistrationContext from './RegistrationContext.js'
 import useObservableState from './useObservableState.js'
 import useRegistrationState from './useRegistrationState.js'
-// import useVisitationState from './useVisitationState.js'
+import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
+import VisitationContext from './VisitationContext.js'
 
 const validationTypes = {
 	CHANGE: 'CHANGE',
@@ -112,14 +113,14 @@ const OneForm = ({
 		})
 	)
 
-	// const {
-	// 	getIsVisited: getIsFieldVisited,
-	// 	resetAllVisitations: resetAllFieldVisitations,
-	// 	setVisited: setFieldVisited,
-	// 	subscribeToIsVisited: subscribeToIsFieldVisited,
-	// } = (
-	// 	useVisitationState()
-	// )
+	const {
+		getIsVisited: getIsFieldVisited,
+		resetAllVisitations: resetAllFieldVisitations,
+		setVisited: setFieldVisited,
+		subscribeToIsVisited: subscribeToIsFieldVisited,
+	} = (
+		useVisitationState()
+	)
 
 	const {
 		getAllRegistrations: getAllFieldNameRegistrations,
@@ -169,6 +170,21 @@ const OneForm = ({
 		)
 	)
 
+	const visitationProviderValue = (
+		useMemo(
+			() => ({
+				getIsFieldVisited,
+				setFieldVisited,
+				subscribeToIsFieldVisited,
+			}),
+			[
+				getIsFieldVisited,
+				setFieldVisited,
+				subscribeToIsFieldVisited,
+			],
+		)
+	)
+
 	return (
 		<RegistrationContext.Provider
 			value={registrationProviderValue}
@@ -179,9 +195,13 @@ const OneForm = ({
 				<ValuesContext.Provider
 					value={valuesProviderValue}
 				>
-					<form>
-						{children}
-					</form>
+					<VisitationContext.Provider
+						value={visitationProviderValue}
+					>
+						<form>
+							{children}
+						</form>
+					</VisitationContext.Provider>
 				</ValuesContext.Provider>
 			</ErrorMessagesContext.Provider>
 		</RegistrationContext.Provider>
