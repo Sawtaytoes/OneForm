@@ -8,6 +8,7 @@ import ErrorMessagesContext from './ErrorMessagesContext.js'
 import RegistrationContext from './RegistrationContext.js'
 import useObservableState from './useObservableState.js'
 import useRegistrationState from './useRegistrationState.js'
+// import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 
 const validationTypes = {
@@ -110,6 +111,15 @@ const OneForm = ({
 			values,
 		})
 	)
+
+	// const {
+	// 	getIsVisited: getIsFieldVisited,
+	// 	resetAllVisitations: resetAllFieldVisitations,
+	// 	setVisited: setFieldVisited,
+	// 	subscribeToIsVisited: subscribeToIsFieldVisited,
+	// } = (
+	// 	useVisitationState()
+	// )
 
 	const {
 		getAllRegistrations: getAllFieldNameRegistrations,
