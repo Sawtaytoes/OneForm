@@ -180,14 +180,20 @@ const useObservableState = (
 					onChangeRef
 					.current({
 						identifier,
+						value: (
+							getLocalValue(
+								identifier
+							)
+						),
 						values: (
-							localValuesRef
-							.current
+							getAllLocalValues()
 						),
 					})
 				)
 			},
 			[
+				getAllLocalValues,
+				getLocalValue,
 				publishUpdatedValues,
 				publishValue,
 			],
