@@ -1,0 +1,92 @@
+import {
+	act,
+	renderHook,
+} from '@testing-library/react-hooks'
+
+import useUpdateEffect from './useUpdateEffect.js'
+
+describe.only(
+	'useUpdateEffect',
+	() => {
+		test(
+			'does not call callback on first render',
+			() => {
+				const callback = (
+					jest
+					.fn()
+				)
+
+				renderHook(
+					({
+						callback,
+						dependencies,
+					}) => (
+						useUpdateEffect(
+							callback,
+							dependencies,
+						)
+					),
+					{
+						initialProps: {
+							callback,
+							dependencies: [
+								null,
+							],
+						},
+					},
+				)
+
+				expect(
+					callback
+				)
+				.toHaveBeenCalledTimes(0)
+			},
+		)
+
+		test(
+			'calls callback on subsequent renders',
+			() => {
+				const callback = (
+					jest
+					.fn()
+				)
+
+				const {
+					rerender,
+				} = (
+					renderHook(
+						({
+							callback,
+							dependencies,
+						}) => (
+							useUpdateEffect(
+								callback,
+								dependencies,
+							)
+						),
+						{
+							initialProps: {
+								callback,
+								dependencies: [
+									null,
+								],
+							},
+						},
+					)
+				)
+
+				rerender({
+					callback,
+					dependencies: [
+						'',
+					],
+				})
+
+				expect(
+					callback
+				)
+				.toHaveBeenCalledTimes(1)
+			},
+		)
+	}
+)
