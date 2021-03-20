@@ -74,11 +74,4 @@ const useRegistrationState = () => {
 	}
 }
 
-// Method to register and unregister a fieldName.
-// Method to register and unregister a validationName.
-// Fields you want to validate.
-// Fields you want to submit.
-// Is an array because we don't care about order.
-// Should probably be an object with counts of how many have been registered with that name.
-
 export default useRegistrationState
