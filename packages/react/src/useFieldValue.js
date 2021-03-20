@@ -51,13 +51,11 @@ const useFieldValue = ({
 	useEffect(
 		() => (
 			subscribeToFieldValue({
-				identifier: name,
+				identifier: (
+					name
+				),
 				subscriber: (
-					value,
-				) => (
-					setLocalValue(
-						value
-					)
+					setLocalValue
 				),
 			})
 		),

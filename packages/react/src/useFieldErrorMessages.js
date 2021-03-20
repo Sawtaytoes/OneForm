@@ -51,13 +51,11 @@ const useFieldErrorMessages = ({
 	useEffect(
 		() => (
 			subscribeToFieldErrorMessages({
-				identifier: name,
+				identifier: (
+					name
+				),
 				subscriber: (
-					value,
-				) => (
-					setLocalErrorMessages(
-						value
-					)
+					setLocalErrorMessages
 				),
 			})
 		),
