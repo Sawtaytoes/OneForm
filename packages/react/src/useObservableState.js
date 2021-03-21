@@ -11,10 +11,20 @@ const initialValues = {}
 
 const useObservableState = (
 	{
-		onChange = Function.prototype,
-		onPublish = Function.prototype,
-		updatedValues = initialValues,
-		values = initialValues,
+		onChange = (
+			Function
+			.prototype
+		),
+		onPublish = (
+			Function
+			.prototype
+		),
+		updatedValues = (
+			initialValues
+		),
+		values = (
+			initialValues
+		),
 	} = {}
 ) => {
 	const onChangeRef = (
