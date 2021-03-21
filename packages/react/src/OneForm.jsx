@@ -11,6 +11,7 @@ import useObservableState from './useObservableState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubmissionState from './useSubmissionState.js'
 import useSubscriptionEffect from './useSubscriptionEffect.js'
+import useValidationState from './useValidationState.js'
 import useValidationType from './useValidationType.js'
 import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
@@ -88,15 +89,6 @@ const OneForm = ({
 	)
 
 	const {
-		getIsVisited: getIsFieldVisited,
-		resetAllVisitations: resetAllFieldVisitations,
-		setVisited: setFieldVisited,
-		subscribeToIsVisited: subscribeToIsFieldVisited,
-	} = (
-		useVisitationState()
-	)
-
-	const {
 		getValue: getFieldErrorMessages,
 		setValue: setFieldErrorMessages,
 		subscribeToValue: subscribeToFieldErrorMessages,
@@ -133,6 +125,28 @@ const OneForm = ({
 			updatedValues,
 			values,
 		})
+	)
+
+	const {
+		getValidationErrorMessages,
+		setupGroupValidations: setupFieldGroupValidations,
+	} = (
+		useValidationState({
+			getValue: (
+				getFieldValue
+			),
+			groupValidations,
+			validations,
+		})
+	)
+
+	const {
+		getIsVisited: getIsFieldVisited,
+		resetAllVisitations: resetAllFieldVisitations,
+		setVisited: setFieldVisited,
+		subscribeToIsVisited: subscribeToIsFieldVisited,
+	} = (
+		useVisitationState()
 	)
 
 	useSubscriptionEffect({
