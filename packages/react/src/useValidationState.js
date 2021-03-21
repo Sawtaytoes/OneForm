@@ -277,7 +277,6 @@ const useValidationState = (
 
 	return {
 		getValidationErrorMessages,
-		setupFieldGroupValidations,
 	}
 }
 

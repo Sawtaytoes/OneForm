@@ -93,13 +93,6 @@ const OneForm = ({
 		)
 	)
 
-	const setupFieldGroupValidationsRef = (
-		useRef(
-			Function
-			.prototype
-		)
-	)
-
 	const {
 		getValidationType,
 		setValidationTypeSubmit,
@@ -256,7 +249,6 @@ const OneForm = ({
 
 	const {
 		getValidationErrorMessages,
-		setupFieldGroupValidations,
 	} = (
 		useValidationState({
 			getIsReadyForValidation: (
@@ -285,11 +277,6 @@ const OneForm = ({
 	getValidationErrorMessagesRef
 	.current = (
 		getValidationErrorMessages
-	)
-
-	setupFieldGroupValidationsRef
-	.current = (
-		setupFieldGroupValidations
 	)
 
 	const validateAllFields = (
