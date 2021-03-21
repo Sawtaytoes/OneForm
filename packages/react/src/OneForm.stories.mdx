@@ -1,6 +1,6 @@
 import {
+  Canvas,
   Meta,
-  Preview,
   Story,
 } from '@storybook/addon-docs/blocks'
 
@@ -10,7 +10,7 @@ import OneForm from './OneForm.jsx'
 
 <Meta title="Examples/OneForm" />
 
-<Preview>
+<Canvas>
 <OneForm>
   <div>
     <Field>
@@ -28,9 +28,9 @@ import OneForm from './OneForm.jsx'
     <FieldValue name="message2" />
   </div>
 </OneForm>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
 <OneForm
   values={{
     submitButton: 'Submit Form',
@@ -57,4 +57,4 @@ import OneForm from './OneForm.jsx'
     </div>
   </div>
 </OneForm>
-</Preview>
+</Canvas>
