@@ -14,8 +14,8 @@ import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
 
 const validationTypes = {
-	CHANGE: 'CHANGE',
-	SUBMIT: 'SUBMIT',
+	change: 'change',
+	submit: 'submit',
 }
 
 const propTypes = {
