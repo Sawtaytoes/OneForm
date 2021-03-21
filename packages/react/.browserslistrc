@@ -1,0 +1,5 @@
+defaults
+maintained node versions
+not OperaMini all
+not Explorer <= 11
+not ExplorerMobile <= 11
