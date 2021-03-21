@@ -1,5 +1,4 @@
 import {
-	act,
 	renderHook,
 } from '@testing-library/react-hooks'
 
@@ -618,14 +617,6 @@ describe(
 						},
 					)
 				)
-
-				act(() => {
-					result
-					.current
-					.setupFieldGroupValidations(
-						'firstName'
-					)
-				})
 
 				expect(
 					result
