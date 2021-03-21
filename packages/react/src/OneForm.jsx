@@ -15,11 +15,6 @@ import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
 
-export const validationTypes = {
-	change: 'change',
-	submit: 'submit',
-}
-
 const propTypes = {
 	children: PropTypes.node.isRequired,
 	errorMessages: PropTypes.object,
