@@ -19,7 +19,7 @@ describe(
 						useFieldValue,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},
@@ -45,7 +45,7 @@ describe(
 						useFieldValue,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},
@@ -83,7 +83,7 @@ describe(
 						useFieldValue,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},

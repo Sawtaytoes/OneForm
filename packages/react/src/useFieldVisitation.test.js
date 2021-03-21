@@ -19,7 +19,7 @@ describe(
 						useFieldVisitation,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},
@@ -45,7 +45,7 @@ describe(
 						useFieldVisitation,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},
@@ -79,7 +79,7 @@ describe(
 						useFieldVisitation,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},

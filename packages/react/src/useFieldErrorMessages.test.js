@@ -19,7 +19,7 @@ describe(
 						useFieldErrorMessages,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},
@@ -45,7 +45,7 @@ describe(
 						useFieldErrorMessages,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},
@@ -86,7 +86,7 @@ describe(
 						useFieldErrorMessages,
 						{
 							initialProps: {
-								name: 'email',
+								fieldName: 'email',
 							},
 							wrapper: OneForm,
 						},
