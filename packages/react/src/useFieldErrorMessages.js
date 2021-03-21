@@ -8,7 +8,7 @@ import {
 import ErrorMessagesContext from './ErrorMessagesContext.js'
 
 const useFieldErrorMessages = ({
-	name,
+	fieldName,
 }) => {
 	const {
 		getFieldErrorMessages,
@@ -26,7 +26,7 @@ const useFieldErrorMessages = ({
 	] = (
 		useState(
 			getFieldErrorMessages(
-				name
+				fieldName
 			)
 		)
 	)
@@ -37,12 +37,12 @@ const useFieldErrorMessages = ({
 				value,
 			) => {
 				setFieldErrorMessages(
-					name,
+					fieldName,
 					value,
 				)
 			},
 			[
-				name,
+				fieldName,
 				setFieldErrorMessages,
 			],
 		)
@@ -52,7 +52,7 @@ const useFieldErrorMessages = ({
 		() => (
 			subscribeToFieldErrorMessages({
 				identifier: (
-					name
+					fieldName
 				),
 				subscriber: (
 					setLocalErrorMessages
@@ -60,7 +60,7 @@ const useFieldErrorMessages = ({
 			})
 		),
 		[
-			name,
+			fieldName,
 			subscribeToFieldErrorMessages,
 		],
 	)

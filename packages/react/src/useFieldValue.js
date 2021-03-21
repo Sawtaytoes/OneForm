@@ -8,7 +8,7 @@ import {
 import ValuesContext from './ValuesContext.js'
 
 const useFieldValue = ({
-	name,
+	fieldName,
 }) => {
 	const {
 		getFieldValue,
@@ -26,7 +26,7 @@ const useFieldValue = ({
 	] = (
 		useState(
 			getFieldValue(
-				name
+				fieldName
 			)
 		)
 	)
@@ -37,12 +37,12 @@ const useFieldValue = ({
 				value,
 			) => {
 				setFieldValue(
-					name,
+					fieldName,
 					value,
 				)
 			},
 			[
-				name,
+				fieldName,
 				setFieldValue,
 			],
 		)
@@ -52,7 +52,7 @@ const useFieldValue = ({
 		() => (
 			subscribeToFieldValue({
 				identifier: (
-					name
+					fieldName
 				),
 				subscriber: (
 					setLocalValue
@@ -60,7 +60,7 @@ const useFieldValue = ({
 			})
 		),
 		[
-			name,
+			fieldName,
 			subscribeToFieldValue,
 		],
 	)

@@ -8,7 +8,7 @@ import {
 import VisitationContext from './VisitationContext.js'
 
 const useFieldVisitation = ({
-	name,
+	fieldName,
 }) => {
 	const {
 		getIsFieldVisited,
@@ -26,7 +26,7 @@ const useFieldVisitation = ({
 	] = (
 		useState(
 			getIsFieldVisited(
-				name
+				fieldName
 			)
 		)
 	)
@@ -35,11 +35,11 @@ const useFieldVisitation = ({
 		useCallback(
 			() => {
 				setFieldVisited(
-					name,
+					fieldName,
 				)
 			},
 			[
-				name,
+				fieldName,
 				setFieldVisited,
 			],
 		)
@@ -49,7 +49,7 @@ const useFieldVisitation = ({
 		() => (
 			subscribeToIsFieldVisited({
 				identifier: (
-					name
+					fieldName
 				),
 				subscriber: (
 					setIsVisited
@@ -57,7 +57,7 @@ const useFieldVisitation = ({
 			})
 		),
 		[
-			name,
+			fieldName,
 			subscribeToIsFieldVisited,
 		],
 	)

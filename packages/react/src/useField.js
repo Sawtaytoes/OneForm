@@ -26,7 +26,7 @@ const useField = ({
 		value = '',
 	} = (
 		useFieldData({
-			name,
+			fieldName,
 		})
 	)
 

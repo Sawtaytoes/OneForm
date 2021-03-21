@@ -3,14 +3,14 @@ import useFieldValue from './useFieldValue.js'
 import useFieldVisitation from './useFieldVisitation.js'
 
 const useFieldData = ({
-	name,
+	fieldName,
 }) => {
 	const {
 		errorMessages,
 		setErrorMessages,
 	} = (
 		useFieldErrorMessages({
-			name,
+			fieldName,
 		})
 	)
 
@@ -19,7 +19,7 @@ const useFieldData = ({
 		value,
 	} = (
 		useFieldValue({
-			name,
+			fieldName,
 		})
 	)
 
@@ -28,7 +28,7 @@ const useFieldData = ({
 		setVisited,
 	} = (
 		useFieldVisitation({
-			name,
+			fieldName,
 		})
 	)
 
