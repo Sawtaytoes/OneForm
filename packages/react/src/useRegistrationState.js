@@ -49,38 +49,32 @@ const useRegistrationState = () => {
 				}
 
 				return () => {
-					registrationsRef
-					.current = {
-						...(
-							registrationsRef
-							.current
-						),
-						[identifier]: (
-							(
-								registrationsRef
-								.current
-								[identifier]
-							)
-							- 1
-						),
-					}
+					const {
+						[identifier]: numberOfRegistrations,
+						...otherRegistrations
+					} = (
+						registrationsRef
+						.current
+					)
 
 					if (
-						(
-							registrationsRef
-							.current
-							[identifier]
-						)
-						=== 0
+						numberOfRegistrations
+						=== 1
 					) {
-						Reflect
-						.deleteProperty(
-							(
-								registrationsRef
-								.current
-							),
-							identifier,
+						registrationsRef
+						.current = (
+							otherRegistrations
 						)
+					}
+					else {
+						registrationsRef
+						.current = {
+							...otherRegistrations,
+							[identifier]: (
+								numberOfRegistrations
+								- 1
+							),
+						}
 					}
 				}
 			},
