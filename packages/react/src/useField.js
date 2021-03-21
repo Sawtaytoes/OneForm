@@ -1,11 +1,9 @@
 import {
 	useCallback,
-	useContext,
-	useMemo,
 } from 'react'
 
-import FieldGroupContext from './FieldGroupContext'
 import useFieldData from './useFieldData.js'
+import useFieldName from './useFieldName.js'
 
 const useField = ({
 	name,
@@ -13,35 +11,11 @@ const useField = ({
 	onVisit,
 }) => {
 	const {
-		fieldGroups,
+		fieldName,
 	} = (
-		useContext(
-			FieldGroupContext
-		)
-	)
-
-	const fieldName = (
-		useMemo(
-			() => (
-				[
-					name,
-				]
-				.concat(
-					fieldGroups
-					.map(({
-						name,
-						value,
-					}) => (
-						`/${name}:${value}`
-					))
-				)
-				.join('/')
-			),
-			[
-				fieldGroups,
-				name,
-			],
-		)
+		useFieldName({
+			name,
+		})
 	)
 
 	const {
