@@ -69,9 +69,11 @@ const useValidationState = (
 		)
 	)
 
+	// TODO: This is `getFieldValidationErrorMessages`.
 	const getValidationErrorMessages = (
 		useCallback(
 			(
+				// TODO: Now that we know about fields in this hook, we should use that knowledge to improve naming.
 				unfilteredIdentifiers,
 			) => {
 				const identifiers = (
@@ -92,6 +94,7 @@ const useValidationState = (
 					)
 				)
 
+				// TODO: This needs to loop `validationNames`.
 				identifiers
 				.forEach(
 					setFieldGroupValidation
@@ -102,6 +105,7 @@ const useValidationState = (
 					.filter((
 						identifier,
 					) => (
+						// TODO: This needs to be converted to an object with a `validationName` and `fieldName` before filtering.
 						validations
 						[identifier]
 					))
@@ -117,6 +121,7 @@ const useValidationState = (
 								!(
 									validate(
 										getValue(
+											// TODO: This is the `validationName`.
 											identifier
 										)
 									)
@@ -129,12 +134,14 @@ const useValidationState = (
 								|| ' '
 							))
 						),
+						// TODO: This is the `fieldName`.
 						identifier,
 					}))
 					.map(({
 						errorMessages,
 						identifier,
 					}) => ([
+						// TODO: Rename `identifier` to `fieldName`.
 						identifier,
 						errorMessages,
 					]))
@@ -148,6 +155,7 @@ const useValidationState = (
 							.map((
 								identifier,
 							) => (
+								// TODO: `identifier` needs to be a `validationName`, but we also need to match it against the `groupName`.
 								fieldGroupValidationsRef
 								.current
 								[identifier]
