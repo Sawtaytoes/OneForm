@@ -13,6 +13,10 @@ const useValidationState = (
 			Function
 			.prototype
 		),
+		getValidationType = (
+			Function
+			.prototype
+		),
 		getValue = (
 			Function
 			.prototype
@@ -22,9 +26,6 @@ const useValidationState = (
 		),
 		validations = (
 			initialValidations
-		),
-		validationType = (
-			''
 		),
 	} = {}
 ) => {

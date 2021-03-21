@@ -273,6 +273,7 @@ const OneForm = ({
 					)
 				)
 			),
+			getValidationType,
 			getValue: (
 				getFieldValue
 			),
