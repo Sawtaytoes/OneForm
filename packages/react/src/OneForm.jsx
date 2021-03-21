@@ -11,6 +11,7 @@ import useObservableState from './useObservableState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubmissionState from './useSubmissionState.js'
 import useSubscriptionEffect from './useSubscriptionEffect.js'
+import useValidationType from './useValidationType.js'
 import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
@@ -79,6 +80,13 @@ const OneForm = ({
 		.values
 	),
 }) => {
+	const {
+		getValidationType,
+		setValidationTypeSubmit,
+	} = (
+		useValidationType()
+	)
+
 	const {
 		getIsVisited: getIsFieldVisited,
 		resetAllVisitations: resetAllFieldVisitations,
@@ -159,6 +167,8 @@ const OneForm = ({
 				.prototype
 			),
 			onBeforeSubmit: () => {
+				setValidationTypeSubmit()
+
 				Object
 				.keys(
 					getAllFieldNameRegistrations()
