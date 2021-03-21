@@ -1,5 +1,6 @@
 import {
 	useCallback,
+	useEffect,
 } from 'react'
 
 import useFieldData from './useFieldData.js'
@@ -21,6 +22,7 @@ const useField = ({
 	const {
 		errorMessages = [],
 		isVisited = false,
+		register,
 		setValue,
 		setVisited,
 		value = '',
@@ -84,6 +86,21 @@ const useField = ({
 				setValue,
 			],
 		)
+	)
+
+	useEffect(
+		() => {
+			const unregister = (
+				register()
+			)
+
+			return () => {
+				unregister()
+			}
+		},
+		[
+			register,
+		]
 	)
 
 	return {
