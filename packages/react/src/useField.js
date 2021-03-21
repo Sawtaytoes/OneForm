@@ -1,7 +1,10 @@
 import {
 	useCallback,
+	useContext,
+	useMemo,
 } from 'react'
 
+import FieldGroupContext from './FieldGroupContext'
 import useFieldData from './useFieldData.js'
 
 const useField = ({
@@ -9,6 +12,38 @@ const useField = ({
 	onChange,
 	onVisit,
 }) => {
+	const {
+		fieldGroups,
+	} = (
+		useContext(
+			FieldGroupContext
+		)
+	)
+
+	const fieldName = (
+		useMemo(
+			() => (
+				[
+					name,
+				]
+				.concat(
+					fieldGroups
+					.map(({
+						name,
+						value,
+					}) => (
+						`/${name}:${value}`
+					))
+				)
+				.join('/')
+			),
+			[
+				fieldGroups,
+				name,
+			],
+		)
+	)
+
 	const {
 		errorMessages = [],
 		isVisited = false,
@@ -79,6 +114,7 @@ const useField = ({
 
 	return {
 		errorMessages,
+		fieldName,
 		fieldVisited,
 		isVisited: (
 			isVisited

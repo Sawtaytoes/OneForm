@@ -5,7 +5,7 @@ import {
 	useMemo,
 } from 'react'
 
-import useField from './useField'
+import useField from './useField.js'
 
 const propTypes = {
 	children: PropTypes.node.isRequired,
@@ -25,6 +25,7 @@ const Field = ({
 
 	const {
 		errorMessages,
+		fieldName,
 		fieldVisited,
 		isVisited,
 		value,
@@ -52,7 +53,7 @@ const Field = ({
 				errors: (
 					errorMessages
 				),
-				name,
+				name: fieldName,
 				onBlur: fieldVisited,
 				onChange: valueChanged,
 				touched: isVisited,
@@ -61,9 +62,9 @@ const Field = ({
 			}),
 			[
 				errorMessages,
+				fieldName,
 				fieldVisited,
 				isVisited,
-				name,
 				value,
 				valueChanged,
 			],
