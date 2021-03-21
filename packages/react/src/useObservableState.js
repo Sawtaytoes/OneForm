@@ -80,15 +80,38 @@ const useObservableState = (
 				identifier,
 				value,
 			) => {
-				localValuesRef
-				.current = {
-					...(
-						localValuesRef
-						.current
-					),
-					[identifier]: (
-						value
-					),
+				if (
+					value
+					=== undefined
+				) {
+					localValuesRef
+					.current = {
+						...(
+							localValuesRef
+							.current
+						),
+					}
+
+					Reflect
+					.deleteProperty(
+						(
+							localValuesRef
+							.current
+						),
+						identifier,
+					)
+				}
+				else {
+					localValuesRef
+					.current = {
+						...(
+							localValuesRef
+							.current
+						),
+						[identifier]: (
+							value
+						),
+					}
 				}
 			},
 			[],
