@@ -1,0 +1,52 @@
+import {
+  Canvas,
+  Meta,
+  Story,
+} from '@storybook/addon-docs/blocks'
+
+import Field from './Field.jsx'
+import FieldGroup from './FieldGroup.jsx'
+import OneForm from './OneForm.jsx'
+
+<Meta title="Examples/FieldGroup" />
+
+<Canvas>
+  <OneForm>
+    <FieldGroup
+      name="addressId"
+      value="1"
+    >
+      <div>
+        <Field>
+          <input
+            name="name"
+          />
+        </Field>
+      </div>
+      <FieldGroup
+        name="emailId"
+        value="1"
+      >
+        <div>
+          <Field>
+            <input
+              name="email"
+            />
+          </Field>
+        </div>
+      </FieldGroup>
+      <FieldGroup
+        name="emailId"
+        value="2"
+      >
+        <div>
+          <Field>
+            <input
+              name="email"
+            />
+          </Field>
+        </div>
+      </FieldGroup>
+    </FieldGroup>
+  </OneForm>
+</Canvas>

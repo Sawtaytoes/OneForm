@@ -7,6 +7,7 @@ import {
 } from 'react'
 
 import ErrorMessagesContext from './ErrorMessagesContext.js'
+import FieldGroupContext from './FieldGroupContext.js'
 import RegistrationContext from './RegistrationContext.js'
 import SubmissionContext from './SubmissionContext.js'
 import useObservableState from './useObservableState.js'
@@ -350,6 +351,15 @@ const OneForm = ({
 		)
 	)
 
+	const fieldGroupProviderValue = (
+		useMemo(
+			() => ({
+				fieldGroups: [],
+			}),
+			[],
+		)
+	)
+
 	const registrationProviderValue = (
 		useMemo(
 			() => ({
@@ -406,27 +416,31 @@ const OneForm = ({
 		<ErrorMessagesContext.Provider
 			value={errorMessagesProviderValue}
 		>
-			<RegistrationContext.Provider
-				value={registrationProviderValue}
+			<FieldGroupContext.Provider
+				value={fieldGroupProviderValue}
 			>
-				<SubmissionContext.Provider
-					value={submissionProviderValue}
+				<RegistrationContext.Provider
+					value={registrationProviderValue}
 				>
-					<ValuesContext.Provider
-						value={valuesProviderValue}
+					<SubmissionContext.Provider
+						value={submissionProviderValue}
 					>
-						<VisitationContext.Provider
-							value={visitationProviderValue}
+						<ValuesContext.Provider
+							value={valuesProviderValue}
 						>
-							<form
-								onSubmit={formSubmitted}
+							<VisitationContext.Provider
+								value={visitationProviderValue}
 							>
-								{children}
-							</form>
-						</VisitationContext.Provider>
-					</ValuesContext.Provider>
-				</SubmissionContext.Provider>
-			</RegistrationContext.Provider>
+								<form
+									onSubmit={formSubmitted}
+								>
+									{children}
+								</form>
+							</VisitationContext.Provider>
+						</ValuesContext.Provider>
+					</SubmissionContext.Provider>
+				</RegistrationContext.Provider>
+			</FieldGroupContext.Provider>
 		</ErrorMessagesContext.Provider>
 	)
 }
