@@ -32,11 +32,11 @@ const Field = ({
 	} = (
 		useField({
 			name,
-			onBlur: (
-				onChildBlur
-			),
 			onChange: (
 				onChildChange
+			),
+			onVisit: (
+				onChildBlur
 			),
 		})
 	)

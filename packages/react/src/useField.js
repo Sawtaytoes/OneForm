@@ -6,8 +6,8 @@ import useFieldData from './useFieldData.js'
 
 const useField = ({
 	name,
-	onBlur,
 	onChange,
+	onVisit,
 }) => {
 	const {
 		errorMessages = [],
@@ -28,12 +28,12 @@ const useField = ({
 			) => {
 				setVisited()
 
-				onBlur?.(
+				onVisit?.(
 					event
 				)
 			},
 			[
-				onBlur,
+				onVisit,
 				setVisited,
 			],
 		)
