@@ -30,6 +30,17 @@ describe(
 				expect(
 					result
 					.current
+					.getIsRegistered(
+						'email'
+					)
+				)
+				.toBe(
+					true
+				)
+
+				expect(
+					result
+					.current
 					.getAllRegistrations()
 				)
 				.toEqual({
@@ -66,6 +77,17 @@ describe(
 
 				unregisterRef
 				.current()
+
+				expect(
+					result
+					.current
+					.getIsRegistered(
+						'email'
+					)
+				)
+				.toBe(
+					false
+				)
 
 				expect(
 					result
@@ -122,6 +144,17 @@ describe(
 				expect(
 					result
 					.current
+					.getIsRegistered(
+						'email'
+					)
+				)
+				.toBe(
+					true
+				)
+
+				expect(
+					result
+					.current
 					.getAllRegistrations()
 				)
 				.toEqual({
@@ -133,6 +166,17 @@ describe(
 
 				unregister2Ref
 				.current()
+
+				expect(
+					result
+					.current
+					.getIsRegistered(
+						'email'
+					)
+				)
+				.toBe(
+					false
+				)
 
 				expect(
 					result
@@ -189,6 +233,28 @@ describe(
 				expect(
 					result
 					.current
+					.getIsRegistered(
+						'email'
+					)
+				)
+				.toBe(
+					true
+				)
+
+				expect(
+					result
+					.current
+					.getIsRegistered(
+						'name'
+					)
+				)
+				.toBe(
+					true
+				)
+
+				expect(
+					result
+					.current
 					.getAllRegistrations()
 				)
 				.toEqual({
@@ -201,6 +267,28 @@ describe(
 
 				unregister2Ref
 				.current()
+
+				expect(
+					result
+					.current
+					.getIsRegistered(
+						'email'
+					)
+				)
+				.toBe(
+					false
+				)
+
+				expect(
+					result
+					.current
+					.getIsRegistered(
+						'name'
+					)
+				)
+				.toBe(
+					false
+				)
 
 				expect(
 					result

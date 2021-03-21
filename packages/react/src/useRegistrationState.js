@@ -22,7 +22,20 @@ const useRegistrationState = () => {
 		)
 	)
 
-	// TODO: When adding validation, we need to add a `getIsRegistered` function.
+	const getIsRegistered = (
+		useCallback(
+			(
+				identifier,
+			) => (
+				Boolean(
+					registrationsRef
+					.current
+					[identifier]
+				)
+			),
+			[],
+		)
+	)
 
 	const register = (
 		useCallback(
@@ -84,6 +97,7 @@ const useRegistrationState = () => {
 
 	return {
 		getAllRegistrations,
+		getIsRegistered,
 		register,
 	}
 }
