@@ -6,8 +6,10 @@ import {
 
 import ErrorMessagesContext from './ErrorMessagesContext.js'
 import RegistrationContext from './RegistrationContext.js'
+import SubmissionContext from './SubmissionContext.js'
 import useObservableState from './useObservableState.js'
 import useRegistrationState from './useRegistrationState.js'
+import useSubmissionState from './useSubmissionState.js'
 import useSubscriptionEffect from './useSubscriptionEffect.js'
 import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
@@ -146,6 +148,34 @@ const OneForm = ({
 		useRegistrationState()
 	)
 
+	const {
+		formSubmitted,
+		submissionState,
+	} = (
+		useSubmissionState({
+			getAllIdentifiers: (
+				getAllFieldNameRegistrations
+			),
+			getAllValues: (
+				getAllFieldValues
+			),
+			getIsValid: (
+				Function
+				.prototype
+			),
+			onBeforeSubmit: () => {
+				Object
+				.keys(
+					getAllFieldNameRegistrations()
+				)
+				.forEach(
+					setFieldVisited
+				)
+			},
+			onSubmit,
+		})
+	)
+
 	const errorMessagesProviderValue = (
 		useMemo(
 			() => ({
@@ -168,6 +198,17 @@ const OneForm = ({
 			}),
 			[
 				registerFieldName,
+			],
+		)
+	)
+
+	const submissionProviderValue = (
+		useMemo(
+			() => ({
+				submissionState,
+			}),
+			[
+				submissionState,
 			],
 		)
 	)
@@ -203,25 +244,31 @@ const OneForm = ({
 	)
 
 	return (
-		<RegistrationContext.Provider
-			value={registrationProviderValue}
+		<ErrorMessagesContext.Provider
+			value={errorMessagesProviderValue}
 		>
-			<ErrorMessagesContext.Provider
-				value={errorMessagesProviderValue}
+			<RegistrationContext.Provider
+				value={registrationProviderValue}
 			>
-				<ValuesContext.Provider
-					value={valuesProviderValue}
+				<SubmissionContext.Provider
+					value={submissionProviderValue}
 				>
-					<VisitationContext.Provider
-						value={visitationProviderValue}
+					<ValuesContext.Provider
+						value={valuesProviderValue}
 					>
-						<form>
-							{children}
-						</form>
-					</VisitationContext.Provider>
-				</ValuesContext.Provider>
-			</ErrorMessagesContext.Provider>
-		</RegistrationContext.Provider>
+						<VisitationContext.Provider
+							value={visitationProviderValue}
+						>
+							<form
+								onSubmit={formSubmitted}
+							>
+								{children}
+							</form>
+						</VisitationContext.Provider>
+					</ValuesContext.Provider>
+				</SubmissionContext.Provider>
+			</RegistrationContext.Provider>
+		</ErrorMessagesContext.Provider>
 	)
 }
 
