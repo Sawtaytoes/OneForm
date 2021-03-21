@@ -156,10 +156,10 @@ const OneForm = ({
 					)
 					.forEach(({
 						errorMessages,
-						identifier,
+						fieldName,
 					}) => {
 						setFieldErrorMessages(
-							identifier,
+							fieldName,
 							errorMessages,
 						)
 					})
@@ -256,7 +256,7 @@ const OneForm = ({
 
 	const {
 		getValidationErrorMessages,
-		setupGroupValidations: setupFieldGroupValidations,
+		setupFieldGroupValidations,
 	} = (
 		useValidationState({
 			getIsReadyForValidation: (

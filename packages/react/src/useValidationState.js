@@ -1,10 +1,11 @@
 import {
 	useCallback,
+	useEffect,
 	useRef,
 } from 'react'
 
-const initialGroupValidations = {}
-const initialIdentifierValidations = {}
+const initialFieldGroupValidations = {}
+const initialGroupValidations = []
 const initialValidations = {}
 
 const useValidationState = (
@@ -29,25 +30,38 @@ const useValidationState = (
 		),
 	} = {}
 ) => {
-	const identifierValidationsRef = (
+	const fieldGroupValidationsRef = (
 		useRef(
-			initialIdentifierValidations
+			initialFieldGroupValidations
 		)
 	)
 
-	const setupGroupValidations = (
+	const setupFieldGroupValidations = (
 		useCallback(
 			(
 				identifier,
 			) => {
-				// TODO: DO THIS FOR GROUP VALIDATIONS ONLY
+				if (
+					fieldGroupValidationsRef
+					.current
+					[identifier]
+				) {
+					return
+				}
 
-				// identifierValidationsRef
-				// .current
-				// [identifier] = (
-				// 	groupValidations
-				// 	[identifier]
-				// )
+				fieldGroupValidationsRef
+				.current
+				[identifier] = (
+					groupValidations
+					.filter(({
+						fieldNames,
+					}) => (
+						fieldNames
+						.includes(
+							identifier
+						)
+					))
+				)
 			},
 			[
 				groupValidations,
@@ -78,7 +92,12 @@ const useValidationState = (
 					)
 				)
 
-				const validationErrorMessages = (
+				identifiers
+				.forEach(
+					setupFieldGroupValidations
+				)
+
+				const validationErrorMessagePairs = (
 					identifiers
 					.filter((
 						identifier,
@@ -112,42 +131,153 @@ const useValidationState = (
 						),
 						identifier,
 					}))
+					.map(({
+						errorMessages,
+						identifier,
+					}) => ([
+						identifier,
+						errorMessages,
+					]))
 				)
 
-				// Array
-				// .from(
-				// 	new Set(
-				// 		identifiers
-				// 		.map((
-				// 			identifier,
-				// 		) => (
-				// 			identifierValidationsRef
-				// 			.current
-				// 			[identifier]
-				// 		))
-				// 		.flat()
-				// 	)
-				// )
-				// .filter(({
-				// 	errorMessage
-				// }) => (
+				const allErrorMessages = (
+					Array
+					.from(
+						new Set(
+							identifiers
+							.map((
+								identifier,
+							) => (
+								fieldGroupValidationsRef
+								.current
+								[identifier]
+							))
+							.filter(
+								Boolean
+							)
+							.flat()
+							.filter(({
+								fieldNames,
+							}) => (
+								fieldNames
+								.every(
+									getIsReadyForValidation
+								)
+							))
+						)
+					)
+					.map(({
+						fieldNames,
+						// groupName,
+						validate,
+					}) => ({
+						reverseLookup: {},
+						validate,
+						values: (
+							Object
+							.fromEntries(
+								fieldNames
+								.map((
+									fieldName,
+								) => ([
+									fieldName,
+									(
+										getValue(
+											fieldName
+										)
+									),
+								]))
+							)
+						),
+					}))
+					.map(({
+						reverseLookup,
+						validate,
+						values,
+					}) => (
+						validate({
+							reverseLookup,
+							validationType: (
+								getValidationType()
+							),
+							values,
+						})
+					))
+					.filter(
+						Boolean
+					)
+					.flat()
+					.reduce(
+						(
+							combinedErrorMessages,
+							{
+								errorMessage = ' ',
+								fieldName,
+							},
+						) => ({
+							...combinedErrorMessages,
+							[fieldName]: (
+								(
+									(
+										combinedErrorMessages
+										[fieldName]
+									)
+									|| []
+								)
+								.concat(
+									errorMessage
+								)
+							),
+						}),
+						(
+							Object
+							.fromEntries(
+								validationErrorMessagePairs
+							)
+						)
+					)
+				)
 
-				// ))
-
-				return validationErrorMessages
+				return (
+					Object
+					.entries(
+						allErrorMessages
+					)
+					.map(([
+						fieldName,
+						errorMessages,
+					]) => ({
+						errorMessages,
+						fieldName,
+					}))
+				)
 			},
 			[
+				getIsReadyForValidation,
+				getValidationType,
 				getValue,
+				setupFieldGroupValidations,
 				validations,
 			],
 		)
 	)
 
-	// useEffect for when validations updates
+	useEffect(
+		() => {
+			fieldGroupValidationsRef
+			.current = (
+				initialGroupValidations
+			)
+		},
+		[
+			// We're listening to this value even if we don't use it.
+			groupValidations,
+		]
+	)
 
 	return {
 		getValidationErrorMessages,
-		setupGroupValidations,
+		setupFieldGroupValidations,
 	}
 }
 

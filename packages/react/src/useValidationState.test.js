@@ -138,7 +138,7 @@ describe(
 						errorMessages: [
 							errorMessage,
 						],
-						identifier: 'email',
+						fieldName: 'email',
 					},
 				])
 			}
@@ -196,7 +196,7 @@ describe(
 						errorMessages: [
 							' ',
 						],
-						identifier: 'email',
+						fieldName: 'email',
 					},
 				])
 			}
@@ -272,7 +272,7 @@ describe(
 							errorMessage1,
 							errorMessage2,
 						],
-						identifier: 'email',
+						fieldName: 'email',
 					},
 				])
 			}
@@ -379,14 +379,14 @@ describe(
 						errorMessages: [
 							emailErrorMessage,
 						],
-						identifier: 'email',
+						fieldName: 'email',
 					},
 					{
 						errorMessages: [
 							nameErrorMessage1,
 							nameErrorMessage2,
 						],
-						identifier: 'name',
+						fieldName: 'name',
 					},
 				])
 			}
@@ -501,7 +501,151 @@ describe(
 							nameErrorMessage1,
 							nameErrorMessage2,
 						],
-						identifier: 'name',
+						fieldName: 'name',
+					},
+				])
+			}
+		)
+
+		test(
+			'processes multiple groups and only gives error messages when all group fields ready for validation',
+			() => {
+				const firstNameErrorMessage = (
+					'Cannot use generic first name.'
+				)
+
+				const lastNameErrorMessage = (
+					'Cannot use generic last name.'
+				)
+
+				const readyForValidation = {
+					email: false,
+					firstName: true,
+					lastName: true,
+				}
+
+				const values = {
+					email: 'john.smith@test.com',
+					firstName: 'John',
+					lastName: 'Smith',
+				}
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getIsReadyForValidation: (
+									identifier,
+								) => (
+									readyForValidation
+									[identifier]
+								),
+								getValue: (
+									identifier,
+								) => (
+									values
+									[identifier]
+								),
+								groupValidations: [
+									{
+										fieldNames: [
+											'email',
+											'firstName',
+										],
+										validate: () => ([
+											{
+												errorMessage: 'You cannot have an `email` and `name`.',
+												fieldName: 'errorMessage.emailName',
+											},
+										]),
+									},
+									{
+										fieldNames: [
+											'firstName',
+											'lastName',
+										],
+										validate: ({
+											values,
+										}) => {
+											const errors = []
+
+											if (
+												(
+													values
+													.firstName
+												)
+												=== 'John'
+											) {
+												errors
+												.push({
+													errorMessage: (
+														firstNameErrorMessage
+													),
+													fieldName: (
+														'firstName'
+													),
+												})
+											}
+
+											if (
+												(
+													values
+													.lastName
+												)
+												=== 'Smith'
+											) {
+												errors
+												.push({
+													errorMessage: (
+														lastNameErrorMessage
+													),
+													fieldName: (
+														'lastName'
+													),
+												})
+											}
+
+											return (
+												errors
+											)
+										},
+									},
+								],
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.setupFieldGroupValidations(
+						'firstName'
+					)
+				})
+
+				expect(
+					result
+					.current
+					.getValidationErrorMessages(
+						'firstName',
+					)
+				)
+				.toEqual([
+					{
+						errorMessages: [
+							firstNameErrorMessage,
+						],
+						fieldName: 'firstName',
+					},
+					{
+						errorMessages: [
+							lastNameErrorMessage,
+						],
+						fieldName: 'lastName',
 					},
 				])
 			}
