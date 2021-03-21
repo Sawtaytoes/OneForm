@@ -9,6 +9,10 @@ const initialValidations = {}
 
 const useValidationState = (
 	{
+		getIsReadyForValidation = (
+			Function
+			.prototype
+		),
 		getValue = (
 			Function
 			.prototype
@@ -18,6 +22,9 @@ const useValidationState = (
 		),
 		validations = (
 			initialValidations
+		),
+		validationType = (
+			''
 		),
 	} = {}
 ) => {
@@ -50,21 +57,28 @@ const useValidationState = (
 	const getValidationErrorMessages = (
 		useCallback(
 			(
-				identifiers,
+				unfilteredIdentifiers,
 			) => {
-				const validationErrorMessages = (
+				const identifiers = (
 					(
 						(
 							Array
 							.isArray(
-								identifiers
+								unfilteredIdentifiers
 							)
 						)
-						? identifiers
+						? unfilteredIdentifiers
 						: [
-							identifiers,
+							unfilteredIdentifiers,
 						]
 					)
+					.filter(
+						getIsReadyForValidation
+					)
+				)
+
+				const validationErrorMessages = (
+					identifiers
 					.filter((
 						identifier,
 					) => (

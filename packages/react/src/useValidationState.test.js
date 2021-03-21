@@ -31,6 +31,59 @@ describe(
 		)
 
 		test(
+			'only validates when ready for validation',
+			() => {
+				const values = {
+					email: 'john.smithtest.com',
+				}
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getIsReadyForValidation: () => (
+									false
+								),
+								getValue: (
+									identifier,
+								) => (
+									values
+									[identifier]
+								),
+								validations: {
+									email: [
+										{
+											validate: (
+												value,
+											) => (
+												value
+												.includes('@')
+											),
+										},
+									],
+								},
+							},
+						},
+					)
+				)
+
+				expect(
+					result
+					.current
+					.getValidationErrorMessages(
+						'email'
+					)
+				)
+				.toEqual(
+					[]
+				)
+			}
+		)
+
+		test(
 			'gives error messages when invalid',
 			() => {
 				const errorMessage = 'Missing `@` sign.'
@@ -46,6 +99,9 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
+								getIsReadyForValidation: () => (
+									true
+								),
 								getValue: (
 									identifier,
 								) => (
@@ -102,6 +158,9 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
+								getIsReadyForValidation: () => (
+									true
+								),
 								getValue: (
 									identifier,
 								) => (
@@ -160,6 +219,9 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
+								getIsReadyForValidation: () => (
+									true
+								),
 								getValue: (
 									identifier,
 								) => (
@@ -235,6 +297,9 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
+								getIsReadyForValidation: () => (
+									true
+								),
 								getValue: (
 									identifier,
 								) => (
@@ -316,6 +381,121 @@ describe(
 						],
 						identifier: 'email',
 					},
+					{
+						errorMessages: [
+							nameErrorMessage1,
+							nameErrorMessage2,
+						],
+						identifier: 'name',
+					},
+				])
+			}
+		)
+
+		test(
+			'processes multiple and only gives error messages when ready for validation',
+			() => {
+				const nameErrorMessage1 = 'Name cannot start with `J`.'
+				const nameErrorMessage2 = 'Cannot use generic name.'
+
+				const readyForValidation = {
+					email: false,
+					name: true,
+				}
+
+				const values = {
+					email: 'john.smith@test',
+					name: 'John Smith',
+				}
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getIsReadyForValidation: (
+									identifier,
+								) => (
+									readyForValidation
+									[identifier]
+								),
+								getValue: (
+									identifier,
+								) => (
+									values
+									[identifier]
+								),
+								validations: {
+									email: [
+										{
+											errorMessage: (
+												'Missing `@` sign.'
+											),
+											validate: (
+												value,
+											) => (
+												value
+												.includes('@')
+											),
+										},
+										{
+											errorMessage: (
+												'Missing `.com`.'
+											),
+											validate: (
+												value,
+											) => (
+												value
+												.includes('.com')
+											),
+										},
+									],
+									name: [
+										{
+											errorMessage: (
+												nameErrorMessage1
+											),
+											validate: (
+												value,
+											) => (
+												!(
+													value
+													.trim()
+													.startsWith(
+														'J'
+													)
+												)
+											),
+										},
+										{
+											errorMessage: (
+												nameErrorMessage2
+											),
+											validate: (
+												value,
+											) => (
+												value
+												!== 'John Smith'
+											),
+										},
+									],
+								},
+							},
+						},
+					)
+				)
+
+				expect(
+					result
+					.current
+					.getValidationErrorMessages([
+						'email',
+						'name',
+					])
+				)
+				.toEqual([
 					{
 						errorMessages: [
 							nameErrorMessage1,
