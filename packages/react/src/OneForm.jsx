@@ -13,7 +13,7 @@ import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
 
-const validationTypes = {
+export const validationTypes = {
 	change: 'change',
 	submit: 'submit',
 }
@@ -228,7 +228,5 @@ const OneForm = ({
 OneForm.propTypes = propTypes
 
 const MemoizedOneForm = memo(OneForm)
-
-MemoizedOneForm.validationTypes = validationTypes
 
 export default MemoizedOneForm
