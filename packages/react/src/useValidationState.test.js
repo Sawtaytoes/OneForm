@@ -89,6 +89,61 @@ describe(
 		)
 
 		test(
+			'gives truthy error message when not defined',
+			() => {
+				const values = {
+					email: 'john.smithtest.com',
+				}
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getValue: (
+									identifier,
+								) => (
+									values
+									[identifier]
+								),
+								validations: {
+									email: [
+										{
+											validate: (
+												value,
+											) => (
+												value
+												.includes('@')
+											),
+										},
+									],
+								},
+							},
+						},
+					)
+				)
+
+				expect(
+					result
+					.current
+					.getValidationErrorMessages(
+						'email'
+					)
+				)
+				.toEqual([
+					{
+						errorMessages: [
+							' ',
+						],
+						identifier: 'email',
+					},
+				])
+			}
+		)
+
+		test(
 			'gives all error messages when multiple invalid',
 			() => {
 				const errorMessage1 = 'Missing `@` sign.'

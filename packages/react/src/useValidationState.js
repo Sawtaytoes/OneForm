@@ -92,6 +92,7 @@ const useValidationState = (
 								errorMessage,
 							}) => (
 								errorMessage
+								|| ' '
 							))
 						),
 						identifier,
