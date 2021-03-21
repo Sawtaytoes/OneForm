@@ -8,24 +8,11 @@ export const validationTypes = {
 	submit: 'submit',
 }
 
-const useValidationType = (
-	{
-		hasChangeValidation = (
-			false
-		),
-	} = {}
-) => {
+const useValidationType = () => {
 	const validationTypeRef = (
 		useRef(
-			hasChangeValidation
-			? (
-				validationTypes
-				.change
-			)
-			: (
-				validationTypes
-				.submit
-			)
+			validationTypes
+			.change
 		)
 	)
 

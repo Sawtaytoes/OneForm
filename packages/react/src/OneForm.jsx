@@ -85,11 +85,7 @@ const OneForm = ({
 		getValidationType,
 		setValidationTypeSubmit,
 	} = (
-		useValidationType({
-			hasChangeValidation: (
-				hasFieldChangeValidation
-			),
-		})
+		useValidationType()
 	)
 
 	const {

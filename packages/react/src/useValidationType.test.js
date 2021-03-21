@@ -11,43 +11,13 @@ describe(
 	'useValidationType',
 	() => {
 		test(
-			'starts as `submit` type by default',
+			'starts as `change` type by default',
 			() => {
 				const {
 					result,
 				} = (
 					renderHook(
 						useValidationType,
-					)
-				)
-
-				expect(
-					result
-					.current
-					.getValidationType()
-				)
-				.toBe(
-					validationTypes
-					.submit
-				)
-			}
-		)
-
-		test(
-			'starts as `change` type when enabled',
-			() => {
-				const {
-					result,
-				} = (
-					renderHook(
-						useValidationType,
-						{
-							initialProps: {
-								hasChangeValidation: (
-									true
-								),
-							},
-						},
 					)
 				)
 
@@ -71,13 +41,6 @@ describe(
 				} = (
 					renderHook(
 						useValidationType,
-						{
-							initialProps: {
-								hasChangeValidation: (
-									true
-								),
-							},
-						},
 					)
 				)
 
