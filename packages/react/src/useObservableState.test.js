@@ -218,7 +218,7 @@ describe(
 		test(
 			'notifies when publications occur',
 			() => {
-				const callback = (
+				const publishCallback = (
 					jest
 					.fn()
 				)
@@ -230,7 +230,9 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								onPublish: callback,
+								onPublish: (
+									publishCallback
+								),
 							},
 						}
 					)
@@ -260,14 +262,14 @@ describe(
 				})
 
 				expect(
-					callback
+					publishCallback
 				)
 				.toHaveBeenCalledTimes(
 					2
 				)
 
 				expect(
-					callback
+					publishCallback
 				)
 				.toHaveBeenNthCalledWith(
 					1,
@@ -283,7 +285,7 @@ describe(
 				)
 
 				expect(
-					callback
+					publishCallback
 				)
 				.toHaveBeenNthCalledWith(
 					2,
@@ -303,7 +305,7 @@ describe(
 		test(
 			'notifies newest callback when a publication occurs',
 			() => {
-				const callback1 = (
+				const publishCallback1 = (
 					jest
 					.fn()
 				)
@@ -316,7 +318,9 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								onPublish: callback1,
+								onPublish: (
+									publishCallback1
+								),
 							},
 						}
 					)
@@ -334,13 +338,15 @@ describe(
 					)
 				})
 
-				const callback2 = (
+				const publishCallback2 = (
 					jest
 					.fn()
 				)
 
 				rerender({
-					onPublish: callback2,
+					onPublish: (
+						publishCallback2
+					),
 				})
 
 				const value2 = 'john.smith@test.com'
@@ -355,14 +361,14 @@ describe(
 				})
 
 				expect(
-					callback1
+					publishCallback1
 				)
 				.toHaveBeenCalledTimes(
 					1
 				)
 
 				expect(
-					callback1
+					publishCallback1
 				)
 				.toHaveBeenCalledWith({
 					identifier,
@@ -375,14 +381,14 @@ describe(
 				})
 
 				expect(
-					callback2
+					publishCallback2
 				)
 				.toHaveBeenCalledTimes(
 					1
 				)
 
 				expect(
-					callback2
+					publishCallback2
 				)
 				.toHaveBeenCalledWith({
 					identifier,
@@ -554,7 +560,7 @@ describe(
 		test(
 			'notifies when changes occur',
 			() => {
-				const callback = (
+				const changeCallback = (
 					jest
 					.fn()
 				)
@@ -566,7 +572,9 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								onChange: callback,
+								onChange: (
+									changeCallback
+								),
 							},
 						}
 					)
@@ -596,14 +604,14 @@ describe(
 				})
 
 				expect(
-					callback
+					changeCallback
 				)
 				.toHaveBeenCalledTimes(
 					2
 				)
 
 				expect(
-					callback
+					changeCallback
 				)
 				.toHaveBeenNthCalledWith(
 					1,
@@ -619,7 +627,7 @@ describe(
 				)
 
 				expect(
-					callback
+					changeCallback
 				)
 				.toHaveBeenNthCalledWith(
 					2,
@@ -639,7 +647,7 @@ describe(
 		test(
 			'notifies newest callback when a change occurs',
 			() => {
-				const callback1 = (
+				const changeCallback1 = (
 					jest
 					.fn()
 				)
@@ -652,7 +660,9 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								onChange: callback1,
+								onChange: (
+									changeCallback1
+								),
 							},
 						}
 					)
@@ -670,13 +680,15 @@ describe(
 					)
 				})
 
-				const callback2 = (
+				const changeCallback2 = (
 					jest
 					.fn()
 				)
 
 				rerender({
-					onChange: callback2,
+					onChange: (
+						changeCallback2
+					),
 				})
 
 				const value2 = 'john.smith@test.com'
@@ -691,14 +703,14 @@ describe(
 				})
 
 				expect(
-					callback1
+					changeCallback1
 				)
 				.toHaveBeenCalledTimes(
 					1
 				)
 
 				expect(
-					callback1
+					changeCallback1
 				)
 				.toHaveBeenCalledWith({
 					identifier,
@@ -711,14 +723,14 @@ describe(
 				})
 
 				expect(
-					callback2
+					changeCallback2
 				)
 				.toHaveBeenCalledTimes(
 					1
 				)
 
 				expect(
-					callback2
+					changeCallback2
 				)
 				.toHaveBeenCalledWith({
 					identifier,
@@ -756,8 +768,12 @@ describe(
 						useObservableState,
 						{
 							initialProps: {
-								onChange: changeCallback,
-								onPublish: publishCallback,
+								onChange: (
+									changeCallback
+								),
+								onPublish: (
+									publishCallback
+								),
 							},
 						}
 					)
@@ -827,8 +843,12 @@ describe(
 						{
 							initialProps: {
 								updatedValues: {
-									email: emailValue,
-									name: nameValue,
+									email: (
+										emailValue
+									),
+									name: (
+										nameValue
+									),
 								},
 							},
 						},
@@ -985,8 +1005,12 @@ describe(
 						{
 							initialProps: {
 								values: {
-									email: emailValue,
-									name: nameValue,
+									email: (
+										emailValue
+									),
+									name: (
+										nameValue
+									),
 								},
 							},
 						},
