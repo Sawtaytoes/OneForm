@@ -72,9 +72,9 @@ describe(
 					.current
 					.getAllRegistrations()
 				)
-				.toEqual({
-					email: 0,
-				})
+				.toEqual(
+					{}
+				)
 			}
 		)
 
@@ -139,9 +139,9 @@ describe(
 					.current
 					.getAllRegistrations()
 				)
-				.toEqual({
-					email: 0,
-				})
+				.toEqual(
+					{}
+				)
 			}
 		)
 
@@ -207,10 +207,9 @@ describe(
 					.current
 					.getAllRegistrations()
 				)
-				.toEqual({
-					email: 0,
-					name: 0,
-				})
+				.toEqual(
+					{}
+				)
 			}
 		)
 	}

@@ -64,6 +64,24 @@ const useRegistrationState = () => {
 							- 1
 						),
 					}
+
+					if (
+						(
+							registrationsRef
+							.current
+							[identifier]
+						)
+						=== 0
+					) {
+						Reflect
+						.deleteProperty(
+							(
+								registrationsRef
+								.current
+							),
+							identifier,
+						)
+					}
 				}
 			},
 			[],
