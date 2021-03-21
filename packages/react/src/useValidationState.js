@@ -36,7 +36,7 @@ const useValidationState = (
 		)
 	)
 
-	const setupFieldGroupValidations = (
+	const setFieldGroupValidation = (
 		useCallback(
 			(
 				identifier,
@@ -94,7 +94,7 @@ const useValidationState = (
 
 				identifiers
 				.forEach(
-					setupFieldGroupValidations
+					setFieldGroupValidation
 				)
 
 				const validationErrorMessagePairs = (
@@ -256,7 +256,7 @@ const useValidationState = (
 				getIsReadyForValidation,
 				getValidationType,
 				getValue,
-				setupFieldGroupValidations,
+				setFieldGroupValidation,
 				validations,
 			],
 		)
