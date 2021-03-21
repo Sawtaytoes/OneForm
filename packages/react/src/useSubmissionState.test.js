@@ -62,9 +62,6 @@ describe(
 						useSubmissionState,
 						{
 							initialProps: {
-								getAllIdentifiers: () => (
-									{}
-								),
 								getIsValid,
 								onSubmit: (
 									submitCallback
@@ -104,6 +101,49 @@ describe(
 				.toBe(
 					submissionStates
 					.invalidSubmission
+				)
+			}
+		)
+
+		test(
+			'notifies before submitting',
+			() => {
+				const beforeSubmitCallback = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useSubmissionState,
+						{
+							initialProps: {
+								getIsValid: () => (
+									false
+								),
+								onBeforeSubmit: (
+									beforeSubmitCallback
+								),
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.formSubmitted(
+						mockedSubmitEvent
+					)
+				})
+
+				expect(
+					beforeSubmitCallback
+				)
+				.toHaveBeenCalledTimes(
+					1
 				)
 			}
 		)

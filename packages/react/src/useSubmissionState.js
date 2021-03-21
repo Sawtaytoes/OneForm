@@ -27,7 +27,7 @@ const useSubmissionState = (
 			Function
 			.prototype
 		),
-		setSubmitting = (
+		onBeforeSubmit = (
 			Function
 			.prototype
 		),
@@ -37,6 +37,15 @@ const useSubmissionState = (
 		),
 	} = {}
 ) => {
+	const onBeforeSubmitRef = (
+		useRef()
+	)
+
+	onBeforeSubmitRef
+	.current = (
+		onBeforeSubmit
+	)
+
 	const onSubmitRef = (
 		useRef()
 	)
@@ -64,13 +73,8 @@ const useSubmissionState = (
 				event
 				.preventDefault()
 
-				Object
-				.keys(
-					getAllIdentifiers()
-				)
-				.forEach(
-					setSubmitting
-				)
+				onBeforeSubmitRef
+				.current()
 
 				if (
 					getIsValid()
@@ -88,9 +92,7 @@ const useSubmissionState = (
 				}
 			},
 			[
-				getAllIdentifiers,
 				getIsValid,
-				setSubmitting,
 			],
 		)
 	)
