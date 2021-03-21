@@ -292,6 +292,23 @@ const OneForm = ({
 		setupFieldGroupValidations
 	)
 
+	const validateAllFields = (
+		useCallback(
+			() => {
+				updateErrorMessages(
+					Object
+					.keys(
+						getAllFieldNameRegistrations()
+					)
+				)
+			},
+			[
+				getAllFieldNameRegistrations,
+				updateErrorMessages,
+			],
+		)
+	)
+
 	const {
 		formSubmitted,
 		submissionState,
@@ -304,12 +321,7 @@ const OneForm = ({
 				getAllFieldValues
 			),
 			getIsValid: () => {
-				updateErrorMessages(
-					Object
-					.keys(
-						getAllFieldNameRegistrations()
-					)
-				)
+				validateAllFields()
 
 				return (
 					(
