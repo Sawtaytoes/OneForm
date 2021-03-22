@@ -126,14 +126,14 @@ const OneForm = ({
 			) => {
 				if (
 					(
-						hasFieldChangeValidation
-						&& (
+						(
 							getValidationType()
 							=== (
 								validationTypes
 								.change
 							)
 						)
+						&& hasFieldChangeValidation
 					)
 					|| (
 						getValidationType()
