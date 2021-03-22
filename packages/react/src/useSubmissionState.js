@@ -122,7 +122,7 @@ const useSubmissionState = (
 				.fromEntries(
 					Object
 					.entries(
-						getAllValues()
+						allValues
 					)
 					.filter(([
 						identifier,
