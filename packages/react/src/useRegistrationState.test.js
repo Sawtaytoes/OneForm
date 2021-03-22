@@ -300,5 +300,105 @@ describe(
 				)
 			}
 		)
+
+		test(
+			'notifies when registrations occur',
+			() => {
+				const onRegister = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useRegistrationState,
+						{
+							initialProps: {
+								onRegister,
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.register(
+						'email'
+					)
+				})
+
+				expect(
+					onRegister
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+
+				expect(
+					onRegister
+				)
+				.toHaveBeenCalledWith(
+					'email',
+				)
+			}
+		)
+
+		test(
+			'notifies when registrations are unregistered',
+			() => {
+				const onUnregister = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useRegistrationState,
+						{
+							initialProps: {
+								onUnregister,
+							},
+						},
+					)
+				)
+
+				const unregisterRef = {
+					current: null,
+				}
+
+				act(() => {
+					unregisterRef
+					.current = (
+						result
+						.current
+						.register(
+							'email'
+						)
+					)
+				})
+
+				unregisterRef
+				.current()
+
+				expect(
+					onUnregister
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+
+				expect(
+					onUnregister
+				)
+				.toHaveBeenCalledWith(
+					'email',
+				)
+			}
+		)
 	}
 )

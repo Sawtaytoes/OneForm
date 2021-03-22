@@ -5,7 +5,36 @@ import {
 
 const initialRegistrations = {}
 
-const useRegistrationState = () => {
+const useRegistrationState = (
+	{
+		onRegister = (
+			Function
+			.prototype
+		),
+		onUnregister = (
+			Function
+			.prototype
+		),
+	} = {}
+) => {
+	const onRegisterRef = (
+		useRef()
+	)
+
+	onRegisterRef
+	.current = (
+		onRegister
+	)
+
+	const onUnregisterRef = (
+		useRef()
+	)
+
+	onUnregisterRef
+	.current = (
+		onUnregister
+	)
+
 	const registrationsRef = (
 		useRef(
 			initialRegistrations
@@ -61,6 +90,11 @@ const useRegistrationState = () => {
 					),
 				}
 
+				onRegisterRef
+				.current(
+					identifier
+				)
+
 				return () => {
 					const {
 						[identifier]: numberOfRegistrations,
@@ -89,6 +123,11 @@ const useRegistrationState = () => {
 							),
 						}
 					}
+
+					onUnregisterRef
+					.current(
+						identifier
+					)
 				}
 			},
 			[],
