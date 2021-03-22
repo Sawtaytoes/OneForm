@@ -700,7 +700,9 @@ describe(
 											'firstName',
 											'lastName',
 										],
-										groupName: 'emailId',
+										groupNames: [
+											'emailId',
+										],
 										validate,
 									},
 								],
@@ -831,7 +833,9 @@ describe(
 											'firstName',
 											'lastName',
 										],
-										groupName: 'emailId',
+										groupNames: [
+											'emailId',
+										],
 										validate,
 									},
 								],
@@ -911,6 +915,198 @@ describe(
 							lastName: (
 								values
 								.lastName
+							),
+						},
+					},
+				)
+			}
+		)
+
+		test(
+			'do a database-style `AND` grouping when given multiple group names',
+			() => {
+				const values = {
+					'accountName': 'KG',
+					'email/accountId:1/emailId:1': 'john.smith@test.com',
+					'email/accountId:1/emailId:2': 'johnsmith1970@testmail.com',
+					'email/accountId:2/emailId:3': 'phil.collins@test.com',
+					'firstName/accountId:1': 'John',
+					'firstName/accountId:2': 'Phil',
+					'lastName/accountId:1': 'Smith',
+					'lastName/accountId:2': 'Collins',
+				}
+
+				const validate = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getAllFieldNames: () => (
+									Object
+									.keys(
+										values
+									)
+								),
+								getIsFieldReadyForValidation: () => (
+									true
+								),
+								getValidationType: () => (
+									'submit'
+								),
+								getValue: (
+									fieldName,
+								) => (
+									values
+									[fieldName]
+								),
+								groupValidations: [
+									{
+										fieldNames: [
+											'email',
+											'firstName',
+											'lastName',
+										],
+										groupNames: [
+											'accountId',
+											'emailId',
+										],
+										validate,
+									},
+								],
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.getFieldValidationErrorMessages([
+						'accountName',
+						'email/accountId:1/emailId:1',
+						'email/accountId:1/emailId:2',
+						'email/accountId:2/emailId:3',
+						'firstName/accountId:1',
+						'firstName/accountId:2',
+						'lastName/accountId:1',
+						'lastName/accountId:2',
+					])
+				})
+
+				expect(
+					validate
+				)
+				.toHaveBeenCalledTimes(
+					3
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					1,
+					{
+						reverseLookup: {
+							email: (
+								'email/accountId:1/emailId:1'
+							),
+							firstName: (
+								'firstName/accountId:1'
+							),
+							lastName: (
+								'lastName/accountId:1'
+							),
+						},
+						validationType: 'submit',
+						values: {
+							email: (
+								values
+								['email/accountId:1/emailId:1']
+							),
+							firstName: (
+								values
+								['firstName/accountId:1']
+							),
+							lastName: (
+								values
+								['lastName/accountId:1']
+							),
+						},
+					},
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					2,
+					{
+						reverseLookup: {
+							email: (
+								'email/accountId:1/emailId:2'
+							),
+							firstName: (
+								'firstName/accountId:1'
+							),
+							lastName: (
+								'lastName/accountId:1'
+							),
+						},
+						validationType: 'submit',
+						values: {
+							email: (
+								values
+								['email/accountId:1/emailId:2']
+							),
+							firstName: (
+								values
+								['firstName/accountId:1']
+							),
+							lastName: (
+								values
+								['lastName/accountId:1']
+							),
+						},
+					},
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					3,
+					{
+						reverseLookup: {
+							email: (
+								'email/accountId:2/emailId:3'
+							),
+							firstName: (
+								'firstName/accountId:2'
+							),
+							lastName: (
+								'lastName/accountId:2'
+							),
+						},
+						validationType: 'submit',
+						values: {
+							email: (
+								values
+								['email/accountId:2/emailId:3']
+							),
+							firstName: (
+								values
+								['firstName/accountId:2']
+							),
+							lastName: (
+								values
+								['lastName/accountId:2']
 							),
 						},
 					},
