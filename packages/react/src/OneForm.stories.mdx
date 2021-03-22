@@ -55,14 +55,14 @@ To catch the submission, just pass an `onSubmit`:
 ```js
 onSubmit={({
   allValues,
-  submittedValues,
+  registeredValues,
 }) => (
   fetch(
     '/api/submit-form',
     {
       body: (
         JSON.stringify(
-          submittedValues
+          registeredValues
         )
       ),
       method: 'POST',

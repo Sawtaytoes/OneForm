@@ -117,7 +117,7 @@ const useSubmissionState = (
 				getAllIdentifiers()
 			)
 
-			const submittedValues = (
+			const registeredValues = (
 				Object
 				.fromEntries(
 					Object
@@ -145,7 +145,7 @@ const useSubmissionState = (
 					onSubmitRef
 					.current({
 						allValues,
-						submittedValues,
+						registeredValues,
 					})
 				)
 				|| (

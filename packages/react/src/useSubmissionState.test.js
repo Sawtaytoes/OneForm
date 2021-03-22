@@ -361,7 +361,7 @@ describe(
 					allValues: (
 						values
 					),
-					submittedValues: (
+					registeredValues: (
 						{}
 					),
 				})
@@ -432,7 +432,7 @@ describe(
 					allValues: (
 						values
 					),
-					submittedValues: ({
+					registeredValues: ({
 						email: (
 							values
 							.email

@@ -51,7 +51,7 @@ import {
 
 <OneForm
 	onSubmit={({
-		submittedValues,
+		registeredValues,
 	}) => (
 		// Do stuff, then tell OneForm you're done.
 		Promise
