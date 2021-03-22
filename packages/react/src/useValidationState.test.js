@@ -1,4 +1,5 @@
 import {
+	act,
 	renderHook,
 } from '@testing-library/react-hooks'
 
@@ -43,14 +44,14 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
-								getIsReadyForValidation: () => (
+								getIsFieldReadyForValidation: () => (
 									false
 								),
 								getValue: (
-									identifier,
+									fieldName,
 								) => (
 									values
-									[identifier]
+									[fieldName]
 								),
 								validations: {
 									email: [
@@ -98,14 +99,14 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
-								getIsReadyForValidation: () => (
+								getIsFieldReadyForValidation: () => (
 									true
 								),
 								getValue: (
-									identifier,
+									fieldName,
 								) => (
 									values
-									[identifier]
+									[fieldName]
 								),
 								validations: {
 									email: [
@@ -157,14 +158,14 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
-								getIsReadyForValidation: () => (
+								getIsFieldReadyForValidation: () => (
 									true
 								),
 								getValue: (
-									identifier,
+									fieldName,
 								) => (
 									values
-									[identifier]
+									[fieldName]
 								),
 								validations: {
 									email: [
@@ -218,14 +219,14 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
-								getIsReadyForValidation: () => (
+								getIsFieldReadyForValidation: () => (
 									true
 								),
 								getValue: (
-									identifier,
+									fieldName,
 								) => (
 									values
-									[identifier]
+									[fieldName]
 								),
 								validations: {
 									email: [
@@ -278,7 +279,7 @@ describe(
 		)
 
 		test(
-			'processes multiple and only gives error messages when invalid',
+			'processes multiple validations when fields ready',
 			() => {
 				const emailErrorMessage = 'Missing `.com`.'
 				const nameErrorMessage1 = 'Name cannot start with `J`.'
@@ -296,14 +297,14 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
-								getIsReadyForValidation: () => (
+								getIsFieldReadyForValidation: () => (
 									true
 								),
 								getValue: (
-									identifier,
+									fieldName,
 								) => (
 									values
-									[identifier]
+									[fieldName]
 								),
 								validations: {
 									email: [
@@ -392,7 +393,7 @@ describe(
 		)
 
 		test(
-			'processes multiple and only gives error messages when ready for validation',
+			'processes multiple validations on only ready fields',
 			() => {
 				const nameErrorMessage1 = 'Name cannot start with `J`.'
 				const nameErrorMessage2 = 'Cannot use generic name.'
@@ -414,17 +415,17 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
-								getIsReadyForValidation: (
-									identifier,
+								getIsFieldReadyForValidation: (
+									fieldName,
 								) => (
 									readyForValidation
-									[identifier]
+									[fieldName]
 								),
 								getValue: (
-									identifier,
+									fieldName,
 								) => (
 									values
-									[identifier]
+									[fieldName]
 								),
 								validations: {
 									email: [
@@ -507,7 +508,7 @@ describe(
 		)
 
 		test(
-			'processes multiple groups and only gives error messages when all group fields ready for validation',
+			'processes multiple group validations on only ready fields',
 			() => {
 				const firstNameErrorMessage = (
 					'Cannot use generic first name.'
@@ -536,17 +537,23 @@ describe(
 						useValidationState,
 						{
 							initialProps: {
-								getIsReadyForValidation: (
-									identifier,
+								getAllFieldNames: () => (
+									Object
+									.keys(
+										values
+									)
+								),
+								getIsFieldReadyForValidation: (
+									fieldName,
 								) => (
 									readyForValidation
-									[identifier]
+									[fieldName]
 								),
 								getValue: (
-									identifier,
+									fieldName,
 								) => (
 									values
-									[identifier]
+									[fieldName]
 								),
 								groupValidations: [
 									{
@@ -556,8 +563,12 @@ describe(
 										],
 										validate: () => ([
 											{
-												errorMessage: 'You cannot have an `email` and `name`.',
-												fieldName: 'errorMessage.emailName',
+												errorMessage: (
+													'You cannot have an `email` and `name`.'
+												),
+												fieldName: (
+													'errorMessage.emailName'
+												),
 											},
 										]),
 									},
@@ -639,6 +650,137 @@ describe(
 						fieldName: 'lastName',
 					},
 				])
+			}
+		)
+
+		test(
+			'groups related fields in group validation',
+			() => {
+				const values = {
+					'email/emailId:1': 'john.smith@test.com',
+					'email/emailId:2': 'johnsmith1970@testmail.com',
+					'firstName': 'John',
+					'lastName': 'Smith',
+				}
+
+				const validate = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getAllFieldNames: () => (
+									Object
+									.keys(
+										values
+									)
+								),
+								getIsFieldReadyForValidation: () => (
+									true
+								),
+								getValidationType: () => (
+									'submit'
+								),
+								getValue: (
+									fieldName,
+								) => (
+									values
+									[fieldName]
+								),
+								groupValidations: [
+									{
+										fieldNames: [
+											'email',
+											'firstName',
+											'lastName',
+										],
+										groupName: 'emailId',
+										validate,
+									},
+								],
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.getValidationErrorMessages(
+						'firstName',
+					)
+				})
+
+				expect(
+					validate
+				)
+				.toHaveBeenCalledTimes(
+					2
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					1,
+					{
+						reverseLookup: {
+							email: 'email/emailId:1',
+							firstName: 'firstName',
+							lastName: 'lastName',
+						},
+						validationType: 'submit',
+						values: {
+							email: (
+								values
+								['email/emailId:1']
+							),
+							firstName: (
+								values
+								.firstName
+							),
+							lastName: (
+								values
+								.lastName
+							),
+						},
+					},
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					2,
+					{
+						reverseLookup: {
+							email: 'email/emailId:2',
+							firstName: 'firstName',
+							lastName: 'lastName',
+						},
+						validationType: 'submit',
+						values: {
+							email: (
+								values
+								['email/emailId:2']
+							),
+							firstName: (
+								values
+								.firstName
+							),
+							lastName: (
+								values
+								.lastName
+							),
+						},
+					},
+				)
 			}
 		)
 	}

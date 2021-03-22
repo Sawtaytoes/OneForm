@@ -10,7 +10,11 @@ const initialValidations = {}
 
 const useValidationState = (
 	{
-		getIsReadyForValidation = (
+		getAllFieldNames = (
+			Function
+			.prototype
+		),
+		getIsFieldReadyForValidation = (
 			Function
 			.prototype
 		),
@@ -39,29 +43,34 @@ const useValidationState = (
 	const setFieldGroupValidation = (
 		useCallback(
 			(
-				identifier,
+				validationName,
 			) => {
 				if (
 					fieldGroupValidationsRef
 					.current
-					[identifier]
+					[validationName]
 				) {
 					return
 				}
 
 				fieldGroupValidationsRef
-				.current
-				[identifier] = (
-					groupValidations
-					.filter(({
-						fieldNames,
-					}) => (
-						fieldNames
-						.includes(
-							identifier
-						)
-					))
-				)
+				.current = {
+					...(
+						fieldGroupValidationsRef
+						.current
+					),
+					[validationName]: (
+						groupValidations
+						.filter(({
+							fieldNames: validationNames,
+						}) => (
+							validationNames
+							.includes(
+								validationName
+							)
+						))
+					)
+				}
 			},
 			[
 				groupValidations,
@@ -69,60 +78,115 @@ const useValidationState = (
 		)
 	)
 
+	// TODO: Cache this on field registration so it doesn't have to be looked up each time.
+	const getFieldValidationData = (
+		useCallback(
+			(
+				fieldName,
+			) => {
+				const [
+					validationName,
+					...groupStrings
+				] = (
+					fieldName
+					.split(
+						'/'
+					)
+				)
+
+				const groups = (
+					groupStrings
+					.map((
+						groupString,
+					) => (
+						groupString
+						.split(':')
+					))
+					.map(([
+						name,
+						value,
+					]) => ({
+						name,
+						value,
+					}))
+				)
+
+				return {
+					fieldName,
+					groups,
+					validationName,
+				}
+			},
+			[],
+		)
+	)
+
 	// TODO: This is `getFieldValidationErrorMessages`.
 	const getValidationErrorMessages = (
 		useCallback(
 			(
-				// TODO: Now that we know about fields in this hook, we should use that knowledge to improve naming.
-				unfilteredIdentifiers,
+				changedFieldNames,
 			) => {
-				const identifiers = (
+				const validatingFields = (
 					(
 						(
 							Array
 							.isArray(
-								unfilteredIdentifiers
+								changedFieldNames
 							)
 						)
-						? unfilteredIdentifiers
+						? changedFieldNames
 						: [
-							unfilteredIdentifiers,
+							changedFieldNames,
 						]
 					)
 					.filter(
-						getIsReadyForValidation
+						getIsFieldReadyForValidation
 					)
+					.map((
+						fieldName,
+					) => ({
+						...(
+							getFieldValidationData(
+								fieldName
+							)
+						),
+						fieldName,
+					}))
 				)
 
-				// TODO: This needs to loop `validationNames`.
-				identifiers
+				validatingFields
+				.map(({
+					validationName,
+				}) => (
+					validationName
+				))
 				.forEach(
 					setFieldGroupValidation
 				)
 
 				const validationErrorMessagePairs = (
-					identifiers
-					.filter((
-						identifier,
-					) => (
-						// TODO: This needs to be converted to an object with a `validationName` and `fieldName` before filtering.
+					validatingFields
+					.filter(({
+						validationName,
+					}) => (
 						validations
-						[identifier]
+						[validationName]
 					))
-					.map((
-						identifier,
-					) => ({
+					.map(({
+						fieldName,
+						validationName,
+					}) => ({
 						errorMessages: (
 							validations
-							[identifier]
+							[validationName]
 							.filter(({
 								validate,
 							}) => (
 								!(
 									validate(
 										getValue(
-											// TODO: This is the `validationName`.
-											identifier
+											fieldName
 										)
 									)
 								)
@@ -134,64 +198,376 @@ const useValidationState = (
 								|| ' '
 							))
 						),
-						// TODO: This is the `fieldName`.
-						identifier,
+						fieldName,
 					}))
 					.map(({
 						errorMessages,
-						identifier,
+						fieldName,
 					}) => ([
-						// TODO: Rename `identifier` to `fieldName`.
-						identifier,
+						fieldName,
 						errorMessages,
 					]))
 				)
 
-				const allErrorMessages = (
+				const allFieldNames = (
+					getAllFieldNames()
+				)
+
+				const deduplicatedValidationGroupsMap = (
+					validatingFields
+					.filter(({
+						validationName,
+					}) => (
+						fieldGroupValidationsRef
+						.current
+						[validationName]
+					))
+					.map(({
+						groups,
+						validationName,
+					}) => (
+						fieldGroupValidationsRef
+						.current
+						[validationName]
+						.map((
+							groupValidation,
+						) => ({
+							groups,
+							groupValidation,
+							hasGroups: (
+								(
+									groups
+									.length
+								)
+								> 0
+							),
+						}))
+					))
+					.flat()
+					.map(({
+						groups,
+						groupValidation,
+						hasGroups,
+					}) => {
+						const fieldGroupString = (
+							'/'
+							.concat(
+								groupValidation
+								.groupName
+							)
+							.concat(
+								':'
+							)
+						)
+
+						return (
+							(
+								(
+									groupValidation
+									.groupName
+								)
+								&& (
+									!hasGroups
+								)
+							)
+							? (
+								allFieldNames
+								.filter((
+									fieldName,
+								) => (
+									fieldName
+									.includes(
+										fieldGroupString
+									)
+								))
+								.map((
+									fieldName,
+								) => (
+									getFieldValidationData(
+										fieldName
+									)
+								))
+								.map(({
+									groups: fieldGroups,
+								}) => ({
+									groups: fieldGroups,
+									groupValidation,
+									hasGroups: true,
+								}))
+							)
+							: {
+								groups,
+								groupValidation,
+								hasGroups,
+							}
+						)
+					})
+					.flat()
+					.map(({
+						groups,
+						groupValidation,
+						hasGroups,
+					}) => {
+						if (hasGroups) {
+							const groupValue = (
+								(
+									groups
+									.find(({
+										name,
+									}) => (
+										name
+										=== (
+											groupValidation
+											.groupName
+										)
+									))
+									.value
+								)
+							)
+
+							const groupString = (
+								'/'
+								.concat(
+									groupValidation
+									.groupName
+								)
+								.concat(
+									':'
+								)
+								.concat(
+									groupValue
+								)
+							)
+
+							return {
+								groupString,
+								groupValidation,
+								groupValue,
+							}
+						}
+						else {
+							return {
+								groupString: '',
+								groupValidation,
+								groupValue: '',
+							}
+						}
+					})
+					.map(({
+						groupString,
+						groupValidation,
+						...otherProps
+					}) => ({
+						...otherProps,
+						fieldNameGroups: (
+							groupValidation
+							// These are exposed as `fieldNames` when internally, they're `validationNames`.
+							.fieldNames
+							.map((
+								validationName
+							) => {
+								const fieldNames = (
+									allFieldNames
+									.filter((
+										fieldName,
+									) => (
+										(
+											fieldName
+											.includes(
+												validationName
+											)
+										)
+									))
+								)
+
+								const groupedFieldNames = (
+									fieldNames
+									.filter((
+										fieldName,
+									) => (
+										fieldName
+										.includes(
+											groupString
+										)
+									))
+								)
+
+								return {
+									fieldNames: (
+										(
+											(
+												groupedFieldNames
+												.length
+											)
+											> 0
+										)
+										? (
+											groupedFieldNames
+										)
+										: (
+											fieldNames
+										)
+									),
+									validationName,
+								}
+							})
+						),
+						groupString,
+						groupValidation,
+					}))
+					.reduce(
+						(
+							deduplicatedValidationGroupsMap,
+							{
+								fieldNameGroups,
+								groupString,
+								groupValidation,
+								groupValue,
+							},
+						) => {
+							const existingGroupValidations = (
+								deduplicatedValidationGroupsMap
+								.get(
+									groupValidation
+								)
+							)
+
+							if (
+								existingGroupValidations
+								&& (
+									existingGroupValidations
+									.find(({
+										groupValue: groupDataValue,
+									}) => (
+										groupDataValue
+										=== groupValue
+									))
+								)
+							) {
+								return (
+									deduplicatedValidationGroupsMap
+								)
+							}
+							else {
+								return (
+									new Map(
+										deduplicatedValidationGroupsMap
+									)
+									.set(
+										groupValidation,
+										(
+											(
+												existingGroupValidations
+												|| []
+											)
+											.concat({
+												fieldNameGroups,
+												fieldNames: (
+													fieldNameGroups
+													.map(({
+														fieldNames,
+													}) => (
+														fieldNames
+													))
+													.flat()
+												),
+												groupName: (
+													groupValidation
+													.groupName
+												),
+												groupString,
+												groupValue,
+												validate: (
+													groupValidation
+													.validate
+												),
+											})
+										),
+									)
+								)
+							}
+						},
+						new Map(),
+					)
+				)
+
+				const validatingValidationGroups = (
 					Array
 					.from(
-						new Set(
-							identifiers
-							.map((
-								identifier,
-							) => (
-								// TODO: `identifier` needs to be a `validationName`, but we also need to match it against the `groupName`.
-								fieldGroupValidationsRef
-								.current
-								[identifier]
-							))
-							.filter(
-								Boolean
-							)
-							.flat()
-							.filter(({
-								fieldNames,
-							}) => (
-								fieldNames
-								.every(
-									getIsReadyForValidation
-								)
-							))
-						)
+						deduplicatedValidationGroupsMap
+						.values()
 					)
-					.map(({
+					.flat()
+					.filter(({
 						fieldNames,
-						// groupName,
+					}) => (
+						fieldNames
+						.every(
+							getIsFieldReadyForValidation
+						)
+					))
+				)
+
+				const groupValidationErrorMessagePairs = (
+					validatingValidationGroups
+					.map(({
+						fieldNameGroups,
+						fieldNames,
+						groupString,
 						validate,
 					}) => ({
-						reverseLookup: {},
-						validate,
-						values: (
+						reverseLookup: (
 							Object
 							.fromEntries(
 								fieldNames
 								.map((
 									fieldName,
 								) => ([
-									fieldName,
 									(
-										getValue(
-											fieldName
+										fieldName
+										.replace(
+											groupString,
+											'',
+										)
+									),
+									fieldName,
+								]))
+							)
+						),
+						validate,
+						values: (
+							Object
+							.fromEntries(
+								fieldNameGroups
+								.map(({
+									fieldNames,
+									validationName,
+								}) => ({
+									fieldValues: (
+										fieldNames
+										.map(
+											getValue
+										)
+									),
+									validationName,
+								}))
+								.map(({
+									fieldValues,
+									validationName,
+								}) => ([
+									validationName,
+									(
+										(
+											fieldValues
+											.length
+											=== 1
+										)
+										? (
+											fieldValues
+											[0]
+										)
+										: (
+											fieldValues
 										)
 									),
 								]))
@@ -215,6 +591,10 @@ const useValidationState = (
 						Boolean
 					)
 					.flat()
+				)
+
+				const allErrorMessages = (
+					groupValidationErrorMessagePairs
 					.reduce(
 						(
 							combinedErrorMessages,
@@ -261,7 +641,9 @@ const useValidationState = (
 				)
 			},
 			[
-				getIsReadyForValidation,
+				getAllFieldNames,
+				getFieldValidationData,
+				getIsFieldReadyForValidation,
 				getValidationType,
 				getValue,
 				setFieldGroupValidation,
