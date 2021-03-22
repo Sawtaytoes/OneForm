@@ -6,8 +6,8 @@ import {
 import FieldGroupContext from './FieldGroupContext'
 
 const useFieldGroup = ({
+	id,
 	name,
-	value,
 }) => {
 	const {
 		fieldGroups: parentFieldGroups,
@@ -22,14 +22,14 @@ const useFieldGroup = ({
 			() => (
 				parentFieldGroups
 				.concat({
+					id,
 					name,
-					value,
 				})
 			),
 			[
-				parentFieldGroups,
+				id,
 				name,
-				value,
+				parentFieldGroups,
 			],
 		)
 	)

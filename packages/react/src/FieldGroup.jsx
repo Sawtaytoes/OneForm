@@ -9,21 +9,21 @@ import useFieldGroup from './useFieldGroup.js'
 
 const propTypes = {
 	children: PropTypes.node.isRequired,
+	id: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	value: PropTypes.string.isRequired,
 }
 
 const FieldGroup = ({
 	children,
+	id,
 	name,
-	value,
 }) => {
 	const {
 		fieldGroups,
 	} = (
 		useFieldGroup({
+			id,
 			name,
-			value,
 		})
 	)
 

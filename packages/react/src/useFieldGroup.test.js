@@ -13,8 +13,8 @@ describe(
 			'adds field group to initial parent',
 			() => {
 				const fieldGroupProps = {
+					id: '1',
 					name: 'addressId',
-					value: '1',
 				}
 
 				const {
@@ -48,8 +48,8 @@ describe(
 			'adds field group to field group parent',
 			() => {
 				const fieldGroup1Props = {
+					id: '1',
 					name: 'addressId',
-					value: '1',
 				}
 
 				const Wrapper = ({
@@ -66,8 +66,8 @@ describe(
 				)
 
 				const fieldGroup2Props = {
+					id: '1',
 					name: 'emailId',
-					value: '1',
 				}
 
 				const {
@@ -99,11 +99,11 @@ describe(
 		)
 
 		test(
-			'updates field group when values change',
+			'updates field group when ids change',
 			() => {
 				const fieldGroup1Props = {
+					id: '1',
 					name: 'addressId',
-					value: '1',
 				}
 
 				const Wrapper = ({
@@ -127,8 +127,8 @@ describe(
 						useFieldGroup,
 						{
 							initialProps: {
+								id: '1',
 								name: 'emailId',
-								value: '1',
 							},
 							wrapper: (
 								Wrapper
@@ -138,8 +138,8 @@ describe(
 				)
 
 				const fieldGroup2Props = {
+					id: '2',
 					name: 'phoneId',
-					value: '2',
 				}
 
 				rerender(
