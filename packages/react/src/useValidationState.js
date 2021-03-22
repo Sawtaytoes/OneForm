@@ -160,8 +160,7 @@ const useValidationState = (
 		)
 	)
 
-	// TODO: This is `getFieldValidationErrorMessages`.
-	const getValidationErrorMessages = (
+	const getFieldValidationErrorMessages = (
 		useCallback(
 			(
 				changedFieldNames,
@@ -692,7 +691,7 @@ const useValidationState = (
 	)
 
 	return {
-		getValidationErrorMessages,
+		getFieldValidationErrorMessages,
 	}
 }
 

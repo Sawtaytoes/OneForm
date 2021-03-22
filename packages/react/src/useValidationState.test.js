@@ -22,7 +22,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages()
+					.getFieldValidationErrorMessages()
 				)
 				.toEqual(
 					[]
@@ -73,7 +73,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages(
+					.getFieldValidationErrorMessages(
 						'email'
 					)
 				)
@@ -129,7 +129,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages(
+					.getFieldValidationErrorMessages(
 						'email'
 					)
 				)
@@ -187,7 +187,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages(
+					.getFieldValidationErrorMessages(
 						'email'
 					)
 				)
@@ -262,7 +262,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages(
+					.getFieldValidationErrorMessages(
 						'email'
 					)
 				)
@@ -369,7 +369,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages([
+					.getFieldValidationErrorMessages([
 						'email',
 						'name',
 					])
@@ -490,7 +490,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages([
+					.getFieldValidationErrorMessages([
 						'email',
 						'name',
 					])
@@ -632,7 +632,7 @@ describe(
 				expect(
 					result
 					.current
-					.getValidationErrorMessages(
+					.getFieldValidationErrorMessages(
 						'firstName',
 					)
 				)
@@ -712,7 +712,7 @@ describe(
 				act(() => {
 					result
 					.current
-					.getValidationErrorMessages(
+					.getFieldValidationErrorMessages(
 						'firstName',
 					)
 				})
@@ -843,7 +843,7 @@ describe(
 				act(() => {
 					result
 					.current
-					.getValidationErrorMessages([
+					.getFieldValidationErrorMessages([
 						'email/emailId:1',
 						'email/emailId:2',
 						'firstName',

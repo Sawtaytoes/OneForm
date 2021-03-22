@@ -86,7 +86,7 @@ const OneForm = ({
 		.values
 	),
 }) => {
-	const getValidationErrorMessagesRef = (
+	const getFieldValidationErrorMessagesRef = (
 		useRef(
 			Function
 			.prototype
@@ -143,7 +143,7 @@ const OneForm = ({
 						)
 					)
 				) {
-					getValidationErrorMessagesRef
+					getFieldValidationErrorMessagesRef
 					.current(
 						identifiers
 					)
@@ -285,7 +285,7 @@ const OneForm = ({
 	)
 
 	const {
-		getValidationErrorMessages,
+		getFieldValidationErrorMessages,
 	} = (
 		useValidationState({
 			getAllFieldNames: (
@@ -301,9 +301,9 @@ const OneForm = ({
 		})
 	)
 
-	getValidationErrorMessagesRef
+	getFieldValidationErrorMessagesRef
 	.current = (
-		getValidationErrorMessages
+		getFieldValidationErrorMessages
 	)
 
 	const validateAllFields = (
