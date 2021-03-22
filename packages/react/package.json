@@ -25,6 +25,7 @@
     "@ghadyani-eslint/eslint-config-node": "^2.2.1",
     "@ghadyani-eslint/eslint-config-web": "^2.2.1",
     "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-controls": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/react": "^6.1.21",
