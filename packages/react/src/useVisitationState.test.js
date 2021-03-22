@@ -245,5 +245,50 @@ describe(
 				)
 			},
 		)
+
+		test(
+			'notifies when visits occur',
+			() => {
+				const onVisit = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useVisitationState,
+						{
+							initialProps: {
+								onVisit,
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.setVisited(
+						'email'
+					)
+				})
+
+				expect(
+					onVisit
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+
+				expect(
+					onVisit
+				)
+				.toHaveBeenCalledWith(
+					'email',
+				)
+			}
+		)
 	}
 )

@@ -9,7 +9,10 @@ const initialValues = {}
 
 const useVisitationState = (
 	{
-		onChange,
+		onVisit = (
+			Function
+			.prototype
+		),
 	} = {}
 ) => {
 	const [
@@ -27,7 +30,13 @@ const useVisitationState = (
 		subscribeToValue: subscribeToIsVisited,
 	} = (
 		useObservableState({
-			onChange,
+			onChange: ({
+				identifier,
+			}) => (
+				onVisit(
+					identifier
+				)
+			),
 			values,
 		})
 	)
