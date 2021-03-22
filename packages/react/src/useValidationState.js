@@ -376,73 +376,10 @@ const useValidationState = (
 							}
 						}
 					})
-					.map(({
-						groupString,
-						groupValidation,
-						...otherProps
-					}) => ({
-						...otherProps,
-						fieldNameGroups: (
-							groupValidation
-							// These are exposed as `fieldNames` when internally, they're `validationNames`.
-							.fieldNames
-							.map((
-								validationName
-							) => {
-								const fieldNames = (
-									allFieldNames
-									.filter((
-										fieldName,
-									) => (
-										(
-											fieldName
-											.startsWith(
-												validationName
-											)
-										)
-									))
-								)
-
-								const groupedFieldNames = (
-									fieldNames
-									.filter((
-										fieldName,
-									) => (
-										fieldName
-										.includes(
-											groupString
-										)
-									))
-								)
-
-								return {
-									fieldNames: (
-										(
-											(
-												groupedFieldNames
-												.length
-											)
-											> 0
-										)
-										? (
-											groupedFieldNames
-										)
-										: (
-											fieldNames
-										)
-									),
-									validationName,
-								}
-							})
-						),
-						groupString,
-						groupValidation,
-					}))
 					.reduce(
 						(
 							deduplicatedValidationGroupsMap,
 							{
-								fieldNameGroups,
 								groupId,
 								groupString,
 								groupValidation,
@@ -484,16 +421,6 @@ const useValidationState = (
 												|| []
 											)
 											.concat({
-												fieldNameGroups,
-												fieldNames: (
-													fieldNameGroups
-													.map(({
-														fieldNames,
-													}) => (
-														fieldNames
-													))
-													.flat()
-												),
 												groupId,
 												groupName: (
 													groupValidation
@@ -503,6 +430,10 @@ const useValidationState = (
 												validate: (
 													groupValidation
 													.validate
+												),
+												validationNames: (
+													groupValidation
+													.fieldNames
 												),
 											})
 										),
@@ -521,6 +452,91 @@ const useValidationState = (
 						.values()
 					)
 					.flat()
+					.map(({
+						groupString,
+						validationNames,
+						...otherProps
+					}) => ({
+						...otherProps,
+						fieldGroups: (
+							validationNames
+							.map((
+								validationName
+							) => {
+								const fieldNames = (
+									allFieldNames
+									.filter((
+										fieldName,
+									) => (
+										(
+											fieldName
+											.startsWith(
+												validationName
+											)
+										)
+									))
+								)
+
+								const groupedFieldNames = (
+									fieldNames
+									.filter((
+										fieldName,
+									) => (
+										fieldName
+										.includes(
+											groupString
+										)
+									))
+								)
+
+								return {
+									fields: (
+										(
+											(
+												(
+													groupedFieldNames
+													.length
+												)
+												> 0
+											)
+											? (
+												groupedFieldNames
+											)
+											: (
+												fieldNames
+											)
+										)
+										.map(
+											getFieldValidation
+										)
+									),
+									validationName,
+								}
+							})
+						),
+						groupString,
+					}))
+					.map(({
+						fieldGroups,
+						...otherProps
+					}) => ({
+						...otherProps,
+						fieldGroups,
+						fieldNames: (
+							fieldGroups
+							.map(({
+								fields,
+							}) => (
+								fields
+							))
+							.flat()
+							.map(({
+								fieldName,
+							}) => (
+								fieldName
+							))
+						),
+					}))
 					.filter(({
 						fieldNames,
 					}) => (
@@ -534,7 +550,7 @@ const useValidationState = (
 				const groupValidationErrorMessagePairs = (
 					validatingValidationGroups
 					.map(({
-						fieldNameGroups,
+						fieldGroups,
 						fieldNames,
 						groupString,
 						validate,
@@ -561,38 +577,50 @@ const useValidationState = (
 						values: (
 							Object
 							.fromEntries(
-								fieldNameGroups
+								fieldGroups
 								.map(({
-									fieldNames,
+									fields,
 									validationName,
 								}) => ({
 									fieldValues: (
-										fieldNames
+										fields
+										.map(({
+											fieldName,
+										}) => (
+											fieldName
+										))
 										.map(
 											getValue
 										)
+									),
+									hasGroup: (
+										fields
+										.some(({
+											groupsList,
+										}) => (
+											(
+												groupsList
+												.length
+											)
+											> 0
+										))
 									),
 									validationName,
 								}))
 								.map(({
 									fieldValues,
+									hasGroup,
 									validationName,
 								}) => ([
 									validationName,
 									(
-										(
-											(
-												fieldValues
-												.length
-											)
-											=== 1
-										)
+										hasGroup
 										? (
 											fieldValues
-											[0]
 										)
 										: (
 											fieldValues
+											[0]
 										)
 									),
 								]))
