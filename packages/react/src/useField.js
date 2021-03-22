@@ -68,6 +68,8 @@ const useField = ({
 						.target
 						.checked
 					)
+
+					setVisited()
 				}
 				else {
 					setValue(
@@ -84,6 +86,7 @@ const useField = ({
 			[
 				onChange,
 				setValue,
+				setVisited,
 			],
 		)
 	)
@@ -108,8 +111,9 @@ const useField = ({
 		fieldName,
 		fieldVisited,
 		isVisited: (
-			isVisited
-			.toString()
+			String(
+				isVisited
+			)
 		),
 		value,
 		valueChanged,
