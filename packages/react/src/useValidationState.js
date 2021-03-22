@@ -69,7 +69,7 @@ const useValidationState = (
 								validationName
 							)
 						))
-					)
+					),
 				}
 			},
 			[
