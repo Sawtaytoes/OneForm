@@ -5,6 +5,7 @@ import {
 } from 'react'
 
 const initialFieldGroupValidations = {}
+const initialFieldValidations = {}
 const initialGroupValidations = []
 const initialValidations = {}
 
@@ -34,6 +35,12 @@ const useValidationState = (
 		),
 	} = {}
 ) => {
+	const fieldValidationsRef = (
+		useRef(
+			initialFieldValidations
+		)
+	)
+
 	const fieldGroupValidationsRef = (
 		useRef(
 			initialFieldGroupValidations
@@ -78,44 +85,76 @@ const useValidationState = (
 		)
 	)
 
-	// TODO: Cache this on field registration so it doesn't have to be looked up each time.
-	const getFieldValidationData = (
+	const getFieldValidation = (
 		useCallback(
 			(
 				fieldName,
 			) => {
-				const [
-					validationName,
-					...groupStrings
-				] = (
-					fieldName
-					.split(
-						'/'
+				if (
+					!(
+						fieldValidationsRef
+						.current
+						[fieldName]
 					)
-				)
+				) {
+					const [
+						validationName,
+						...groupStrings
+					] = (
+						fieldName
+						.split(
+							'/'
+						)
+					)
 
-				const groups = (
-					groupStrings
-					.map((
-						groupString,
-					) => (
-						groupString
-						.split(':')
-					))
-					.map(([
-						name,
-						value,
-					]) => ({
-						name,
-						value,
-					}))
-				)
+					const groupEntries = (
+						groupStrings
+						.map((
+							groupString,
+						) => (
+							groupString
+							.split(':')
+						))
+					)
 
-				return {
-					fieldName,
-					groups,
-					validationName,
+					const groupsList = (
+						groupEntries
+						.map(([
+							name,
+							id,
+						]) => ({
+							id,
+							name,
+						}))
+					)
+
+					const groups = (
+						Object
+						.fromEntries(
+							groupEntries
+						)
+					)
+
+					fieldValidationsRef
+					.current = {
+						...(
+							fieldValidationsRef
+							.current
+						),
+						[fieldName]: {
+							fieldName,
+							groups,
+							groupsList,
+							validationName,
+						},
+					}
 				}
+
+				return (
+					fieldValidationsRef
+					.current
+					[fieldName]
+				)
 			},
 			[],
 		)
@@ -147,7 +186,7 @@ const useValidationState = (
 						fieldName,
 					) => ({
 						...(
-							getFieldValidationData(
+							getFieldValidation(
 								fieldName
 							)
 						),
@@ -232,22 +271,20 @@ const useValidationState = (
 						.map((
 							groupValidation,
 						) => ({
-							groups,
-							groupValidation,
-							hasGroups: (
-								(
-									groups
-									.length
-								)
-								> 0
+							groupId: (
+								groups
+								[
+									groupValidation
+									.groupName
+								]
 							),
+							groupValidation,
 						}))
 					))
 					.flat()
 					.map(({
-						groups,
+						groupId,
 						groupValidation,
-						hasGroups,
 					}) => {
 						const fieldGroupString = (
 							'/'
@@ -267,7 +304,7 @@ const useValidationState = (
 									.groupName
 								)
 								&& (
-									!hasGroups
+									!groupId
 								)
 							)
 							? (
@@ -283,48 +320,35 @@ const useValidationState = (
 								.map((
 									fieldName,
 								) => (
-									getFieldValidationData(
+									getFieldValidation(
 										fieldName
 									)
 								))
 								.map(({
 									groups: fieldGroups,
 								}) => ({
-									groups: fieldGroups,
+									groupId: (
+										fieldGroups
+										[
+											groupValidation
+											.groupName
+										]
+									),
 									groupValidation,
-									hasGroups: true,
 								}))
 							)
 							: {
-								groups,
+								groupId,
 								groupValidation,
-								hasGroups,
 							}
 						)
 					})
 					.flat()
 					.map(({
-						groups,
+						groupId,
 						groupValidation,
-						hasGroups,
 					}) => {
-						if (hasGroups) {
-							const groupValue = (
-								(
-									groups
-									.find(({
-										name,
-									}) => (
-										name
-										=== (
-											groupValidation
-											.groupName
-										)
-									))
-									.value
-								)
-							)
-
+						if (groupId) {
 							const groupString = (
 								'/'
 								.concat(
@@ -335,21 +359,21 @@ const useValidationState = (
 									':'
 								)
 								.concat(
-									groupValue
+									groupId
 								)
 							)
 
 							return {
+								groupId,
 								groupString,
 								groupValidation,
-								groupValue,
 							}
 						}
 						else {
 							return {
+								groupId: '',
 								groupString: '',
 								groupValidation,
-								groupValue: '',
 							}
 						}
 					})
@@ -420,9 +444,9 @@ const useValidationState = (
 							deduplicatedValidationGroupsMap,
 							{
 								fieldNameGroups,
+								groupId,
 								groupString,
 								groupValidation,
-								groupValue,
 							},
 						) => {
 							const existingGroupValidations = (
@@ -437,10 +461,10 @@ const useValidationState = (
 								&& (
 									existingGroupValidations
 									.find(({
-										groupValue: groupDataValue,
+										groupId: existingGroupId,
 									}) => (
-										groupDataValue
-										=== groupValue
+										existingGroupId
+										=== groupId
 									))
 								)
 							) {
@@ -471,12 +495,12 @@ const useValidationState = (
 													))
 													.flat()
 												),
+												groupId,
 												groupName: (
 													groupValidation
 													.groupName
 												),
 												groupString,
-												groupValue,
 												validate: (
 													groupValidation
 													.validate
@@ -642,7 +666,7 @@ const useValidationState = (
 			},
 			[
 				getAllFieldNames,
-				getFieldValidationData,
+				getFieldValidation,
 				getIsFieldReadyForValidation,
 				getValidationType,
 				getValue,
