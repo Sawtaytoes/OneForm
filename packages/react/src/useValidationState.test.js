@@ -783,5 +783,139 @@ describe(
 				)
 			}
 		)
+
+		test(
+			'deduplicates calls to validate when the group validation is shared',
+			() => {
+				const values = {
+					'email/emailId:1': 'john.smith@test.com',
+					'email/emailId:2': 'johnsmith1970@testmail.com',
+					'firstName': 'John',
+					'lastName': 'Smith',
+				}
+
+				const validate = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getAllFieldNames: () => (
+									Object
+									.keys(
+										values
+									)
+								),
+								getIsFieldReadyForValidation: () => (
+									true
+								),
+								getValidationType: () => (
+									'submit'
+								),
+								getValue: (
+									fieldName,
+								) => (
+									values
+									[fieldName]
+								),
+								groupValidations: [
+									{
+										fieldNames: [
+											'email',
+											'firstName',
+											'lastName',
+										],
+										groupName: 'emailId',
+										validate,
+									},
+								],
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.getValidationErrorMessages([
+						'email/emailId:1',
+						'email/emailId:2',
+						'firstName',
+						'lastName',
+					])
+				})
+
+				expect(
+					validate
+				)
+				.toHaveBeenCalledTimes(
+					2
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					1,
+					{
+						reverseLookup: {
+							email: 'email/emailId:1',
+							firstName: 'firstName',
+							lastName: 'lastName',
+						},
+						validationType: 'submit',
+						values: {
+							email: (
+								values
+								['email/emailId:1']
+							),
+							firstName: (
+								values
+								.firstName
+							),
+							lastName: (
+								values
+								.lastName
+							),
+						},
+					},
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					2,
+					{
+						reverseLookup: {
+							email: 'email/emailId:2',
+							firstName: 'firstName',
+							lastName: 'lastName',
+						},
+						validationType: 'submit',
+						values: {
+							email: (
+								values
+								['email/emailId:2']
+							),
+							firstName: (
+								values
+								.firstName
+							),
+							lastName: (
+								values
+								.lastName
+							),
+						},
+					},
+				)
+			}
+		)
 	}
 )
