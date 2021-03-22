@@ -582,8 +582,10 @@ const useValidationState = (
 									validationName,
 									(
 										(
-											fieldValues
-											.length
+											(
+												fieldValues
+												.length
+											)
 											=== 1
 										)
 										? (
