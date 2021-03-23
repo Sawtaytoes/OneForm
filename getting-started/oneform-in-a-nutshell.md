@@ -1,4 +1,4 @@
-# OneForm in a nutshell
+# OneForm basics
 
 The simplest way to use it is with an `input` and `Field` component:
 

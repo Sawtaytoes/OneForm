@@ -10,7 +10,7 @@
 ## Getting Started
 
 * [Installation](getting-started/installation.md)
-* [OneForm in a nutshell](getting-started/oneform-in-a-nutshell.md)
+* [OneForm basics](getting-started/oneform-in-a-nutshell.md)
 * [Convert to OneForm](getting-started/upgrade-guide/README.md)
   * [Convert from Formik to OneForm](getting-started/upgrade-guide/convert-from-formik-to-oneform.md)
   * [Convert from React Hook Form to OneForm](getting-started/upgrade-guide/convert-from-react-hook-form-to-oneform.md)
