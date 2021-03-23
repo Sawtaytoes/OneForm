@@ -4,14 +4,6 @@ description: What makes OneForm stand out?
 
 # Features
 
-* No external dependencies \(except React\).
-* Super clean API.
-* Validation and group validation built-in.
-* Write your own validations or use your favorite library.
-* Works with both standard HTML elements and custom React components.
-* Minuscule bundle size.
-* Ridiculously fast. Built to never be a bottleneck.
-
 ## No external dependencies
 
 With the exception of Redux Form, today's popular form libraries have no external dependencies. While it seems like a benefit, it's par-for-the-course.
