@@ -18,7 +18,17 @@ The only required prop is `children`; more like "child". You give it a single in
 
 It doesn't get any simpler than that.
 
+`Field` also registers your components for validation. If you pass in client-side validations, `Field` makes them available to validate.
+
 ## Caveats
+
+> Your component needs two props: `name` and `value`. `Field` passes `value` so you don't need to do that yourself.
+
+Your input can be any component, but it absolutely needs a `name` prop. `Field` can't work without it.
+
+In addition, you need to have a `value` prop on your component. Without that prop, your input won't receive updates from OneForm. In the event you want a text box that doesn't show any text, I you could leave off the `value` prop no problem 👍.
+
+## Issues
 
 In the rare case you need to validate fields relative to the value of a checkbox on change instead of submit, [tweet me](https://twitter.com/Sawtaytoes), and I'll figure it out for you. I plan to fix this, but haven't implemented one yet.
 
