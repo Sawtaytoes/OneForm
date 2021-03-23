@@ -11,42 +11,42 @@ import OneForm from './OneForm.jsx'
 <Meta title="Examples/FieldGroup" />
 
 <Canvas>
-  <OneForm>
+<OneForm>
+  <FieldGroup
+    id="1"
+    name="addressId"
+  >
+    <div>
+      <Field>
+        <input
+          name="name"
+        />
+      </Field>
+    </div>
     <FieldGroup
       id="1"
-      name="addressId"
+      name="emailId"
     >
       <div>
         <Field>
           <input
-            name="name"
+            name="email"
           />
         </Field>
       </div>
-      <FieldGroup
-        id="1"
-        name="emailId"
-      >
-        <div>
-          <Field>
-            <input
-              name="email"
-            />
-          </Field>
-        </div>
-      </FieldGroup>
-      <FieldGroup
-        id="2"
-        name="emailId"
-      >
-        <div>
-          <Field>
-            <input
-              name="email"
-            />
-          </Field>
-        </div>
-      </FieldGroup>
     </FieldGroup>
-  </OneForm>
+    <FieldGroup
+      id="2"
+      name="emailId"
+    >
+      <div>
+        <Field>
+          <input
+            name="email"
+          />
+        </Field>
+      </div>
+    </FieldGroup>
+  </FieldGroup>
+</OneForm>
 </Canvas>
