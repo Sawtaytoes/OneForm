@@ -22,6 +22,7 @@
 * [Philosophy](core-concepts/philosophy.md)
 * [State first](core-concepts/state-first.md)
 * [Bring your own components](core-concepts/bring-your-own-components.md)
+* [Field registration](core-concepts/field-registration.md)
 
 ## Examples
 
