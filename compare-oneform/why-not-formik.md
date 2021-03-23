@@ -4,9 +4,13 @@ I'm gonna rag on Formik, but that in no way makes it a horrible library or a poo
 
 The reason you choose a library is up to the needs of your team and your project. I would argue that OneForm is the one form library you need, but that's my opinion. You're free make these choices on your own ;\).
 
-### The good
+### Introduction
 
-Formik isn't a bad library per say, but 
+Formik has a lot of neat features and likes to give you as many tools as you need to build forms. There's a reason it's hit the top spot, and that's because it's a solid enough framework to warrant the being number one.
+
+Another reason it's at the top most-likely has to do with Redux Form being the only other major choice of a form library. With many articles coming out negative toward the entire basis of Redux Form \(using Redux to manage form state\),  Formik was there at the right time to fill the void as a React-only competitor.
+
+When I saw Formik for the first time, I wondered how in the world _this_ is the library taking first place. Doesn't mean you're wrong for using it, but I was stunned we didn't have anything better considering the popularity of React and the universality of forms.
 
 ### Performance
 
