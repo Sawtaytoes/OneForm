@@ -25,7 +25,7 @@ I built OneForm to solve the problem if maintaining form state in React. There a
 * Redux Form
 * React Final Form
 
-This library was designed to be _the_ solution to form state in React; the "one form" library you need!
+Even amongst these hulking competitors, OneForm was designed to be _the_ solution to form state in React; the "one form" library you need!
 
 ### Who needs OneForm?
 
