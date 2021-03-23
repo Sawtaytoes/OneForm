@@ -6,6 +6,7 @@
   * [Why not Formik?](compare-oneform/why-not-formik.md)
   * [Why not React Hook Form?](compare-oneform/why-not-react-hook-form.md)
   * [Why not Redux Form?](compare-oneform/why-not-redux-form.md)
+* [Get Connected](get-connected.md)
 
 ## Getting Started
 
