@@ -15,6 +15,7 @@
   * [Convert from Formik to OneForm](getting-started/upgrade-guide/convert-from-formik-to-oneform.md)
   * [Convert from React Hook Form to OneForm](getting-started/upgrade-guide/convert-from-react-hook-form-to-oneform.md)
   * [Convert from Redux Form to OneForm](getting-started/upgrade-guide/convert-from-redux-form-to-oneform.md)
+* [FAQ](getting-started/faq.md)
 
 ## Core Concepts
 
