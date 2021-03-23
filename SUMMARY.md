@@ -27,11 +27,11 @@
 
 ## API Reference
 
-* [&lt;OneForm /&gt;](api-reference/less-than-oneform-greater-than.md)
-* [&lt;Field /&gt;](api-reference/less-than-field-greater-than.md)
-* [&lt;FieldValue /&gt;](api-reference/less-than-fieldvalue-greater-than.md)
-* [&lt;FieldErrorMessages /&gt;](api-reference/less-than-fielderrormessages-greater-than.md)
-* [useField\(\)](api-reference/usefield.md)
-* [useFieldValue\(\)](api-reference/usefieldvalue.md)
-* [useFieldErrorMessage\(\)](api-reference/usefielderrormessage.md)
+* [&lt;OneForm /&gt;](api-reference/oneform-component.md)
+* [&lt;Field /&gt;](api-reference/field-component.md)
+* [&lt;FieldValue /&gt;](api-reference/fieldvalue-component.md)
+* [&lt;FieldErrorMessages /&gt;](api-reference/fielderrormessages-component.md)
+* [useField\(\)](api-reference/usefield-hook.md)
+* [useFieldValue\(\)](api-reference/usefieldvalue-hook.md)
+* [useFieldErrorMessage\(\)](api-reference/usefielderrormessage-hook.md)
 
