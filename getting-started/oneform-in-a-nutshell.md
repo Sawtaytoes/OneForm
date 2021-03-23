@@ -15,7 +15,7 @@ OneForm can use any input component, either a regular old HTML one or one from y
 Looking at this example, the text underneath the input updates as you type.
 
 ```jsx
-<OneForm {...args}>
+<OneForm>
   <div>
     <Field>
       <input name="message" />
