@@ -32,9 +32,9 @@ With OneForm, you don't need to worry about forms ever again. Not because it's t
 Here's a simple example of OneForm in action:
 ```jsx
 <OneForm>
-	<Field>
-		<input name="message" />
-	</Field>
+  <Field>
+    <input name="message" />
+  </Field>
 </OneForm>
 ```
 
@@ -42,33 +42,33 @@ No magic, it _just works_. Don't believe me? Here's a realistic example:
 
 ```jsx
 import {
-	Input,
+  Input,
 } from '@material-ui/core'
 import {
-	Field,
-	OneForm,
+  Field,
+  OneForm,
 } from '@oneform/react'
 
 <OneForm
-	onSubmit={({
-		registeredValues,
-	}) => (
-		// Do stuff, then tell OneForm you're done.
-		Promise
-		.resolve()
-	)}
+  onSubmit={({
+    registeredValues,
+  }) => (
+    // Do stuff, then tell OneForm you're done.
+    Promise
+    .resolve()
+  )}
 >
-	<Field>
-		<Input name="email" />
-	</Field>
-	<Field>
-		<Input name="password" />
-	</Field>
-	<div>
-		<button type="submit">
-			Submit
-		</button>
-	</div>
+  <Field>
+    <Input name="email" />
+  </Field>
+  <Field>
+    <Input name="password" />
+  </Field>
+  <div>
+    <button type="submit">
+      Submit
+    </button>
+  </div>
 </OneForm>
 ```
 
