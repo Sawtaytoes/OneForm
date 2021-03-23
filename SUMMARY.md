@@ -28,7 +28,7 @@
 ## API Reference
 
 * [&lt;Field /&gt;](api-reference/field-component.md)
-* [&lt;FieldErrorMessages /&gt;](api-reference/fielderrormessages-component.md)
+* [&lt;FieldErrorMessage /&gt;](api-reference/fielderrormessage-component.md)
 * [&lt;FieldGroup /&gt;](api-reference/fieldgroup-component.md)
 * [&lt;FieldValue /&gt;](api-reference/fieldvalue-component.md)
 * [&lt;OneForm /&gt;](api-reference/oneform-component.md)
