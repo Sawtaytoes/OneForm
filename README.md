@@ -14,11 +14,12 @@ I built OneForm to solve these problems...
 
 ## Special Thanks
 
-This project wasn't just something I came up with in a bubble. It was brought on by the fact I, and the others I worked with, wanted a better experience building complex forms.
+While I wrote `OneForm`, this project wasn't just something I came up with in a bubble. This library came about from a need at Minted to have highly-customizable complex forms.
 
-These are the folks at Minted that played a big part in the creation of Minted Forms \(which was _the_ inspiration for `OneForm`\):
+These are the folks at Minted that played a big part in the creation of Minted Forms \(the inspiration for `OneForm`\):
 
 * Giselle Ghadyani
 * Rebekah Heacock Jones
 * Peter Carnesciali
 * Everyone else at Minted!
+
