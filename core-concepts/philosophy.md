@@ -1,3 +1,7 @@
+---
+description: The OneForm manifesto.
+---
+
 # Philosophy
 
 I built OneForm to solve the problem of sub-par form solutions once and for all.
