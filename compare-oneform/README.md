@@ -1,4 +1,4 @@
-# Compare OneForm to Others
+# Compare OneForm to others
 
 Formik took the number one spot in the React ecosystem over the last few years as Redux Form fell out of favor. It's major competitor is React Hook Form and all three libraries use entirely different form methodologies.  
   
