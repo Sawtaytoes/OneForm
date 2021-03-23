@@ -10,7 +10,9 @@ OneForm is a form library.
 
 > Okay... What's that mean to me?
 
-OneForm is a way to manage the state of your form. Instead of home-rolling that kinda stuff, let OneForm handle it. Everyone uses forms, and it's expensive to write this same stuff again and again every time you wanna do something simple. And if you wanna do something complex, you're probably here because you've gone too far.
+OneForm is a way to manage the state of your form. Instead of home-rolling that kinda stuff, let OneForm handle it.
+
+Everyone uses forms, and it's expensive to write this same stuff again and again every time you wanna do something simple. And if you wanna do something complex, well, you're probably reading this because you've already gone too far \(it's okay, I know how you feel\).
 
 Unlike other popular form libraries, OneForm doesn't require setting up anything special. Just wrap your input components in `<Field />` and be on your way.
 
@@ -36,4 +38,12 @@ These are the folks at Minted that played a big part in the creation of Minted F
 * Rebekah Heacock Jones
 * Peter Carnesciali
 * Everyone else at Minted!
+
+### The logo is important too!
+
+The logo and title are curtesy of **Noah Raskin**. He does some amazing graphic design and even creates custom icon libraries! Talk about dedication to small details!
+
+While this logo looks simple, there's a lot going on behind the scenes, and the way he shaded it amazed me as much as the cleanliness of OneForm's API.
+
+![Credit: Noah Raskin](.gitbook/assets/oneform-cube-textdark%20%281%29.png)
 
