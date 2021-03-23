@@ -8,6 +8,14 @@ description: What is OneForm and who is it for?
 
 OneForm is a form library.
 
+> Okay... What's that mean to me?
+
+OneForm is a way to manage the state of your form. Instead of home-rolling that kinda stuff, let OneForm handle it. Everyone uses forms, and it's expensive to write this same stuff again and again every time you wanna do something simple. And if you wanna do something complex, you're probably here because you've gone too far.
+
+Unlike other popular form libraries, OneForm doesn't require setting up anything special. Just wrap your input components in `<Field />` and be on your way.
+
+### What does OneForm solve?
+
 I built OneForm to solve these problems...
 
 * What is it
