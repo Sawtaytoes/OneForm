@@ -8,7 +8,7 @@ description: What is OneForm and who is it for?
 
 OneForm is a form library.
 
-> Okay... What's that mean to me?
+> Okay... So what's that mean to me?
 
 OneForm is a way to manage the state of your form. Instead of home-rolling that kinda stuff, let OneForm handle it.
 
@@ -18,15 +18,22 @@ Unlike other popular form libraries, OneForm doesn't require setting up anything
 
 ### What does OneForm solve?
 
-I built OneForm to solve these problems...
+I built OneForm to solve the problem if maintaining form state in React. There are plenty of competitors, big ones which hundreds of thousands of users:
 
-* What is it
-* why was it created
-* who is it for? EVERYONE who uses React.
+* Formik
+* React Hook Form
+* Redux Form
+* React Final Form
+
+This library was designed to be _the_ solution to form state in React; the "one form" library you need!
 
 ### Who needs OneForm?
 
-// stuff
+Everyone. Even for simple forms with a single select box and a button, I recommend OneForm. Even if you don't need to submit your form, I recommend OneForm.
+
+If your form is extremely complex and has multiple dynamic fields and those dynamic fields render dynamic fields and you also need to some how maintain validation that queries the values of multiple fields, OneForm is most-definitely the **only** solution I'd recommend.
+
+And if you need to build an application, and you want to use a state manager that's not Redux or MobX, use OneForm. Yes, it's completely possible. I think you'll be surprised at how easy it can be. While OneForm primarily a form library, it's also a powerful state manager.
 
 ## Special Thanks
 
