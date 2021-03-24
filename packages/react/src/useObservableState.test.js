@@ -943,47 +943,23 @@ describe(
 					},
 				})
 
-				const emailValueRef = {
-					current: null,
-				}
-
-				act(() => {
-					emailValueRef
-					.current = (
-						result
-						.current
-						.getValue(
-							'email',
-						)
-					)
-				})
-
-				const nameValueRef = {
-					current: null,
-				}
-
-				act(() => {
-					nameValueRef
-					.current = (
-						result
-						.current
-						.getValue(
-							'name',
-						)
-					)
-				})
-
 				expect(
-					emailValueRef
+					result
 					.current
+					.getValue(
+						'email',
+					)
 				)
 				.toBe(
 					emailValue
 				)
 
 				expect(
-					nameValueRef
+					result
 					.current
+					.getValue(
+						'name',
+					)
 				)
 				.toBe(
 					nameValue
