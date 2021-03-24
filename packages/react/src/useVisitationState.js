@@ -57,21 +57,12 @@ const useVisitationState = (
 			(
 				identifier,
 			) => {
-				if (
-					getIsVisited(
-						identifier
-					)
-				) {
-					return
-				}
-
 				setValue(
 					identifier,
 					true,
 				)
 			},
 			[
-				getIsVisited,
 				setValue,
 			],
 		)
