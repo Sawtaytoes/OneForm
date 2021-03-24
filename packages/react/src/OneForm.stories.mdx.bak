@@ -14,6 +14,12 @@ import OneForm from './OneForm.jsx'
   title="Examples/OneForm"
 />
 
+<Story name="A" args={{}}>
+{(args) => (
+  <input {...args} />
+)}
+</Story>
+
 Don't worry about forms! At it's most basic, OneForm is a state manager.
 
 The simplest way to use it is with an `input` and `Field` component:
@@ -32,9 +38,7 @@ Looking at this example, the text underneath the input updates as you type.
 
 <Canvas>
 <Story name="Basic">
-{({
-  ...args
-}) => (
+{(args) => (
   <OneForm {...args}>
     <div>
       <Field>
@@ -75,9 +79,7 @@ If you have a promise, you can return it to OneForm, and it will mark the submis
 
 <Canvas>
 <Story name="Submit">
-{({
-  ...args
-}) => (
+{(args) => (
   <OneForm {...args}>
     <div>
       <Field>
@@ -112,9 +114,7 @@ values={{
   }}
   name="Controlled Values"
 >
-{({
-  ...args
-}) => (
+{(args) => (
   <OneForm {...args}>
     <div>
       <Field>
@@ -151,9 +151,7 @@ Passing in errors is useful if you're doing server-side validation, and your API
   }}
   name="Controlled Errors"
 >
-{({
-  ...args
-}) => (
+{(args) => (
   <OneForm {...args}>
     <div>
       <Field>
@@ -194,9 +192,7 @@ Passing in errors is useful if you're doing server-side validation, and your API
   }}
   name="Controlled Updates"
 >
-{({
-  ...args
-}) => (
+{(args) => (
   <OneForm {...args}>
     <div>
       <Field>
