@@ -12,6 +12,7 @@ const rollupConfig = {
 	external: [
 		'prop-types',
 		'react',
+		'react/jsx-runtime',
 	],
 	input: (
 		packageJson
@@ -43,6 +44,7 @@ const rollupConfig = {
 			globals: {
 				'prop-types': 'PropTypes',
 				'react': 'React',
+				'react/jsx-runtime': 'jsxRuntime',
 			},
 			name: 'OneForm',
 			sourcemap: true,
@@ -56,6 +58,7 @@ const rollupConfig = {
 			globals: {
 				'prop-types': 'PropTypes',
 				'react': 'React',
+				'react/jsx-runtime': 'jsxRuntime',
 			},
 			name: 'OneForm',
 			plugins: [
