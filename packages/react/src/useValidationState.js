@@ -416,7 +416,6 @@ const useValidationState = (
 							const groupNameStrings = (
 								groupsList
 								.map(({
-									groupId,
 									groupName,
 								}) => (
 									'/'
@@ -430,6 +429,7 @@ const useValidationState = (
 							)
 
 							return {
+								groupNameStrings,
 								groupsList,
 								groupsListId: (
 									groupStrings
@@ -437,13 +437,13 @@ const useValidationState = (
 										''
 									)
 								),
-								groupNameStrings,
 								groupStrings,
 								groupValidation,
 							}
 						}
 						else {
 							return {
+								groupNameStrings: [],
 								groupsList,
 								groupsListId: '',
 								groupStrings: [],
@@ -455,9 +455,9 @@ const useValidationState = (
 						(
 							deduplicatedValidationGroupsMap,
 							{
+								groupNameStrings,
 								groupsList,
 								groupsListId,
-								groupNameStrings,
 								groupStrings,
 								groupValidation,
 							},
@@ -498,9 +498,9 @@ const useValidationState = (
 												|| []
 											)
 											.concat({
+												groupNameStrings,
 												groupsList,
 												groupsListId,
-												groupNameStrings,
 												groupStrings,
 												validate: (
 													groupValidation

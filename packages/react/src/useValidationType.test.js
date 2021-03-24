@@ -15,6 +15,7 @@ describe(
 			() => {
 				const {
 					result,
+					rerender,
 				} = (
 					renderHook(
 						useValidationType,
