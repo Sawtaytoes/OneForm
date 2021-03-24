@@ -1,6 +1,6 @@
 {
   "name": "@oneform/react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The OneForm library you need.",
   "scripts": {
     "build": "npm-run-all --sequential build:test build:cypress build:package build:storybook",
@@ -19,6 +19,9 @@
   "module": "dist/oneform.esm.js",
   "source": "src/main.js",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
