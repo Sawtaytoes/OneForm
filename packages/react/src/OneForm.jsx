@@ -109,10 +109,13 @@ const OneForm = ({
 		useObservableState({
 			onPublish: ({
 				identifier,
+				value,
 			}) => {
-				setFieldVisited(
-					identifier
-				)
+				if (value) {
+					setFieldVisited(
+						identifier
+					)
+				}
 			},
 			updatedValues: updatedErrorMessages,
 			values: errorMessages,
