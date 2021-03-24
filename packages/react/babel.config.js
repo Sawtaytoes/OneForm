@@ -34,7 +34,6 @@ const babelConfig = {
 					'@babel/preset-react',
 					{
 						development: false,
-						runtime: 'automatic',
 					},
 				],
 			],
