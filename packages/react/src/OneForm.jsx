@@ -349,9 +349,10 @@ const OneForm = ({
 				return (
 					(
 						Object
-						.keys(
+						.values(
 							getAllFieldErrorMessages()
 						)
+						.flat()
 						.length
 					)
 					=== 0
