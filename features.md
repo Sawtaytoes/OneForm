@@ -38,6 +38,8 @@ There are a couple other components, `FieldValue` and `FieldErrorMessage`, which
 
 Since it's all written in-house, and since it only uses React tech, the bundle's really small. How small? That's specific to what you use, tree-shaking 'n all. There's nothing crazy that'd make it larger than any other form library.
 
+If you did include it, the entire library is &lt;4k gzipped.
+
 ## Ridiculously fast. Built to never be a bottleneck.
 
 From the ground up, this thing's been built for speed. Unless you know what you're doing, React's Context API can be a huge bottleneck when you have lots of listeners. Many other libraries get this wrong, but OneForm does it right.
