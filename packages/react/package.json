@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "description": "The OneForm library you need.",
   "scripts": {
+    "build": "npm-run-all --sequential build:test build:cypress build:storybook",
+    "build:cypress": "cypress run --record --key 7395df6b-47f2-498e-82c6-a785cc463947",
     "build:storybook": "build-storybook",
     "build:test": "jest --errorOnDeprecated",
     "dev": "npm-run-all --parallel dev:storybook dev:cypress",
