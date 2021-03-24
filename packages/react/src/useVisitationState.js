@@ -56,13 +56,22 @@ const useVisitationState = (
 		useCallback(
 			(
 				identifier,
-			) => (
+			) => {
+				if (
+					getIsVisited(
+						identifier
+					)
+				) {
+					return
+				}
+
 				setValue(
 					identifier,
 					true,
 				)
-			),
+			},
 			[
+				getIsVisited,
 				setValue,
 			],
 		)
