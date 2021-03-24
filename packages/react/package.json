@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "description": "The OneForm library you need.",
   "scripts": {
-    "build": "npm-run-all --sequential build:test build:cypress build:storybook",
+    "build": "npm-run-all --sequential build:test build:cypress build:package build:storybook",
     "build:cypress": "cypress run --record --key 7395df6b-47f2-498e-82c6-a785cc463947",
+    "build:package": "rollup --config",
     "build:storybook": "build-storybook",
     "build:test": "jest --errorOnDeprecated",
     "dev": "npm-run-all --parallel dev:storybook dev:cypress",
@@ -13,7 +14,10 @@
     "dev:test": "jest --cache --onlyChanged --errorOnDeprecated --watch",
     "start": "yarn && yarn dev"
   },
-  "main": "index.js",
+  "browser": "dist/oneform.umd.js",
+  "main": "dist/oneform.cjs.js",
+  "module": "dist/oneform.esm.js",
+  "source": "src/main.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.13.10",
