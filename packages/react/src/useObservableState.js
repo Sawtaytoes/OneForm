@@ -5,7 +5,6 @@ import {
 } from 'react'
 
 import createObservable from './createObservable.js'
-import useUpdateEffect from './useUpdateEffect.js'
 
 const initialObservables = {}
 const initialValues = {}
@@ -278,7 +277,7 @@ const useObservableState = (
 		)
 	)
 
-	useUpdateEffect(
+	useEffect(
 		() => {
 			Object
 			.entries({
