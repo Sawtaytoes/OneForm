@@ -25,13 +25,13 @@ const useFieldName = ({
 				.concat(
 					fieldGroups
 					.map(({
+						id,
 						name,
-						value,
 					}) => (
-						`/${name}:${value}`
+						`/${name}:${id}`
 					))
 				)
-				.join('/')
+				.join('')
 			),
 			[
 				fieldGroups,
