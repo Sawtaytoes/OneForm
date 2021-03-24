@@ -22,9 +22,7 @@ const FieldErrorMessage = ({
 	)
 
 	const {
-		errorMessages = [
-			'',
-		],
+		errorMessages = [],
 	} = (
 		useFieldErrorMessages({
 			fieldName,
@@ -32,8 +30,11 @@ const FieldErrorMessage = ({
 	)
 
 	return (
-		errorMessages
-		[0]
+		(
+			errorMessages
+			[0]
+		)
+		|| ''
 	)
 }
 
