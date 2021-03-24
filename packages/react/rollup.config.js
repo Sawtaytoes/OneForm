@@ -24,7 +24,7 @@ const rollupConfig = {
 				packageJson
 				.module
 			),
-			format: 'es',
+			format: 'esm',
 			sourcemap: true,
 		},
 		{
