@@ -489,6 +489,7 @@ const OneForm = ({
 							>
 								<form
 									onSubmit={formSubmitted}
+									role="form"
 								>
 									{children}
 								</form>
