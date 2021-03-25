@@ -10,7 +10,7 @@
     "build:test": "jest --errorOnDeprecated",
     "dev": "npm-run-all --parallel dev:storybook dev:cypress",
     "dev:cypress": "cypress open",
-    "dev:storybook": "start-storybook -p 6006",
+    "dev:storybook": "start-storybook --port 6006 --ci",
     "dev:test": "jest --cache --onlyChanged --errorOnDeprecated --watch",
     "start": "yarn && yarn dev"
   },
