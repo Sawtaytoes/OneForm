@@ -2,7 +2,7 @@
 description: The OneForm manifesto.
 ---
 
-# Philosophy
+# Creation story
 
 🚧 Under Construction
 

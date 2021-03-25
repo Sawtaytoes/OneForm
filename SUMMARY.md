@@ -6,7 +6,6 @@
   * [Why not Formik?](compare-oneform/why-not-formik.md)
   * [Why not React Hook Form?](compare-oneform/why-not-react-hook-form.md)
   * [Why not Redux Form?](compare-oneform/why-not-redux-form.md)
-* [Support](get-connected.md)
 
 ## Getting Started
 
@@ -17,10 +16,12 @@
   * [Convert from React Hook Form to OneForm](getting-started/upgrade-guide/convert-from-react-hook-form-to-oneform.md)
   * [Convert from Redux Form to OneForm](getting-started/upgrade-guide/convert-from-redux-form-to-oneform.md)
 * [FAQ](getting-started/faq.md)
+* [Support](getting-started/get-connected.md)
 
 ## Core Concepts
 
-* [Philosophy](core-concepts/philosophy.md)
+* [Creation story](core-concepts/philosophy.md)
+* [Philosophy](core-concepts/philosophy-1.md)
 * [State first](core-concepts/state-first.md)
 * [Bring your own components](core-concepts/bring-your-own-components.md)
 * [Field registration](core-concepts/field-registration.md)
