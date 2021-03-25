@@ -2,3 +2,4 @@
 *.mp4
 dist
 node_modules
+storybook-static
