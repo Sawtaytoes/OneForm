@@ -5,11 +5,20 @@ import {
 	useState,
 } from 'react'
 
+import useFieldName from './useFieldName.js'
 import ValuesContext from './ValuesContext.js'
 
 const useFieldValue = ({
-	fieldName,
+	name,
 }) => {
+	const {
+		fieldName,
+	} = (
+		useFieldName({
+			name,
+		})
+	)
+
 	const {
 		getFieldValue,
 		setFieldValue,

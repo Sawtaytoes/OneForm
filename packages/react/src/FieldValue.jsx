@@ -3,7 +3,6 @@ import {
 	memo,
 } from 'react'
 
-import useFieldName from './useFieldName.js'
 import useFieldValue from './useFieldValue'
 
 const propTypes = {
@@ -14,18 +13,10 @@ const FieldValue = ({
 	name,
 }) => {
 	const {
-		fieldName,
-	} = (
-		useFieldName({
-			name,
-		})
-	)
-
-	const {
 		value = '',
 	} = (
 		useFieldValue({
-			fieldName,
+			name,
 		})
 	)
 

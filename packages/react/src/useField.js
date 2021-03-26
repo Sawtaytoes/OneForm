@@ -4,7 +4,6 @@ import {
 } from 'react'
 
 import useFieldData from './useFieldData.js'
-import useFieldName from './useFieldName.js'
 
 const useField = ({
 	name,
@@ -12,15 +11,8 @@ const useField = ({
 	onVisit,
 }) => {
 	const {
-		fieldName,
-	} = (
-		useFieldName({
-			name,
-		})
-	)
-
-	const {
 		errorMessages = [],
+		fieldName,
 		isVisited = false,
 		register,
 		setValue,
@@ -28,7 +20,7 @@ const useField = ({
 		value = '',
 	} = (
 		useFieldData({
-			fieldName,
+			name,
 		})
 	)
 

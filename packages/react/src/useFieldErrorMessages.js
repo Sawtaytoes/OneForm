@@ -6,10 +6,19 @@ import {
 } from 'react'
 
 import ErrorMessagesContext from './ErrorMessagesContext.js'
+import useFieldName from './useFieldName.js'
 
 const useFieldErrorMessages = ({
-	fieldName,
+	name,
 }) => {
+	const {
+		fieldName,
+	} = (
+		useFieldName({
+			name,
+		})
+	)
+
 	const {
 		getFieldErrorMessages,
 		setFieldErrorMessages,

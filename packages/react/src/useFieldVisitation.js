@@ -5,11 +5,20 @@ import {
 	useState,
 } from 'react'
 
+import useFieldName from './useFieldName.js'
 import VisitationContext from './VisitationContext.js'
 
 const useFieldVisitation = ({
-	fieldName,
+	name,
 }) => {
+	const {
+		fieldName,
+	} = (
+		useFieldName({
+			name,
+		})
+	)
+
 	const {
 		getIsFieldVisited,
 		setFieldVisited,

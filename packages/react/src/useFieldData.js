@@ -1,17 +1,26 @@
 import useFieldErrorMessages from './useFieldErrorMessages.js'
+import useFieldName from './useFieldName.js'
 import useFieldRegistration from './useFieldRegistration.js'
 import useFieldValue from './useFieldValue.js'
 import useFieldVisitation from './useFieldVisitation.js'
 
 const useFieldData = ({
-	fieldName,
+	name,
 }) => {
+	const {
+		fieldName,
+	} = (
+		useFieldName({
+			name,
+		})
+	)
+
 	const {
 		errorMessages,
 		setErrorMessages,
 	} = (
 		useFieldErrorMessages({
-			fieldName,
+			name,
 		})
 	)
 
@@ -19,7 +28,7 @@ const useFieldData = ({
 		register,
 	} = (
 		useFieldRegistration({
-			fieldName,
+			name,
 		})
 	)
 
@@ -28,7 +37,7 @@ const useFieldData = ({
 		value,
 	} = (
 		useFieldValue({
-			fieldName,
+			name,
 		})
 	)
 
@@ -37,12 +46,13 @@ const useFieldData = ({
 		setVisited,
 	} = (
 		useFieldVisitation({
-			fieldName,
+			name,
 		})
 	)
 
 	return {
 		errorMessages,
+		fieldName,
 		isVisited,
 		register,
 		setErrorMessages,

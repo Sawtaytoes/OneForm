@@ -4,7 +4,6 @@ import {
 } from 'react'
 
 import useFieldErrorMessages from './useFieldErrorMessages'
-import useFieldName from './useFieldName.js'
 
 const propTypes = {
 	name: PropTypes.string.isRequired,
@@ -14,18 +13,10 @@ const FieldErrorMessage = ({
 	name,
 }) => {
 	const {
-		fieldName,
-	} = (
-		useFieldName({
-			name,
-		})
-	)
-
-	const {
 		errorMessages = [],
 	} = (
 		useFieldErrorMessages({
-			fieldName,
+			name,
 		})
 	)
 
