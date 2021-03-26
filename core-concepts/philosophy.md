@@ -1,18 +1,34 @@
 ---
-description: The OneForm manifesto.
+description: A word from the author.
 ---
 
-# Creation story
+# Philosophy
 
-🚧 Under Construction
+## Why make a new form library?
 
-I built OneForm to solve the problem of sub-par form solutions once and for all.
+Forms are the basis of most applications, especially web apps. I've written quite a few forms in my day and usually kept them pretty simple; although, I'd have to write everything from scratch each time aside from when I'm working with a CMS.
 
-Of options I saw, one of them required render props \(a performance no-no\), another required adding a `ref` prop to each component and didn't even use React, another just wasn't popular but was supposed to be the better solution, and the fourth one used Redux.
+I personally have had 3 years of fairly complex experience working with Redux-Form and wanted to find a better solution. An all-React solution sounded great provided it could handle things like validation and updating the display of fields based on the values of other fields.
 
-I bet you can name all four of those libraries. I wasn't the one doing the initial research, but I did take a look. The original implementation of OneForm was built at Minted on company time and rewritten from scratch for the open source community. I wanted to do things I couldn't where I worked because of time constraints and rewriting it from scratch would allow me to own the library and make those changes.
+### Please not Redux-Form again
 
-OneForm solves the problems of forms by putting itself forward as a state manager first and a form library second. Because of that, it has a ton of horsepower to build complex forms and anything basic looks ridiculously simple in comparison. From my perspective, I've achieved my goal, but I also need people to use it.
+While I didn't want to use Redux-Form again, I didn't like the two other popular form libraries \(at the time\) either: Formik and React Final Form.
 
-I'm on a quest to have created the best form library out there, the OneForm you need. While I might be in last place today, I'm aiming for the top spot. Formik, I'm coming for you.
+Today, Formik does a lot more, but it still requires a ton of effort from the user. If you wanna do anything complex, I personally find Formik really difficult to follow. On top of that, the docs were \(and may still be\) pretty bare-bones.
+
+### Form state should be simple
+
+Formik exposes a ton of state which it makes you manage from inside the form. I believe a form library should be clean and manage the state of the form without your intervention. The only time you should be dealing with the library's internal form state is when you're submitting the form. This premise is how I came up with OneForm's API.
+
+Even if you used React, the form still outputs regular old HTML. When looking at an HTML form, you implicitly know the state is handled elsewhere which makes it super easy to understand and maintain. If you could match your JSX to the HTML output, that's the golden ticket to a clean form API.
+
+With the exception of React-Hook-Form, Most popular form libraries require you write your components in a way that works around their API. This means you'll need to tightly couple your form components to that library.
+
+## How it works
+
+OneForm hides as much of the form state as possible but also gives you an insane amount of freedom. And it also provides easy-to-use methods of hooking into that state. You don't have to be a OneForm expert to use it; although, it's so powerful, I was even able to build a simple spreadsheet application in just a few hours using OneForm.
+
+When interacting with OneForm's state through components like `Field`, `FieldValue`, and `FieldErrorMessage`, it will feel like magic. While I personally don't like magic, the library and docs are very straight-forward about how it works.
+
+The trick to the clean syntax of `Field` has to do with how it uses `React.cloneElement` to both capture the `name` field and render your component with new props \(specifically `value`\). Since just about every custom `Input` or `Select` component will have these props, there's little you have to do to make this work for you.
 

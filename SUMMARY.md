@@ -2,29 +2,29 @@
 
 * [Introduction](README.md)
 * [Features](features.md)
-* [Compare OneForm to others](compare-oneform/README.md)
-  * [Why not Formik?](compare-oneform/why-not-formik.md)
-  * [Why not React Hook Form?](compare-oneform/why-not-react-hook-form.md)
-  * [Why not Redux Form?](compare-oneform/why-not-redux-form.md)
+* [Compare OneForm to others](compare-oneform-to-others/README.md)
+  * [Why not Formik?](compare-oneform-to-others/why-not-formik.md)
+  * [Why not React Hook Form?](compare-oneform-to-others/why-not-react-hook-form.md)
+  * [Why not Redux Form?](compare-oneform-to-others/why-not-redux-form.md)
 
 ## Getting Started
 
 * [Installation](getting-started/installation.md)
-* [OneForm basics](getting-started/oneform-in-a-nutshell.md)
-* [Convert to OneForm](getting-started/upgrade-guide/README.md)
-  * [Convert from Formik to OneForm](getting-started/upgrade-guide/convert-from-formik-to-oneform.md)
-  * [Convert from React Hook Form to OneForm](getting-started/upgrade-guide/convert-from-react-hook-form-to-oneform.md)
-  * [Convert from Redux Form to OneForm](getting-started/upgrade-guide/convert-from-redux-form-to-oneform.md)
-* [Support](getting-started/get-connected.md)
+* [OneForm basics](getting-started/oneform-basics.md)
+* [Convert to OneForm](getting-started/convert-to-oneform/README.md)
+  * [Convert from Formik to OneForm](getting-started/convert-to-oneform/convert-from-formik-to-oneform.md)
+  * [Convert from React Hook Form to OneForm](getting-started/convert-to-oneform/convert-from-react-hook-form-to-oneform.md)
+  * [Convert from Redux Form to OneForm](getting-started/convert-to-oneform/convert-from-redux-form-to-oneform.md)
+* [Support](getting-started/support.md)
 
 ## Core Concepts
 
-* [Creation story](core-concepts/philosophy.md)
-* [Philosophy](core-concepts/philosophy-1.md)
+* [Creation story](core-concepts/creation-story.md)
+* [Philosophy](core-concepts/philosophy.md)
 * [State first](core-concepts/state-first.md)
 * [Bring your own components](core-concepts/bring-your-own-components.md)
 * [Field registration](core-concepts/field-registration.md)
-* [Field group agnostic validation](core-concepts/field-name-validation.md)
+* [Field group agnostic validation](core-concepts/field-group-agnostic-validation.md)
 
 ## Everything Explained
 
@@ -47,5 +47,6 @@
 * [&lt;OneForm /&gt;](api-reference/oneform-component.md)
 * [useField\(\)](api-reference/usefield-hook.md)
 * [useFieldErrorMessage\(\)](api-reference/usefielderrormessage-hook.md)
+* [useFieldData\(\)](api-reference/usefielddata-hook.md)
 * [useFieldValue\(\)](api-reference/usefieldvalue-hook.md)
 
