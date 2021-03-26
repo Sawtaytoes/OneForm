@@ -178,11 +178,13 @@ const OneForm = ({
 		useObservableState({
 			onChange: ({
 				identifier,
+				value,
 				values,
 			}) => {
 				const changedValues = (
 					onChange({
-						changedFieldValue: identifier,
+						fieldName: identifier,
+						value,
 						values,
 					})
 				)
