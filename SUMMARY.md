@@ -27,9 +27,14 @@
 * [Field registration](core-concepts/field-registration.md)
 * [Field name validation](core-concepts/field-name-validation.md)
 
+## How to
+
+* [How do I validate groups of fields?](how-to/how-do-i-validate-groups-of-fields.md)
+* [How do I validate dynamic field groups?](how-to/how-do-i-validate-dynamic-field-groups.md)
+
 ## Examples
 
-* [Basic](examples/basic.md)
+* [Basic Example](examples/basic-example.md)
 
 ## API Reference
 
