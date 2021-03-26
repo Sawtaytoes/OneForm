@@ -923,7 +923,115 @@ describe(
 		)
 
 		test(
-			'do a database-style `AND` grouping when given multiple group names',
+			'gets all fields with the given field name in the form',
+			() => {
+				const values = {
+					'email/accountId:1/emailId:1': 'john.smith@test.com',
+					'email/accountId:1/emailId:2': 'johnsmith1970@testmail.com',
+					'email/accountId:2/emailId:3': 'phil.collins@test.com',
+				}
+
+				const validate = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getAllFieldNames: () => (
+									Object
+									.keys(
+										values
+									)
+								),
+								getIsFieldReadyForValidation: () => (
+									true
+								),
+								getValidationType: () => (
+									'submit'
+								),
+								getValue: (
+									fieldName,
+								) => (
+									values
+									[fieldName]
+								),
+								groupValidations: [
+									{
+										fieldNames: [
+											'email',
+										],
+										validate,
+									},
+								],
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.getFieldValidationErrorMessages([
+						'email/accountId:1/emailId:1',
+						'email/accountId:1/emailId:2',
+						'email/accountId:2/emailId:3',
+					])
+				})
+
+				expect(
+					validate
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+
+				expect(
+					validate
+				)
+				.toHaveBeenNthCalledWith(
+					1,
+					{
+						reverseLookup: {
+							'email/accountId:1/emailId:1': (
+								'email/accountId:1/emailId:1'
+							),
+							'email/accountId:1/emailId:2': (
+								'email/accountId:1/emailId:2'
+							),
+							'email/accountId:2/emailId:3': (
+								'email/accountId:2/emailId:3'
+							),
+						},
+						validationType: 'submit',
+						values: {
+							email: [
+								(
+									values
+									['email/accountId:1/emailId:1']
+								),
+								(
+									values
+									['email/accountId:1/emailId:2']
+								),
+								(
+									values
+									['email/accountId:2/emailId:3']
+								),
+							],
+						},
+					},
+				)
+			}
+		)
+
+		test(
+			'do a database-style `GROUP BY` when given multiple group names',
 			() => {
 				const values = {
 					'accountName': 'KG',
