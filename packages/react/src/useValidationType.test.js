@@ -15,7 +15,6 @@ describe(
 			() => {
 				const {
 					result,
-					rerender,
 				} = (
 					renderHook(
 						useValidationType,
@@ -35,7 +34,7 @@ describe(
 		)
 
 		test(
-			'sets to `submit` type when calling the setter',
+			'sets to `submit` when calling the submit setter',
 			() => {
 				const {
 					result,
@@ -59,6 +58,41 @@ describe(
 				.toBe(
 					validationTypes
 					.submit
+				)
+			}
+		)
+
+		test(
+			'sets to `change` when calling the change setter',
+			() => {
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationType,
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.setValidationTypeSubmit()
+				})
+
+				act(() => {
+					result
+					.current
+					.setValidationTypeChange()
+				})
+
+				expect(
+					result
+					.current
+					.getValidationType()
+				)
+				.toBe(
+					validationTypes
+					.change
 				)
 			}
 		)

@@ -26,6 +26,19 @@ const useValidationType = () => {
 		)
 	)
 
+	const setValidationTypeChange = (
+		useCallback(
+			() => (
+				validationTypeRef
+				.current = (
+					validationTypes
+					.change
+				)
+			),
+			[],
+		)
+	)
+
 	const setValidationTypeSubmit = (
 		useCallback(
 			() => (
@@ -41,6 +54,7 @@ const useValidationType = () => {
 
 	return {
 		getValidationType,
+		setValidationTypeChange,
 		setValidationTypeSubmit,
 	}
 }
