@@ -1,10 +1,10 @@
+---
+description: 'The center of everything, the one and only, OneForm.'
+---
+
 # &lt;OneForm /&gt;
 
-For now, use this link:
-
-{% page-ref page="../getting-started/oneform-in-a-nutshell.md" %}
-
-🚧 Under Construction
+## Props
 
 | Prop Name | Required Type |
 | :--- | :--- |
