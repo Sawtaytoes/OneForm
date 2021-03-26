@@ -56,7 +56,7 @@ describe(
 								validations: {
 									email: [
 										{
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -112,7 +112,7 @@ describe(
 									email: [
 										{
 											errorMessage,
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -170,7 +170,7 @@ describe(
 								validations: {
 									email: [
 										{
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -234,7 +234,7 @@ describe(
 											errorMessage: (
 												errorMessage1
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -245,7 +245,7 @@ describe(
 											errorMessage: (
 												errorMessage2
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -312,7 +312,7 @@ describe(
 											errorMessage: (
 												'Missing `@` sign.'
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -323,7 +323,7 @@ describe(
 											errorMessage: (
 												emailErrorMessage
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -336,7 +336,7 @@ describe(
 											errorMessage: (
 												nameErrorMessage1
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												!(
@@ -352,7 +352,7 @@ describe(
 											errorMessage: (
 												nameErrorMessage2
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -433,7 +433,7 @@ describe(
 											errorMessage: (
 												'Missing `@` sign.'
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -444,7 +444,7 @@ describe(
 											errorMessage: (
 												'Missing `.com`.'
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value
@@ -457,7 +457,7 @@ describe(
 											errorMessage: (
 												nameErrorMessage1
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												!(
@@ -473,7 +473,7 @@ describe(
 											errorMessage: (
 												nameErrorMessage2
 											),
-											validate: (
+											getIsValid: (
 												value,
 											) => (
 												value

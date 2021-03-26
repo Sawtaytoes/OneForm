@@ -219,10 +219,10 @@ const useValidationState = (
 							validations
 							[validationName]
 							.filter(({
-								validate,
+								getIsValid,
 							}) => (
 								!(
-									validate(
+									getIsValid(
 										getValue(
 											fieldName
 										)
