@@ -232,12 +232,12 @@ const groupValidations = [
       /*
         [
           {
-            fieldValue: '555-555-5555',
-            reverseFieldName: '2342134',
+            name: 'phoneNumber/phoneNumberId:2342134',
+            value: '555-555-5555',
           },
           {
-            fieldValue: '012-345-6789',
-            reverseFieldName: '4787873',
+            name: 'phoneNumber/phoneNumberId:4787873',
+            value: '012-345-6789',
           },
         ]
       */
