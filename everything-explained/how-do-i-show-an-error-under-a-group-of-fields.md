@@ -113,3 +113,47 @@ Don't worry about clearing out these error messages. OneForm keeps track of all 
 This does mean you need to return all error messages in `validate` each time they occur.
 {% endhint %}
 
+## Triggering an error state without a message
+
+Looking at our previous example, we're returning errors on `month` and `day`, but haven't put in a message:
+
+```jsx
+validate: ({
+  values,
+}) => {
+  if (
+    values.month <= 12
+    && values.day <= 31
+  ) {
+    return [
+      {
+        errorMessage: 'Your date is invalid.'
+        fieldName: 'dateError',
+      },
+      {
+        fieldName: 'month',
+      },
+      {
+        fieldName: 'day',
+      },
+    ]
+  }
+}
+```
+
+What's gonna happen next?
+
+OneForm translates all `undefined` error messages as `' '`. If you didn't catch that, it's a space character. It does this because a space character translates to a truthy value. Useful when triggering the error state of a form without displaying an error message.
+
+### Using a space character
+
+The reason we use `' '` instead of `true` or any other value, most React components accept a single type of data in their fields.
+
+Because of this, the value needs to be truthy without switching types from a string to a boolean. A space character, which HTML skips over, is important to achieving this goal.
+
+{% hint style="warning" %}
+While HTML will remove the space, you might have special styling in your custom components if an error message exists.  
+  
+In those cases, you'll need to ensure to `.trim()` the error message before checking if those styles should activate.
+{% endhint %}
+
