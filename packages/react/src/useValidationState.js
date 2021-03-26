@@ -222,11 +222,17 @@ const useValidationState = (
 								getIsValid,
 							}) => (
 								!(
-									getIsValid(
-										getValue(
-											fieldName
-										)
-									)
+									getIsValid({
+										fieldName,
+										validationType: (
+											getValidationType()
+										),
+										value: (
+											getValue(
+												fieldName
+											)
+										),
+									})
 								)
 							))
 							.map(({

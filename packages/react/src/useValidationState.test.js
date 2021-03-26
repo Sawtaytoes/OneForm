@@ -56,9 +56,9 @@ describe(
 								validations: {
 									email: [
 										{
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('@')
 											),
@@ -112,9 +112,9 @@ describe(
 									email: [
 										{
 											errorMessage,
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('@')
 											),
@@ -170,9 +170,9 @@ describe(
 								validations: {
 									email: [
 										{
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('@')
 											),
@@ -234,9 +234,9 @@ describe(
 											errorMessage: (
 												errorMessage1
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('@')
 											),
@@ -245,9 +245,9 @@ describe(
 											errorMessage: (
 												errorMessage2
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('.com')
 											),
@@ -312,9 +312,9 @@ describe(
 											errorMessage: (
 												'Missing `@` sign.'
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('@')
 											),
@@ -323,9 +323,9 @@ describe(
 											errorMessage: (
 												emailErrorMessage
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('.com')
 											),
@@ -336,9 +336,9 @@ describe(
 											errorMessage: (
 												nameErrorMessage1
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												!(
 													value
 													.trim()
@@ -352,9 +352,9 @@ describe(
 											errorMessage: (
 												nameErrorMessage2
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												!== 'John Smith'
 											),
@@ -433,9 +433,9 @@ describe(
 											errorMessage: (
 												'Missing `@` sign.'
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('@')
 											),
@@ -444,9 +444,9 @@ describe(
 											errorMessage: (
 												'Missing `.com`.'
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												.includes('.com')
 											),
@@ -457,9 +457,9 @@ describe(
 											errorMessage: (
 												nameErrorMessage1
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												!(
 													value
 													.trim()
@@ -473,9 +473,9 @@ describe(
 											errorMessage: (
 												nameErrorMessage2
 											),
-											getIsValid: (
+											getIsValid: ({
 												value,
-											) => (
+											}) => (
 												value
 												!== 'John Smith'
 											),
