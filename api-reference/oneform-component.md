@@ -116,7 +116,7 @@ When returning a value, instead of returning a boolean, you need to specify whic
 
 {% page-ref page="../everything-explained/validate-groups-of-fields.md" %}
 
-{% page-ref page="../everything-explained/validate-dynamic-field-groups.md" %}
+{% page-ref page="../everything-explained/validate-dynamic-groups-of-fields.md" %}
 
 ## `hasFieldChangeValidation`
 

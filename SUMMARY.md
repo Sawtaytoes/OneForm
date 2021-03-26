@@ -31,7 +31,7 @@
 * [Pass in error messages](everything-explained/pass-in-error-messages.md)
 * [Show an error message under a group of fields](everything-explained/show-an-error-message-under-a-group-of-fields.md)
 * [Validate groups of fields](everything-explained/validate-groups-of-fields.md)
-* [Validate dynamic field groups](everything-explained/validate-dynamic-field-groups.md)
+* [Validate dynamic groups of fields](everything-explained/validate-dynamic-groups-of-fields.md)
 * [Only validate on submit](everything-explained/only-validate-on-submit.md)
 
 ## Examples

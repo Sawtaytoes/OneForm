@@ -2,7 +2,7 @@
 description: Pass group validations with group names.
 ---
 
-# Validate dynamic field groups
+# Validate dynamic groups of fields
 
 ## Grouping fields for validation
 
@@ -126,7 +126,7 @@ It's important to use `FieldGroup` instead of manually naming fields with group 
 
 ## Validating dynamic fields
 
-It's possible to validate dynamic fields using only the field name.
+Dynamic fields are validated using only the field name.
 
 By default, your `validate` callback will receive an array of any values wrapped in `<FieldGroup />`:
 
