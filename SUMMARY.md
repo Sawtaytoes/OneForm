@@ -27,10 +27,11 @@
 * [Field registration](core-concepts/field-registration.md)
 * [Field name validation](core-concepts/field-name-validation.md)
 
-## How to
+## Everything Explained
 
-* [How do I validate groups of fields?](how-to/how-do-i-validate-groups-of-fields.md)
-* [How do I validate dynamic field groups?](how-to/how-do-i-validate-dynamic-field-groups.md)
+* [How do I validate groups of fields?](everything-explained/how-do-i-validate-groups-of-fields.md)
+* [How do I validate dynamic field groups?](everything-explained/how-do-i-validate-dynamic-field-groups.md)
+* [How do I only validate on submit?](everything-explained/how-do-i-only-validate-on-submit.md)
 
 ## Examples
 
