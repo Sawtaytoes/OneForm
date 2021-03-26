@@ -1011,18 +1011,33 @@ describe(
 						validationType: 'submit',
 						values: {
 							email: [
-								(
-									values
-									['email/accountId:1/emailId:1']
-								),
-								(
-									values
-									['email/accountId:1/emailId:2']
-								),
-								(
-									values
-									['email/accountId:2/emailId:3']
-								),
+								{
+									name: (
+										'email/accountId:1/emailId:1'
+									),
+									value: (
+										values
+										['email/accountId:1/emailId:1']
+									),
+								},
+								{
+									name: (
+										'email/accountId:1/emailId:2'
+									),
+									value: (
+										values
+										['email/accountId:1/emailId:2']
+									),
+								},
+								{
+									name: (
+										'email/accountId:2/emailId:3'
+									),
+									value: (
+										values
+										['email/accountId:2/emailId:3']
+									),
+								},
 							],
 						},
 					},

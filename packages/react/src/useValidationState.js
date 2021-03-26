@@ -691,37 +691,40 @@ const useValidationState = (
 									fields,
 									validationName,
 								}) => ({
-									fieldValues: (
-										fields
-										.map(({
-											fieldName,
-										}) => (
-											fieldName
-										))
-										.map(
-											getValue
-										)
-									),
 									isSingleValueField: (
 										reverseLookup
 										[validationName]
 									),
+									validationFields: (
+										fields
+										.map(({
+											fieldName,
+										}) => ({
+											name: fieldName,
+											value: (
+												getValue(
+													fieldName,
+												)
+											),
+										}))
+									),
 									validationName,
 								}))
 								.map(({
-									fieldValues,
 									isSingleValueField,
+									validationFields,
 									validationName,
 								}) => ([
 									validationName,
 									(
 										isSingleValueField
 										? (
-											fieldValues
+											validationFields
 											[0]
+											.value
 										)
 										: (
-											fieldValues
+											validationFields
 										)
 									),
 								]))
