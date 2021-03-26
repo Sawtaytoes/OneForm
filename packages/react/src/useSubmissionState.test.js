@@ -41,6 +41,49 @@ describe(
 		)
 
 		test(
+			'notifies before submitting',
+			() => {
+				const beforeSubmitCallback = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useSubmissionState,
+						{
+							initialProps: {
+								getIsValid: () => (
+									false
+								),
+								onBeforeSubmit: (
+									beforeSubmitCallback
+								),
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.formSubmitted(
+						mockedSubmitEvent
+					)
+				})
+
+				expect(
+					beforeSubmitCallback
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+			}
+		)
+
+		test(
 			'does not submit when invalid',
 			() => {
 				const getIsValid = (
@@ -106,9 +149,9 @@ describe(
 		)
 
 		test(
-			'notifies before submitting',
+			'notifies on invalid submission',
 			() => {
-				const beforeSubmitCallback = (
+				const invalidSubmitCallback = (
 					jest
 					.fn()
 				)
@@ -123,8 +166,8 @@ describe(
 								getIsValid: () => (
 									false
 								),
-								onBeforeSubmit: (
-									beforeSubmitCallback
+								onInvalidSubmit: (
+									invalidSubmitCallback
 								),
 							},
 						},
@@ -140,10 +183,53 @@ describe(
 				})
 
 				expect(
-					beforeSubmitCallback
+					invalidSubmitCallback
 				)
 				.toHaveBeenCalledTimes(
 					1
+				)
+			}
+		)
+
+		test(
+			'does not notify invalid submission on valid submission',
+			() => {
+				const invalidSubmitCallback = (
+					jest
+					.fn()
+				)
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useSubmissionState,
+						{
+							initialProps: {
+								getIsValid: () => (
+									true
+								),
+								onInvalidSubmit: (
+									invalidSubmitCallback
+								),
+							},
+						},
+					)
+				)
+
+				act(() => {
+					result
+					.current
+					.formSubmitted(
+						mockedSubmitEvent
+					)
+				})
+
+				expect(
+					invalidSubmitCallback
+				)
+				.toHaveBeenCalledTimes(
+					0
 				)
 			}
 		)

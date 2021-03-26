@@ -31,6 +31,10 @@ const useSubmissionState = (
 			Function
 			.prototype
 		),
+		onInvalidSubmit = (
+			Function
+			.prototype
+		),
 		onSubmit = (
 			Function
 			.prototype
@@ -44,6 +48,15 @@ const useSubmissionState = (
 	onBeforeSubmitRef
 	.current = (
 		onBeforeSubmit
+	)
+
+	const onInvalidSubmitRef = (
+		useRef()
+	)
+
+	onInvalidSubmitRef
+	.current = (
+		onInvalidSubmit
 	)
 
 	const onSubmitRef = (
@@ -85,6 +98,9 @@ const useSubmissionState = (
 					)
 				}
 				else {
+					onInvalidSubmitRef
+					.current()
+
 					setSubmissionState(
 						submissionStates
 						.invalidSubmission
