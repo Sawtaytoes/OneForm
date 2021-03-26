@@ -571,6 +571,27 @@ Instant validation on field changes is almost always more useful to a user than 
 
 ## `onSubmit`
 
+```jsx
+const formSubmitted = (
+  useCallback(({
+    allValues,
+    registeredValues,
+  }) => {
+    // ...
+  },
+  [],
+);
+
+<OneForm
+  onSubmit={formSubmitted}
+>
+  <Field>
+    <input name="message" />
+  </Field>
+</OneForm>
+
+```
+
 🚧 Under Construction
 
 ## `updatedErrorMessages`
