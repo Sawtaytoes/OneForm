@@ -73,5 +73,5 @@ You can even have duplicate `FieldGroup` `id` props:
 </FieldGroup>
 ```
 
-{% page-ref page="../everything-explained/how-do-i-validate-groups-of-fields.md" %}
+{% page-ref page="../everything-explained/validate-groups-of-fields.md" %}
 

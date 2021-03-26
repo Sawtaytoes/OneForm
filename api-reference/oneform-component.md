@@ -74,9 +74,9 @@ If you want to merge new errors into OneForm, use `updatedErrorMessages` instead
 
 `Field` and `FieldErrorMessage` components, as well as the `useField` and `useFieldErrorMessages` hooks have access to error messages defined by this prop.
 
-{% page-ref page="../everything-explained/how-do-i-pass-in-error-messages.md" %}
+{% page-ref page="../everything-explained/pass-in-error-messages.md" %}
 
-{% page-ref page="../everything-explained/how-do-i-show-an-error-under-a-group-of-fields.md" %}
+{% page-ref page="../everything-explained/show-an-error-message-under-a-group-of-fields.md" %}
 
 ## `groupValidations`
 
@@ -114,9 +114,9 @@ An array of objects containing a `validate` function that gets called when any s
 
 When returning a value, instead of returning a boolean, you need to specify which fields actually errored and the message for each of those fields. In the _above_ example, we returned an error message on only the `lastName` field.
 
-{% page-ref page="../everything-explained/how-do-i-validate-groups-of-fields.md" %}
+{% page-ref page="../everything-explained/validate-groups-of-fields.md" %}
 
-{% page-ref page="../everything-explained/how-do-i-validate-dynamic-field-groups.md" %}
+{% page-ref page="../everything-explained/validate-dynamic-field-groups.md" %}
 
 ## `hasFieldChangeValidation`
 
@@ -130,7 +130,7 @@ When returning a value, instead of returning a boolean, you need to specify whic
 This value is `true` by default.
 {% endhint %}
 
-{% page-ref page="../everything-explained/how-do-i-only-validate-on-submit.md" %}
+{% page-ref page="../everything-explained/only-validate-on-submit.md" %}
 
 ## `onChange`
 
