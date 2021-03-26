@@ -24,7 +24,7 @@
 * [State first](core-concepts/state-first.md)
 * [Bring your own components](core-concepts/bring-your-own-components.md)
 * [Field registration](core-concepts/field-registration.md)
-* [Field name validation](core-concepts/field-name-validation.md)
+* [Field group agnostic validation](core-concepts/field-name-validation.md)
 
 ## Everything Explained
 
