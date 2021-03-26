@@ -95,6 +95,7 @@ const OneForm = ({
 
 	const {
 		getValidationType,
+		setValidationTypeChange,
 		setValidationTypeSubmit,
 	} = (
 		useValidationType()
@@ -345,24 +346,19 @@ const OneForm = ({
 
 	const getIsValid = (
 		useCallback(
-			() => {
-				validateAllFields()
-
-				return (
-					(
-						Object
-						.values(
-							getAllFieldErrorMessages()
-						)
-						.flat()
-						.length
+			() => (
+				(
+					Object
+					.values(
+						getAllFieldErrorMessages()
 					)
-					=== 0
+					.flat()
+					.length
 				)
-			},
+				=== 0
+			),
 			[
 				getAllFieldErrorMessages,
-				validateAllFields,
 			],
 		)
 	)
@@ -380,8 +376,6 @@ const OneForm = ({
 			),
 			getIsValid,
 			onBeforeSubmit: () => {
-				setValidationTypeSubmit()
-
 				Object
 				.keys(
 					getAllFieldNameRegistrations()
@@ -389,6 +383,12 @@ const OneForm = ({
 				.forEach(
 					setFieldVisited
 				)
+
+				setValidationTypeSubmit()
+				validateAllFields()
+			},
+			onInvalidSubmit: () => {
+				setValidationTypeChange()
 			},
 			onSubmit,
 		})
