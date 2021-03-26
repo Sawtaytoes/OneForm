@@ -233,11 +233,11 @@ const groupValidations = [
         [
           {
             fieldValue: '555-555-5555',
-            groupId: '2342134',
+            reverseFieldName: '2342134',
           },
           {
             fieldValue: '012-345-6789',
-            groupId: '4787873',
+            reverseFieldName: '4787873',
           },
         ]
       */
