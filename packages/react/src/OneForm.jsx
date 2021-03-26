@@ -38,7 +38,7 @@ const propTypes = {
 const initialProps = {
 	errorMessages: {},
 	groupValidations: [],
-	hasFieldChangeValidation: false,
+	hasFieldChangeValidation: true,
 	onChange: Function.prototype,
 	onSubmit: Function.prototype,
 	updatedErrorMessages: {},
