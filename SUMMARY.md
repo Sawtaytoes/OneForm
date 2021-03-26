@@ -15,7 +15,6 @@
   * [Convert from Formik to OneForm](getting-started/upgrade-guide/convert-from-formik-to-oneform.md)
   * [Convert from React Hook Form to OneForm](getting-started/upgrade-guide/convert-from-react-hook-form-to-oneform.md)
   * [Convert from Redux Form to OneForm](getting-started/upgrade-guide/convert-from-redux-form-to-oneform.md)
-* [FAQ](getting-started/faq.md)
 * [Support](getting-started/get-connected.md)
 
 ## Core Concepts
@@ -29,6 +28,8 @@
 
 ## Everything Explained
 
+* [How do I pass in error messages?](everything-explained/how-do-i-pass-in-error-messages.md)
+* [How do I show an error under a group of fields?](everything-explained/how-do-i-show-an-error-under-a-group-of-fields.md)
 * [How do I validate groups of fields?](everything-explained/how-do-i-validate-groups-of-fields.md)
 * [How do I validate dynamic field groups?](everything-explained/how-do-i-validate-dynamic-field-groups.md)
 * [How do I only validate on submit?](everything-explained/how-do-i-only-validate-on-submit.md)

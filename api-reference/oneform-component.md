@@ -74,28 +74,9 @@ If you want to merge new errors into OneForm, use `updatedErrorMessages` instead
 
 `Field` and `FieldErrorMessage` components, as well as the `useField` and `useFieldErrorMessages` hooks have access to error messages defined by this prop.
 
-### Display errors on unregistered fields
+{% page-ref page="../everything-explained/how-do-i-pass-in-error-messages.md" %}
 
-It's possible to display errors on fields that only exist for displaying error messages.
-
-```jsx
-const errors = {
-  name: [
-    'You can only have one birthday.',
-  ],
-}
-
-const MyFormWithOneError = () => (
-  <OneForm>
-    <FieldErrorMessage name="birthdayError" />
-  </OneForm>
-)
-
-// HTML Output
-<form>
-  You can only have one birthday.
-</form>
-```
+{% page-ref page="../everything-explained/how-do-i-show-an-error-under-a-group-of-fields.md" %}
 
 ## `groupValidations`
 
