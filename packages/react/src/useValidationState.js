@@ -47,15 +47,28 @@ const useValidationState = (
 		)
 	)
 
+	const getFieldGroupValidation = (
+		useCallback(
+			(
+				validationName,
+			) => (
+				fieldGroupValidationsRef
+				.current
+				[validationName]
+			),
+			[],
+		)
+	)
+
 	const setFieldGroupValidation = (
 		useCallback(
 			(
 				validationName,
 			) => {
 				if (
-					fieldGroupValidationsRef
-					.current
-					[validationName]
+					getFieldGroupValidation(
+						validationName
+					)
 				) {
 					return
 				}
@@ -80,6 +93,7 @@ const useValidationState = (
 				}
 			},
 			[
+				getFieldGroupValidation,
 				groupValidations,
 			],
 		)
@@ -181,16 +195,9 @@ const useValidationState = (
 					.filter(
 						getIsFieldReadyForValidation
 					)
-					.map((
-						fieldName,
-					) => ({
-						...(
-							getFieldValidation(
-								fieldName
-							)
-						),
-						fieldName,
-					}))
+					.map(
+						getFieldValidation
+					)
 				)
 
 				validatingFields
@@ -262,17 +269,17 @@ const useValidationState = (
 					.filter(({
 						validationName,
 					}) => (
-						fieldGroupValidationsRef
-						.current
-						[validationName]
+						getFieldGroupValidation(
+							validationName
+						)
 					))
 					.map(({
 						groups,
 						validationName,
 					}) => (
-						fieldGroupValidationsRef
-						.current
-						[validationName]
+						getFieldGroupValidation(
+							validationName
+						)
 						.map((
 							groupValidation,
 						) => {
@@ -288,8 +295,11 @@ const useValidationState = (
 									groupName,
 								) => ({
 									groupId: (
-										groups
-										[groupName]
+										(
+											groups
+											[groupName]
+										)
+										|| ''
 									),
 									groupName: (
 										groupName
@@ -298,6 +308,20 @@ const useValidationState = (
 							)
 
 							return {
+								fieldGroupStrings: (
+									groupsList
+									.map(({
+										groupName,
+									}) => (
+										'/'
+										.concat(
+											groupName
+										)
+										.concat(
+											':'
+										)
+									))
+								),
 								groupsList,
 								groupValidation,
 								isMissingGroupId: (
@@ -313,81 +337,65 @@ const useValidationState = (
 					))
 					.flat()
 					.map(({
+						fieldGroupStrings,
 						groupsList,
 						groupValidation,
 						isMissingGroupId,
-					}) => {
-						const fieldGroupStrings = (
-							groupsList
-							.map(({
-								groupName,
-							}) => (
-								'/'
-								.concat(
-									groupName
-								)
-								.concat(
-									':'
-								)
-							))
-						)
-
-						return (
+					}) => (
+						(
 							(
-								(
-									groupValidation
-									.groupNames
-								)
-								&& (
-									isMissingGroupId
-								)
+								groupValidation
+								.groupNames
 							)
-							? (
-								allFieldNames
-								.filter((
-									fieldName,
+							&& (
+								isMissingGroupId
+							)
+						)
+						? (
+							allFieldNames
+							.filter((
+								fieldName,
+							) => (
+								fieldGroupStrings
+								.every((
+									fieldGroupString,
 								) => (
-									fieldGroupStrings
-									.every((
-										fieldGroupString,
-									) => (
-										fieldName
-										.includes(
-											fieldGroupString
-										)
-									))
-								))
-								.map((
-									fieldName,
-								) => (
-									getFieldValidation(
-										fieldName
+									fieldName
+									.includes(
+										fieldGroupString
 									)
 								))
-								.map(({
-									groups: fieldGroups,
-								}) => ({
-									groupsList: (
-										groupsList
-										.map(({
-											groupName,
-										}) => ({
-											groupId: (
-												fieldGroups
-												[groupName]
-											),
-											groupName,
-										}))
-									),
-									groupValidation,
-								}))
-							)
-							: {
-								groupsList,
+							))
+							.map((
+								fieldName,
+							) => (
+								getFieldValidation(
+									fieldName
+								)
+							))
+							.map(({
+								groups: fieldGroups,
+							}) => ({
+								groupsList: (
+									groupsList
+									.map(({
+										groupName,
+									}) => ({
+										groupId: (
+											fieldGroups
+											[groupName]
+										),
+										groupName,
+									}))
+								),
 								groupValidation,
-							}
+							}))
 						)
-					})
+						: {
+							groupsList,
+							groupValidation,
+						}
+					))
 					.flat()
 					.map(({
 						groupsList,
@@ -805,6 +813,7 @@ const useValidationState = (
 			},
 			[
 				getAllFieldNames,
+				getFieldGroupValidation,
 				getFieldValidation,
 				getIsFieldReadyForValidation,
 				getValidationType,
