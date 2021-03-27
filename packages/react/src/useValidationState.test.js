@@ -1236,5 +1236,172 @@ describe(
 				)
 			}
 		)
+
+		test(
+			'removes errors when no longer returned from `validate`',
+			() => {
+				const firstNameErrorMessage = (
+					'Cannot use generic first name.'
+				)
+
+				const lastNameErrorMessage = (
+					'Cannot use generic last name.'
+				)
+
+				const readyForValidation = {
+					firstName: true,
+					lastName: true,
+				}
+
+				const valuesRef = {
+					current: {
+						firstName: 'John',
+						lastName: 'Smith',
+					},
+				}
+
+				const {
+					result,
+				} = (
+					renderHook(
+						useValidationState,
+						{
+							initialProps: {
+								getAllFieldNames: () => (
+									Object
+									.keys(
+										valuesRef
+										.current
+									)
+								),
+								getIsFieldReadyForValidation: (
+									fieldName,
+								) => (
+									readyForValidation
+									[fieldName]
+								),
+								getValue: (
+									fieldName,
+								) => (
+									valuesRef
+									.current
+									[fieldName]
+								),
+								groupValidations: [
+									{
+										fieldNames: [
+											'firstName',
+											'lastName',
+										],
+										validate: ({
+											values,
+										}) => {
+											const errors = []
+
+											if (values.firstName === 'John') {
+												errors
+												.push({
+													errorMessage: (
+														firstNameErrorMessage
+													),
+													fieldName: (
+														'firstName'
+													),
+												})
+											}
+
+											if (values.lastName === 'Smith') {
+												errors
+												.push({
+													errorMessage: (
+														lastNameErrorMessage
+													),
+													fieldName: (
+														'lastName'
+													),
+												})
+											}
+
+											return errors
+										},
+									},
+								],
+							},
+						},
+					)
+				)
+
+				expect(
+					result
+					.current
+					.getFieldValidationErrorMessages(
+						'firstName',
+						'lastName',
+					)
+				)
+				.toEqual([
+					{
+						errorMessages: [
+							firstNameErrorMessage,
+						],
+						fieldName: 'firstName',
+					},
+					{
+						errorMessages: [
+							lastNameErrorMessage,
+						],
+						fieldName: 'lastName',
+					},
+				])
+
+				valuesRef
+				.current = {
+					firstName: 'Phil',
+					lastName: 'Smith',
+				}
+
+				expect(
+					result
+					.current
+					.getFieldValidationErrorMessages(
+						'firstName',
+						'lastName',
+					)
+				)
+				.toEqual([
+					{
+						errorMessages: [],
+						fieldName: 'firstName',
+					},
+					{
+						errorMessages: [
+							lastNameErrorMessage,
+						],
+						fieldName: 'lastName',
+					},
+				])
+
+				valuesRef
+				.current = {
+					firstName: 'Phil',
+					lastName: 'Collins',
+				}
+
+				expect(
+					result
+					.current
+					.getFieldValidationErrorMessages(
+						'firstName',
+						'lastName',
+					)
+				)
+				.toEqual([
+					{
+						errorMessages: [],
+						fieldName: 'lastName',
+					},
+				])
+			}
+		)
 	}
 )
