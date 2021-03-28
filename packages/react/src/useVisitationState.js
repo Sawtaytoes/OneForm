@@ -3,7 +3,7 @@ import {
 	useRef,
 } from 'react'
 
-import useOnlyObservableState from './useOnlyObservableState'
+import useObservableState from './useObservableState'
 
 const initialVisitations = new Set()
 
@@ -29,7 +29,7 @@ const useVisitationState = (
 		publishValue,
 		subscribeToValue,
 	} = (
-		useOnlyObservableState()
+		useObservableState()
 	)
 
 	const visitationsRef = (

@@ -4,7 +4,7 @@ import {
 	useRef,
 } from 'react'
 
-import useOnlyObservableState from './useOnlyObservableState.js'
+import useObservableState from './useObservableState.js'
 
 const initialValues = {}
 const initialLocalValues = {}
@@ -37,7 +37,7 @@ const useValuesState = (
 		publishValue,
 		subscribeToValue,
 	} = (
-		useOnlyObservableState()
+		useObservableState()
 	)
 
 	const localValuesRef = (

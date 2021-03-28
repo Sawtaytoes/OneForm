@@ -4,7 +4,7 @@ import {
 	useRef,
 } from 'react'
 
-import useOnlyObservableState from './useOnlyObservableState.js'
+import useObservableState from './useObservableState.js'
 
 const externalErrorMessagesSymbol = Symbol()
 const initialErrorMessages = {}
@@ -39,7 +39,7 @@ const useErrorMessagesState = (
 		publishValue,
 		subscribeToValue,
 	} = (
-		useOnlyObservableState()
+		useObservableState()
 	)
 
 	const localErrorMessagesRef = (
