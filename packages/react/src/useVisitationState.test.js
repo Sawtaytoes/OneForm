@@ -26,7 +26,9 @@ describe(
 						'email'
 					)
 				)
-				.toBeFalsy()
+				.toBe(
+					false
+				)
 			},
 		)
 
@@ -118,7 +120,9 @@ describe(
 						'nickname'
 					)
 				)
-				.toBeFalsy()
+				.toBe(
+					false
+				)
 			},
 		)
 
@@ -162,7 +166,9 @@ describe(
 						'email'
 					)
 				)
-				.toBeFalsy()
+				.toBe(
+					false
+				)
 
 				expect(
 					result
@@ -171,77 +177,8 @@ describe(
 						'name'
 					)
 				)
-				.toBeFalsy()
-			},
-		)
-
-		test(
-			'notifies when visited and not visited',
-			() => {
-				const {
-					result,
-				} = (
-					renderHook(
-						useVisitationState,
-					)
-				)
-
-				const subscriber = (
-					jest
-					.fn()
-				)
-
-				const unsubscribeRef = {
-					current: null,
-				}
-
-				act(() => {
-					unsubscribeRef
-					.current = (
-						result
-						.current
-						.subscribeToIsVisited({
-							identifier: 'email',
-							subscriber,
-						})
-					)
-				})
-
-				act(() => {
-					result
-					.current
-					.setVisited(
-						'email'
-					)
-				})
-
-				act(() => {
-					result
-					.current
-					.resetAllVisitations()
-				})
-
-				expect(
-					subscriber
-				)
-				.toHaveBeenCalledTimes(
-					2
-				)
-
-				expect(
-					subscriber
-				)
-				.toHaveBeenNthCalledWith(
-					1,
-					true,
-				)
-
-				expect(
-					subscriber
-				)
-				.toHaveBeenNthCalledWith(
-					2,
-					undefined,
+				.toBe(
+					false
 				)
 			},
 		)

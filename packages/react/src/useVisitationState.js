@@ -1,11 +1,11 @@
 import {
 	useCallback,
-	useState,
+	useRef,
 } from 'react'
 
-import useObservableState from './useObservableState'
+import useOnlyObservableState from './useOnlyObservableState'
 
-const initialValues = {}
+const initialVisitations = new Set()
 
 const useVisitationState = (
 	{
@@ -15,40 +15,84 @@ const useVisitationState = (
 		),
 	} = {}
 ) => {
-	const [
-		values,
-		setValues,
-	] = (
-		useState(
-			initialValues
-		)
+	const onVisitRef = (
+		useRef()
+	)
+
+	onVisitRef
+	.current = (
+		onVisit
 	)
 
 	const {
-		getValue: getIsVisited,
-		setValue,
-		subscribeToValue: subscribeToIsVisited,
+		publishUndefinedValues,
+		publishValue,
+		subscribeToValue,
 	} = (
-		useObservableState({
-			onChange: ({
+		useOnlyObservableState()
+	)
+
+	const visitationsRef = (
+		useRef(
+			initialVisitations
+		)
+	)
+
+	const getIsVisited = (
+		useCallback(
+			(
 				identifier,
-			}) => (
-				onVisit(
+			) => (
+				visitationsRef
+				.current
+				.has(
 					identifier
 				)
 			),
-			values,
-		})
+			[],
+		)
+	)
+
+	const setVisitation = (
+		useCallback(
+			(
+				identifier,
+			) => {
+				visitationsRef
+				.current = (
+					new Set(
+						visitationsRef
+						.current
+					)
+					.add(
+						identifier
+					)
+				)
+
+				publishValue(
+					identifier,
+					true,
+				)
+			},
+			[
+				publishValue,
+			],
+		)
 	)
 
 	const resetAllVisitations = (
 		useCallback(
-			() => (
-				setValues(
-					{}
+			() => {
+				visitationsRef
+				.current = (
+					initialVisitations
 				)
-			),
-			[],
+
+				publishUndefinedValues()
+			},
+			[
+				publishUndefinedValues,
+			],
 		)
 	)
 
@@ -65,14 +109,18 @@ const useVisitationState = (
 					return
 				}
 
-				setValue(
+				setVisitation(
 					identifier,
-					true,
+				)
+
+				onVisitRef
+				.current(
+					identifier
 				)
 			},
 			[
 				getIsVisited,
-				setValue,
+				setVisitation,
 			],
 		)
 	)
@@ -81,7 +129,7 @@ const useVisitationState = (
 		getIsVisited,
 		resetAllVisitations,
 		setVisited,
-		subscribeToIsVisited,
+		subscribeToIsVisited: subscribeToValue,
 	}
 }
 

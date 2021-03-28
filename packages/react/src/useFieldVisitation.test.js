@@ -10,7 +10,7 @@ describe(
 	'useFieldVisitation',
 	() => {
 		test(
-			'have an `undefined` value',
+			'is not visited',
 			() => {
 				const {
 					result,
@@ -31,12 +31,14 @@ describe(
 					.current
 					.isVisited
 				)
-				.toBeUndefined()
+				.toBe(
+					false
+				)
 			}
 		)
 
 		test(
-			'set visited',
+			'is visited when set visited',
 			() => {
 				const {
 					result,
@@ -70,7 +72,7 @@ describe(
 		)
 
 		test(
-			'get the latest set value',
+			'is still visited even after visiting multiple times',
 			() => {
 				const {
 					result,
