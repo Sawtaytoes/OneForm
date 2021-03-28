@@ -13,7 +13,7 @@ import SubmissionContext from './SubmissionContext.js'
 import useObservableState from './useObservableState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubmissionState from './useSubmissionState.js'
-import useSubscriptionEffect from './useSubscriptionEffect.js'
+import useUpdateEffect from './useUpdateEffect.js'
 import useValidationState from './useValidationState.js'
 import useValidationType, {
 	validationTypes,
@@ -228,14 +228,22 @@ const OneForm = ({
 		})
 	)
 
-	useSubscriptionEffect({
-		subscriber: (
-			resetAllFieldVisitations
-		),
-		value: (
-			values
-		),
-	})
+	useUpdateEffect(
+		() => {
+			resetAllFieldVisitations()
+
+			Object
+			.keys(
+				values
+			)
+			.forEach(
+				setFieldVisited
+			)
+		},
+		[
+			values,
+		],
+	)
 
 	const {
 		getAllRegistrations: getAllFieldNameRegistrations,
@@ -326,23 +334,15 @@ const OneForm = ({
 		)
 	)
 
-	useSubscriptionEffect({
-		subscriber: (
-			validateAllFields
-		),
-		value: (
-			groupValidations
-		),
-	})
-
-	useSubscriptionEffect({
-		subscriber: (
-			validateAllFields
-		),
-		value: (
-			validations
-		),
-	})
+	useUpdateEffect(
+		() => {
+			validateAllFields()
+		},
+		[
+			groupValidations,
+			validations,
+		],
+	)
 
 	const getIsValid = (
 		useCallback(
