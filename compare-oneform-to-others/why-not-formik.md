@@ -52,11 +52,11 @@ When we convert that same example to OneForm, this is what we see:
 <div>
   <Field>
     <input name="lastName" type="text" placeholder="Email" />
-
-    <div className="error">
-      <FieldErrorMessage name="lastName" />
-    </div>
   </Field>
+  
+  <div className="error">
+    <FieldErrorMessage name="lastName" />
+  </div>
 </div>
 ```
 {% endcode %}
