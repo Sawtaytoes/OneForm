@@ -10,14 +10,14 @@ import useValidationsState, {
 describe(
 	'useValidationsState',
 	() => {
-		const setErrorMessages = (
-			jest
-			.fn()
-		)
-
 		test(
 			'does not set error messages when nothing is invalid',
 			() => {
+				const setErrorMessages = (
+					jest
+					.fn()
+				)
+
 				const {
 					result,
 				} = (
