@@ -10,7 +10,7 @@ describe(
 	'useFieldErrorMessages',
 	() => {
 		test(
-			'have an `undefined` value',
+			'has `undefined` error messages',
 			() => {
 				const {
 					result,
@@ -36,7 +36,7 @@ describe(
 		)
 
 		test(
-			'set the value',
+			'sets the error messages',
 			() => {
 				const {
 					result,
@@ -77,7 +77,7 @@ describe(
 		)
 
 		test(
-			'get the latest set value',
+			'gets the latest set error messages',
 			() => {
 				const {
 					result,
