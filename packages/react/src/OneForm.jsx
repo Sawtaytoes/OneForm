@@ -10,6 +10,7 @@ import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
 import RegistrationContext from './RegistrationContext.js'
 import SubmissionContext from './SubmissionContext.js'
+import useErrorMessagesState from './useErrorMessagesState.js'
 import useObservableState from './useObservableState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubmissionState from './useSubmissionState.js'
@@ -22,6 +23,8 @@ import useValuesState from './useValuesState.js'
 import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
+
+const validationsSymbol = Symbol()
 
 const propTypes = {
 	children: PropTypes.node.isRequired,
@@ -103,13 +106,14 @@ const OneForm = ({
 	)
 
 	const {
-		getAllValues: getAllFieldErrorMessages,
-		getValue: getFieldErrorMessages,
-		setValue: setFieldErrorMessages,
-		subscribeToValue: subscribeToFieldErrorMessages,
+		getAllErrorMessages: getAllFieldErrorMessages,
+		getErrorMessages: getFieldErrorMessages,
+		setErrorMessages: setFieldErrorMessages,
+		subscribeToErrorMessages: subscribeToFieldErrorMessages,
 	} = (
-		useObservableState({
-			onPublish: ({
+		useErrorMessagesState({
+			errorMessages,
+			onErrorMessages: ({
 				identifier,
 				value,
 			}) => {
@@ -119,8 +123,7 @@ const OneForm = ({
 					)
 				}
 			},
-			updatedValues: updatedErrorMessages,
-			values: errorMessages,
+			updatedErrorMessages,
 		})
 	)
 
@@ -158,7 +161,10 @@ const OneForm = ({
 					}) => {
 						setFieldErrorMessages(
 							fieldName,
-							errorMessages,
+							{
+								errorMessages,
+								symbol: validationsSymbol,
+							},
 						)
 					})
 				}

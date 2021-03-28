@@ -29,7 +29,7 @@ describe(
 				expect(
 					result
 					.current
-					.value
+					.errorMessages
 				)
 				.toBeUndefined()
 			}
@@ -70,7 +70,7 @@ describe(
 					.current
 					.errorMessages
 				)
-				.toBe(
+				.toEqual(
 					errorMessages
 				)
 			}
@@ -119,7 +119,7 @@ describe(
 					.current
 					.errorMessages
 				)
-				.toBe(
+				.toEqual(
 					errorMessages
 				)
 			}

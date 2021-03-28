@@ -2,6 +2,7 @@ import {
 	useCallback,
 	useContext,
 	useEffect,
+	useMemo,
 	useState,
 } from 'react'
 
@@ -11,6 +12,15 @@ import useFieldName from './useFieldName.js'
 const useFieldErrorMessages = ({
 	name,
 }) => {
+	const fieldErrorMessagesSymbol = (
+		useMemo(
+			() => (
+				Symbol()
+			),
+			[]
+		)
+	)
+
 	const {
 		fieldName,
 	} = (
@@ -43,14 +53,20 @@ const useFieldErrorMessages = ({
 	const setErrorMessages = (
 		useCallback(
 			(
-				value,
+				errorMessages,
 			) => {
 				setFieldErrorMessages(
 					fieldName,
-					value,
+					{
+						errorMessages,
+						symbol: (
+							fieldErrorMessagesSymbol
+						),
+					},
 				)
 			},
 			[
+				fieldErrorMessagesSymbol,
 				fieldName,
 				setFieldErrorMessages,
 			],

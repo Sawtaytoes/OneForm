@@ -39,7 +39,7 @@ describe(
 					'You forgot the `@` sign!'
 				)
 
-				const fieldErrorMessages = {
+				const errorMessages = {
 					email: [
 						errorMessage,
 					],
@@ -47,7 +47,7 @@ describe(
 
 				render(
 					<OneForm
-						errorMessages={fieldErrorMessages}
+						errorMessages={errorMessages}
 					>
 						<FieldErrorMessage
 							name="email"
