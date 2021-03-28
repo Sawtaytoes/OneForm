@@ -10,7 +10,7 @@ const initialGroupValidations = []
 const initialValidations = {}
 const initialValidateReturnValueTracker = new Map()
 
-const useValidationState = (
+const useAllValidationState = (
 	{
 		getAllFieldNames = (
 			Function
@@ -1040,4 +1040,4 @@ const useValidationState = (
 	}
 }
 
-export default useValidationState
+export default useAllValidationState

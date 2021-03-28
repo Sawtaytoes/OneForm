@@ -3,10 +3,10 @@ import {
 	renderHook,
 } from '@testing-library/react-hooks'
 
-import useValidationState from './useValidationState.js'
+import useAllValidationState from './useAllValidationState.js'
 
 describe(
-	'useValidationState',
+	'useAllValidationState',
 	() => {
 		test(
 			'does not give error messages when nothing is invalid',
@@ -15,7 +15,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 					)
 				)
 
@@ -41,7 +41,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getIsFieldReadyForValidation: () => (
@@ -96,7 +96,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getIsFieldReadyForValidation: () => (
@@ -155,7 +155,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getIsFieldReadyForValidation: () => (
@@ -216,7 +216,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getIsFieldReadyForValidation: () => (
@@ -294,7 +294,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getIsFieldReadyForValidation: () => (
@@ -412,7 +412,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getIsFieldReadyForValidation: (
@@ -534,7 +534,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getAllFieldNames: () => (
@@ -672,7 +672,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getAllFieldNames: () => (
@@ -805,7 +805,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getAllFieldNames: () => (
@@ -940,7 +940,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getAllFieldNames: () => (
@@ -1068,7 +1068,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getAllFieldNames: () => (
@@ -1264,7 +1264,7 @@ describe(
 					result,
 				} = (
 					renderHook(
-						useValidationState,
+						useAllValidationState,
 						{
 							initialProps: {
 								getAllFieldNames: () => (

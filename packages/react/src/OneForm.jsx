@@ -10,11 +10,11 @@ import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
 import RegistrationContext from './RegistrationContext.js'
 import SubmissionContext from './SubmissionContext.js'
+import useAllValidationState from './useAllValidationState.js'
 import useErrorMessagesState from './useErrorMessagesState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubmissionState from './useSubmissionState.js'
 import useUpdateEffect from './useUpdateEffect.js'
-import useValidationState from './useValidationState.js'
 import useValidationType, {
 	validationTypes,
 } from './useValidationType.js'
@@ -307,7 +307,7 @@ const OneForm = ({
 	const {
 		getFieldValidationErrorMessages,
 	} = (
-		useValidationState({
+		useAllValidationState({
 			getAllFieldNames: (
 				getRegisteredFieldNames
 			),
