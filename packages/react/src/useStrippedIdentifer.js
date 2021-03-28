@@ -3,12 +3,77 @@ import {
 	useRef,
 } from 'react'
 
+const initialMemoizedIdentifierGroups = {}
 const initialStrippedIdentifiers = {}
 
 const useStrippedIdentifer = () => {
+	const identifierGroupsRef = (
+		useRef(
+			initialMemoizedIdentifierGroups
+		)
+	)
+
 	const strippedIdentifiersRef = (
 		useRef(
 			initialStrippedIdentifiers
+		)
+	)
+
+	const getIdentifierGroup = (
+		useCallback(
+			(
+				groupString,
+			) => {
+				if (
+					!(
+						identifierGroupsRef
+						.current
+						[groupString]
+					)
+				) {
+					const [
+						groupName,
+						groupId,
+					] = (
+						groupString
+						.split(':')
+					)
+
+					identifierGroupsRef
+					.current = {
+						...(
+							identifierGroupsRef
+							.current
+						),
+						[groupString]: {
+							groupId,
+							groupName,
+							groupNameString: (
+								'/'
+								.concat(
+									groupName
+								)
+								.concat(
+									':'
+								)
+							),
+							groupString: (
+								'/'
+								.concat(
+									groupString
+								)
+							),
+						},
+					}
+				}
+
+				return (
+					identifierGroupsRef
+					.current
+					[groupString]
+				)
+			},
+			[],
 		)
 	)
 
@@ -34,31 +99,24 @@ const useStrippedIdentifer = () => {
 						)
 					)
 
-					const groupEntries = (
-						groupStrings
-						.map((
-							groupString,
-						) => (
-							groupString
-							.split(':')
-						))
-					)
-
 					const groupsList = (
-						groupEntries
-						.map(([
-							name,
-							id,
-						]) => ({
-							id,
-							name,
-						}))
+						groupStrings
+						.map(
+							getIdentifierGroup
+						)
 					)
 
 					const groups = (
 						Object
 						.fromEntries(
-							groupEntries
+							groupsList
+							.map(({
+								groupId,
+								groupName,
+							}) => ([
+								groupName,
+								groupId,
+							]))
 						)
 					)
 
@@ -83,7 +141,9 @@ const useStrippedIdentifer = () => {
 					[identifier]
 				)
 			},
-			[],
+			[
+				getIdentifierGroup,
+			],
 		)
 	)
 

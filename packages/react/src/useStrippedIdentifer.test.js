@@ -8,6 +8,46 @@ import useStrippedIdentifer from './useStrippedIdentifer.js'
 describe(
 	'useStrippedIdentifer',
 	() => {
+		// test(
+		// 	'memoizes identifier groups',
+		// 	() => {
+		// 		const {
+		// 			result,
+		// 		} = (
+		// 			renderHook(
+		// 				useStrippedIdentifer
+		// 			)
+		// 		)
+
+		// 		const identifierGroupRef = {
+		// 			current: null,
+		// 		}
+
+		// 		act(() => {
+		// 			identifierGroupRef
+		// 			.current = (
+		// 				result
+		// 				.current
+		// 				.getIdentifierGroup(
+		// 					'emailId:363f'
+		// 				)
+		// 			)
+		// 		})
+
+		// 		expect(
+		// 			result
+		// 			.current
+		// 			.getIdentifierGroup(
+		// 				'emailId:363f'
+		// 			)
+		// 		)
+		// 		.toBe(
+		// 			identifierGroupRef
+		// 			.current
+		// 		)
+		// 	}
+		// )
+
 		test(
 			'has no groups when nothing to strip',
 			() => {
@@ -59,8 +99,10 @@ describe(
 					},
 					groupsList: [
 						{
-							id: '363f',
-							name: 'emailId',
+							groupId: '363f',
+							groupName: 'emailId',
+							groupNameString: '/emailId:',
+							groupString: '/emailId:363f',
 						},
 					],
 					identifier: 'email/emailId:363f',
@@ -94,12 +136,16 @@ describe(
 					},
 					groupsList: [
 						{
-							id: '4d63',
-							name: 'accountId',
+							groupId: '4d63',
+							groupName: 'accountId',
+							groupNameString: '/accountId:',
+							groupString: '/accountId:4d63',
 						},
 						{
-							id: '363f',
-							name: 'emailId',
+							groupId: '363f',
+							groupName: 'emailId',
+							groupNameString: '/emailId:',
+							groupString: '/emailId:363f',
 						},
 					],
 					identifier: 'email/accountId:4d63/emailId:363f',
