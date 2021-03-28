@@ -18,6 +18,7 @@ import useValidationState from './useValidationState.js'
 import useValidationType, {
 	validationTypes,
 } from './useValidationType.js'
+import useValuesState from './useValuesState.js'
 import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
@@ -176,7 +177,7 @@ const OneForm = ({
 		setValue: setFieldValue,
 		subscribeToValue: subscribeToFieldValue,
 	} = (
-		useObservableState({
+		useValuesState({
 			onChange: ({
 				identifier,
 				value,
