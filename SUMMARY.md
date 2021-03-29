@@ -11,6 +11,7 @@
 
 * [Installation](getting-started/installation.md)
 * [OneForm basics](getting-started/oneform-basics.md)
+* [Playground](getting-started/playground.md)
 * [Convert to OneForm](getting-started/convert-to-oneform/README.md)
   * [Convert from Formik to OneForm](getting-started/convert-to-oneform/convert-from-formik-to-oneform.md)
   * [Convert from React Hook Form to OneForm](getting-started/convert-to-oneform/convert-from-react-hook-form-to-oneform.md)
