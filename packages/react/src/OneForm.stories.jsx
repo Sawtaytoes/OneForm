@@ -80,9 +80,9 @@ Validation
 				errorMessage: (
 					'No lowercase letters.'
 				),
-				validate: (
+				getIsValid: ({
 					value,
-				) => (
+				}) => (
 					value
 					&& (
 						value

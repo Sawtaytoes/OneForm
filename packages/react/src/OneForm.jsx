@@ -10,20 +10,19 @@ import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
 import RegistrationContext from './RegistrationContext.js'
 import SubmissionContext from './SubmissionContext.js'
-import useAllValidationState from './useAllValidationState.js'
 import useErrorMessagesState from './useErrorMessagesState.js'
+import useGroupValidationsState from './useGroupValidationsState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubmissionState from './useSubmissionState.js'
 import useUpdateEffect from './useUpdateEffect.js'
 import useValidationType, {
 	validationTypes,
 } from './useValidationType.js'
+import useValidationsState from './useValidationsState.js'
 import useValuesState from './useValuesState.js'
 import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
-
-const validationsSymbol = Symbol()
 
 const propTypes = {
 	children: PropTypes.node.isRequired,
@@ -89,11 +88,12 @@ const OneForm = ({
 		.values
 	),
 }) => {
-	const getFieldValidationErrorMessagesRef = (
-		useRef(
-			Function
-			.prototype
-		)
+	const registerIdentifierForGroupValidationRef = (
+		useRef()
+	)
+
+	const validateFieldsRef = (
+		useRef()
 	)
 
 	const {
@@ -150,28 +150,15 @@ const OneForm = ({
 						)
 					)
 				) {
-					getFieldValidationErrorMessagesRef
+					validateFieldsRef
 					.current(
 						identifiers
 					)
-					.forEach(({
-						errorMessages,
-						fieldName,
-					}) => {
-						setFieldErrorMessages(
-							fieldName,
-							{
-								errorMessages,
-								symbol: validationsSymbol,
-							},
-						)
-					})
 				}
 			},
 			[
 				getValidationType,
 				hasFieldChangeValidation,
-				setFieldErrorMessages,
 			],
 		)
 	)
@@ -260,6 +247,11 @@ const OneForm = ({
 			onRegister: (
 				identifier,
 			) => {
+				registerIdentifierForGroupValidationRef
+				.current(
+					identifier
+				)
+
 				updateErrorMessages(
 					identifier
 				)
@@ -305,25 +297,76 @@ const OneForm = ({
 	)
 
 	const {
-		getFieldValidationErrorMessages,
+		registerIdentifierForGroupValidation,
+		validateGroups,
 	} = (
-		useAllValidationState({
+		useGroupValidationsState({
 			getAllFieldNames: (
 				getRegisteredFieldNames
 			),
-			getIsFieldReadyForValidation,
+			getIsReadyForValidation: (
+				getIsFieldReadyForValidation
+			),
 			getValidationType,
 			getValue: (
 				getFieldValue
 			),
 			groupValidations,
+			setErrorMessages: (
+				setFieldErrorMessages
+			),
+		})
+	)
+
+	registerIdentifierForGroupValidationRef
+	.current = (
+		registerIdentifierForGroupValidation
+	)
+
+	const {
+		validate,
+	} = (
+		useValidationsState({
+			getAllFieldNames: (
+				getRegisteredFieldNames
+			),
+			getIsReadyForValidation: (
+				getIsFieldReadyForValidation
+			),
+			getValidationType,
+			getValue: (
+				getFieldValue
+			),
+			setErrorMessages: (
+				setFieldErrorMessages
+			),
 			validations,
 		})
 	)
 
-	getFieldValidationErrorMessagesRef
+	const validateFields = (
+		useCallback(
+			(
+				fieldNames,
+			) => {
+				validateGroups(
+					fieldNames
+				)
+
+				validate(
+					fieldNames
+				)
+			},
+			[
+				validateGroups,
+				validate,
+			],
+		)
+	)
+
+	validateFieldsRef
 	.current = (
-		getFieldValidationErrorMessages
+		validateFields
 	)
 
 	const validateAllFields = (
