@@ -1,6 +1,7 @@
 # OneForm
+_The OneForm you need!_
 
-The OneForm you need!
+**📝 Official Docs: https://docs.oneform.dev**
 
 ## Features
 
@@ -25,10 +26,6 @@ Or with `yarn`:
 ```bash
 yarn add @oneform/react
 ```
-
-## Links
-
-* Philosophy
 
 ## Quick Start
 
