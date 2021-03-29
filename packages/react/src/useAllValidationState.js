@@ -565,11 +565,9 @@ const useAllValidationState = (
 									.filter((
 										fieldName,
 									) => (
-										(
-											fieldName
-											.startsWith(
-												validationName
-											)
+										fieldName
+										.startsWith(
+											validationName
 										)
 									))
 								)
