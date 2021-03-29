@@ -1,3 +1,8 @@
+# 0.2.1
+_March 29th, 2021_
+
+- Added logo to README on npm.
+
 # 0.2.0
 _March 29th, 2021_
 
