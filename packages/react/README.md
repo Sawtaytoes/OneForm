@@ -1,5 +1,9 @@
 # OneForm
+
+
+[![OneForm logo](https://github.com/Sawtaytoes/OneForm/blob/master/docs/logos/oneform-cube-textdark.png?raw=true|alt=OneForm)](https://docs.oneform.dev)
 _The OneForm you need!_
+
 
 **📝 Official Docs: https://docs.oneform.dev**
 
@@ -93,6 +97,8 @@ These are the folks at Minted that played a big part in the creation of Minted F
 * Everyone else at Minted!
 
 ### The logo is important too!
+![Credit: Noah Raskin](https://github.com/Sawtaytoes/OneForm/blob/master/docs/logos/oneform-cube-master.svg?raw=true|alt=OneForm)
+
 The logo and title are courtesy of **Noah Raskin**. He does some amazing graphic design and even creates custom icon libraries! Talk about dedication to small details!
 
 While this logo looks simple, there's a lot going on behind the scenes, and the way he shaded it amazed me as much as the cleanliness of OneForm's API.
