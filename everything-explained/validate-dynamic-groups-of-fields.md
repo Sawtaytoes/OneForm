@@ -136,7 +136,7 @@ const groupValidations = [
     fieldNames: [
       'phoneNumber',
     ],
-    validate: ({
+    getErrorMessages: ({
       reverseLookup, // 🤔 What's this?
       values,
     }) => {
@@ -196,7 +196,7 @@ const groupValidations = [
     groupNames: [
       'personId',
     ],
-    validate: () => {},
+    getErrorMessages: () => {},
   },
 ]
 ```
@@ -239,7 +239,7 @@ That's where `reverseLookup` comes into play. It looks something like this:
 When returning error messages, you'll pull the field name from `reverseLookup.firstName` instead of using the `'firstName'` string.
 
 ```jsx
-validate: ({
+getErrorMessages: ({
   reverseLookup,
   values,
 }) => {
@@ -247,21 +247,12 @@ validate: ({
     values.firstName
     === values.lastName
   ) {
-    return [
-      {
-        fieldName: (
-          reverseLookup.firstName,
-        ),
-      },
-      {
-        errorMessage: (
-          'Last name cannot match first name.'
-        ),
-        fieldName: (
-          reverseLookup.lastName,
-        ),
-      },
-    ]
+    return {
+      [reverseLookup.firstName]: true,
+      [reverseLookup.lastName]: (
+        'Last name cannot match first name.'
+      ),
+    }
   }
 }
 ```
