@@ -6,5 +6,9 @@ indent_size = 2
 indent_style = tab
 insert_final_newline = true
 
-[*.{json,md,mdx}]
+[*.{json}]
+indent_style = space
+
+[*.{md}]
+indent_size = 4
 indent_style = space
