@@ -48,7 +48,7 @@ These are the folks at Minted that played a big part in the creation of Minted F
 
 ### The logo is important too!
 
-The logo and title are curtesy of **Noah Raskin**. He does some amazing graphic design and even creates custom icon libraries! Talk about dedication to small details!
+The logo and title are courtesy of **Noah Raskin**. He does some amazing graphic design and even creates custom icon libraries! Talk about dedication to small details!
 
 While this logo looks simple, there's a lot going on behind the scenes, and the way he shaded it amazed me as much as the cleanliness of OneForm's API.
 
