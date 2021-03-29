@@ -1,7 +1,3 @@
----
-description: What is OneForm and who is it for?
----
-
 # Introduction
 
 ## What is OneForm?
