@@ -17,7 +17,6 @@
   * [Convert from React Hook Form to OneForm](getting-started/convert-to-oneform/convert-from-react-hook-form-to-oneform.md)
   * [Convert from Redux Form to OneForm](getting-started/convert-to-oneform/convert-from-redux-form-to-oneform.md)
 * [Support](getting-started/support.md)
-* [Release Notes](getting-started/release-notes.md)
 
 ## Core Concepts
 
@@ -42,6 +41,7 @@
 
 ## API Reference
 
+* [Release Notes](api-reference/release-notes.md)
 * [&lt;Field /&gt;](api-reference/field-component.md)
 * [&lt;FieldErrorMessage /&gt;](api-reference/fielderrormessage-component.md)
 * [&lt;FieldGroup /&gt;](api-reference/fieldgroup-component.md)
