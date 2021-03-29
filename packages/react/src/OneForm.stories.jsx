@@ -96,3 +96,60 @@ Validation
 		],
 	},
 }
+
+export const GroupValidation = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<input name="message1" />
+			</Field>
+		</div>
+		<div>
+			<Field>
+				<input name="message2" />
+			</Field>
+		</div>
+		<div>
+			<FieldErrorMessage name="message.error" />
+		</div>
+		<div>
+			<button type="submit">
+				Submit
+			</button>
+		</div>
+	</OneForm>
+)
+
+GroupValidation
+.args = {
+	groupValidations: [
+		{
+			fieldNames: [
+				'message1',
+				'message2',
+			],
+			getErrorMessages: ({
+				values,
+			}) => ({
+				'message.error': [
+					(
+						(
+							values
+							.message1
+						)
+						!== (
+							values
+							.message2
+						)
+						&& (
+							'Messages need to be identical.'
+						)
+					),
+				],
+			}),
+		},
+	],
+	hasFieldChangeValidation: true,
+}
