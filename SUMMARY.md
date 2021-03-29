@@ -17,6 +17,7 @@
   * [Convert from React Hook Form to OneForm](getting-started/convert-to-oneform/convert-from-react-hook-form-to-oneform.md)
   * [Convert from Redux Form to OneForm](getting-started/convert-to-oneform/convert-from-redux-form-to-oneform.md)
 * [Support](getting-started/support.md)
+* [Release Notes](getting-started/release-notes.md)
 
 ## Core Concepts
 
