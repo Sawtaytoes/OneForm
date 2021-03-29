@@ -48,18 +48,18 @@ describe(
 				)
 
 				cy
-				.findByRole(
-					'button'
-				)
-				.click()
-
-				cy
 				.findByText(
 					'No lowercase letters.'
 				)
 				.should(
 					'to.not.exist'
 				)
+
+				cy
+				.findByRole(
+					'button'
+				)
+				.click()
 			},
 		)
 	}
