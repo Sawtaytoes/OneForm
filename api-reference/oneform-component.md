@@ -87,7 +87,7 @@ const groupValidations = [
       'firstName',
       'lastName',
     ],
-    validate: ({
+    getErrorMessages: ({
       reverseLookup, // Needed for dynamic fields.
       validationType, // Either 'change' or 'submit'.
       values, // Only contains fields from `fieldNames` ^^.
@@ -97,12 +97,11 @@ const groupValidations = [
         === values.lastName
       ) {
         // Returning `undefined` and `[]` are also fine.
-        return [
-          // An optional error message on a single field.
-          {
-            errorMessage: 'Your first and last name cannot match.'
-            fieldName: 'lastName',
-          },
+        return {
+        	// Changes this to `' '` behind the scenes for signifying an error state.
+          firstName: true,
+          // An error message on the `lastName` field.
+          lastName: 'Your first and last name cannot match.',
         ]
       }
     }

@@ -46,24 +46,17 @@ const groupValidations = [
       'day',
       'month',
     ],
-    validate: ({
+    getErrorMessages: ({
       values,
     }) => {
       if (
         values.month <= 12
         && values.day <= 31
       ) {
-        return [
-          {
-            errorMessage: 'Your date is invalid.'
-            fieldName: 'dateError',
-          },
-          {
-            fieldName: 'month',
-          },
-          {
-            fieldName: 'day',
-          },
+        return {
+        	dateError: 'Your date is invalid.',
+        	day: true,
+        	month: true,
         ]
       }
     }
@@ -108,9 +101,9 @@ You can return error message on completely unrelated fields, and that's the powe
 `FieldErrorMessage` returns a string of text wherever you put it. This ensures you don't display errors on the `month` and `day` fields; neither of which is long enough to accommodate a full-width error message.
 
 {% hint style="info" %}
-Don't worry about clearing out these error messages. OneForm keeps track of all error messages output by each `validate` function and removes those errors if nothing comes back.
+Don't worry about clearing out these error messages. OneForm keeps track of all error messages output by each `getErrorMessages` function and removes those errors if nothing comes back.
 
-This does mean you need to return all error messages in `validate` each time they occur.
+This does mean you need to return all error messages in `getErrorMessages` each time they occur.
 {% endhint %}
 
 ## Triggering an error state without a message
@@ -118,24 +111,17 @@ This does mean you need to return all error messages in `validate` each time the
 Looking at our previous example, we're returning errors on `month` and `day`, but haven't put in a message:
 
 ```jsx
-validate: ({
+getErrorMessages: ({
   values,
 }) => {
   if (
     values.month <= 12
     && values.day <= 31
   ) {
-    return [
-      {
-        errorMessage: 'Your date is invalid.'
-        fieldName: 'dateError',
-      },
-      {
-        fieldName: 'month',
-      },
-      {
-        fieldName: 'day',
-      },
+    return {
+    	dateError: 'Your date is invalid.',
+    	day: true,
+    	month: true,
     ]
   }
 }
@@ -143,7 +129,7 @@ validate: ({
 
 What's gonna happen next?
 
-OneForm translates all `undefined` error messages as `' '`. If you didn't catch that, it's a space character. It does this because a space character translates to a truthy value. Useful when triggering the error state of a form without displaying an error message.
+OneForm translates all `true` error messages as `' '`. If you didn't catch that, it's a space character. It does this because a space character translates to a truthy value. Useful when triggering the error state of a form without displaying an error message.
 
 ### Using a space character
 

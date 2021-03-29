@@ -15,32 +15,28 @@ const groupValidations = [
       'firstName',
       'lastName',
     ],
-    validate: ({
+    getErrorMessages: ({
       values,
-    }) => {
-      if (
-        values.firstName
-        === values.lastName
-      ) {
-        return [
-          {
-            errorMessage: 'Your first and last name cannot match.'
-            fieldName: 'lastName',
-          },
-        ]
-      }
-    }
+    }) => ({
+      lastName: (
+        (
+        	values.firstName
+        	=== values.lastName
+      	)
+        && 'Your first and last name cannot match.'
+      )
+    })
   },
 ]
 ```
 
-An array of objects containing a `validate` function that gets called when any subscribed value changes.
+An array of objects containing a `getErrorMessages` function that gets called when any subscribed value changes.
 
 When returning a value, instead of returning a boolean, you need to specify which fields actually errored and the message for each of those fields. In the _above_ example, we returned an error message on only the `lastName` field.
 
 ## Change vs Submit validation
 
-Using the `validationType` prop \(passed into your `validate` function\), it's possible to perform a different validation on field changes versus form submission.
+Using the `validationType` prop \(passed into your `getErrorMessages` function\), it's possible to perform a different validation on field changes versus form submission.
 
 ```jsx
 const groupValidations = [
@@ -49,7 +45,7 @@ const groupValidations = [
       'day',
       'month',
     ],
-    validate: ({
+    getErrorMessages: ({
       validationType,
       values,
     }) => {
@@ -62,12 +58,9 @@ const groupValidations = [
         && values.month <= 12
         && values.day <= 31
       ) {
-        return [
-          {
-            errorMessage: 'Your date is invalid.'
-            fieldName: 'dateError',
-          }
-        ]
+        return {
+          dateError: 'Your date is invalid.',
+        }
       }
     }
   },

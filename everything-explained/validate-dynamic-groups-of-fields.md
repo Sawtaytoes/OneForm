@@ -128,7 +128,7 @@ It's important to use `FieldGroup` instead of manually naming fields with group 
 
 Dynamic fields are validated using only the field name.
 
-By default, your `validate` callback will receive an array of any values wrapped in `<FieldGroup />`:
+By default, your `getErrorMessages` callback will receive an array of any values wrapped in `<FieldGroup />`:
 
 ```jsx
 const groupValidations = [
@@ -184,7 +184,7 @@ const MyFormComponent = () => (
 
 ## Performing validations on related groups of values
 
-With dynamic fields, it's still possible you'll wanna validate individual fields instead  of groups of those fields. Similar to a `GROUP BY` operation in SQL, you can add `groupNames` to "query" fields into validation groups sent to `validate` based on their group names strings:
+With dynamic fields, it's still possible you'll wanna validate individual fields instead  of groups of those fields. Similar to a `GROUP BY` operation in SQL, you can add `groupNames` to "query" fields into validation groups sent to `getErrorMessages` based on their group names strings:
 
 ```jsx
 const groupValidations = [
@@ -201,9 +201,9 @@ const groupValidations = [
 ]
 ```
 
-While it depends on how you grouped your fields, our example form can only have one of each first and last name per `personId`. Because of that, our `validate` function will get called for each change from any one of those grouping of fields.
+While it depends on how you grouped your fields, our example form can only have one of each first and last name per `personId`. Because of that, our `getErrorMessages` function will get called for each change from any one of those grouping of fields.
 
-As a user enters the first group of first and last name, `validate` will see values like this:
+As a user enters the first group of first and last name, `getErrorMessages` will see values like this:
 
 ```jsx
 {
@@ -212,7 +212,7 @@ As a user enters the first group of first and last name, `validate` will see val
 }
 ```
 
-When a user types in another set of first and last name fields, the `validate` callback gets these values:
+When a user types in another set of first and last name fields, the `getErrorMessages` callback gets these values:
 
 ```jsx
 {
@@ -261,7 +261,7 @@ getErrorMessages: ({
 
 You're probably wondering why OneForm doesn't do this for you, I mean, it knows the field names of what went in, it should also know what's going out and translate those for you.
 
-Think about it like this. Each `personId` might have a single first and last name, but it could also contain multiple `phoneNumber` or `email` fields. How would OneForm know which fields are erroring if all `validate` returned was an error on `email`?
+Think about it like this. Each `personId` might have a single first and last name, but it could also contain multiple `phoneNumber` or `email` fields. How would OneForm know which fields are erroring if all `getErrorMessages` returned was an error on `email`?
 
 {% hint style="info" %}
 Instead of having 2 ways of naming fields when returning errors, OneForm keeps it explicit thanks to `reverseLookup`.
