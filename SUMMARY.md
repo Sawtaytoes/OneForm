@@ -41,7 +41,7 @@
 
 ## API Reference
 
-* [Release Notes](api-reference/release-notes.md)
+* [Changelog](api-reference/release-notes.md)
 * [&lt;Field /&gt;](api-reference/field-component.md)
 * [&lt;FieldErrorMessage /&gt;](api-reference/fielderrormessage-component.md)
 * [&lt;FieldGroup /&gt;](api-reference/fieldgroup-component.md)

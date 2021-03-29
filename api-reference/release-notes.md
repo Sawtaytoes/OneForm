@@ -1,4 +1,4 @@
-# Release Notes
+# Changelog
 
 ## 0.2.2 - 2021-03-29
 
