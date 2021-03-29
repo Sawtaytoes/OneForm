@@ -350,7 +350,7 @@ const OneForm = ({
 		],
 	)
 
-	const getIsValid = (
+	const getIsFormValid = (
 		useCallback(
 			() => (
 				(
@@ -380,7 +380,7 @@ const OneForm = ({
 			getAllValues: (
 				getAllFieldValues
 			),
-			getIsValid,
+			getIsValid: getIsFormValid,
 			onBeforeSubmit: () => {
 				Object
 				.keys(
