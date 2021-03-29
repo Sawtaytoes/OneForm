@@ -128,13 +128,22 @@ const useGroupValidationsState = (
 
 	const getPreviousErrorMessages = (
 		useCallback(
-			(
+			({
+				func,
 				symbol,
-			) => (
+			}) => (
 				(
-					previousErrorMessagesRef
-					.current
-					[symbol]
+					(
+						(
+							previousErrorMessagesRef
+							.current
+							[symbol]
+						)
+						|| new Map()
+					)
+					.get(
+						func
+					)
 				)
 				|| {}
 			),
@@ -146,12 +155,21 @@ const useGroupValidationsState = (
 		useCallback(
 			({
 				errorMessages,
+				func,
 				symbol,
 			}) => {
 				previousErrorMessagesRef
 				.current
 				[symbol] = (
-					errorMessages
+					new Map(
+						previousErrorMessagesRef
+						.current
+						[symbol]
+					)
+					.set(
+						func,
+						errorMessages
+					)
 				)
 			},
 			[],
@@ -168,12 +186,22 @@ const useGroupValidationsState = (
 				)
 				.forEach(([
 					symbol,
-					errorMessages,
+					functionsMap,
 				]) => (
-					Object
-					.keys(
-						errorMessages
+					Array
+					.from(
+						functionsMap
+						.values()
 					)
+					.map((
+						errorMessages
+					) => (
+						Object
+						.keys(
+							errorMessages
+						)
+					))
+					.flat()
 					.map((
 						identifier,
 					) => ({
@@ -865,14 +893,22 @@ const useGroupValidationsState = (
 				)
 
 				const previousErrorMessages = (
-					getPreviousErrorMessages(
-						symbol
-					)
+					getPreviousErrorMessages({
+						func: (
+							groupValidation
+							.getErrorMessages
+						),
+						symbol,
+					})
 				)
 
 				setPreviousErrorMessages({
 					errorMessages: (
 						validatedErrorMessages
+					),
+					func: (
+						groupValidation
+						.getErrorMessages
 					),
 					symbol,
 				})
