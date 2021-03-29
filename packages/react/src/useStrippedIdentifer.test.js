@@ -69,6 +69,7 @@ describe(
 				.toEqual({
 					groups: {},
 					groupsList: [],
+					groupsString: '',
 					identifier: 'email',
 					strippedIdentifier: 'email',
 				})
@@ -95,16 +96,20 @@ describe(
 				)
 				.toEqual({
 					groups: {
-						emailId: '363f',
+						emailId: {
+							groupId: '363f',
+							groupName: 'emailId',
+							groupString: '/emailId:363f',
+						},
 					},
 					groupsList: [
 						{
 							groupId: '363f',
 							groupName: 'emailId',
-							groupNameString: '/emailId:',
 							groupString: '/emailId:363f',
 						},
 					],
+					groupsString: '/emailId:363f',
 					identifier: 'email/emailId:363f',
 					strippedIdentifier: 'email',
 				})
@@ -131,23 +136,30 @@ describe(
 				)
 				.toEqual({
 					groups: {
-						accountId: '4d63',
-						emailId: '363f',
+						accountId: {
+							groupId: '4d63',
+							groupName: 'accountId',
+							groupString: '/accountId:4d63',
+						},
+						emailId: {
+							groupId: '363f',
+							groupName: 'emailId',
+							groupString: '/emailId:363f',
+						},
 					},
 					groupsList: [
 						{
 							groupId: '4d63',
 							groupName: 'accountId',
-							groupNameString: '/accountId:',
 							groupString: '/accountId:4d63',
 						},
 						{
 							groupId: '363f',
 							groupName: 'emailId',
-							groupNameString: '/emailId:',
 							groupString: '/emailId:363f',
 						},
 					],
+					groupsString: '/accountId:4d63/emailId:363f',
 					identifier: 'email/accountId:4d63/emailId:363f',
 					strippedIdentifier: 'email',
 				})

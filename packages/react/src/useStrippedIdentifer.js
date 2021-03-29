@@ -48,15 +48,6 @@ const useStrippedIdentifer = () => {
 						[groupString]: {
 							groupId,
 							groupName,
-							groupNameString: (
-								'/'
-								.concat(
-									groupName
-								)
-								.concat(
-									':'
-								)
-							),
 							groupString: (
 								'/'
 								.concat(
@@ -82,6 +73,21 @@ const useStrippedIdentifer = () => {
 			(
 				identifier,
 			) => {
+				if (typeof identifier !== 'string') {
+					throw new Error(
+						'You\'re trying to get data on an identifier and didn\'t pass in a valid one. You passed in:'
+						.concat(
+							'\n'
+						)
+						.concat(
+							JSON
+							.stringify(
+								identifier
+							)
+						)
+					)
+				}
+
 				if (
 					!(
 						strippedIdentifiersRef
@@ -110,14 +116,34 @@ const useStrippedIdentifer = () => {
 						Object
 						.fromEntries(
 							groupsList
-							.map(({
-								groupId,
-								groupName,
-							}) => ([
-								groupName,
-								groupId,
+							.map((
+								group,
+							) => ([
+								(
+									group
+									.groupName
+								),
+								group,
 							]))
 						)
+					)
+
+					const groupsString = (
+						(
+							(
+								groupStrings
+								.length
+							)
+							> 0
+						)
+						? (
+							'/'
+							.concat(
+								groupStrings
+								.join('/')
+							)
+						)
+						: ''
 					)
 
 					strippedIdentifiersRef
@@ -129,6 +155,7 @@ const useStrippedIdentifer = () => {
 						[identifier]: {
 							groups,
 							groupsList,
+							groupsString,
 							identifier,
 							strippedIdentifier,
 						},
