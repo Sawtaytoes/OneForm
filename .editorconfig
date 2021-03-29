@@ -9,6 +9,6 @@ insert_final_newline = true
 [*.{json}]
 indent_style = space
 
-[*.{md}]
+[/packages/react*.{md}]
 indent_size = 4
 indent_style = space
