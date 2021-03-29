@@ -103,12 +103,18 @@ export const GroupValidation = (
 	<OneForm {...args}>
 		<div>
 			<Field>
-				<input name="message1" />
+				<input
+					name="message1"
+					placeholder="Message 1"
+				/>
 			</Field>
 		</div>
 		<div>
 			<Field>
-				<input name="message2" />
+				<input
+					name="message2"
+					placeholder="Message 2"
+				/>
 			</Field>
 		</div>
 		<div>

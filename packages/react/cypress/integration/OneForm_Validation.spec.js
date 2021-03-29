@@ -4,29 +4,9 @@ describe(
 		it(
 			'Validates a single field.',
 			() => {
-				const urlSearchParams = (
-					new URLSearchParams()
-				)
-
-				urlSearchParams
-				.append(
-					'id',
-					'oneform--validation'
-				)
-
-				urlSearchParams
-				.append(
-					'viewMode',
-					'story'
-				)
-
 				cy
 				.visit(
-					'/iframe.html'
-					.concat('?')
-					.concat(
-						urlSearchParams
-					)
+					'oneform--validation'
 				)
 
 				cy

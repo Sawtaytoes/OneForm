@@ -25,3 +25,43 @@ import '@testing-library/cypress/add-commands'
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress
+.Commands
+.overwrite(
+	'visit',
+	(
+		originalVisit,
+		storybookId,
+		options,
+	) => {
+		const urlSearchParams = (
+			new URLSearchParams()
+		)
+
+		urlSearchParams
+		.append(
+			'id',
+			storybookId,
+		)
+
+		urlSearchParams
+		.append(
+			'viewMode',
+			'story'
+		)
+
+		return (
+			originalVisit(
+				(
+					'/iframe.html'
+					.concat('?')
+					.concat(
+						urlSearchParams
+					)
+				),
+				options,
+			)
+		)
+	},
+)
