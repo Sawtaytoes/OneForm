@@ -1,10 +1,12 @@
 import {
 	useCallback,
+	useMemo,
 	useRef,
 } from 'react'
 
 import useItemGroupState from './useItemGroupState'
 import useStrippedIdentifer from './useStrippedIdentifer'
+import useFilteredValuesState from './useFilteredValuesState'
 import useSymbolFunctionStore from './useSymbolFunctionStore'
 import useUpdateEffect from './useUpdateEffect'
 
@@ -28,7 +30,6 @@ const grouplessGroupValidationGroup = [
 
 const initialGroupValidations = []
 const initialRegisteredIdentifiers = new Set()
-const initialSubscribedGroupValidations = {}
 
 const useGroupValidationsState = (
 	{
@@ -69,12 +70,6 @@ const useGroupValidationsState = (
 		)
 	)
 
-	const subscribedGroupValidationsRef = (
-		useRef(
-			initialSubscribedGroupValidations
-		)
-	)
-
 	const {
 		getAllValues: getAllPreviousErrorMessages,
 		getSymbol: getErrorMessagesSymbol,
@@ -93,71 +88,39 @@ const useGroupValidationsState = (
 		useItemGroupState()
 	)
 
-	const getSubscribedGroupValidation = (
-		useCallback(
-			(
-				identifier,
-			) => (
-				subscribedGroupValidationsRef
-				.current
-				[identifier]
+	const groupValidationsList = (
+		useMemo(
+			() => (
+				groupValidations
+				.map((
+					groupValidation
+				) => ({
+					identifiers: (
+						groupValidation
+						.fieldNames
+					),
+					value: (
+						groupValidation
+					),
+				}))
 			),
-			[],
-		)
-	)
-
-	const setSubscribedGroupValidation = (
-		useCallback(
-			({
-				identifier,
-				strippedIdentifier,
-			}) => {
-				if (
-					getSubscribedGroupValidation(
-						identifier
-					)
-				) {
-					return
-				}
-
-				subscribedGroupValidationsRef
-				.current = {
-					...(
-						subscribedGroupValidationsRef
-						.current
-					),
-					[identifier]: (
-						groupValidations
-						.filter(({
-							fieldNames: strippedIdentifiers,
-						}) => (
-							strippedIdentifiers
-							.includes(
-								strippedIdentifier
-							)
-						))
-					),
-				}
-			},
 			[
-				getSubscribedGroupValidation,
 				groupValidations,
 			],
 		)
 	)
 
-	const resetSubscribedGroupValidations = (
-		useCallback(
-			() => {
-				subscribedGroupValidationsRef
-				.current = (
-					initialSubscribedGroupValidations
-				)
-			},
-			[],
-		)
+	const {
+		getFilteredValue: getSubscribedGroupValidation,
+		resetFilteredValues: resetSubscribedGroupValidations,
+		setFilteredValue: setSubscribedGroupValidation,
+	} = (
+		useFilteredValuesState({
+			identifiersList: (
+				groupValidationsList
+			),
+		})
 	)
-
 
 	const registerIdentifierForGroupValidation = (
 		useCallback(
@@ -200,7 +163,9 @@ const useGroupValidationsState = (
 
 				setSubscribedGroupValidation({
 					identifier,
-					strippedIdentifier,
+					listIdentifier: (
+						strippedIdentifier
+					),
 				})
 
 				setItemGroup({
