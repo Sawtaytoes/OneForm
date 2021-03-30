@@ -4,6 +4,7 @@ import {
 } from 'react'
 
 import useStrippedIdentifer from './useStrippedIdentifer'
+import useSymbolFunctionStore from './useSymbolFunctionStore'
 import useUpdateEffect from './useUpdateEffect'
 
 const grouplessGroup = {
@@ -26,7 +27,6 @@ const grouplessGroupValidationGroup = [
 
 const initialGroupIdentifiers = new Map()
 const initialGroupValidations = []
-const initialPreviousErrorMessages = {}
 const initialRegisteredIdentifiers = new Set()
 const initialSubscribedGroupValidations = {}
 
@@ -63,12 +63,6 @@ const useGroupValidationsState = (
 		useStrippedIdentifer()
 	)
 
-	const previousErrorMessagesRef = (
-		useRef(
-			initialPreviousErrorMessages
-		)
-	)
-
 	const registeredIdentifiersRef = (
 		useRef(
 			initialRegisteredIdentifiers
@@ -81,152 +75,14 @@ const useGroupValidationsState = (
 		)
 	)
 
-	const getSymbol = (
-		useCallback(
-			({
-				groupValidation,
-				identifierGroup,
-			}) => (
-				Symbol
-				.for(
-					[
-						(
-							groupValidation
-							.fieldNames
-						),
-						(
-							groupValidation
-							.groupNames
-						),
-						(
-							identifierGroup
-							.map(({
-								identifier,
-							}) => (
-								identifier
-							))
-							.sort()
-						),
-					]
-					.filter(
-						Boolean
-					)
-					.map((
-						value
-					) => (
-						JSON
-						.stringify(
-							value
-						)
-					))
-					.join('')
-				)
-			),
-			[],
-		)
-	)
-
-	const getPreviousErrorMessages = (
-		useCallback(
-			({
-				func,
-				symbol,
-			}) => (
-				(
-					(
-						(
-							previousErrorMessagesRef
-							.current
-							[symbol]
-						)
-						|| new Map()
-					)
-					.get(
-						func
-					)
-				)
-				|| {}
-			),
-			[],
-		)
-	)
-
-	const setPreviousErrorMessages = (
-		useCallback(
-			({
-				errorMessages,
-				func,
-				symbol,
-			}) => {
-				previousErrorMessagesRef
-				.current
-				[symbol] = (
-					new Map(
-						previousErrorMessagesRef
-						.current
-						[symbol]
-					)
-					.set(
-						func,
-						errorMessages
-					)
-				)
-			},
-			[],
-		)
-	)
-
-	const resetPreviousErrorMessages = (
-		useCallback(
-			() => {
-				Object
-				.entries(
-					previousErrorMessagesRef
-					.current
-				)
-				.forEach(([
-					symbol,
-					functionsMap,
-				]) => (
-					Array
-					.from(
-						functionsMap
-						.values()
-					)
-					.map((
-						errorMessages
-					) => (
-						Object
-						.keys(
-							errorMessages
-						)
-					))
-					.flat()
-					.map((
-						identifier,
-					) => ({
-						identifier,
-						symbol,
-					}))
-				))
-				.flat()
-				.forEach(({
-					identifier,
-					symbol,
-				}) => {
-					setErrorMessages(
-						identifier,
-						{
-							errorMessages: [],
-							symbol,
-						}
-					)
-				})
-			},
-			[
-				setErrorMessages,
-			],
-		)
+	const {
+		getAllValues: getAllPreviousErrorMessages,
+		getSymbol: getErrorMessagesSymbol,
+		getValue: getPreviousErrorMessages,
+		resetValues: resetPreviousErrorMessages,
+		setValue: setPreviousErrorMessages,
+	} = (
+		useSymbolFunctionStore()
 	)
 
 	const getSubscribedGroupValidation = (
@@ -886,7 +742,7 @@ const useGroupValidationsState = (
 				)
 
 				const symbol = (
-					getSymbol({
+					getErrorMessagesSymbol({
 						groupValidation,
 						identifierGroup,
 					})
@@ -983,7 +839,7 @@ const useGroupValidationsState = (
 			},
 			[
 				getPreviousErrorMessages,
-				getSymbol,
+				getErrorMessagesSymbol,
 				getValidationType,
 				getValue,
 				setPreviousErrorMessages,
@@ -1107,6 +963,20 @@ const useGroupValidationsState = (
 
 	useUpdateEffect(
 		() => {
+			getAllPreviousErrorMessages()
+			.forEach(({
+				identifier,
+				symbol,
+			}) => {
+				setErrorMessages(
+					identifier,
+					{
+						errorMessages: [],
+						symbol,
+					}
+				)
+			})
+
 			resetPreviousErrorMessages()
 			resetGroupIdentifiers()
 			resetSubscribedGroupValidations()
@@ -1122,6 +992,7 @@ const useGroupValidationsState = (
 			groupValidations,
 			registerIdentifierForGroupValidation,
 			resetPreviousErrorMessages,
+			setErrorMessages,
 		]
 	)
 
