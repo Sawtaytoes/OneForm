@@ -3,6 +3,7 @@ import {
 	useRef,
 } from 'react'
 
+import useItemGroupState from './useItemGroupState'
 import useStrippedIdentifer from './useStrippedIdentifer'
 import useSymbolFunctionStore from './useSymbolFunctionStore'
 import useUpdateEffect from './useUpdateEffect'
@@ -25,7 +26,6 @@ const grouplessGroupValidationGroup = [
 	},
 ]
 
-const initialGroupIdentifiers = new Map()
 const initialGroupValidations = []
 const initialRegisteredIdentifiers = new Set()
 const initialSubscribedGroupValidations = {}
@@ -83,6 +83,14 @@ const useGroupValidationsState = (
 		setValue: setPreviousErrorMessages,
 	} = (
 		useSymbolFunctionStore()
+	)
+
+	const {
+		getItemGroup,
+		resetItemGroups,
+		setItemGroup,
+	} = (
+		useItemGroupState()
 	)
 
 	const getSubscribedGroupValidation = (
@@ -150,81 +158,6 @@ const useGroupValidationsState = (
 		)
 	)
 
-	const groupIdentifiersRef = (
-		useRef(
-			initialGroupIdentifiers
-		)
-	)
-
-	const getGroupIdentifiers = (
-		useCallback(
-			(
-				group,
-			) => (
-				groupIdentifiersRef
-				.current
-				.get(
-					group
-				)
-			),
-			[],
-		)
-	)
-
-	const setGroupIdentifiers = (
-		useCallback(
-			({
-				groupsList,
-				strippedIdentifierData,
-			}) => {
-				groupIdentifiersRef
-				.current = (
-					groupsList
-					.reduce(
-						(
-							groupIdentifiers,
-							group,
-						) => (
-							new Map(
-								groupIdentifiers
-							)
-							.set(
-								group,
-								(
-									new Set(
-										groupIdentifiers
-										.get(
-											group
-										)
-									)
-									.add(
-										strippedIdentifierData
-									)
-								)
-							)
-						),
-						(
-							groupIdentifiersRef
-							.current
-						),
-					)
-				)
-			},
-			[],
-		)
-	)
-
-	const resetGroupIdentifiers = (
-		useCallback(
-			() => {
-				groupIdentifiersRef
-				.current = (
-					initialGroupIdentifiers
-				)
-			},
-			[],
-		)
-	)
 
 	const registerIdentifierForGroupValidation = (
 		useCallback(
@@ -270,19 +203,21 @@ const useGroupValidationsState = (
 					strippedIdentifier,
 				})
 
-				setGroupIdentifiers({
-					groupsList: (
+				setItemGroup({
+					groupIdentifiers: (
 						groupsList
 						.concat(
 							grouplessGroup
 						)
 					),
-					strippedIdentifierData,
+					item: (
+						strippedIdentifierData
+					),
 				})
 			},
 			[
 				getStrippedIdentifierData,
-				setGroupIdentifiers,
+				setItemGroup,
 				setSubscribedGroupValidation,
 			],
 		)
@@ -341,7 +276,7 @@ const useGroupValidationsState = (
 							}) => (
 								Array
 								.from(
-									getGroupIdentifiers(
+									getItemGroup(
 										group
 									)
 								)
@@ -538,7 +473,7 @@ const useGroupValidationsState = (
 				)
 			},
 			[
-				getGroupIdentifiers,
+				getItemGroup,
 				getIsReadyForValidation,
 			],
 		)
@@ -978,7 +913,7 @@ const useGroupValidationsState = (
 			})
 
 			resetPreviousErrorMessages()
-			resetGroupIdentifiers()
+			resetItemGroups()
 			resetSubscribedGroupValidations()
 
 			getAllIdentifiers()
@@ -988,9 +923,9 @@ const useGroupValidationsState = (
 		},
 		[
 			getAllIdentifiers,
-			// We're listening to this value to tigger an update even if we don't use it.
-			groupValidations,
+			groupValidations, // We're listening to this value to tigger an update even if we don't use it.
 			registerIdentifierForGroupValidation,
+			resetItemGroups,
 			resetPreviousErrorMessages,
 			setErrorMessages,
 		]
