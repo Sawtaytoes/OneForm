@@ -10,7 +10,7 @@ This hook is commonly used when showing or hiding fields based on their value.
 
 | Prop Name | Description |
 | :--- | :--- |
-| `name` | The base field name without a `/`. |
+| `name` | The base field name **without** a `/`. |
 
 ### Props out
 

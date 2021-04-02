@@ -10,7 +10,7 @@ This hook is commonly used when creating custom error message components that di
 
 | Prop Name | Description |
 | :--- | :--- |
-| `name` | The base field name without a `/`. |
+| `name` | The base field name **without** a `/`. |
 
 ### Props out
 

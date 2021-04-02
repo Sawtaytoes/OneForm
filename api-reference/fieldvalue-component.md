@@ -23,6 +23,10 @@ const ValuesExample = () => (
 )
 ```
 
+| Prop Name | Description |
+| :--- | :--- |
+| `name` | The base field name **without** a `/`. |
+
 ### When to use?
 
 Most components display values in `<Field />`, so this component useful if:

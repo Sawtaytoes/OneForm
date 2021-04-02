@@ -4,31 +4,118 @@ description: 'I''ve got no strings, to hold me down...'
 
 # &lt;Field /&gt;
 
-`Field` is the most magical of components ever conceived in the _mystical world of React_. Not only does it require no props, but it leaves your code feeling fresh and clean. It's only as intrusive as it needs to be to accomplish its tasks of maintaining the state of whatever child component you give it.
+Use this when wrapping HTML input components or your own custom input components.
 
-## But really
+It will pass them props such as change handlers, the current field value, and error messages.
 
-The only required prop is `children`; more like "child". You give it a single input, it takes that input pulls off the `name` and passes it a `value`. From there, you're component's now hooked into OneForm's state.
+{% hint style="warning" %}
+`<Field />` does **not** use render props. It clones your child component instead.
+{% endhint %}
+
+With a standard HTML `input`:
 
 ```jsx
-<Field>
-  <input name="message" />
-</Field>
+import {
+  Field,
+  OneForm,
+} from '@oneform/react'
+
+const FieldExample = () => (
+  <OneForm>
+    <Field>
+      <input name="email" />
+    </Field>
+  </OneForm>
+)
 ```
 
-It doesn't get any simpler than that.
+Or with Material UI's `TextField`:
 
-`Field` also registers your components for validation. If you pass in client-side validations, `Field` makes them available to validate.
+```jsx
+import {
+  TextField
+} from "@material-ui/core";
+import {
+  Field,
+  FieldErrorMessage,
+  OneForm,
+} from '@oneform/react'
+
+const FieldExample = () => (
+  <OneForm>
+    <Field>
+      <TextField
+        helperText={
+          <FieldErrorMessage name="message" />
+        }
+        label="Message"
+        name="message"
+      />
+    </Field>
+  </OneForm>
+)
+```
+
+| Prop Name | Description |
+| :--- | :--- |
+| `children` | A single component. |
+
+## Child props
+
+### Props on the child component
+
+| Prop Name | Description |
+| :--- | :--- |
+| name | A single component. |
+
+If you add `onBlur` and `onChange` functions, they'll work as before, but they'll be wrapped by `<Field />`.
+
+### Props given to the child component
+
+| Prop Name | Description |
+| :--- | :--- |
+| `dirty` | An HTML-safe string representation of a boolean. |
+| `error` | An error message string of the first error message. _This may change to a boolean in the future._ |
+| `errors` | An array of error messages. |
+| `name` | The field name **without** the `/`. |
+| `onBlur` | Callback expecting a standard `onBlur` event. |
+| `onChange` | Callback expecting a standard `onChange` event. |
+| `touched` | An HTML-safe string representation of a boolean. |
+| `value` | Value of the given field name. |
+| `visited` | An HTML-safe string representation of a boolean. |
 
 ## Caveats
 
-> Your component needs two props: `name` and `value`. `Field` passes `value` so you don't need to do that yourself.
-
+{% hint style="info" %}
 Your input can be any component, but it absolutely needs a `name` prop. `Field` can't work without it.
+{% endhint %}
 
-In addition, you need to have a `value` prop on your component. Without that prop, your input won't receive updates from OneForm. In the event you want a text box that doesn't show any text, I you could leave off the `value` prop no problem 👍.
+You need to also have component at least needs these props to update the value:
 
-## Issues
+* `onChange`
+* `value`
 
-In the rare case you need to validate fields relative to the value of a checkbox on change instead of submit, [tweet me](https://twitter.com/Sawtaytoes), and I'll figure it out for you. I plan to fix this, but haven't implemented one yet.
+Without these props, your custom input won't receive updates from OneForm.
+
+To get around this limitation, you can create your own `<Field />` component with `useField`.
+
+{% page-ref page="usefield-hook.md" %}
+
+## Password fields
+
+In the event you want a text box that doesn't show any text, I you could leave off the `value` prop 👍.
+
+## Checkbox Validation Issue
+
+OneForm supports checkbox fields no problem, except when you want to validate using a checkbox.
+
+The way it works today, if you check a checkbox, it's considered "visited".
+
+If you want to **validate without first checking the checkbox**, you'd have to create your own `<CheckboxField />` component using `useField`.
+
+{% hint style="warning" %}
+Your custom field component needs to call `setVisited` when the component mounts.
+{% endhint %}
+
+{% page-ref page="usefield-hook.md" %}
 

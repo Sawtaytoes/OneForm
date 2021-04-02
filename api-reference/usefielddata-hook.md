@@ -14,7 +14,7 @@ Like React's `useContext`hook, this hook forces your component to update anytime
 
 | Prop Name | Description |
 | :--- | :--- |
-| `name` | The base field name without a `/`. |
+| `name` | The base field name **without** a `/`. |
 
 ### Props out
 
