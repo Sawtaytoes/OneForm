@@ -103,9 +103,9 @@ const useField = ({
 		fieldName,
 		fieldVisited,
 		isVisited: (
-			String(
-				isVisited
-			)
+			isVisited
+			? 'true'
+			: ''
 		),
 		value,
 		valueChanged,
