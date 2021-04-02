@@ -14,3 +14,9 @@
 
 
 
+{% hint style="danger" %}
+Everything before 0.2.0 is considered unstable.
+{% endhint %}
+
+
+
