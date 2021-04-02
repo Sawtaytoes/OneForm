@@ -50,7 +50,7 @@ The **HTML output** looks like:
 
 The error messaging system in OneForm tracks each error message's origin. This means passing `updatedErrorMessages` will not overwrite errors from `validations` and `groupValidations`. 
 
-The idea is that, if you're passing in error values on a field, you're in control of those particular error messages. If other error messages are there, they should stay there.
+The idea is that, if you're passing in error messages on a field, you're in control of those particular error messages. If other error messages are there, they should stay there.
 
 ### Adding error messages
 

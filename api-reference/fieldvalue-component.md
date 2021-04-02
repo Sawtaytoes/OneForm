@@ -1,6 +1,32 @@
 # &lt;FieldValue /&gt;
 
-Similar to `FieldErrorMessage` except it displays the value of a given field name rather than the error message.
+Displays the value for a given field name.
 
-🚧 Under Construction
+```jsx
+import {
+  FieldValue,
+  OneForm,
+} from '@oneform/react'
+
+const values = {
+  name: 'Kevin Ghadyani',
+}
+
+const ValuesExample = () => (
+  <OneForm
+    values={values}
+  >
+    <div>
+      <FieldValue name="name" />
+    </div>
+  </OneForm>
+)
+```
+
+### When to use?
+
+Most components display values in `<Field />`, so this component useful if:
+
+* Your inputs don't display values.
+* You want to display the value of a field somewhere else in your app.
 
