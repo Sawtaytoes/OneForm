@@ -2,12 +2,17 @@
 description: This typically happens when receiving error messages from an API request.
 ---
 
-# Pass in error messages
+# Reset and replace error messages
 
-By simply passing an `errors` object into OneForm, you can clear our the form's current errors and replace them with your own:
+By passing an **`errorMessages`** object to OneForm, you can **reset** all error messages ****and **replace** them ****with your own:
 
 ```jsx
-const errors = {
+import {
+  FieldErrorMessage,
+  OneForm,
+} from '@oneform/react'
+
+const errorMessages = {
   email: [
     'Email addresses require an `@` sign.',
     'Only `.org` domains are valid.'
@@ -17,9 +22,9 @@ const errors = {
   ],
 }
 
-const MyFormComponent = () => (
+const ErrorMessagesExample = () => (
   <OneForm
-    errors={errors}
+    errorMessages={errorMessages}
   >
     <div>
       <FieldErrorMessage name="name" />
@@ -30,8 +35,11 @@ const MyFormComponent = () => (
     </div>
   </OneForm>
 )
+```
 
-// HTML Output
+The **HTML output** looks like:
+
+```markup
 <form>
   <div>
     Email addresses require an `@` sign.
@@ -42,12 +50,24 @@ const MyFormComponent = () => (
 </form>
 ```
 
-While `FormErrorMessage` only divvies out one error, you can use `useFieldErrorMessages` in a custom error message component and get all of them in an array, the same array you passed in.
+### Merge or update error messages
 
-That looks something like this:
+Instead of resetting and replacing error messages, you may want to update them instead.
+
+Use `updatedErrorMessages`:
+
+{% page-ref page="add-or-update-error-messages.md" %}
+
+## Custom error messages component
+
+`FormErrorMessage` only shows a single error. If you want to show all error messages, the **`useFieldErrorMessages`** hook gives you the ability to write your own component.
+
+You can output multiple field error messages like so:
 
 ```jsx
-const MyCustomFieldErrorMessages = () => {
+import { useFieldErrorMessages } from '@oneform/react'
+
+const FieldErrorMessagesExample = () => {
   const {
     errorMessages = [],
   } = (
@@ -69,5 +89,9 @@ const MyCustomFieldErrorMessages = () => {
 }
 ```
 
-\`\`
+## When is this useful?
+
+If you have an external API which returns error messages when someone fails to write to the database, this is the perfect example of when you'd want to wipe all form errors.
+
+Another instance would be if you have no client-side validation and want to do everything server-side. At that point, it makes sense to always wipe OneForm's errors with whatever `errorMessages` object you've passed in.  
 

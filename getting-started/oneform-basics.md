@@ -3,11 +3,18 @@
 The simplest way to use it is with an `input` and `Field` component:
 
 ```jsx
-<OneForm>
-  <Field>
-    <input name="message" />
-  </Field>
-</OneForm>
+import {
+  Field,
+  OneForm,
+} from '@oneform/react'
+
+const BasicExample = () => (
+  <OneForm>
+    <Field>
+      <input name="message" />
+    </Field>
+  </OneForm>
+)
 ```
 
 OneForm can use any input component, either a regular old HTML one or one from your own custom React component.
@@ -15,17 +22,24 @@ OneForm can use any input component, either a regular old HTML one or one from y
 Looking at this example, the text underneath the input updates as you type.
 
 ```jsx
-<OneForm>
-  <div>
-    <Field>
-      <input name="message" />
-    </Field>
-  </div>
-  
-  <div>
-    <FieldValue name="message" />
-  </div>
-</OneForm>
+import {
+  Field,
+  OneForm,
+} from '@oneform/react'
+
+const UpdatingValueExample = () => (
+  <OneForm>
+    <div>
+      <Field>
+        <input name="message" />
+      </Field>
+    </div>
+    
+    <div>
+      <FieldValue name="message" />
+    </div>
+  </OneForm>
+)
 ```
 
 While submitting the form is optional, you could easily add a button to handle submission without having to pass in anything fancy.

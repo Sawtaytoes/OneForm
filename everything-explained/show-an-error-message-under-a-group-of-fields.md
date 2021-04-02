@@ -11,21 +11,29 @@ There are a few ways of setting up error messages under a group of fields, the c
 The simplest way is passing `errorMessages` into `<OneForm />` on a field that'll only be used for displaying error messages:
 
 ```jsx
+import {
+  FieldErrorMessage,
+  OneForm,
+} from '@oneform/react'
+
 const errorsMessages = {
   birthdayError: [
     'You can only have one birthday.',
   ],
 }
 
-const MyFormWithOneError = () => (
+const SingleErrorExample = () => (
   <OneForm
     errorsMessages={errorsMessages}
   >
     <FieldErrorMessage name="birthdayError" />
   </OneForm>
 )
+```
 
-// HTML Output
+The **HTML output** looks like:
+
+```markup
 <form>
   You can only have one birthday.
 </form>
@@ -40,6 +48,12 @@ Instead of passing in error messages, you'd typically want to use `groupValidati
 It'll look something like this:
 
 ```jsx
+import {
+  Field,
+  FieldErrorMessage,
+  OneForm,
+} from '@oneform/react'
+
 const groupValidations = [
   {
     fieldNames: [
@@ -54,16 +68,16 @@ const groupValidations = [
         && values.day <= 31
       ) {
         return {
-        	dateError: 'Your date is invalid.',
-        	day: true,
-        	month: true,
+            dateError: 'Your date is invalid.',
+            day: true,
+            month: true,
         ]
       }
     }
   },
 ]
 
-const MyFormWithErrors = () => (
+const GroupFieldErrorExample = () => (
   <OneForm
     groupValidations={groupValidations}
   >
@@ -82,14 +96,17 @@ const MyFormWithErrors = () => (
     </div>
   </OneForm>
 )
+```
 
-// HTML Output
+The **HTML output** looks like:
+
+```markup
 <form>
   <div>
     <input name="month" />
     <input name="day" />
   </div>
-  
+
   <div>
     You can only have one birthday.
   </div>
@@ -119,9 +136,9 @@ getErrorMessages: ({
     && values.day <= 31
   ) {
     return {
-    	dateError: 'Your date is invalid.',
-    	day: true,
-    	month: true,
+      dateError: 'Your date is invalid.',
+      day: true,
+      month: true,
     ]
   }
 }
@@ -138,8 +155,8 @@ The reason we use `' '` instead of `true` or any other value, most React compone
 Because of this, the value needs to be truthy without switching types from a string to a boolean. A space character, which HTML skips over, is important to achieving this goal.
 
 {% hint style="warning" %}
-While HTML will remove the space, you might have special styling in your custom components if an error message exists.  
-  
+While HTML will remove the space, you might have special styling in your custom components if an error message exists.
+
 In those cases, you'll need to ensure to `.trim()` the error message before checking if those styles should activate.
 {% endhint %}
 

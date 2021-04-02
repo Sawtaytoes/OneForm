@@ -20,9 +20,9 @@ const groupValidations = [
     }) => ({
       lastName: (
         (
-        	values.firstName
-        	=== values.lastName
-      	)
+            values.firstName
+            === values.lastName
+          )
         && 'Your first and last name cannot match.'
       )
     })
@@ -52,7 +52,7 @@ const groupValidations = [
       if (validationType === 'change') {
         return
       }
-      
+
       if (
         validationType === 'submit'
         && values.month <= 12
@@ -74,14 +74,16 @@ A good example is when you might not want to show an error message about a date 
 To avoid namespace conflicts, prefix your field names with the component name:
 
 ```jsx
-const MyFieldComponent = () => (
+import { Field } from '@oneform/react'
+
+const FieldsComponentExample = () => (
   <div>
     <Field>
-      <input name="MyFieldComponent.firstName" />
+      <input name="FieldsComponentExample.firstName" />
     </Field>
-    
+
     <Field>
-      <input name="MyFieldComponent.lastName" />
+      <input name="FieldsComponentExample.lastName" />
     </Field>
   </div>
 )

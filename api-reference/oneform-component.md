@@ -22,22 +22,30 @@ description: 'The center of everything, the one and only, OneForm.'
 ## `children`
 
 ```jsx
-<OneForm>
-  Text or React components can appear in here.
-  
-  <label htmlFor="message">
-    <Field>
-      <input
-        id="message"
-        name="message"
-      />
-    </Field>
-  </label>
+import {
+  Field,
+  FieldErrorMessage,
+  OneForm,
+} from '@oneform/react'
 
-  <div>
-    <FieldErrorMessage name="message" />
-  </div>
-</OneForm>
+const PassingChildrenExample = () => (
+  <OneForm>
+    Text or React components can appear in here.
+
+    <label htmlFor="message">
+      <Field>
+        <input
+          id="message"
+          name="message"
+        />
+      </Field>
+    </label>
+
+    <div>
+      <FieldErrorMessage name="message" />
+    </div>
+  </OneForm>
+)
 ```
 
 Can be any valid React element \(example: single or multiple components and text\).
@@ -67,9 +75,9 @@ const errors = {
 This is an object where each prop contains an array of strings where the strings are error messages tied to specific fields.
 
 {% hint style="warning" %}
-Updating this value will wipe all errors from the form and only display the ones you passed in.  
-  
-If you want to merge new errors into OneForm, use `updatedErrorMessages` instead. 
+Updating this value will wipe all errors from the form and only display the ones you passed in.
+
+If you want to merge new errors into OneForm, use `updatedErrorMessages` instead.
 {% endhint %}
 
 `Field` and `FieldErrorMessage` components, as well as the `useField` and `useFieldErrorMessages` hooks have access to error messages defined by this prop.
@@ -98,7 +106,7 @@ const groupValidations = [
       ) {
         // Returning `undefined` and `[]` are also fine.
         return {
-        	// Changes this to `' '` behind the scenes for signifying an error state.
+            // Changes this to `' '` behind the scenes for signifying an error state.
           firstName: true,
           // An error message on the `lastName` field.
           lastName: 'Your first and last name cannot match.',
@@ -120,9 +128,13 @@ When returning a value, instead of returning a boolean, you need to specify whic
 ## `hasFieldChangeValidation`
 
 ```jsx
-<OneForm hasFieldChangeValidation={false}>
-  <Field name="message" />
-</OneForm>
+import { OneForm } from '@oneform/react'
+
+const ChangeValidationExample = () => (
+  <OneForm hasFieldChangeValidation={false}>
+    <Field name="message" />
+  </OneForm>
+)
 ```
 
 {% hint style="info" %}
@@ -138,6 +150,11 @@ This value is `true` by default.
 ## `onSubmit`
 
 ```jsx
+import {
+  Field,
+  OneForm,
+} from '@oneform/react'
+
 const formSubmitted = (
   useCallback(({
     allValues,
@@ -148,21 +165,24 @@ const formSubmitted = (
   [],
 );
 
-<OneForm
-  onSubmit={formSubmitted}
->
-  <Field>
-    <input name="message" />
-  </Field>
-</OneForm>
-
+const SubmittingFormExample = () => (
+  <OneForm
+    onSubmit={formSubmitted}
+  >
+    <Field>
+      <input name="message" />
+    </Field>
+  </OneForm>
+)
 ```
 
 🚧 Under Construction
 
 ## `updatedErrorMessages`
 
-🚧 Under Construction
+
+
+{% page-ref page="../everything-explained/add-or-update-error-messages.md" %}
 
 ## `updatedValues`
 
@@ -207,8 +227,6 @@ const validations = {
   ],
 }
 ```
-
-We haven't changed `validate` to `getIsValid` yet.
 
 🚧 Under Construction
 

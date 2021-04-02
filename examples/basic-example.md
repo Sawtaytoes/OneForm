@@ -3,11 +3,18 @@
 Here's a simple example of OneForm in action:
 
 ```jsx
-<OneForm>
-  <Field>
-    <input name="message" />
-  </Field>
-</OneForm>
+import {
+  Field,
+  OneForm,
+} from '@oneform/react'
+
+const BasicExample = () => (
+  <OneForm>
+    <Field>
+      <input name="message" />
+    </Field>
+  </OneForm>
+)
 ```
 
 It's a pretty basic example, but you don't need to pass anything special to `OneForm`, just `children`.  

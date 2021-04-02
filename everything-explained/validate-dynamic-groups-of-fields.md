@@ -9,35 +9,41 @@ description: Pass group validations with group names.
 Before going into dynamic field validation, you need to first know how we group fields in OneForm. Wrap every grouped `<Field />` in `<FieldGroup />` like so:
 
 ```jsx
-<FieldGroup
-  id="b27b"
-  name="addressId"
->
-  <Field>
-    <input name="name" />
-  </Field>
-  
-  <Field>
-    <input name="address" />
-  </Field>
-</FieldGroup>
+import {
+  Field,
+  FieldGroup,
+} from '@oneform/react'
 
-<FieldGroup
-  id="97ef"
-  name="addressId"
->
-  <Field>
-    <input name="name" />
-  </Field>
-  
-  <Field>
-    <input name="address" />
-  </Field>
-</FieldGroup>
+const GroupingFieldsExample = () => (
+  <FieldGroup
+    id="b27b"
+    name="addressId"
+  >
+    <Field>
+      <input name="name" />
+    </Field>
 
+    <Field>
+      <input name="address" />
+    </Field>
+  </FieldGroup>
+
+  <FieldGroup
+    id="97ef"
+    name="addressId"
+  >
+    <Field>
+      <input name="name" />
+    </Field>
+
+    <Field>
+      <input name="address" />
+    </Field>
+  </FieldGroup>
+)
 ```
 
-Under the hood, `FieldGroup` is adding special properties to the field name that look like this internally:
+**Under the hood**, `FieldGroup` is adding special properties to the field name that look like this internally:
 
 ```jsx
 {
@@ -56,67 +62,78 @@ Since OneForm contains a shallow object of all field values, it needs some way t
 You can even deeply nest `FieldGroup` components:
 
 ```jsx
-<FieldGroup
-  id="97ef"
-  name="addressId"
->
-  <Field>
-    <input name="name" />
-  </Field>
-  
-  <Field>
-    <input name="address" />
-  </Field>
-  
+import {
+  Field,
+  FieldGroup,
+} from '@oneform/react'
+
+const DeeplyNestingExample = () => (
   <FieldGroup
-    id="a6d1"
-    name="emailId"
+    id="97ef"
+    name="addressId"
   >
     <Field>
-      <input name="email" />
+      <input name="name" />
     </Field>
-  </FieldGroup>
-  
-  <FieldGroup
-    id="c232"
-    name="emailId"
-  >
+
     <Field>
-      <input name="email" />
+      <input name="address" />
     </Field>
+
+    <FieldGroup
+      id="a6d1"
+      name="emailId"
+    >
+      <Field>
+        <input name="email" />
+      </Field>
+    </FieldGroup>
+
+    <FieldGroup
+      id="c232"
+      name="emailId"
+    >
+      <Field>
+        <input name="email" />
+      </Field>
+    </FieldGroup>
   </FieldGroup>
-</FieldGroup>
+)
+```
 
-// OneForm's internal state
-/*
-  {
-    'name/addressId:97ef': '',
-    'address/addressId:97ef': '',
+OneForm's **internal** values looks like:
 
-    'email/addressId:97ef/emailId:a6d1': '',
-    'email/addressId:97ef/emailId:c232': '',
-  }
-*/
+```javascript
+{
+  'name/addressId:97ef': '',
+  'address/addressId:97ef': '',
 
+  'email/addressId:97ef/emailId:a6d1': '',
+  'email/addressId:97ef/emailId:c232': '',
+}
 ```
 
 Notice how both email fields share the same `addressId`, but not the same `emailId`. This allows us to validate against different groups of fields by "querying" these group IDs in a group validation.
 
 While the `FieldGroup` component is helpful, it's actually not required. Before adding it, you'd need to add these names manually:
 
-```jsx
-<Field>
-  <input name="name/addressId:97ef" />
-</Field>
-
-<Field>
-  <input name="address/addressId:97ef" />
-</Field>
-```
-
 {% hint style="danger" %}
 This method isn't recommended nor is it officially supported.
 {% endhint %}
+
+```jsx
+import { Field } from '@oneform/react'
+
+const NotRecommendExample = () => (
+  <Field>
+    <input name="name/addressId:97ef" />
+  </Field>
+
+  <Field>
+    <input name="address/addressId:97ef" />
+  </Field>
+)
+```
 
 It's important to use `FieldGroup` instead of manually naming fields with group names:
 
@@ -131,6 +148,12 @@ Dynamic fields are validated using only the field name.
 By default, your `getErrorMessages` callback will receive an array of any values wrapped in `<FieldGroup />`:
 
 ```jsx
+import {
+  Field,
+  FieldGroup,
+  OneForm,
+} from '@oneform/react'
+
 const groupValidations = [
   {
     fieldNames: [
@@ -157,7 +180,7 @@ const groupValidations = [
   },
 ]
 
-const MyFormComponent = () => (
+const GroupValidationFormExample = () => (
   <OneForm
     groupValidations={groupValidations}
   >
@@ -184,7 +207,7 @@ const MyFormComponent = () => (
 
 ## Performing validations on related groups of values
 
-With dynamic fields, it's still possible you'll wanna validate individual fields instead  of groups of those fields. Similar to a `GROUP BY` operation in SQL, you can add `groupNames` to "query" fields into validation groups sent to `getErrorMessages` based on their group names strings:
+With dynamic fields, it's still possible you'll wanna validate individual fields instead of groups of those fields. Similar to a `GROUP BY` operation in SQL, you can add `groupNames` to "query" fields into validation groups sent to `getErrorMessages` based on their group names strings:
 
 ```jsx
 const groupValidations = [
