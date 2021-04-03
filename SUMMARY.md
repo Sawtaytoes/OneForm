@@ -7,14 +7,14 @@
   * [Why not React Hook Form?](compare-oneform-to-others/why-not-react-hook-form.md)
   * [Why not Redux Form?](compare-oneform-to-others/why-not-redux-form.md)
 
-## Getting Started
+## 🔰 Getting Started
 
 * [Installation](getting-started/installation.md)
 * [OneForm basics](getting-started/oneform-basics.md)
 * [Playground](getting-started/playground.md)
 * [Support](getting-started/support.md)
 
-## Core Concepts
+## 💠 Core Concepts
 
 * [Creation story](core-concepts/creation-story.md)
 * [Philosophy](core-concepts/philosophy.md)
@@ -22,7 +22,7 @@
 * [Intelligent error messages](core-concepts/intelligent-error-messages.md)
 * [Bring your own components](core-concepts/bring-your-own-components.md)
 
-## Everything Explained
+## 🤯 Everything Explained
 
 * [Add or update error messages](everything-explained/add-or-update-error-messages.md)
 * [Reset and replace error messages](everything-explained/pass-in-error-messages.md)
@@ -31,11 +31,11 @@
 * [Validate dynamic groups of fields](everything-explained/validate-dynamic-groups-of-fields.md)
 * [Only validate on submit](everything-explained/only-validate-on-submit.md)
 
-## Examples
+## 💼 Examples
 
 * [Basic Example](examples/basic-example.md)
 
-## API Reference
+## 👨‍💻 API Reference
 
 * [Changelog](api-reference/release-notes.md)
 * [&lt;Field /&gt;](api-reference/field-component.md)
