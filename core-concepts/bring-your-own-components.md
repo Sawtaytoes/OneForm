@@ -1,6 +1,6 @@
 # Bring your own components
 
-OneForm doesn't care which components you use. So long as it has a `name` and `value` prop, it's good to go. This is what makes the API so clean. There's more you can do, but those are the absolute basics.
+OneForm doesn't care which components you use.
 
-🚧 Under Construction
+The API is super clean and that allows you to use whatever you want. It's very "what you see is what you get" in that your HTML output will closely resemble the JSX.
 
