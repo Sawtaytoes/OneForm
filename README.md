@@ -8,13 +8,17 @@ OneForm is a form library.
 
 OneForm is a way to manage the state of your form. Instead of home-rolling that kinda stuff, let OneForm handle it.
 
-Everyone uses forms, and it's expensive to write this same stuff again and again every time you wanna do something simple. And if you wanna do something complex, well, you're probably reading this because you've already gone too far \(it's okay, I know how you feel\).
+Just about every developer uses forms.
 
-Unlike other popular form libraries, OneForm doesn't require setting up anything special. Just wrap your input components in `<Field />` and be on your way.
+It's expensive to write that same logic every time you wanna do something simple. And as soon as you need to do something complex, that's when you start to look for better solutions.
+
+OneForm doesn't require any special setup \(unlike some other form libraries\). You wrap some components, and you're done. Nothing to it.
+
+{% page-ref page="examples/basic-example.md" %}
 
 ### What does OneForm solve?
 
-I built OneForm to solve the problem if maintaining form state in React. There are plenty of competitors, big ones which hundreds of thousands of users:
+OneForm solves the problem of maintaining form state in React. There are plenty of competitors, big ones which hundreds of thousands of users:
 
 * Formik
 * React Hook Form
