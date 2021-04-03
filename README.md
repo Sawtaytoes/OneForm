@@ -18,14 +18,11 @@ OneForm doesn't require any special setup \(unlike some other form libraries\). 
 
 ### What does OneForm solve?
 
-OneForm solves the problem of maintaining form state in React. There are plenty of competitors, big ones which hundreds of thousands of users:
+OneForm solves the problem of maintaining form state in React.
 
-* Formik
-* React Hook Form
-* Redux Form
-* React Final Form
+There are plenty of similar libraries, but even the most-popular are flawed. 
 
-Even amongst these hulking competitors, OneForm was designed to be _the_ solution to form state in React; the "one form" library you need!
+OneForm can be _the_ solution to form state in React; the **one form library you need!**
 
 ### Who needs OneForm?
 
