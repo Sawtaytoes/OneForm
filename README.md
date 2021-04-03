@@ -8,11 +8,11 @@ OneForm is a form library.
 
 OneForm is a way to manage the state of your form. Instead of home-rolling that kinda stuff, let OneForm handle it.
 
-Just about every developer uses forms.
+Just about every developer uses forms, and you'll almost always run into a situation where you're requirements are too complex for a simple solution.
 
-It's expensive to write that same logic every time you wanna do something simple. And as soon as you need to do something complex, that's when you start to look for better solutions.
+That's where OneForm comes in. It's very plug 'n play.
 
-OneForm doesn't require any special setup \(unlike some other form libraries\). You wrap some components, and you're done. Nothing to it.
+Unlike other popular form libraries, OneForm requires no special setup.
 
 {% page-ref page="examples/basic-example.md" %}
 
@@ -26,17 +26,22 @@ OneForm can be _the_ solution to form state in React; the **one form library you
 
 ### Who needs OneForm?
 
-Everyone. Even for simple forms with a single select box and a button, I recommend OneForm. Even if you don't need to submit your form, I recommend OneForm.
+Everyone.
 
-If your form is extremely complex and has multiple dynamic fields and those dynamic fields render dynamic fields and you also need to some how maintain validation that queries the values of multiple fields, OneForm is most-definitely the **only** solution I'd recommend.
+* Even for simple forms with a select box and a button, I recommend OneForm.
+* Even if you don't have a submit button, I recommend OneForm.
 
-And if you need to build an application, and you want to use a state manager that's not Redux or MobX, use OneForm. Yes, it's completely possible. I think you'll be surprised at how easy it can be. While OneForm primarily a form library, it's also a powerful state manager.
+If your form is extremely complex and has multiple dynamic fields and those dynamic fields render other dynamic fields, and you also need to some how maintain validation that queries the values of multiple fields, OneForm is most-definitely the **only** solution I'd recommend.
+
+And if you need to build an application, and you want to use a state manager that's not Redux or MobX, use OneForm. Yes, it's completely possible. I think you'll be surprised at how easy it can be. While OneForm is primarily a form library, it's only this powerful because it's also a state manager.
 
 ## Special Thanks
 
-While I wrote `OneForm`, this project wasn't just something I came up with in a bubble. This library came about from a need at Minted to have highly-customizable complex forms.
+While Kevin Ghadyani is the creator of `OneForm`, he didn't make it in a bubble.
 
-These are the folks at Minted that played a big part in the creation of Minted Forms \(the inspiration for `OneForm`\):
+The ideas behind this library originated from a need at Minted to have highly-customizable complex forms.
+
+The original implementation was closed-source and other folks at Minted played a big part its creation:
 
 * Giselle Ghadyani
 * Rebekah Heacock Jones
@@ -45,9 +50,9 @@ These are the folks at Minted that played a big part in the creation of Minted F
 
 ### The logo is important too!
 
-The logo and title are courtesy of **Noah Raskin**. He does some amazing graphic design and even creates custom icon libraries! Talk about dedication to small details!
+The logo and title are courtesy of **Noah Raskin**. He does some amazing graphic design and even creates custom icon libraries. Talk about dedication to small details!
 
-While this logo looks simple, there's a lot going on behind the scenes, and the way he shaded it amazed me as much as the cleanliness of OneForm's API.
+While this logo looks simple, there's a lot going on behind the scenes. The way he shaded it is as amazing as the cleanliness of OneForm's API.
 
 ![Credit: Noah Raskin](.gitbook/assets/oneform-cube-textdark%20%282%29%20%282%29%20%282%29.png)
 
