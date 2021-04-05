@@ -1,3 +1,9 @@
+# 0.3.2
+_April 5th, 2021_
+
+- 🐛 Subsequent values from `onChange` are now correctly being set as visited.
+- 🐛 `updatedValues` is now correctly setting those values to visited.
+
 # 0.3.1
 _April 5th, 2021_
 
