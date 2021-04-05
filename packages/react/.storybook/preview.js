@@ -75,6 +75,10 @@ export const decorators = [
 							display: flex;
 						}
 
+						[data-loading]::before {
+							content: '⌛ ';
+						}
+
 						[data-submission-state="invalidSubmission"] {
 							background-color: tomato;
 							box-shadow: rgb(128, 0, 0) 0 4px 0 0;
@@ -88,6 +92,21 @@ export const decorators = [
 						[data-submission-state="invalidSubmission"]:active {
 							background-color: tomato;
 							box-shadow: rgb(128, 0, 0) 0 0 0 0;
+						}
+
+						[data-submission-state="pendingSubmission"] {
+							background-color: yellow;
+							box-shadow: rgb(128, 128, 0) 0 4px 0 0;
+						}
+
+						[data-submission-state="pendingSubmission"]:hover {
+							background-color: yellow;
+							box-shadow: rgb(128, 128, 0) 0 2px 0 0;
+						}
+
+						[data-submission-state="pendingSubmission"]:active {
+							background-color: yellow;
+							box-shadow: rgb(128, 128, 0) 0 0 0 0;
 						}
 
 						[data-submission-state="submitted"] {
