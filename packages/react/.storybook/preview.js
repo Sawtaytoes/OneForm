@@ -19,6 +19,15 @@ export const decorators = [
 							font-size: 24px;
 						}
 
+						button,
+						input {
+							border: 0;
+							margin-bottom: 6px;
+							margin-top: 6px;
+							outline: 0;
+							padding: 10px;
+						}
+
 						button {
 							background-color: #ccc;
 							border-radius: 10px;
@@ -42,13 +51,8 @@ export const decorators = [
 							background-color: #eee;
 						}
 
-						button,
-						input {
-							border: 0;
-							margin-bottom: 6px;
-							margin-top: 6px;
-							outline: 0;
-							padding: 10px;
+						input[data-error] {
+							background-color: tomato;
 						}
 					`
 				}
