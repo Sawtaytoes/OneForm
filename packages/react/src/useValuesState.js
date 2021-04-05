@@ -78,6 +78,17 @@ const useValuesState = (
 			) => {
 				if (
 					value
+					=== (
+						localValuesRef
+						.current
+						[identifier]
+					)
+				) {
+					return
+				}
+
+				if (
+					value
 					=== undefined
 				) {
 					const copiedAllLocalValues = {
