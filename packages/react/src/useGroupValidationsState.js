@@ -513,9 +513,29 @@ const useGroupValidationsState = (
 		useCallback(
 			({
 				groupsList,
+				groupsString,
 				groupValidation,
 				identifierGroup,
 			}) => {
+				const groups = (
+					Object
+					.fromEntries(
+						groupsList
+						.map(({
+							groupId,
+							groupName,
+							groupString,
+						}) => ([
+							groupName,
+							{
+								groupId,
+								groupName,
+								groupString,
+							},
+						]))
+					)
+				)
+
 				const reverseLookup = (
 					Object
 					.fromEntries(
@@ -631,6 +651,8 @@ const useGroupValidationsState = (
 					(
 						groupValidation
 						.getErrorMessages({
+							groups,
+							groupsString,
 							reverseLookup,
 							validationType: (
 								getValidationType()

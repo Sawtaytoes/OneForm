@@ -1073,6 +1073,8 @@ describe(
 					getErrorMessages1
 				)
 				.toHaveBeenCalledWith({
+					groups: {},
+					groupsString: '',
 					reverseLookup: {
 						accountName: (
 							'accountName'
@@ -1129,6 +1131,14 @@ describe(
 				.toHaveBeenNthCalledWith(
 					1,
 					{
+						groups: {
+							accountId: {
+								groupId: 'a1',
+								groupName: 'accountId',
+								groupString: '/accountId:a1',
+							},
+						},
+						groupsString: '/accountId:a1',
 						reverseLookup: {
 							firstName: (
 								'firstName/accountId:a1'
@@ -1177,6 +1187,14 @@ describe(
 				.toHaveBeenNthCalledWith(
 					2,
 					{
+						groups: {
+							accountId: {
+								groupId: 'a2',
+								groupName: 'accountId',
+								groupString: '/accountId:a2',
+							},
+						},
+						groupsString: '/accountId:a2',
 						reverseLookup: {
 							firstName: (
 								'firstName/accountId:a2'
@@ -1223,6 +1241,14 @@ describe(
 				.toHaveBeenNthCalledWith(
 					1,
 					{
+						groups: {
+							emailId: {
+								groupId: 'e1',
+								groupName: 'emailId',
+								groupString: '/emailId:e1',
+							},
+						},
+						groupsString: '/emailId:e1',
 						reverseLookup: {
 							accountName: (
 								'accountName'
@@ -1255,6 +1281,14 @@ describe(
 				.toHaveBeenNthCalledWith(
 					2,
 					{
+						groups: {
+							emailId: {
+								groupId: 'e2',
+								groupName: 'emailId',
+								groupString: '/emailId:e2',
+							},
+						},
+						groupsString: '/emailId:e2',
 						reverseLookup: {
 							accountName: (
 								'accountName'
@@ -1287,6 +1321,14 @@ describe(
 				.toHaveBeenNthCalledWith(
 					3,
 					{
+						groups: {
+							emailId: {
+								groupId: 'e3',
+								groupName: 'emailId',
+								groupString: '/emailId:e3',
+							},
+						},
+						groupsString: '/emailId:e3',
 						reverseLookup: {
 							accountName: (
 								'accountName'
@@ -1326,6 +1368,19 @@ describe(
 				.toHaveBeenNthCalledWith(
 					1,
 					{
+						groups: {
+							accountId: {
+								groupId: 'a1',
+								groupName: 'accountId',
+								groupString: '/accountId:a1',
+							},
+							emailId: {
+								groupId: 'e1',
+								groupName: 'emailId',
+								groupString: '/emailId:e1',
+							},
+						},
+						groupsString: '/accountId:a1/emailId:e1',
 						reverseLookup: {
 							email: (
 								'email/accountId:a1/emailId:e1'
@@ -1361,6 +1416,19 @@ describe(
 				.toHaveBeenNthCalledWith(
 					2,
 					{
+						groups: {
+							accountId: {
+								groupId: 'a1',
+								groupName: 'accountId',
+								groupString: '/accountId:a1',
+							},
+							emailId: {
+								groupId: 'e2',
+								groupName: 'emailId',
+								groupString: '/emailId:e2',
+							},
+						},
+						groupsString: '/accountId:a1/emailId:e2',
 						reverseLookup: {
 							email: (
 								'email/accountId:a1/emailId:e2'
@@ -1396,6 +1464,19 @@ describe(
 				.toHaveBeenNthCalledWith(
 					3,
 					{
+						groups: {
+							accountId: {
+								groupId: 'a2',
+								groupName: 'accountId',
+								groupString: '/accountId:a2',
+							},
+							emailId: {
+								groupId: 'e3',
+								groupName: 'emailId',
+								groupString: '/emailId:e3',
+							},
+						},
+						groupsString: '/accountId:a2/emailId:e3',
 						reverseLookup: {
 							email: (
 								'email/accountId:a2/emailId:e3'
