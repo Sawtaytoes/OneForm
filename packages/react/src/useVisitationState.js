@@ -25,7 +25,6 @@ const useVisitationState = (
 	)
 
 	const {
-		publishUndefinedValues,
 		publishValue,
 		subscribeToValue,
 	} = (
@@ -83,15 +82,28 @@ const useVisitationState = (
 	const resetAllVisitations = (
 		useCallback(
 			() => {
+				Array
+				.from(
+					visitationsRef
+					.current
+					.values()
+				)
+				.forEach((
+					identifier,
+				) => {
+					publishValue(
+						identifier,
+						false,
+					)
+				})
+
 				visitationsRef
 				.current = (
 					initialVisitations
 				)
-
-				publishUndefinedValues()
 			},
 			[
-				publishUndefinedValues,
+				publishValue,
 			],
 		)
 	)

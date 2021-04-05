@@ -216,7 +216,7 @@ describe(
 		)
 
 		test(
-			'publishes undefined values to all subscribers',
+			'allows publishing undefined values to subscribers',
 			() => {
 				const {
 					result,
@@ -286,9 +286,19 @@ describe(
 				})
 
 				act(() => {
-					result
-					.current
-					.publishUndefinedValues()
+					[
+						'email',
+						'name',
+					]
+					.forEach((
+						identifier,
+					) => {
+						result
+						.current
+						.publishValue(
+							identifier,
+						)
+					})
 				})
 
 				unsubscribe1Ref

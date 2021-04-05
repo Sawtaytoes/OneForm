@@ -67,29 +67,6 @@ const useObservableState = () => {
 		)
 	)
 
-	const publishUndefinedValues = (
-		useCallback(
-			() => {
-				Object
-				.entries(
-					observablesRef
-					.current
-				)
-				.forEach(([
-					identifier,
-				]) => {
-					publishValue(
-						identifier,
-						undefined,
-					)
-				})
-			},
-			[
-				publishValue,
-			],
-		)
-	)
-
 	const subscribeToValue = (
 		useCallback(
 			({
@@ -110,7 +87,6 @@ const useObservableState = () => {
 	)
 
 	return {
-		publishUndefinedValues,
 		publishValue,
 		subscribeToValue,
 	}
