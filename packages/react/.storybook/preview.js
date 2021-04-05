@@ -74,6 +74,36 @@ export const decorators = [
 							align-items: center;
 							display: flex;
 						}
+
+						[data-submission-state="invalidSubmission"] {
+							background-color: tomato;
+							box-shadow: rgb(128, 0, 0) 0 4px 0 0;
+						}
+
+						[data-submission-state="invalidSubmission"]:hover {
+							background-color: tomato;
+							box-shadow: rgb(128, 0, 0) 0 2px 0 0;
+						}
+
+						[data-submission-state="invalidSubmission"]:active {
+							background-color: tomato;
+							box-shadow: rgb(128, 0, 0) 0 0 0 0;
+						}
+
+						[data-submission-state="submitted"] {
+							background-color: limegreen;
+							box-shadow: rgb(0, 128, 0) 0 4px 0 0;
+						}
+
+						[data-submission-state="submitted"]:hover {
+							background-color: limegreen;
+							box-shadow: rgb(0, 128, 0) 0 2px 0 0;
+						}
+
+						[data-submission-state="submitted"]:active {
+							background-color: limegreen;
+							box-shadow: rgb(0, 128, 0) 0 0 0 0;
+						}
 					`
 				}
 			</style>

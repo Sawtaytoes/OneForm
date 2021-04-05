@@ -6,6 +6,7 @@ import {
 	useRef,
 } from 'react'
 
+import createObservable from './createObservable.js'
 import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
 import RegistrationContext from './RegistrationContext.js'
@@ -88,12 +89,53 @@ const OneForm = ({
 		.values
 	),
 }) => {
+	const getIsFormValidRef = (
+		useRef()
+	)
+
 	const registerIdentifierForGroupValidationRef = (
 		useRef()
 	)
 
 	const validateFieldsRef = (
 		useRef()
+	)
+
+	const formValidationStateObservable = (
+		useMemo(
+			() => (
+				createObservable()
+			),
+			[],
+		)
+	)
+
+	const getFormValidationState = (
+		useCallback(
+			() => (
+				formValidationStateObservable
+				.getValue()
+			),
+			[
+				formValidationStateObservable,
+			],
+		)
+	)
+
+	const subscribeToFormValidationState = (
+		useCallback(
+			(
+				subscriber,
+			) => (
+				formValidationStateObservable
+				.subscribe(
+					subscriber
+				)
+			),
+			[
+				formValidationStateObservable,
+			],
+		)
 	)
 
 	const {
@@ -380,8 +422,15 @@ const OneForm = ({
 				validate(
 					fieldNames
 				)
+
+				formValidationStateObservable
+				.publish(
+					getIsFormValidRef
+					.current()
+				)
 			},
 			[
+				formValidationStateObservable,
 				validateGroups,
 				validate,
 			],
@@ -436,9 +485,15 @@ const OneForm = ({
 		)
 	)
 
+	getIsFormValidRef
+	.current = (
+		getIsFormValid
+	)
+
 	const {
 		formSubmitted,
-		submissionState,
+		getSubmissionState,
+		subscribeToSubmissionState,
 	} = (
 		useSubmissionState({
 			getAllIdentifiers: (
@@ -505,10 +560,16 @@ const OneForm = ({
 	const submissionProviderValue = (
 		useMemo(
 			() => ({
-				submissionState,
+				getFormValidationState,
+				getSubmissionState,
+				subscribeToFormValidationState,
+				subscribeToSubmissionState,
 			}),
 			[
-				submissionState,
+				getFormValidationState,
+				getSubmissionState,
+				subscribeToFormValidationState,
+				subscribeToSubmissionState,
 			],
 		)
 	)

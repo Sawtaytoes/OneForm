@@ -5,6 +5,7 @@ import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldValue from './FieldValue.jsx'
 import OneForm from './OneForm.jsx'
+import SubmitField from './SubmitField.jsx'
 
 export default {
 	args: {
@@ -67,10 +68,13 @@ export const Submit = (
 				<input name="message" />
 			</Field>
 		</div>
+
 		<div>
-			<button type="submit">
-				Submit
-			</button>
+			<SubmitField>
+				<button type="submit">
+					Submit
+				</button>
+			</SubmitField>
 		</div>
 	</OneForm>
 )
@@ -160,9 +164,11 @@ export const Validation = (
 			<FieldErrorMessage name="message" />
 		</div>
 		<div>
-			<button type="submit">
-				Submit
-			</button>
+			<SubmitField>
+				<button type="submit">
+					Submit
+				</button>
+			</SubmitField>
 		</div>
 	</OneForm>
 )
@@ -216,9 +222,11 @@ export const GroupValidation = (
 			<FieldErrorMessage name="message.error" />
 		</div>
 		<div>
-			<button type="submit">
-				Submit
-			</button>
+			<SubmitField>
+				<button type="submit">
+					Submit
+				</button>
+			</SubmitField>
 		</div>
 	</OneForm>
 )
