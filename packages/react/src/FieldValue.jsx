@@ -10,11 +10,15 @@ import useFieldValue from './useFieldValue'
 
 const propTypes = {
 	children: PropTypes.node,
+	fallback: PropTypes.node,
+	getIsVisible: PropTypes.func,
 	name: PropTypes.string.isRequired,
 }
 
 const FieldValue = ({
 	children,
+	fallback,
+	getIsVisible = Boolean,
 	name,
 }) => {
 	const {
@@ -36,8 +40,22 @@ const FieldValue = ({
 		)
 	)
 
+	const isVisible = (
+		useMemo(
+			() => (
+				getIsVisible(
+					value
+				)
+			),
+			[
+				getIsVisible,
+				value,
+			]
+		)
+	)
+
 	return (
-		value
+		isVisible
 		? (
 			children
 			? (
@@ -57,7 +75,11 @@ const FieldValue = ({
 			)
 		)
 		: (
-			value
+			fallback
+			|| (
+				childProps
+				.children
+			)
 		)
 	)
 }

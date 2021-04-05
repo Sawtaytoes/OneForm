@@ -7,10 +7,10 @@ export default {
 }
 
 export const Text = (
-	values,
+	updatedValues,
 ) => (
 	<OneForm
-		values={values}
+		updatedValues={updatedValues}
 	>
 		<FieldValue name="message" />
 	</OneForm>
@@ -22,10 +22,10 @@ Text
 }
 
 export const StyledText = (
-	values,
+	updatedValues,
 ) => (
 	<OneForm
-		values={values}
+		updatedValues={updatedValues}
 	>
 		<div
 			style={{
@@ -43,10 +43,10 @@ StyledText
 }
 
 export const Children = (
-	values,
+	updatedValues,
 ) => (
 	<OneForm
-		values={values}
+		updatedValues={updatedValues}
 	>
 		<FieldValue name="message">
 			<div
@@ -61,4 +61,57 @@ export const Children = (
 Children
 .args = {
 	message: 'This is a message passed down to children.',
+}
+
+export const Fallback = (
+	updatedValues,
+) => (
+	<OneForm
+		updatedValues={updatedValues}
+	>
+		<FieldValue
+			fallback={
+				<div>
+					No value yet.
+				</div>
+			}
+			name="message"
+		>
+			<div />
+		</FieldValue>
+	</OneForm>
+)
+
+Fallback
+.args = {
+	message: '',
+}
+
+export const CustomVisibility = (
+	updatedValues,
+) => (
+	<OneForm
+		updatedValues={updatedValues}
+	>
+		<FieldValue
+			fallback={
+				<div>
+					Fallback activated when value is &quot;1&quot;.
+				</div>
+			}
+			getIsVisible={(
+				value,
+			) => (
+				value !== '1'
+			)}
+			name="message"
+		>
+			<div />
+		</FieldValue>
+	</OneForm>
+)
+
+CustomVisibility
+.args = {
+	message: '1',
 }

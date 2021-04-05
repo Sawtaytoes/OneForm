@@ -8,13 +8,27 @@ import {
 
 import useFieldErrorMessages from './useFieldErrorMessages'
 
+const defaultGetIsVisible = (
+	errorMessages,
+) => (
+	(
+		errorMessages
+		?.length
+	)
+	> 0
+)
+
 const propTypes = {
 	children: PropTypes.node,
+	fallback: PropTypes.node,
+	getIsVisible: PropTypes.func,
 	name: PropTypes.string.isRequired,
 }
 
 const FieldErrorMessage = ({
 	children,
+	fallback,
+	getIsVisible = defaultGetIsVisible,
 	name,
 }) => {
 	const {
@@ -42,25 +56,46 @@ const FieldErrorMessage = ({
 		)
 	)
 
+	const isVisible = (
+		useMemo(
+			() => (
+				getIsVisible(
+					errorMessages
+				)
+			),
+			[
+				errorMessages,
+				getIsVisible,
+			]
+		)
+	)
+
 	return (
-		(
+		isVisible
+		? (
 			children
-			&& (
-				Children
-				.only(
-					children
+			? (
+				cloneElement(
+					(
+						Children
+						.only(
+							children
+						)
+					),
+					childProps,
 				)
 			)
-		)
-		? (
-			cloneElement(
-				children,
-				childProps,
+			: (
+				childProps
+				.children
 			)
 		)
 		: (
-			childProps
-			.children
+			fallback
+			|| (
+				childProps
+				.children
+			)
 		)
 	)
 }

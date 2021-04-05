@@ -7,10 +7,10 @@ export default {
 }
 
 export const Text = (
-	errorMessages,
+	updatedErrorMessages,
 ) => (
 	<OneForm
-		errorMessages={errorMessages}
+		updatedErrorMessages={updatedErrorMessages}
 	>
 		<FieldErrorMessage name="message" />
 	</OneForm>
@@ -22,10 +22,10 @@ Text
 }
 
 export const StyledText = (
-	errorMessages,
+	updatedErrorMessages,
 ) => (
 	<OneForm
-		errorMessages={errorMessages}
+		updatedErrorMessages={updatedErrorMessages}
 	>
 		<div
 			style={{
@@ -43,10 +43,10 @@ StyledText
 }
 
 export const Children = (
-	errorMessages,
+	updatedErrorMessages,
 ) => (
 	<OneForm
-		errorMessages={errorMessages}
+		updatedErrorMessages={updatedErrorMessages}
 	>
 		<FieldErrorMessage name="message">
 			<div
@@ -61,4 +61,64 @@ export const Children = (
 Children
 .args = {
 	message: 'This is an error message passed down to children.',
+}
+
+export const Fallback = (
+	updatedErrorMessages,
+) => (
+	<OneForm
+		updatedErrorMessages={updatedErrorMessages}
+	>
+		<FieldErrorMessage
+			fallback={
+				<div>
+					No value yet.
+				</div>
+			}
+			name="message"
+		>
+			<div />
+		</FieldErrorMessage>
+	</OneForm>
+)
+
+Fallback
+.args = {
+	message: '',
+}
+
+export const CustomVisibility = (
+	updatedErrorMessages,
+) => (
+	<OneForm
+		updatedErrorMessages={updatedErrorMessages}
+	>
+		<FieldErrorMessage
+			fallback={
+				<div>
+					Fallback activated when value is &quot;1&quot;.
+				</div>
+			}
+			getIsVisible={(
+				errorMessages,
+			) => (
+				!(
+					errorMessages
+					.some((
+						errorMessage,
+					) => (
+						errorMessage === '1'
+					))
+				)
+			)}
+			name="message"
+		>
+			<div />
+		</FieldErrorMessage>
+	</OneForm>
+)
+
+CustomVisibility
+.args = {
+	message: '1',
 }
