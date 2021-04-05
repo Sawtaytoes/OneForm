@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
+import FieldGroup from './FieldGroup.jsx'
 import FieldValue from './FieldValue.jsx'
 import OneForm from './OneForm.jsx'
 import SubmitField from './SubmitField.jsx'
@@ -210,6 +211,7 @@ export const GroupValidation = (
 				/>
 			</Field>
 		</div>
+
 		<div>
 			<Field>
 				<input
@@ -218,9 +220,11 @@ export const GroupValidation = (
 				/>
 			</Field>
 		</div>
+
 		<div>
 			<FieldErrorMessage name="message.error" />
 		</div>
+
 		<div>
 			<SubmitField>
 				<button type="submit">
@@ -267,4 +271,106 @@ GroupValidation
 			),
 		},
 	],
+}
+
+export const GroupValidationGrouping = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<input
+					name="message"
+					placeholder="Message"
+				/>
+			</Field>
+		</div>
+
+		<FieldGroup
+			id="a452"
+			name="itemId"
+		>
+			<div>
+				<Field>
+					<input
+						name="item"
+						placeholder="Item a452"
+					/>
+				</Field>
+			</div>
+
+			<div>
+				<FieldErrorMessage name="group.error" />
+			</div>
+		</FieldGroup>
+
+		<FieldGroup
+			id="7b23"
+			name="itemId"
+		>
+			<div>
+				<Field>
+					<input
+						name="item"
+						placeholder="Item 7b23"
+					/>
+				</Field>
+			</div>
+
+			<div>
+				<FieldErrorMessage name="group.error" />
+			</div>
+		</FieldGroup>
+
+		<div>
+			<SubmitField>
+				<button type="submit">
+					Submit
+				</button>
+			</SubmitField>
+		</div>
+	</OneForm>
+)
+
+GroupValidationGrouping
+.args = {
+	groupValidations: [
+		{
+			fieldNames: [
+				'item',
+				'message',
+			],
+			getErrorMessages: ({
+				groups,
+				values,
+			}) => ({
+				[
+					'group.error'
+					.concat(
+						groups
+						.itemId
+						.groupString
+					)
+				]: (
+					values
+					.message
+					.includes(
+						values
+						.item
+					)
+					&& (
+						'You cannot have items in your message.'
+					)
+				),
+			}),
+			groupNames: [
+				'itemId',
+			],
+		},
+	],
+	updatedValues: {
+		'item/itemId:7b23': 'w',
+		'item/itemId:a452': 'h',
+		'message': 'hw',
+	},
 }
