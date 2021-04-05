@@ -19,7 +19,7 @@ export default {
 	title: 'OneForm',
 }
 
-export const Simple = (
+export const DisplayInputValue = (
 	args,
 ) => (
 	<OneForm {...args}>
@@ -34,6 +34,29 @@ export const Simple = (
 		</div>
 	</OneForm>
 )
+
+export const InitialValues = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<input name="message" />
+			</Field>
+		</div>
+
+		<div>
+			<FieldValue name="message" />
+		</div>
+	</OneForm>
+)
+
+InitialValues
+.args = {
+	values: {
+		message: 'Hello World!',
+	},
+}
 
 export const Submit = (
 	args,
