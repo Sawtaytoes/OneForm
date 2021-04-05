@@ -1,3 +1,8 @@
+# 0.4.2
+_April 5th, 2021_
+
+- ✨ `SubmitField` disables itself when submitting.
+
 # 0.4.1
 _April 5th, 2021_
 
