@@ -16,6 +16,7 @@ const eslintConfig = {
 		'react-hooks',
 	],
 	rules: {
+		'@getify/proper-ternary/nested': 'off',
 		'@ghadyani-eslint/arrow-body-parens/parens': 'off', // TEMP. Remove 'off' when fixed in @ghadyani-eslint
 		'array-bracket-newline': [
 			'warn',
