@@ -34,10 +34,12 @@ const SubmitField = ({
 	)
 
 	const {
+		formChangeState,
 		isFormValid,
 		isHtmlElement,
 		isSubmitting,
 		submissionState,
+		totalErrorMessages,
 	} = (
 		useFormSubmission({
 			children,
@@ -75,6 +77,7 @@ const SubmitField = ({
 							: disabled
 						)
 					),
+					formChangeState,
 					isDisabled: (
 						isSubmitting
 						|| (
@@ -87,16 +90,19 @@ const SubmitField = ({
 					isSubmitting,
 					loading: isSubmitting,
 					submissionState,
+					totalErrorMessages,
 				}
 			),
 			[
 				disabled,
+				formChangeState,
 				isDisabled,
 				isDisabledWhenInvalid,
 				isFormValid,
 				isHtmlElement,
 				isSubmitting,
 				submissionState,
+				totalErrorMessages,
 			]
 		)
 	)
@@ -105,16 +111,20 @@ const SubmitField = ({
 		useMemo(
 			() => (
 				getIsVisible({
+					formChangeState,
 					isFormValid,
 					isSubmitting,
 					submissionState,
+					totalErrorMessages,
 				})
 			),
 			[
+				formChangeState,
 				getIsVisible,
 				isFormValid,
 				isSubmitting,
 				submissionState,
+				totalErrorMessages,
 			]
 		)
 	)
@@ -122,29 +132,19 @@ const SubmitField = ({
 	return (
 		isVisible
 		? (
-			children
-			? (
-				cloneElement(
-					(
-						Children
-						.only(
-							children
-						)
-					),
-					childProps,
-				)
-			)
-			: (
-				childProps
-				.children
+			cloneElement(
+				(
+					Children
+					.only(
+						children
+					)
+				),
+				childProps,
 			)
 		)
 		: (
 			fallback
-			|| (
-				childProps
-				.children
-			)
+			|| null
 		)
 	)
 }

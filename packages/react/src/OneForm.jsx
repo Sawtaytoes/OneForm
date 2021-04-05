@@ -25,6 +25,11 @@ import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
 
+export const formChangeStates = {
+	committed: 'committed',
+	staged: 'staged',
+}
+
 const propTypes = {
 	children: PropTypes.node.isRequired,
 	errorMessages: PropTypes.object,
@@ -89,10 +94,6 @@ const OneForm = ({
 		.values
 	),
 }) => {
-	const getIsFormValidRef = (
-		useRef()
-	)
-
 	const registerIdentifierForGroupValidationRef = (
 		useRef()
 	)
@@ -101,10 +102,73 @@ const OneForm = ({
 		useRef()
 	)
 
-	const formValidationStateObservable = (
+	const formChangeStateObservable = (
 		useMemo(
 			() => (
 				createObservable()
+			),
+			[],
+		)
+	)
+
+	const getFormChangeState = (
+		useCallback(
+			() => (
+				formChangeStateObservable
+				.getValue()
+			),
+			[
+				formChangeStateObservable,
+			],
+		)
+	)
+
+	const setFormChangeState = (
+		useCallback(
+			(
+				changeState,
+			) => {
+				if (
+					changeState
+					=== getFormChangeState()
+				) {
+					return
+				}
+
+				formChangeStateObservable
+				.publish(
+					changeState
+				)
+			},
+			[
+				formChangeStateObservable,
+				getFormChangeState,
+			],
+		)
+	)
+
+	const subscribeToFormChangeState = (
+		useCallback(
+			(
+				subscriber,
+			) => (
+				formChangeStateObservable
+				.subscribe(
+					subscriber
+				)
+			),
+			[
+				formChangeStateObservable,
+			],
+		)
+	)
+
+	const formValidationStateObservable = (
+		useMemo(
+			() => (
+				createObservable(
+					{}
+				)
 			),
 			[],
 		)
@@ -217,6 +281,11 @@ const OneForm = ({
 				value,
 				values,
 			}) => {
+				setFormChangeState(
+					formChangeStates
+					.staged
+				)
+
 				const subsequentValues = (
 					onChange({
 						fieldName: identifier,
@@ -423,14 +492,29 @@ const OneForm = ({
 					fieldNames
 				)
 
-				formValidationStateObservable
-				.publish(
-					getIsFormValidRef
-					.current()
+				const errorMessagesLength = (
+					Object
+					.values(
+						getAllFieldErrorMessages()
+					)
+					.flat()
+					.length
 				)
+
+				formValidationStateObservable
+				.publish({
+					isFormValid: (
+						errorMessagesLength
+						=== 0
+					),
+					totalErrorMessages: (
+						errorMessagesLength
+					),
+				})
 			},
 			[
 				formValidationStateObservable,
+				getAllFieldErrorMessages,
 				validateGroups,
 				validate,
 			],
@@ -485,11 +569,6 @@ const OneForm = ({
 		)
 	)
 
-	getIsFormValidRef
-	.current = (
-		getIsFormValid
-	)
-
 	const {
 		formSubmitted,
 		getSubmissionState,
@@ -518,7 +597,20 @@ const OneForm = ({
 			onInvalidSubmit: () => {
 				setValidationTypeChange()
 			},
-			onSubmit,
+			onSubmit: () => {
+				const promise = (
+					onSubmit()
+				)
+
+				setFormChangeState(
+					formChangeStates
+					.committed
+				)
+
+				return (
+					promise
+				)
+			},
 		})
 	)
 
@@ -560,14 +652,18 @@ const OneForm = ({
 	const submissionProviderValue = (
 		useMemo(
 			() => ({
+				getFormChangeState,
 				getFormValidationState,
 				getSubmissionState,
+				subscribeToFormChangeState,
 				subscribeToFormValidationState,
 				subscribeToSubmissionState,
 			}),
 			[
+				getFormChangeState,
 				getFormValidationState,
 				getSubmissionState,
+				subscribeToFormChangeState,
 				subscribeToFormValidationState,
 				subscribeToSubmissionState,
 			],

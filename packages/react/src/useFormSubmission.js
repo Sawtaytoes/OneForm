@@ -15,8 +15,10 @@ const useFormSubmission = ({
 	children,
 }) => {
 	const {
+		getFormChangeState,
 		getFormValidationState,
 		getSubmissionState,
+		subscribeToFormChangeState,
 		subscribeToFormValidationState,
 		subscribeToSubmissionState,
 	} = (
@@ -32,8 +34,29 @@ const useFormSubmission = ({
 	)
 
 	const [
-		isFormValid,
-		setIsFormValid,
+		formChangeState,
+		setFormChangeState,
+	] = (
+		useState(
+			getFormChangeState()
+		)
+	)
+
+	const isFormChanged = (
+		useMemo(
+			() => (
+				formChangeState
+				=== 'staged'
+			),
+			[
+				formChangeState,
+			]
+		)
+	)
+
+	const [
+		formValidationState,
+		setFormValidationState,
 	] = (
 		useState(
 			getFormValidationState()
@@ -66,8 +89,19 @@ const useFormSubmission = ({
 
 	useEffect(
 		() => (
+			subscribeToFormChangeState(
+				setFormChangeState
+			)
+		),
+		[
+			subscribeToFormChangeState,
+		],
+	)
+
+	useEffect(
+		() => (
 			subscribeToFormValidationState(
-				setIsFormValid
+				setFormValidationState
 			)
 		),
 		[
@@ -87,10 +121,18 @@ const useFormSubmission = ({
 	)
 
 	return {
-		isFormValid,
+		formChangeState,
+		isFormValid: (
+			formValidationState
+			.isFormValid
+		),
 		isHtmlElement,
 		isSubmitting,
 		submissionState,
+		totalErrorMessages: (
+			formValidationState
+			.totalErrorMessages
+		),
 	}
 }
 
