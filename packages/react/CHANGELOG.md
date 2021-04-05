@@ -1,3 +1,10 @@
+# 0.5.0
+_April 5th, 2021_
+
+- ✨ `Field` marks `select` and `multiselect` as visited on selection.
+- ✨ `Field` correctly handles `multiselect` values as an array.
+- ✨ `groups` and `groupsString` are now available in a `groupValidations`'s `getErrorMessages()` function. This allows getting IDs for `groupNames` values when returning error messages.
+
 # 0.4.2
 _April 5th, 2021_
 
