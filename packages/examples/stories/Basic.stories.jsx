@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { action } from '@storybook/addon-actions'
 
 import {

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Field from './Field.jsx'
 import OneForm from './OneForm.jsx'
 
@@ -25,7 +26,6 @@ export const CheckboxElement = (
 	</OneForm>
 )
 
-/* eslint-disable react/prop-types */
 const Checkbox = ({
 	name,
 	onChange,
@@ -40,7 +40,6 @@ const Checkbox = ({
 		Check me!
 	</label>
 )
-/* eslint-enable react/prop-types */
 
 export const CheckboxComponent = (
 	args,

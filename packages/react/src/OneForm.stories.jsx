@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { action } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
@@ -34,7 +35,6 @@ export const SimpleHTMLInput = (
 	</OneForm>
 )
 
-/* eslint-disable react/prop-types */
 const Input = ({
 	name,
 	onChange,
@@ -48,7 +48,6 @@ const Input = ({
 		}}
 	/>
 )
-/* eslint-enable react/prop-types */
 
 export const SimpleInputComponent = (
 	args,
