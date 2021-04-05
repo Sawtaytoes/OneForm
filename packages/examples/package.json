@@ -1,4 +1,5 @@
 {
+  "private": true,
   "description": "OneForm examples.",
   "scripts": {
     "build": "npm-run-all --sequential build:storybook build:cypress",
