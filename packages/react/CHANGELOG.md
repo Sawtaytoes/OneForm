@@ -1,3 +1,8 @@
+# 0.5.2
+_April 5th, 2021_
+
+- 🐛 Fixed a regression where `onSubmit` no longer passed fields.
+
 # 0.5.1
 _April 5th, 2021_
 
