@@ -75,6 +75,46 @@ const useField = ({
 
 					setVisited()
 				}
+				else if (
+					(
+						event
+						.target
+						.type
+					)
+					=== 'select-multiple'
+				) {
+					setVisited()
+
+					setValue(
+						Array
+						.from(
+							event
+							.target
+							.selectedOptions
+						)
+						.map(({
+							value,
+						}) => (
+							value
+						))
+					)
+				}
+				else if (
+					(
+						event
+						.target
+						.type
+					)
+					=== 'select-one'
+				) {
+					setVisited()
+
+					setValue(
+						event
+						.target
+						.value
+					)
+				}
 				else {
 					setValue(
 						event
@@ -165,7 +205,21 @@ const useField = ({
 			? 'true'
 			: ''
 		),
-		value,
+		value: (
+			(
+				(
+					children
+					.props
+					.multiple
+				)
+				&& (
+					value
+					=== ''
+				)
+			)
+			? []
+			: value
+		),
 		valueChanged,
 	}
 }

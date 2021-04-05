@@ -17,7 +17,7 @@ export default {
 	title: 'Components/Field',
 }
 
-export const SimpleHTMLInput = (
+export const HTMLInput = (
 	args,
 ) => (
 	<OneForm {...args}>
@@ -43,7 +43,7 @@ const Input = ({
 	/>
 )
 
-export const SimpleInputComponent = (
+export const InputComponent = (
 	args,
 ) => (
 	<OneForm {...args}>
@@ -55,7 +55,7 @@ export const SimpleInputComponent = (
 	</OneForm>
 )
 
-export const CheckboxElement = (
+export const HTMLCheckbox = (
 	args,
 ) => (
 	<OneForm {...args}>
@@ -96,6 +96,61 @@ export const CheckboxComponent = (
 		<div>
 			<Field>
 				<Checkbox name="message" />
+			</Field>
+		</div>
+	</OneForm>
+)
+
+export const HTMLSelect = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<select name="color">
+					<option value="">
+						Color
+					</option>
+
+					<option value="green">
+						Green
+					</option>
+
+					<option value="red">
+						Red
+					</option>
+
+					<option value="blue">
+						Blue
+					</option>
+				</select>
+			</Field>
+		</div>
+	</OneForm>
+)
+
+export const HTMLMultiSelect = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<select
+					multiple
+					name="color"
+				>
+					<option value="green">
+						Green
+					</option>
+
+					<option value="red">
+						Red
+					</option>
+
+					<option value="blue">
+						Blue
+					</option>
+				</select>
 			</Field>
 		</div>
 	</OneForm>
