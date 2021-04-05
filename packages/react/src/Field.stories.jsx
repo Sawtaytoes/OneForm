@@ -1,8 +1,18 @@
 /* eslint-disable react/prop-types */
+import { action } from '@storybook/addon-actions'
+
 import Field from './Field.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
+	args: {
+		onChange: action(),
+		onSubmit: action(),
+	},
+	argTypes: {
+		onChange: 'changed',
+		onSubmit: 'submitted',
+	},
 	component: Field,
 	title: 'Components/Field',
 }

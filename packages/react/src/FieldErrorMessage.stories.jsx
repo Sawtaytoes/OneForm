@@ -1,8 +1,18 @@
 /* eslint-disable react/prop-types */
+import { action } from '@storybook/addon-actions'
+
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
+	args: {
+		onChange: action(),
+		onSubmit: action(),
+	},
+	argTypes: {
+		onChange: 'changed',
+		onSubmit: 'submitted',
+	},
 	title: 'Components/FieldErrorMessage',
 }
 

@@ -3,6 +3,14 @@ import FieldValue from './FieldValue.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
+	args: {
+		onChange: action(),
+		onSubmit: action(),
+	},
+	argTypes: {
+		onChange: 'changed',
+		onSubmit: 'submitted',
+	},
 	title: 'Components/FieldValue',
 }
 
