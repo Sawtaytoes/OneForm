@@ -33,7 +33,6 @@ const useValuesState = (
 	)
 
 	const {
-		publishUndefinedValues,
 		publishValue,
 		subscribeToValue,
 	} = (
@@ -139,17 +138,25 @@ const useValuesState = (
 
 	useEffect(
 		() => {
-			localValuesRef
-			.current = (
-				initialLocalValues
-			)
-
-			publishUndefinedValues()
-
 			Object
-			.entries(
-				values
-			)
+			.entries({
+				...(
+					Object
+					.fromEntries(
+						Object
+						.entries(
+							localValuesRef
+							.current
+						)
+						.map(([
+							identifier,
+						]) => ([
+							identifier,
+						]))
+					)
+				),
+				...values,
+			})
 			.forEach(([
 				identifier,
 				value,
@@ -161,7 +168,6 @@ const useValuesState = (
 			})
 		},
 		[
-			publishUndefinedValues,
 			setLocalValue,
 			values,
 		],
