@@ -27,16 +27,23 @@ export const decorators = [
 						}
 
 						button {
-							background-color: #ccc;
+							background-color: #ddd;
 							border-radius: 10px;
+							box-shadow: rgb(170, 170, 170) 0 4px 0 0;
 						}
 
 						button:hover {
-							background-color: #eee;
+							background-color: #ddd;
+							box-shadow: rgb(170, 170, 170) 0 2px 0 0;
+							position: relative;
+							top: 2px;
 						}
 
-						button:focus {
+						button:active {
 							background-color: #ddd;
+							box-shadow: rgb(170, 170, 170) 0 0 0 0;
+							position: relative;
+							top: 4px;
 						}
 
 						input {
