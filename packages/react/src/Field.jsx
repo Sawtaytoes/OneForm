@@ -15,46 +15,17 @@ const Field = ({
 	children,
 }) => {
 	const {
-		name,
-		onBlur: onChildBlur,
-		onChange: onChildChange,
-	} = (
-		children
-		.props
-	)
-
-	const {
 		errorMessages,
 		fieldName,
 		fieldVisited,
+		isHtmlElement,
 		isVisited,
 		value,
 		valueChanged,
 	} = (
 		useField({
-			name,
-			onChange: (
-				onChildChange
-			),
-			onVisit: (
-				onChildBlur
-			),
+			children,
 		})
-	)
-
-	const isHtmlElement = (
-		useMemo(
-			() => (
-				typeof (
-					children
-					.type
-				)
-				=== 'string'
-			),
-			[
-				children,
-			],
-		)
 	)
 
 	const childProps = (

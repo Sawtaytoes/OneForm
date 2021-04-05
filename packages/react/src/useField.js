@@ -1,15 +1,24 @@
 import {
 	useCallback,
 	useEffect,
+	useMemo,
 } from 'react'
 
 import useFieldData from './useFieldData.js'
 
 const useField = ({
-	name,
-	onChange,
-	onVisit,
+	children,
 }) => {
+	const {
+		name,
+		onBlur: onVisit,
+		onChange,
+
+	} = (
+		children
+		.props
+	)
+
 	const {
 		errorMessages = [],
 		fieldName,
@@ -83,6 +92,21 @@ const useField = ({
 		)
 	)
 
+	const isHtmlElement = (
+		useMemo(
+			() => (
+				typeof (
+					children
+					.type
+				)
+				=== 'string'
+			),
+			[
+				children,
+			],
+		)
+	)
+
 	useEffect(
 		() => {
 			const unregister = (
@@ -102,6 +126,7 @@ const useField = ({
 		errorMessages,
 		fieldName,
 		fieldVisited,
+		isHtmlElement,
 		isVisited: (
 			isVisited
 			? 'true'
