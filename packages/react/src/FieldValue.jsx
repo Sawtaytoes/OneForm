@@ -1,15 +1,20 @@
 import PropTypes from 'prop-types'
 import {
+	Children,
+	cloneElement,
 	memo,
+	useMemo,
 } from 'react'
 
 import useFieldValue from './useFieldValue'
 
 const propTypes = {
+	children: PropTypes.node,
 	name: PropTypes.string.isRequired,
 }
 
 const FieldValue = ({
+	children,
 	name,
 }) => {
 	const {
@@ -20,8 +25,40 @@ const FieldValue = ({
 		})
 	)
 
+	const childProps = (
+		useMemo(
+			() => ({
+				children: value,
+			}),
+			[
+				value,
+			]
+		)
+	)
+
 	return (
 		value
+		? (
+			children
+			? (
+				cloneElement(
+					(
+						Children
+						.only(
+							children
+						)
+					),
+					childProps,
+				)
+			)
+			: (
+				childProps
+				.children
+			)
+		)
+		: (
+			value
+		)
 	)
 }
 

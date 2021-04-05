@@ -1,15 +1,20 @@
 import PropTypes from 'prop-types'
 import {
+	Children,
+	cloneElement,
 	memo,
+	useMemo,
 } from 'react'
 
 import useFieldErrorMessages from './useFieldErrorMessages'
 
 const propTypes = {
+	children: PropTypes.node,
 	name: PropTypes.string.isRequired,
 }
 
 const FieldErrorMessage = ({
+	children,
 	name,
 }) => {
 	const {
@@ -20,12 +25,43 @@ const FieldErrorMessage = ({
 		})
 	)
 
+	const childProps = (
+		useMemo(
+			() => ({
+				children: (
+					(
+						errorMessages
+						[0]
+					)
+					|| ''
+				),
+			}),
+			[
+				errorMessages,
+			]
+		)
+	)
+
 	return (
 		(
-			errorMessages
-			[0]
+			children
+			&& (
+				Children
+				.only(
+					children
+				)
+			)
 		)
-		|| ''
+		? (
+			cloneElement(
+				children,
+				childProps,
+			)
+		)
+		: (
+			childProps
+			.children
+		)
 	)
 }
 
