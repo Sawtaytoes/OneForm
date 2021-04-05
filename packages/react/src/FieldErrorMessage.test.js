@@ -40,9 +40,7 @@ describe(
 				)
 
 				const errorMessages = {
-					email: [
-						errorMessage,
-					],
+					email: errorMessage,
 				}
 
 				render(

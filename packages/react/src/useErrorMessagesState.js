@@ -35,7 +35,6 @@ const useErrorMessagesState = (
 	)
 
 	const {
-		publishUndefinedValues,
 		publishValue,
 		subscribeToValue,
 	} = (
@@ -245,21 +244,29 @@ const useErrorMessagesState = (
 
 	useEffect(
 		() => {
-			localErrorMessagesRef
-			.current = (
-				initialLocalErrorMessages
-			)
-
-			publishUndefinedValues()
-
 			Object
-			.entries(
-				errorMessages
-			)
-			.forEach(([
+			.entries({
+				...(
+					localErrorMessagesRef
+					.current
+				),
+				...errorMessages,
+			})
+			.map(([
 				identifier,
 				errorMessages,
-			]) => {
+			]) => ({
+				errorMessages: (
+					errorMessages instanceof Map
+					? undefined
+					: errorMessages
+				),
+				identifier,
+			}))
+			.forEach(({
+				errorMessages,
+				identifier,
+			}) => {
 				setLocalErrorMessages(
 					identifier,
 					{
@@ -271,7 +278,6 @@ const useErrorMessagesState = (
 		},
 		[
 			errorMessages,
-			publishUndefinedValues,
 			setLocalErrorMessages,
 		],
 	)

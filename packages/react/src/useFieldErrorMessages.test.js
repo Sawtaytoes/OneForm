@@ -10,7 +10,7 @@ describe(
 	'useFieldErrorMessages',
 	() => {
 		test(
-			'has `undefined` error messages',
+			'has null array when no initial error messages',
 			() => {
 				const {
 					result,
@@ -31,7 +31,9 @@ describe(
 					.current
 					.errorMessages
 				)
-				.toBeUndefined()
+				.toEqual(
+					[]
+				)
 			}
 		)
 

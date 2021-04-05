@@ -433,7 +433,7 @@ describe(
 		)
 
 		test(
-			'merges error messages when error messages updates',
+			'merges error messages when given updated error messages',
 			() => {
 				const {
 					rerender,
@@ -565,7 +565,7 @@ describe(
 		)
 
 		test(
-			'overwrites all error messages when given new error messages',
+			'overwrites all external error messages when given new external error messages',
 			() => {
 				const {
 					rerender,
@@ -573,7 +573,17 @@ describe(
 				} = (
 					renderHook(
 						useErrorMessagesState,
+						{
+							initialProps: {
+								email: 'Email is required.',
+								name: 'Name is required.',
+							},
+						},
 					)
+				)
+
+				const nameErrorMessages1 = (
+					'Your name is too long.'
 				)
 
 				act(() => {
@@ -582,13 +592,18 @@ describe(
 					.setErrorMessages(
 						'name',
 						{
-							errorMessages: [
-								'You must enter a name.',
-							],
+							errorMessages: (
+								nameErrorMessages1
+							),
 							symbol: Symbol(),
 						},
 					)
 				})
+
+				const emailErrorMessages = [
+					'You must enter an email.',
+					'You forgot the `@` sign.',
+				]
 
 				act(() => {
 					result
@@ -596,22 +611,23 @@ describe(
 					.setErrorMessages(
 						'email',
 						{
-							errorMessages: [
-								'You must enter an email.',
-								'You forgot the `@` sign.',
-							],
+							errorMessages: (
+								emailErrorMessages
+							),
 							symbol: Symbol(),
 						},
 					)
 				})
 
-				const nameErrorMessages = [
-					'Your name is too long.',
-				]
+				const nameErrorMessages2 = (
+					'Your name is too long.'
+				)
 
 				rerender({
 					errorMessages: {
-						name: nameErrorMessages,
+						name: (
+							nameErrorMessages2
+						),
 					},
 				})
 
@@ -623,7 +639,7 @@ describe(
 					)
 				)
 				.toEqual(
-					[]
+					emailErrorMessages
 				)
 
 				expect(
@@ -633,9 +649,10 @@ describe(
 						'name',
 					)
 				)
-				.toEqual(
-					nameErrorMessages
-				)
+				.toEqual([
+					nameErrorMessages1,
+					nameErrorMessages2,
+				])
 			}
 		)
 	}
