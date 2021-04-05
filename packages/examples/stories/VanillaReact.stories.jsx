@@ -4,6 +4,7 @@ import {
 	FieldErrorMessage,
 	// FieldValue,
 	OneForm,
+	SubmitField,
 } from '@oneform/react'
 import {
 	action,
@@ -110,11 +111,26 @@ export const Registration = (
 			</div>
 
 			<div>
-				<button
-					type="submit"
-				>
-					Submit
-				</button>
+				<label>
+					<Field>
+						<input
+							name="rememberMe"
+							type="checkbox"
+						/>
+					</Field>
+
+					remember me
+				</label>
+			</div>
+
+			<div>
+				<SubmitField>
+					<button
+						type="submit"
+					>
+						Submit
+					</button>
+				</SubmitField>
 			</div>
 
 			{
