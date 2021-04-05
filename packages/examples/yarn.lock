@@ -1464,10 +1464,10 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@oneform/react@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@oneform/react/-/react-0.4.0.tgz#97ee1e87d10737c093c62cc6cb22200791ff27bc"
-  integrity sha512-5FF0ENBAY57IrKERlH+aOAEYaeHqKGdV3kGUcqo//rslKtENybq7BiM3blBUXd7zRpVOCH/ETpu9hEmU/LQXhQ==
+"@oneform/react@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@oneform/react/-/react-0.4.1.tgz#4f8161e576f04340170bc367473e3acb481dbd3c"
+  integrity sha512-rDAvXWAW6HQAgVBiB+rYNFcT1liI/1da3+oP7RqVI+jhyUF+ExqQ6vZHS3kEoEHVlNu+Da2DhOZNtgtsfJP8cg==
   dependencies:
     prop-types "^15.7.2"
 
