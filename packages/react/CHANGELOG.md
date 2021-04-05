@@ -1,3 +1,10 @@
+# 0.5.1
+_April 5th, 2021_
+
+- ✨ Added `formChangeState` to `SubmitField`.
+- ✨ Modified `formValidationState` to be all form `errorMessages`.
+- 🐛 Fixed `SubmitField` requiring a `fallback` prop.
+
 # 0.5.0
 _April 5th, 2021_
 
