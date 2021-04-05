@@ -1,10 +1,22 @@
-const createObservable = () => {
+const createObservable = (
+	initialValue = null,
+) => {
 	const valueRef = {
-		current: null,
+		current: (
+			initialValue
+		),
 	}
 
 	const subscribersRef = {
-		current: [],
+		current: (
+			[]
+		),
+	}
+
+	const cancelatorsRef = {
+		current: (
+			new Map()
+		),
 	}
 
 	const getValue = () => (
@@ -24,11 +36,18 @@ const createObservable = () => {
 		.current
 		.forEach((
 			subscriber,
-		) => (
-			subscriber(
-				value
+		) => {
+			cancelatorsRef
+			.current
+			.set(
+				subscriber,
+				(
+					subscriber(
+						value
+					)
+				),
 			)
-		))
+		})
 	}
 
 	const subscribe = (
@@ -44,6 +63,12 @@ const createObservable = () => {
 		)
 
 		return () => {
+			cancelatorsRef
+			.current
+			.get(
+				subscriber
+			)?.()
+
 			const subscriberIndex = (
 				subscribersRef
 				.current

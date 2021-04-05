@@ -162,6 +162,41 @@ describe(
 		)
 
 		test(
+			'cancels subscriber when unsubscribing',
+			() => {
+				const observable = (
+					createObservable()
+				)
+
+				const cancelator = (
+					jest
+					.fn()
+				)
+
+				const unsubscribe = (
+					observable
+					.subscribe(
+						() => (
+							cancelator
+						)
+					)
+				)
+
+				observable
+				.publish()
+
+				unsubscribe()
+
+				expect(
+					cancelator
+				)
+				.toHaveBeenCalledTimes(
+					1
+				)
+			}
+		)
+
+		test(
 			'publish to all subscribers',
 			() => {
 				const observable = (
