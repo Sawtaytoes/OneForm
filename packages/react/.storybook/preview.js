@@ -5,8 +5,6 @@ export const decorators = [
 		Story,
 	) => (
 		<Fragment>
-			<Story />
-
 			<style>
 				{
 					`
@@ -72,6 +70,8 @@ export const decorators = [
 					`
 				}
 			</style>
+
+			<Story />
 		</Fragment>
 	)
 ]
