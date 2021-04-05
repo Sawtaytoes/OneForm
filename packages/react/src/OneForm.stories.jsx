@@ -18,7 +18,7 @@ export default {
 	title: 'OneForm',
 }
 
-export const Simple = (
+export const SimpleHTMLInput = (
 	args,
 ) => (
 	<OneForm {...args}>
@@ -50,7 +50,7 @@ const Input = ({
 )
 /* eslint-enable react/prop-types */
 
-export const CustomInputComponent = (
+export const SimpleInputComponent = (
 	args,
 ) => (
 	<OneForm {...args}>
