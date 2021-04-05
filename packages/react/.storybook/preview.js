@@ -57,6 +57,10 @@ export const decorators = [
 							width: 20px;
 						}
 
+						input[data-visited] {
+							background-color: limegreen;
+						}
+
 						input[data-error] {
 							background-color: tomato;
 						}
