@@ -34,6 +34,38 @@ export const Simple = (
 	</OneForm>
 )
 
+/* eslint-disable react/prop-types */
+const Input = ({
+	name,
+	onChange,
+}) => (
+	<input
+		name={name}
+		onChange={onChange}
+		style={{
+			backgroundColor: 'navy',
+			color: 'skyblue',
+		}}
+	/>
+)
+/* eslint-enable react/prop-types */
+
+export const CustomInputComponent = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<Input name="message" />
+			</Field>
+		</div>
+
+		<div>
+			<FieldValue name="message" />
+		</div>
+	</OneForm>
+)
+
 export const Submit = (
 	args,
 ) => (
