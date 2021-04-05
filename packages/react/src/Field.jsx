@@ -42,28 +42,77 @@ const Field = ({
 		})
 	)
 
+	const isHtmlElement = (
+		useMemo(
+			() => (
+				typeof (
+					children
+					.type
+				)
+				=== 'string'
+			),
+			[
+				children,
+			],
+		)
+	)
+
 	const childProps = (
 		useMemo(
-			() => ({
-				dirty: isVisited,
-				error: (
-					errorMessages
-					[0]
-				),
-				errors: (
-					errorMessages
-				),
-				name: fieldName,
-				onBlur: fieldVisited,
-				onChange: valueChanged,
-				touched: isVisited,
-				value,
-				visited: isVisited,
-			}),
+			() => (
+				isHtmlElement
+				? {
+					'data-error': (
+						(
+							(
+								errorMessages
+								.length
+							)
+							> 0
+						)
+						? 'true'
+						: null
+					),
+					'data-visited': (
+						isVisited
+						? 'true'
+						: null
+					),
+					'name': fieldName,
+					'onBlur': fieldVisited,
+					'onChange': valueChanged,
+					value,
+				}
+				: {
+					dirty: isVisited,
+					error: (
+						Boolean(
+							errorMessages
+							[0]
+						)
+					),
+					errorMessages: (
+						errorMessages
+					),
+					errors: (
+						errorMessages
+					),
+					isDirty: isVisited,
+					isTouched: isVisited,
+					isVisited,
+					name: fieldName,
+					onBlur: fieldVisited,
+					onChange: valueChanged,
+					touched: isVisited,
+					value,
+					visited: isVisited,
+				}
+			),
 			[
 				errorMessages,
 				fieldName,
 				fieldVisited,
+				isHtmlElement,
 				isVisited,
 				value,
 				valueChanged,
