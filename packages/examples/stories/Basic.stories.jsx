@@ -16,8 +16,7 @@ export default {
 		onChange: 'changed',
 		onSubmit: 'submitted',
 	},
-	component: OneForm,
-	title: 'OneForm',
+	title: 'Basic',
 }
 
 export const Simple = (
