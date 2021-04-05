@@ -170,23 +170,30 @@ GroupValidation
 			],
 			getErrorMessages: ({
 				values,
-			}) => ({
-				'message.error': [
+			}) => (
+				(
 					(
-						(
-							values
-							.message1
-						)
-						!== (
-							values
-							.message2
-						)
-						&& (
-							'Messages need to be identical.'
-						)
+						values
+						.message1
+					)
+					!== (
+						values
+						.message2
+					)
+				)
+				? {
+					'message.error': (
+						'Messages need to be identical.'
 					),
-				],
-			}),
+					'message1': (
+						true
+					),
+					'message2': (
+						true
+					),
+				}
+				: {}
+			),
 		},
 	],
 	hasFieldChangeValidation: true,
