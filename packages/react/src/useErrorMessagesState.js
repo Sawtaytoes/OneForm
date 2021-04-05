@@ -162,7 +162,29 @@ const useErrorMessagesState = (
 						)
 						.set(
 							symbol,
-							nextErrorMessages,
+							(
+								(
+									(
+										Array
+										.isArray(
+											nextErrorMessages
+										)
+									)
+									? (
+										nextErrorMessages
+									)
+									: [
+										(
+											nextErrorMessages === true
+											? ' '
+											: nextErrorMessages
+										),
+									]
+								)
+								.filter(
+									Boolean
+								)
+							),
 						)
 					),
 				}

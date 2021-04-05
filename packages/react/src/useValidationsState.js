@@ -76,7 +76,7 @@ const useValidationsState = (
 					errorMessage,
 				}) => (
 					errorMessage
-					|| ' '
+					|| true
 				))
 			),
 			[

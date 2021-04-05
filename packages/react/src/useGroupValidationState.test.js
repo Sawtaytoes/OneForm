@@ -277,9 +277,7 @@ describe(
 				.toHaveBeenCalledWith(
 					'email',
 					{
-						errorMessages: [
-							errorMessage,
-						],
+						errorMessages: errorMessage,
 						symbol: (
 							getSymbol([
 								[
@@ -404,9 +402,7 @@ describe(
 					2,
 					'email',
 					{
-						errorMessages: [
-							errorMessage,
-						],
+						errorMessages: errorMessage,
 						symbol: (
 							getSymbol([
 								[
@@ -539,7 +535,7 @@ describe(
 		)
 
 		test(
-			'sets truthy error message when not defined',
+			'sets error message when not defined',
 			() => {
 				const setErrorMessages = (
 					jest
@@ -616,9 +612,7 @@ describe(
 				.toHaveBeenCalledWith(
 					'email',
 					{
-						errorMessages: [
-							' ',
-						],
+						errorMessages: true,
 						symbol: (
 							getSymbol([
 								[
@@ -892,9 +886,7 @@ describe(
 					1,
 					'firstName',
 					{
-						errorMessages: [
-							firstNameErrorMessage,
-						],
+						errorMessages: firstNameErrorMessage,
 						symbol: (
 							getSymbol([
 								[
@@ -917,9 +909,7 @@ describe(
 					2,
 					'lastName',
 					{
-						errorMessages: [
-							lastNameErrorMessage,
-						],
+						errorMessages: lastNameErrorMessage,
 						symbol: (
 							getSymbol([
 								[

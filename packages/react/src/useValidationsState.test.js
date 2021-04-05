@@ -322,7 +322,7 @@ describe(
 					'email',
 					{
 						errorMessages: [
-							' ',
+							true,
 						],
 						symbol: validationsSymbol,
 					},

@@ -704,29 +704,7 @@ const useGroupValidationsState = (
 						identifier,
 					}) => ({
 						error: {
-							errorMessages: (
-								(
-									(
-										Array
-										.isArray(
-											errorMessages
-										)
-									)
-									? (
-										errorMessages
-									)
-									: [
-										(
-											errorMessages === true
-											? ' '
-											: errorMessages
-										),
-									]
-								)
-								.filter(
-									Boolean
-								)
-							),
+							errorMessages,
 							symbol,
 						},
 						identifier,
