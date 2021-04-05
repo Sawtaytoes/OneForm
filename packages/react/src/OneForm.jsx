@@ -597,9 +597,13 @@ const OneForm = ({
 			onInvalidSubmit: () => {
 				setValidationTypeChange()
 			},
-			onSubmit: () => {
+			onSubmit: (
+				props,
+			) => {
 				const promise = (
-					onSubmit()
+					onSubmit(
+						props,
+					)
 				)
 
 				setFormChangeState(
