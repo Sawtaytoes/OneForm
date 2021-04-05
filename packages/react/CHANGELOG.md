@@ -1,3 +1,11 @@
+# 0.4.0
+_April 5th, 2021_
+
+- ✨ `SubmitField` is not available for wrapping buttons. It gives information about the form's submission state; something previously not available.
+- ✨ Added 'useFieldRegistration' to exports.
+- ✨ Added 'useFieldVisitation' to exports.
+- ✨ Added 'useFormSubmission' to exports.
+
 # 0.3.2
 _April 5th, 2021_
 
