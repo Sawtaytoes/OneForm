@@ -1,12 +1,12 @@
 describe(
-	'OneForm ValuesStateChange',
+	'OneForm CyclicValueStateChange',
 	() => {
 		it(
-			'Returning `onChange` values updates state.',
+			'Handles cyclic state changes.',
 			() => {
 				cy
 				.visit(
-					'oneform--value-state-change'
+					'oneform--cyclic-value-state-change'
 				)
 
 				cy
@@ -43,7 +43,7 @@ describe(
 				)
 				.should(
 					'have.value',
-					'aa'
+					'aabb'
 				)
 			},
 		)

@@ -102,6 +102,44 @@ export const ValueStateChange = (
 ValueStateChange
 .args = {
 	onChange: ({
+		fieldName,
+		value,
+	}) => {
+		if (fieldName === 'message1') {
+			return {
+				message2: value,
+			}
+		}
+	},
+}
+
+export const CyclicValueStateChange = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<input
+					name="message1"
+					placeholder="Message 1"
+				/>
+			</Field>
+		</div>
+
+		<div>
+			<Field>
+				<input
+					name="message2"
+					placeholder="Message 2"
+				/>
+			</Field>
+		</div>
+	</OneForm>
+)
+
+CyclicValueStateChange
+.args = {
+	onChange: ({
 		value,
 	}) => ({
 		message1: value,
