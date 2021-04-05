@@ -225,14 +225,28 @@ const useValuesState = (
 				identifier,
 				value,
 			) => {
-				setLocalValue(
-					identifier,
-					value,
+				typeof value === 'function'
+				? (
+					setLocalValue(
+						identifier,
+						value(
+							getLocalValue(
+								identifier
+							)
+						),
+					)
+				)
+				: (
+					setLocalValue(
+						identifier,
+						value,
+					)
 				)
 
 				processSubsequentChanges()
 			},
 			[
+				getLocalValue,
 				processSubsequentChanges,
 				setLocalValue,
 			],
