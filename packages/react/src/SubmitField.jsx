@@ -58,21 +58,30 @@ const SubmitField = ({
 						submissionState
 					),
 					'disabled': (
-						isDisabledWhenInvalid
-						? !isFormValid
-						: disabled
+						isSubmitting
+						|| (
+							isDisabledWhenInvalid
+							? !isFormValid
+							: disabled
+						)
 					),
 				}
 				: {
 					disabled: (
-						isDisabledWhenInvalid
-						? !isFormValid
-						: disabled
+						isSubmitting
+						|| (
+							isDisabledWhenInvalid
+							? !isFormValid
+							: disabled
+						)
 					),
 					isDisabled: (
-						isDisabledWhenInvalid
-						? !isFormValid
-						: isDisabled
+						isSubmitting
+						|| (
+							isDisabledWhenInvalid
+							? !isFormValid
+							: isDisabled
+						)
 					),
 					isLoading: isSubmitting,
 					isSubmitting,
