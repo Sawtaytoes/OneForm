@@ -51,8 +51,19 @@ export const decorators = [
 							background-color: #eee;
 						}
 
+						input[type="checkbox"] {
+							height: 20px;
+							margin-right: 10px;
+							width: 20px;
+						}
+
 						input[data-error] {
 							background-color: tomato;
+						}
+
+						label {
+							align-items: center;
+							display: flex;
 						}
 					`
 				}
