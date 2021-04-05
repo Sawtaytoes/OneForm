@@ -175,7 +175,7 @@ const OneForm = ({
 				value,
 				values,
 			}) => {
-				const changedValues = (
+				const subsequentValues = (
 					onChange({
 						fieldName: identifier,
 						value,
@@ -183,21 +183,30 @@ const OneForm = ({
 					})
 				)
 
+				const subsequentValueKeys = (
+					subsequentValues
+					&& (
+						Object
+						.keys(
+							subsequentValues
+						)
+					)
+				)
+
+				subsequentValueKeys
+				?.forEach(
+					setFieldVisited
+				)
+
 				updateErrorMessages([
 					identifier,
 					...(
-						changedValues
-						? (
-							Object
-							.keys(
-								changedValues
-							)
-						)
-						: []
+						subsequentValueKeys
+						|| []
 					),
 				])
 
-				return changedValues
+				return subsequentValues
 			},
 			updatedValues,
 			values,
@@ -235,6 +244,21 @@ const OneForm = ({
 		},
 		[
 			values,
+		],
+	)
+
+	useUpdateEffect(
+		() => {
+			Object
+			.keys(
+				updatedValues
+			)
+			.forEach(
+				setFieldVisited
+			)
+		},
+		[
+			updatedValues,
 		],
 	)
 
