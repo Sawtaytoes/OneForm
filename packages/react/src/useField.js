@@ -6,6 +6,10 @@ import {
 
 import useFieldData from './useFieldData.js'
 
+const checkboxRegex = (
+	/.*checkbox.*/i
+)
+
 const useField = ({
 	children,
 }) => {
@@ -105,6 +109,45 @@ const useField = ({
 				children,
 			],
 		)
+	)
+
+	useEffect(
+		() => {
+			const isCheckbox = (
+				isHtmlElement
+				? (
+					(
+						children
+						.props
+						.type
+					)
+					=== 'checkbox'
+				)
+				: (
+					checkboxRegex
+					.test(
+						(
+							children
+							?.displayName
+						)
+						|| (
+							children
+							?.type
+							?.displayName
+						)
+					)
+				)
+			)
+
+			if (isCheckbox) {
+				setVisited()
+			}
+		},
+		[
+			children,
+			isHtmlElement,
+			setVisited,
+		]
 	)
 
 	useEffect(
