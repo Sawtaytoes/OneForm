@@ -1,9 +1,12 @@
 import {
 	useCallback,
 	useEffect,
+	useMemo,
 	useRef,
 	useState,
 } from 'react'
+
+import createObservable from './createObservable.js'
 
 export const submissionStates = {
 	failedSubmission: 'failedSubmission',
@@ -68,13 +71,43 @@ const useSubmissionState = (
 		onSubmit
 	)
 
-	const [
-		submissionState,
-		setSubmissionState,
-	] = (
-		useState(
-			submissionStates
-			.notSubmitted
+	const submissionStateObservable = (
+		useMemo(
+			() => (
+				createObservable(
+					submissionStates
+					.notSubmitted
+				)
+			),
+			[],
+		)
+	)
+
+	const getSubmissionState = (
+		useCallback(
+			() => (
+				submissionStateObservable
+				.getValue()
+			),
+			[
+				submissionStateObservable,
+			],
+		)
+	)
+
+	const subscribeToSubmissionState = (
+		useCallback(
+			(
+				subscriber,
+			) => (
+				submissionStateObservable
+				.subscribe(
+					subscriber
+				)
+			),
+			[
+				submissionStateObservable,
+			],
 		)
 	)
 
@@ -92,7 +125,8 @@ const useSubmissionState = (
 				if (
 					getIsValid()
 				) {
-					setSubmissionState(
+					submissionStateObservable
+					.publish(
 						submissionStates
 						.pendingSubmission
 					)
@@ -101,7 +135,8 @@ const useSubmissionState = (
 					onInvalidSubmitRef
 					.current()
 
-					setSubmissionState(
+					submissionStateObservable
+					.publish(
 						submissionStates
 						.invalidSubmission
 					)
@@ -109,110 +144,129 @@ const useSubmissionState = (
 			},
 			[
 				getIsValid,
+				submissionStateObservable,
 			],
 		)
 	)
 
 	useEffect(
 		() => {
-			if (
-				submissionState
-				!== (
-					submissionStates
-					.pendingSubmission
+			const subscriber = (
+				submissionState,
+			) => {
+				if (
+					submissionState
+					!== (
+						submissionStates
+						.pendingSubmission
+					)
+				) {
+					return
+				}
+
+				const allValues = (
+					getAllValues()
 				)
-			) {
-				return
+
+				const allIdentifiers = (
+					getAllIdentifiers()
+				)
+
+				const registeredValues = (
+					Object
+					.fromEntries(
+						Object
+						.entries(
+							allValues
+						)
+						.filter(([
+							identifier,
+						]) => (
+							Reflect
+							.has(
+								allIdentifiers,
+								identifier,
+							)
+						))
+					)
+				)
+
+				const abortController = (
+					new AbortController()
+				)
+
+				;(
+					(
+						onSubmitRef
+						.current({
+							allValues,
+							registeredValues,
+						})
+					)
+					|| (
+						Promise
+						.resolve()
+					)
+				)
+				.then(() => {
+					if (
+						abortController
+						.signal
+						.aborted
+					) {
+						return
+					}
+
+					submissionStateObservable
+					.publish(
+						submissionStates
+						.submitted
+					)
+				})
+				.catch(() => {
+					if (
+						abortController
+						.signal
+						.aborted
+					) {
+						return
+					}
+
+					submissionStateObservable
+					.publish(
+						submissionStates
+						.failedSubmission
+					)
+				})
+
+				return () => {
+					abortController
+					.abort()
+				}
 			}
 
-			const allValues = (
-				getAllValues()
-			)
-
-			const allIdentifiers = (
-				getAllIdentifiers()
-			)
-
-			const registeredValues = (
-				Object
-				.fromEntries(
-					Object
-					.entries(
-						allValues
-					)
-					.filter(([
-						identifier,
-					]) => (
-						Reflect
-						.has(
-							allIdentifiers,
-							identifier,
-						)
-					))
+			const unsubscribe = (
+				submissionStateObservable
+				.subscribe(
+					subscriber
 				)
 			)
-
-			const abortController = (
-				new AbortController()
-			)
-
-			;(
-				(
-					onSubmitRef
-					.current({
-						allValues,
-						registeredValues,
-					})
-				)
-				|| (
-					Promise
-					.resolve()
-				)
-			)
-			.then(() => {
-				if (
-					abortController
-					.signal
-					.aborted
-				) {
-					return
-				}
-
-				setSubmissionState(
-					submissionStates
-					.submitted
-				)
-			})
-			.catch(() => {
-				if (
-					abortController
-					.signal
-					.aborted
-				) {
-					return
-				}
-
-				setSubmissionState(
-					submissionStates
-					.failedSubmission
-				)
-			})
 
 			return () => {
-				abortController
-				.abort()
+				unsubscribe()
 			}
 		},
 		[
 			getAllIdentifiers,
 			getAllValues,
-			submissionState,
+			submissionStateObservable,
 		]
 	)
 
 	return {
 		formSubmitted,
-		submissionState,
+		getSubmissionState,
+		subscribeToSubmissionState,
 	}
 }
 

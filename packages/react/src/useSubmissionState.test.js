@@ -31,7 +31,7 @@ describe(
 				expect(
 					result
 					.current
-					.submissionState
+					.getSubmissionState()
 				)
 				.toBe(
 					submissionStates
@@ -139,7 +139,7 @@ describe(
 				expect(
 					result
 					.current
-					.submissionState
+					.getSubmissionState()
 				)
 				.toBe(
 					submissionStates
@@ -206,6 +206,9 @@ describe(
 						useSubmissionState,
 						{
 							initialProps: {
+								getAllValues: () => (
+									{}
+								),
 								getIsValid: () => (
 									true
 								),
@@ -239,7 +242,6 @@ describe(
 			() => {
 				const {
 					result,
-					waitForNextUpdate,
 				} = (
 					renderHook(
 						useSubmissionState,
@@ -270,15 +272,11 @@ describe(
 				expect(
 					result
 					.current
-					.submissionState
+					.getSubmissionState()
 				)
 				.toBe(
 					submissionStates
 					.pendingSubmission
-				)
-
-				return (
-					waitForNextUpdate()
 				)
 			}
 		)
@@ -288,7 +286,6 @@ describe(
 			() => {
 				const {
 					result,
-					waitForNextUpdate,
 				} = (
 					renderHook(
 						useSubmissionState,
@@ -317,12 +314,18 @@ describe(
 				})
 
 				return (
-					waitForNextUpdate()
+					new Promise((
+						resolve,
+					) => {
+						setTimeout(
+							resolve
+						)
+					})
 					.then(() => {
 						expect(
 							result
 							.current
-							.submissionState
+							.getSubmissionState()
 						)
 						.toBe(
 							submissionStates
@@ -338,7 +341,6 @@ describe(
 			() => {
 				const {
 					result,
-					waitForNextUpdate,
 				} = (
 					renderHook(
 						useSubmissionState,
@@ -371,12 +373,18 @@ describe(
 				})
 
 				return (
-					waitForNextUpdate()
+					new Promise((
+						resolve,
+					) => {
+						setTimeout(
+							resolve
+						)
+					})
 					.then(() => {
 						expect(
 							result
 							.current
-							.submissionState
+							.getSubmissionState()
 						)
 						.toBe(
 							submissionStates
@@ -402,7 +410,6 @@ describe(
 
 				const {
 					result,
-					waitForNextUpdate,
 				} = (
 					renderHook(
 						useSubmissionState,
@@ -451,10 +458,6 @@ describe(
 						{}
 					),
 				})
-
-				return (
-					waitForNextUpdate()
-				)
 			}
 		)
 
@@ -473,7 +476,6 @@ describe(
 
 				const {
 					result,
-					waitForNextUpdate,
 				} = (
 					renderHook(
 						useSubmissionState,
@@ -525,10 +527,6 @@ describe(
 						),
 					}),
 				})
-
-				return (
-					waitForNextUpdate()
-				)
 			}
 		)
 
@@ -558,7 +556,6 @@ describe(
 				const {
 					rerender,
 					result,
-					waitForNextUpdate,
 				} = (
 					renderHook(
 						useSubmissionState,
@@ -598,10 +595,6 @@ describe(
 				)
 				.toHaveBeenCalledTimes(
 					1
-				)
-
-				return (
-					waitForNextUpdate()
 				)
 			}
 		)
