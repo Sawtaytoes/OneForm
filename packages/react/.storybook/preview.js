@@ -17,8 +17,17 @@ export const decorators = [
 							font-size: 24px;
 						}
 
+						label {
+							align-items: center;
+							display: flex;
+						}
+
 						button,
-						input {
+						input,
+						option,
+						select {
+							background-color: #ddd;
+							border-radius: 10px;
 							border: 0;
 							margin-bottom: 6px;
 							margin-top: 6px;
@@ -27,32 +36,23 @@ export const decorators = [
 						}
 
 						button {
-							background-color: #ddd;
-							border-radius: 10px;
 							box-shadow: rgb(170, 170, 170) 0 4px 0 0;
 						}
 
 						button:hover {
-							background-color: #ddd;
 							box-shadow: rgb(170, 170, 170) 0 2px 0 0;
 							position: relative;
 							top: 2px;
 						}
 
 						button:active {
-							background-color: #ddd;
 							box-shadow: rgb(170, 170, 170) 0 0 0 0;
 							position: relative;
 							top: 4px;
 						}
 
-						input {
-							background-color: #ddd;
-							border-radius: 10px;
-						}
-
-						input:hover,
-						input:focus {
+						input:focus,
+						input:hover {
 							background-color: #eee;
 						}
 
@@ -62,7 +62,7 @@ export const decorators = [
 							width: 20px;
 						}
 
-						input[data-visited] {
+						[data-visited] {
 							background-color: limegreen;
 						}
 
@@ -70,9 +70,8 @@ export const decorators = [
 							background-color: tomato;
 						}
 
-						label {
-							align-items: center;
-							display: flex;
+						option {
+							background-color: rgba(128, 128, 128, 0.5);
 						}
 
 						[data-loading]::before {
