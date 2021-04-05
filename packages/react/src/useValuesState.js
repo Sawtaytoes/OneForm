@@ -8,6 +8,7 @@ import useObservableState from './useObservableState.js'
 
 const initialValues = {}
 const initialLocalValues = {}
+const initialSubsequentValues = {}
 
 const useValuesState = (
 	{
@@ -69,6 +70,30 @@ const useValuesState = (
 		)
 	)
 
+	const subsequentValuesRef = (
+		useRef(
+			initialSubsequentValues
+		)
+	)
+
+	const queueSubsequentChanges = (
+		useCallback(
+			(
+				subsequentValues,
+			) => {
+				subsequentValuesRef
+				.current = {
+					...(
+						subsequentValuesRef
+						.current
+					),
+					...subsequentValues,
+				}
+			},
+			[],
+		)
+	)
+
 	const setLocalValue = (
 		useCallback(
 			(
@@ -115,14 +140,16 @@ const useValuesState = (
 					}
 				}
 
-				onChangeRef
-				.current({
-					identifier,
-					value,
-					values: (
-						getAllLocalValues()
-					),
-				})
+				queueSubsequentChanges(
+					onChangeRef
+					.current({
+						identifier,
+						value,
+						values: (
+							getAllLocalValues()
+						),
+					})
+				)
 
 				publishValue(
 					identifier,
@@ -132,6 +159,82 @@ const useValuesState = (
 			[
 				getAllLocalValues,
 				publishValue,
+				queueSubsequentChanges,
+			],
+		)
+	)
+
+	const processSubsequentChanges = (
+		useCallback(
+			() => {
+				const subsequentValue = (
+					Object
+					.entries(
+						subsequentValuesRef
+						.current
+					)
+					.find(
+						Boolean
+					)
+				)
+
+				if (!subsequentValue) {
+					return
+				}
+
+				const [
+					identifier,
+					value,
+				] = (
+					subsequentValue
+				)
+
+				subsequentValuesRef
+				.current = {
+					...(
+						subsequentValuesRef
+						.current
+					),
+				}
+
+				Reflect
+				.deleteProperty(
+					(
+						subsequentValuesRef
+						.current
+					),
+					identifier,
+				)
+
+				setLocalValue(
+					identifier,
+					value,
+				)
+
+				processSubsequentChanges()
+			},
+			[
+				setLocalValue,
+			],
+		)
+	)
+
+	const changeLocalValue = (
+		useCallback(
+			(
+				identifier,
+				value,
+			) => {
+				setLocalValue(
+					identifier,
+					value,
+				)
+
+				processSubsequentChanges()
+			},
+			[
+				processSubsequentChanges,
+				setLocalValue,
 			],
 		)
 	)
@@ -166,8 +269,11 @@ const useValuesState = (
 					value,
 				)
 			})
+
+			processSubsequentChanges()
 		},
 		[
+			processSubsequentChanges,
 			setLocalValue,
 			values,
 		],
@@ -188,8 +294,11 @@ const useValuesState = (
 					value,
 				)
 			})
+
+			processSubsequentChanges()
 		},
 		[
+			processSubsequentChanges,
 			setLocalValue,
 			updatedValues,
 		],
@@ -198,7 +307,7 @@ const useValuesState = (
 	return {
 		getAllValues: getAllLocalValues,
 		getValue: getLocalValue,
-		setValue: setLocalValue,
+		setValue: changeLocalValue,
 		subscribeToValue: subscribeToValue,
 	}
 }

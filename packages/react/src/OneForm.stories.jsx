@@ -75,6 +75,40 @@ export const Submit = (
 	</OneForm>
 )
 
+export const ValueStateChange = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<input
+					name="message1"
+					placeholder="Message 1"
+				/>
+			</Field>
+		</div>
+
+		<div>
+			<Field>
+				<input
+					name="message2"
+					placeholder="Message 2"
+				/>
+			</Field>
+		</div>
+	</OneForm>
+)
+
+ValueStateChange
+.args = {
+	onChange: ({
+		value,
+	}) => ({
+		message1: value,
+		message2: value,
+	}),
+}
+
 export const Validation = (
 	args,
 ) => (
@@ -97,7 +131,6 @@ export const Validation = (
 
 Validation
 .args = {
-	hasFieldChangeValidation: true,
 	validations: {
 		message: [
 			{
@@ -188,5 +221,4 @@ GroupValidation
 			),
 		},
 	],
-	hasFieldChangeValidation: true,
 }
