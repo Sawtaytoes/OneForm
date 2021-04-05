@@ -1,3 +1,12 @@
+# 0.3.0
+_April 5th, 2021_
+
+- ✨ `FieldValue` and `FieldErrorMessage` can now render `children` into `children`.
+- ✨ `FieldValue` and `FieldErrorMessage` now optionally take a `fallback` and `getIsVisible` prop.
+- ✨ Error messages now use the same signature as the return value from `groupValidations` meaning they can be `true`, a string, or an array of strings. The array no longer needs to contain valid values either. If passed `false`, `null`, or `undefined`, those error messages are skipped.
+- ✨ `Field` now sets different props depending on if it's been given an HTML element or React component.
+- 🐛 `Field` now sets `error` as a boolean rather than a string. This fixes errors in Material-UI's `TextInput`.
+
 # 0.2.2
 _March 29th, 2021_
 
