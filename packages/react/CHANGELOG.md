@@ -1,3 +1,10 @@
+# 0.3.1
+_April 5th, 2021_
+
+- 🐛 Fixed a bug where passing `values` caused all values to first get set to `undefined` and then given a new value if passed. Now, this is done in a single step, so it will only set to the values passed or `undefined`, not both.
+- 🐛 Fixed a regression where returned `values` from `onChange` weren't modifying OneForm's state.
+- 🐛 Fixed a bug where passing `errorMessages` would remove all other origins. Now it properly only clears the external origin of `errorMessages` and `updatedErrorMessages`.
+
 # 0.3.0
 _April 5th, 2021_
 
