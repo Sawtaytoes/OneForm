@@ -1,10 +1,14 @@
+# 0.4.1
+_April 5th, 2021_
+
+- ✨ `SubmitField` is now available for wrapping buttons. It gives information about the form's submission state; something previously not available.
+
 # 0.4.0
 _April 5th, 2021_
 
-- ✨ `SubmitField` is not available for wrapping buttons. It gives information about the form's submission state; something previously not available.
-- ✨ Added 'useFieldRegistration' to exports.
-- ✨ Added 'useFieldVisitation' to exports.
-- ✨ Added 'useFormSubmission' to exports.
+- ✨ 'useFieldRegistration' is now exported.
+- ✨ 'useFieldVisitation' is now exported.
+- ✨ 'useFormSubmission' is now exported.
 
 # 0.3.2
 _April 5th, 2021_
@@ -27,6 +31,7 @@ _April 5th, 2021_
 - ✨ Error messages now use the same signature as the return value from `groupValidations` meaning they can be `true`, a string, or an array of strings. The array no longer needs to contain valid values either. If passed `false`, `null`, or `undefined`, those error messages are skipped.
 - ✨ `Field` now sets different props depending on if it's been given an HTML element or React component.
 - 🐛 `Field` now sets `error` as a boolean rather than a string. This fixes errors in Material-UI's `TextInput`.
+- 🐛 Fixed a bug where checkboxes weren't set to visited on mount which is required for validating against them. This was fixed by looking for a checkbox input or a component with "checkbox" in the name.
 
 # 0.2.2
 _March 29th, 2021_
