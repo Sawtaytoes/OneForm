@@ -1,10 +1,10 @@
 import {
 	useCallback,
 	useEffect,
-	useMemo,
 } from 'react'
 
 import useFieldData from './useFieldData.js'
+import useIsHtmlElement from './useIsHtmlElement.js'
 
 const checkboxRegex = (
 	/.*checkbox.*/i
@@ -17,7 +17,6 @@ const useField = ({
 		name,
 		onBlur: onVisit,
 		onChange,
-
 	} = (
 		children
 		.props
@@ -97,17 +96,8 @@ const useField = ({
 	)
 
 	const isHtmlElement = (
-		useMemo(
-			() => (
-				typeof (
-					children
-					.type
-				)
-				=== 'string'
-			),
-			[
-				children,
-			],
+		useIsHtmlElement(
+			children
 		)
 	)
 
