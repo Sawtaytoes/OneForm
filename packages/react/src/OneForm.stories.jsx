@@ -19,43 +19,13 @@ export default {
 	title: 'OneForm',
 }
 
-export const SimpleHTMLInput = (
+export const Simple = (
 	args,
 ) => (
 	<OneForm {...args}>
 		<div>
 			<Field>
 				<input name="message" />
-			</Field>
-		</div>
-
-		<div>
-			<FieldValue name="message" />
-		</div>
-	</OneForm>
-)
-
-const Input = ({
-	name,
-	onChange,
-}) => (
-	<input
-		name={name}
-		onChange={onChange}
-		style={{
-			backgroundColor: 'navy',
-			color: 'skyblue',
-		}}
-	/>
-)
-
-export const SimpleInputComponent = (
-	args,
-) => (
-	<OneForm {...args}>
-		<div>
-			<Field>
-				<Input name="message" />
 			</Field>
 		</div>
 

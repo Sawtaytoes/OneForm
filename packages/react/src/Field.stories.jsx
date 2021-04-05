@@ -7,6 +7,44 @@ export default {
 	title: 'Components/Field',
 }
 
+export const SimpleHTMLInput = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<input name="message" />
+			</Field>
+		</div>
+	</OneForm>
+)
+
+const Input = ({
+	name,
+	onChange,
+}) => (
+	<input
+		name={name}
+		onChange={onChange}
+		style={{
+			backgroundColor: 'navy',
+			color: 'skyblue',
+		}}
+	/>
+)
+
+export const SimpleInputComponent = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<Input name="message" />
+			</Field>
+		</div>
+	</OneForm>
+)
+
 export const CheckboxElement = (
 	args,
 ) => (
