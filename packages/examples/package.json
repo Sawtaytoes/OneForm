@@ -18,7 +18,7 @@
     "@babel/preset-react": "^7.12.13",
     "@ghadyani-eslint/eslint-config-node": "^2.2.1",
     "@ghadyani-eslint/eslint-config-web": "^2.2.1",
-    "@oneform/react": "^0.3.0",
+    "@oneform/react": "^0.3.1",
     "@storybook/addon-actions": "^6.2.2",
     "@storybook/addon-essentials": "^6.2.2",
     "@storybook/addon-links": "^6.2.2",
@@ -40,5 +40,5 @@
     "react-dom": "^17.0.1",
     "uuid": "^8.3.2"
   },
-  "version": "0.3.0"
+  "version": "0.3.1"
 }
