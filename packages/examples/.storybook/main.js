@@ -3,7 +3,6 @@ const storybookConfig = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-links',
 		'@whitespace/storybook-addon-html',
-		'storybook-addon-outline',
 	],
 	stories: [
 		'../stories/**/*.stories.mdx',

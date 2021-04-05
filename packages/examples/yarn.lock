@@ -1430,7 +1430,7 @@
   dependencies:
     any-observable "^0.3.0"
 
-"@storybook/addon-actions@6.2.2", "@storybook/addon-actions@^6.1.21":
+"@storybook/addon-actions@6.2.2", "@storybook/addon-actions@^6.2.2":
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-6.2.2.tgz#4890a98b6263ddc8f7f91b4f90f991994ec0c02c"
   integrity sha512-R8QlAMdbMxPNvz6RldIQP/1OPh3I9nUBcOqaw0i0pQb8HpcT2s2Lu/iO/pWjJBZ522AUOeVW5m+rrDifMMGZUQ==
@@ -1533,7 +1533,7 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-essentials@^6.1.21":
+"@storybook/addon-essentials@^6.2.2":
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-6.2.2.tgz#64c121ee6d33fe19c1558ece96986fe5ba4e08af"
   integrity sha512-S6PPRZeV2zcFvaw+CxahoYmPDaGlrCEZpa3NznE5zpmwFQGGwR1SqpXNcfdTq7YlAEwbxQqwzSRyJVmmDv8CjQ==
@@ -1551,7 +1551,7 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-links@^6.1.21":
+"@storybook/addon-links@^6.2.2":
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.2.2.tgz#8677989ac54346282ada501a04c38c30ff172d45"
   integrity sha512-+6BBsJ1rkmcAkhYqHAG1kMUnzaeIHGXRShev9dFhVh//q8wF+jrT93bcILdpFRueXciXb2cImbYTKN2hDdrzEA==
@@ -1597,7 +1597,7 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/addons@6.2.2", "@storybook/addons@^6.0.0":
+"@storybook/addons@6.2.2":
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.2.2.tgz#d0ad3fa05e1569264511b8f8fb1fd08324e776a2"
   integrity sha512-3FSnNl+0wzkeh3KVk+CB8bYb4FDRIEeFI0kU+UDj46PAXuqObQeIzPlpsU59D5Qq6zFXV+IhzLRknGrrMh1XzA==
@@ -1973,7 +1973,7 @@
   dependencies:
     core-js "^3.8.2"
 
-"@storybook/react@^6.1.21":
+"@storybook/react@^6.2.2":
   version "6.2.2"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-6.2.2.tgz#994160f42d0240bb433b4f203d9093b99008f7ac"
   integrity sha512-uHmN5Cqo59eX0LPW5/xRHmSvO3MRg/2Y1lIBr1ZXI4fJ7UPDqZEyrE6MTikcvqe5kghTEBTxlO1n9imej9Ccgw==
@@ -9695,13 +9695,6 @@ store2@^2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
   integrity sha512-7t+/wpKLanLzSnQPX8WAcuLCCeuSHoWdQuh9SB3xD0kNOM38DNf+0Oa+wmvxmYueRzkmh6IcdKFtvTa+ecgPDw==
-
-storybook-addon-outline@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/storybook-addon-outline/-/storybook-addon-outline-1.2.0.tgz#e2da3e06ea23b68c10c0b5c771f2360cec10e00b"
-  integrity sha512-BELLYx2tS29x207pYakLcMGI/1UJaZNujMsnzSEyzHSJC7aBjPXO6U35VPNwz3oqbWdzV5+w5gNKXcE4S9oNqQ==
-  dependencies:
-    "@storybook/addons" "^6.0.0"
 
 stream-browserify@^2.0.1:
   version "2.0.2"
