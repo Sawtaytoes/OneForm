@@ -1,5 +1,4 @@
 import {
-	act,
 	renderHook,
 } from '@testing-library/react-hooks'
 
@@ -8,46 +7,6 @@ import useStrippedIdentifer from './useStrippedIdentifer.js'
 describe(
 	'useStrippedIdentifer',
 	() => {
-		// test(
-		// 	'memoizes identifier groups',
-		// 	() => {
-		// 		const {
-		// 			result,
-		// 		} = (
-		// 			renderHook(
-		// 				useStrippedIdentifer
-		// 			)
-		// 		)
-
-		// 		const identifierGroupRef = {
-		// 			current: null,
-		// 		}
-
-		// 		act(() => {
-		// 			identifierGroupRef
-		// 			.current = (
-		// 				result
-		// 				.current
-		// 				.getIdentifierGroup(
-		// 					'emailId:363f'
-		// 				)
-		// 			)
-		// 		})
-
-		// 		expect(
-		// 			result
-		// 			.current
-		// 			.getIdentifierGroup(
-		// 				'emailId:363f'
-		// 			)
-		// 		)
-		// 		.toBe(
-		// 			identifierGroupRef
-		// 			.current
-		// 		)
-		// 	}
-		// )
-
 		test(
 			'has no groups when nothing to strip',
 			() => {

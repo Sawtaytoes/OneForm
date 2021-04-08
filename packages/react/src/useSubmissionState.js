@@ -3,7 +3,6 @@ import {
 	useEffect,
 	useMemo,
 	useRef,
-	useState,
 } from 'react'
 
 import createObservable from './createObservable.js'

@@ -42,18 +42,6 @@ const useFormSubmission = ({
 		)
 	)
 
-	const isFormChanged = (
-		useMemo(
-			() => (
-				formChangeState
-				=== 'staged'
-			),
-			[
-				formChangeState,
-			]
-		)
-	)
-
 	const [
 		formValidationState,
 		setFormValidationState,
