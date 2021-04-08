@@ -11,6 +11,10 @@ const VanillaReactStyles = () => (
 					font-size: 24px;
 				}
 
+				body {
+					background-color: #e0e0da;
+				}
+
 				label {
 					align-items: center;
 					display: flex;
@@ -20,9 +24,9 @@ const VanillaReactStyles = () => (
 				input,
 				option,
 				select {
-					background-color: #ddd;
+					background-color: #fff;
 					border-radius: 10px;
-					border: 0;
+					border: 2px solid transparent;
 					margin-bottom: 6px;
 					margin-top: 6px;
 					outline: 0;
@@ -45,9 +49,8 @@ const VanillaReactStyles = () => (
 					top: 4px;
 				}
 
-				input:focus,
-				input:hover {
-					background-color: #eee;
+				input:focus {
+					border: 2px solid rgba(128, 128, 128, 0.5);
 				}
 
 				input[type="checkbox"] {
@@ -57,11 +60,11 @@ const VanillaReactStyles = () => (
 				}
 
 				[data-visited] {
-					background-color: limegreen;
+					border-color: #88f;
 				}
 
 				input[data-error] {
-					background-color: tomato;
+					border-color: #f00;
 				}
 
 				option {
