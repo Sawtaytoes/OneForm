@@ -32,10 +32,11 @@ const eslintConfig = {
 		'import/no-unresolved': [
 			'warn',
 			{
+				caseSensitive: false,
 				ignore: [
-				'\\$',
-			],
-		},
+					'\\$',
+				],
+			},
 		],
 		'indent': 'off', // TEMP. Remove 'off' when fixed in @ghadyani-eslint
 		'no-unexpected-multiline': 'off',
