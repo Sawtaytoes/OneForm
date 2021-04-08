@@ -1,4 +1,5 @@
 {
+  "name": "@oneform/examples",
   "private": true,
   "description": "OneForm examples.",
   "scripts": {
