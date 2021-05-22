@@ -1,7 +1,13 @@
-# 0.5.2
+# 0.6.1
 _May 22nd, 2021_
 
-- ✨ Added ability for `Field` and `useField` to properly handle radio buttons.
+- 🐛 Built prior to publishing so new radio button functionality is available to use.
+- ✨ Added missing `Children.only` check to `Field`.
+
+# 0.6.0
+_May 22nd, 2021_
+
+- ✨ Added ability for `Field` and `useField` to properly handle radio buttons (this functionality isn't working until `0.6.1`).
 
 # 0.5.2
 _April 5th, 2021_
