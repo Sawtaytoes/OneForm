@@ -17,6 +17,7 @@ const useField = ({
 		name,
 		onBlur: onVisit,
 		onChange,
+		value: radioValue,
 	} = (
 		children
 		.props
@@ -81,6 +82,20 @@ const useField = ({
 						.target
 						.type
 					)
+					=== 'radio'
+				) {
+					setVisited()
+
+					setValue(
+						radioValue
+					)
+				}
+				else if (
+					(
+						event
+						.target
+						.type
+					)
 					=== 'select-multiple'
 				) {
 					setVisited()
@@ -129,6 +144,7 @@ const useField = ({
 			},
 			[
 				onChange,
+				radioValue,
 				setValue,
 				setVisited,
 			],

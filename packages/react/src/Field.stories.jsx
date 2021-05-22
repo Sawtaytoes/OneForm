@@ -101,6 +101,84 @@ export const CheckboxComponent = (
 	</OneForm>
 )
 
+export const HTMLRadio = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<label>
+				<Field>
+					<input
+						name="message"
+						type="radio"
+						value="first"
+					/>
+				</Field>
+
+				First
+			</label>
+
+			<label>
+				<Field>
+					<input
+						name="message"
+						type="radio"
+						value="second"
+					/>
+				</Field>
+
+				Second
+			</label>
+		</div>
+	</OneForm>
+)
+
+const Radio = ({
+	children,
+	name,
+	onChange,
+	value,
+}) => (
+	<label>
+		<input
+			name={name}
+			onChange={onChange}
+			type="radio"
+			value={value}
+		/>
+
+		{children}
+	</label>
+)
+
+export const RadioComponent = (
+	args,
+) => (
+	<OneForm {...args}>
+		<div>
+			<Field>
+				<Radio
+					name="message"
+					value="first"
+				>
+					First
+				</Radio>
+			</Field>
+		</div>
+
+		<div>
+			<Field>
+				<Radio
+					name="message"
+					value="second"
+				>
+					Second
+				</Radio>
+			</Field>
+		</div>
+	</OneForm>
+)
+
 export const HTMLSelect = (
 	args,
 ) => (
