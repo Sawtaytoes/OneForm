@@ -1,4 +1,9 @@
 # 0.5.2
+_May 22nd, 2021_
+
+- ✨ Added ability for `Field` and `useField` to properly handle radio buttons.
+
+# 0.5.2
 _April 5th, 2021_
 
 - 🐛 Fixed a regression where `onSubmit` no longer passed fields.
