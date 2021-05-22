@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import {
+	Children,
 	cloneElement,
 	memo,
 	useMemo,
@@ -93,7 +94,12 @@ const Field = ({
 
 	return (
 		cloneElement(
-			children,
+			(
+				Children
+				.only(
+					children
+				)
+			),
 			childProps,
 		)
 	)
