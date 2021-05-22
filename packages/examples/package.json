@@ -1,5 +1,6 @@
 {
   "name": "@oneform/examples",
+  "version": "0.5.2",
   "private": true,
   "description": "OneForm examples.",
   "scripts": {
@@ -29,7 +30,7 @@
     "@testing-library/cypress": "^7.0.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "cypress": "^6.8.0",
+    "cypress": "^7.3.0",
     "eslint": "^7.22.0",
     "eslint-plugin-compat": "^3.9.0",
     "eslint-plugin-cypress": "^2.11.2",
@@ -42,6 +43,5 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "uuid": "^8.3.2"
-  },
-  "version": "0.5.2"
+  }
 }
