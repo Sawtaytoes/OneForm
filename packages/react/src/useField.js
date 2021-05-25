@@ -62,28 +62,33 @@ const useField = ({
 			(
 				event,
 			) => {
+				const {
+					checked: isTargetChecked,
+					selectedOptions: targetInputSelectedOptions,
+					type: targetInputType,
+					value: targetInputValue,
+				} = (
+					event
+					.target
+				)
+
 				if (
-					(
-						event
-						.target
-						.type
-					)
+					targetInputType
 					=== 'checkbox'
 				) {
-					setValue(
-						event
-						.target
-						.checked
-					)
-
 					setVisited()
+
+					setValue(
+						isTargetChecked
+						? (
+							inputValue
+							|| isTargetChecked
+						)
+						: isTargetChecked
+					)
 				}
 				else if (
-					(
-						event
-						.target
-						.type
-					)
+					targetInputType
 					=== 'radio'
 				) {
 					setVisited()
@@ -93,11 +98,7 @@ const useField = ({
 					)
 				}
 				else if (
-					(
-						event
-						.target
-						.type
-					)
+					targetInputType
 					=== 'select-multiple'
 				) {
 					setVisited()
@@ -105,9 +106,7 @@ const useField = ({
 					setValue(
 						Array
 						.from(
-							event
-							.target
-							.selectedOptions
+							targetInputSelectedOptions
 						)
 						.map(({
 							value,
@@ -117,26 +116,18 @@ const useField = ({
 					)
 				}
 				else if (
-					(
-						event
-						.target
-						.type
-					)
+					targetInputType
 					=== 'select-one'
 				) {
 					setVisited()
 
 					setValue(
-						event
-						.target
-						.value
+						targetInputValue
 					)
 				}
 				else {
 					setValue(
-						event
-						.target
-						.value
+						targetInputValue
 					)
 				}
 
@@ -215,7 +206,14 @@ const useField = ({
 	return {
 		errorMessages,
 		fieldName,
-		fieldVisited,
+		isChecked: (
+			inputValue
+			? (
+				value
+				=== inputValue
+			)
+			: null
+		),
 		isHtmlElement,
 		isVisited: (
 			isVisited

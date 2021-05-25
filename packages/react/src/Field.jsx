@@ -18,7 +18,7 @@ const Field = ({
 	const {
 		errorMessages,
 		fieldName,
-		fieldVisited,
+		isChecked,
 		isHtmlElement,
 		isVisited,
 		value,
@@ -34,6 +34,7 @@ const Field = ({
 			() => (
 				isHtmlElement
 				? {
+					'checked': isChecked,
 					'data-error': (
 						(
 							(
@@ -56,6 +57,7 @@ const Field = ({
 					value,
 				}
 				: {
+					checked: isChecked,
 					dirty: isVisited,
 					error: (
 						Boolean(
@@ -69,6 +71,7 @@ const Field = ({
 					errors: (
 						errorMessages
 					),
+					isChecked,
 					isDirty: isVisited,
 					isTouched: isVisited,
 					isVisited,
@@ -83,7 +86,7 @@ const Field = ({
 			[
 				errorMessages,
 				fieldName,
-				fieldVisited,
+				isChecked,
 				isHtmlElement,
 				isVisited,
 				value,
