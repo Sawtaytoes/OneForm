@@ -74,7 +74,12 @@ export const decorators = [
 						}
 
 						option {
-							background-color: rgba(128, 128, 128, 0.5);
+							border: 2px solid #ccc;
+							padding: 20px;
+						}
+
+						option:checked {
+							border: 2px solid rgba(128, 128, 128, 0.5);
 						}
 
 						[data-loading]::before {
