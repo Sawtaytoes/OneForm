@@ -17,7 +17,8 @@ const useField = ({
 		name,
 		onBlur: onVisit,
 		onChange,
-		value: radioValue,
+		// Unless `children` is a radio button, the `value` prop should never be set.
+		value: initialValue,
 	} = (
 		children
 		.props
@@ -87,7 +88,7 @@ const useField = ({
 					setVisited()
 
 					setValue(
-						radioValue
+						initialValue
 					)
 				}
 				else if (
@@ -143,8 +144,8 @@ const useField = ({
 				)
 			},
 			[
+				initialValue,
 				onChange,
-				radioValue,
 				setValue,
 				setVisited,
 			],
@@ -254,7 +255,10 @@ const useField = ({
 				)
 			)
 			? []
-			: value
+			: (
+				initialValue
+				|| value
+			)
 		),
 		valueChanged,
 	}
