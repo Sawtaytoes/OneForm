@@ -1,3 +1,8 @@
+# 0.6.2
+_May 24th, 2021_
+
+- 🐛 Fixed a bug where the radio button's value was changing.
+
 # 0.6.1
 _May 22nd, 2021_
 
