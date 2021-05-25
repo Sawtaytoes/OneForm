@@ -17,6 +17,7 @@ const useField = ({
 		name,
 		onBlur: onVisit,
 		onChange,
+		type: inputType,
 		// Unless `children` is a radio button, the `value` prop should never be set.
 		value: initialValue,
 	} = (
@@ -163,11 +164,7 @@ const useField = ({
 			const isCheckbox = (
 				isHtmlElement
 				? (
-					(
-						children
-						.props
-						.type
-					)
+					inputType
 					=== 'checkbox'
 				)
 				: (
@@ -186,32 +183,15 @@ const useField = ({
 				)
 			)
 
-			const isDefaultRadio = (
-				isHtmlElement
-				&& (
-					(
-						children
-						.props
-						.type
-					)
-					=== 'radio'
-				)
-				&& (
-					children
-					.props
-					.defaultChecked
-				)
-			)
-
 			if (
 				isCheckbox
-				|| isDefaultRadio
 			) {
 				setVisited()
 			}
 		},
 		[
 			children,
+			inputType,
 			isHtmlElement,
 			setVisited,
 		]
