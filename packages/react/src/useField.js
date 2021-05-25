@@ -185,7 +185,27 @@ const useField = ({
 				)
 			)
 
-			if (isCheckbox) {
+			const isDefaultRadio = (
+				isHtmlElement
+				&& (
+					(
+						children
+						.props
+						.type
+					)
+					=== 'radio'
+				)
+				&& (
+					children
+					.props
+					.defaultChecked
+				)
+			)
+
+			if (
+				isCheckbox
+				|| isDefaultRadio
+			) {
 				setVisited()
 			}
 		},
