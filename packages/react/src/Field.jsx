@@ -6,6 +6,7 @@ import {
 	useMemo,
 } from 'react'
 
+import FieldContext from './FieldContext.js'
 import useField from './useField.js'
 
 const propTypes = {
@@ -28,6 +29,17 @@ const Field = ({
 		useField({
 			children,
 		})
+	)
+
+	const providerValue = (
+		useMemo(
+			() => ({
+				value,
+			}),
+			[
+				value,
+			],
+		)
 	)
 
 	const childProps = (
@@ -98,15 +110,21 @@ const Field = ({
 	)
 
 	return (
-		cloneElement(
-			(
-				Children
-				.only(
-					children
+		<FieldContext.Provider
+			value={providerValue}
+		>
+			{
+				cloneElement(
+					(
+						Children
+						.only(
+							children
+						)
+					),
+					childProps,
 				)
-			),
-			childProps,
-		)
+			}
+		</FieldContext.Provider>
 	)
 }
 
