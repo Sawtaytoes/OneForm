@@ -105,31 +105,29 @@ export const HTMLRadio = (
 	args,
 ) => (
 	<OneForm {...args}>
-		<div>
-			<label>
-				<Field>
-					<input
-						name="message"
-						type="radio"
-						value="first"
-					/>
-				</Field>
+		<label>
+			<Field>
+				<input
+					name="message"
+					type="radio"
+					value="first"
+				/>
+			</Field>
 
-				First
-			</label>
+			First
+		</label>
 
-			<label>
-				<Field>
-					<input
-						name="message"
-						type="radio"
-						value="second"
-					/>
-				</Field>
+		<label>
+			<Field>
+				<input
+					name="message"
+					type="radio"
+					value="second"
+				/>
+			</Field>
 
-				Second
-			</label>
-		</div>
+			Second
+		</label>
 	</OneForm>
 )
 
