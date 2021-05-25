@@ -2,6 +2,7 @@
 import { action } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
+import Subfield from './Subfield.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldGroup from './FieldGroup.jsx'
 import FieldValue from './FieldValue.jsx'
@@ -127,6 +128,55 @@ InitialRadioValues
 .args = {
 	values: {
 		message: 'second',
+	},
+}
+
+export const InitialMultiSelect = (
+	args,
+) => (
+	<OneForm {...args}>
+		<label htmlFor="color">
+			Select one of many values.
+		</label>
+
+		<Field>
+			<select
+				id="color"
+				multiple
+				name="color"
+			>
+				<Subfield>
+					<option value="green">
+						Green
+					</option>
+				</Subfield>
+
+				<Subfield>
+					<option value="red">
+						Red
+					</option>
+				</Subfield>
+
+				<Subfield>
+					<option value="blue">
+						Blue
+					</option>
+				</Subfield>
+			</select>
+		</Field>
+
+		<div>
+			<FieldValue name="color" />
+		</div>
+	</OneForm>
+)
+
+InitialMultiSelect
+.args = {
+	values: {
+		color: [
+			'red',
+		],
 	},
 }
 
