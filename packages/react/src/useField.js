@@ -39,7 +39,7 @@ const useField = ({
 		})
 	)
 
-	const fieldVisited = (
+	const visitField = (
 		useCallback(
 			(
 				event,
@@ -57,7 +57,7 @@ const useField = ({
 		)
 	)
 
-	const valueChanged = (
+	const updateFieldValue = (
 		useCallback(
 			(
 				event,
@@ -220,6 +220,7 @@ const useField = ({
 			? 'true'
 			: ''
 		),
+		updateFieldValue,
 		value: (
 			(
 				(
@@ -238,7 +239,7 @@ const useField = ({
 				|| value
 			)
 		),
-		valueChanged,
+		visitField,
 	}
 }
 

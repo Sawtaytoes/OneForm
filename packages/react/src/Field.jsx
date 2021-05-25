@@ -21,8 +21,9 @@ const Field = ({
 		isChecked,
 		isHtmlElement,
 		isVisited,
+		updateFieldValue,
 		value,
-		valueChanged,
+		visitField,
 	} = (
 		useField({
 			children,
@@ -52,8 +53,8 @@ const Field = ({
 						: null
 					),
 					'name': fieldName,
-					'onBlur': fieldVisited,
-					'onChange': valueChanged,
+					'onBlur': visitField,
+					'onChange': updateFieldValue,
 					value,
 				}
 				: {
@@ -76,8 +77,8 @@ const Field = ({
 					isTouched: isVisited,
 					isVisited,
 					name: fieldName,
-					onBlur: fieldVisited,
-					onChange: valueChanged,
+					onBlur: visitField,
+					onChange: updateFieldValue,
 					touched: isVisited,
 					value,
 					visited: isVisited,
@@ -89,8 +90,9 @@ const Field = ({
 				isChecked,
 				isHtmlElement,
 				isVisited,
+				updateFieldValue,
 				value,
-				valueChanged,
+				visitField,
 			],
 		)
 	)
