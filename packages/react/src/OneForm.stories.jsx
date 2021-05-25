@@ -60,6 +60,76 @@ InitialValues
 	},
 }
 
+export const CheckboxValue = (
+	args,
+) => (
+	<OneForm {...args}>
+		<label>
+			<Field>
+				<input
+					name="message"
+					type="checkbox"
+					value="The Checkbox Value"
+				/>
+			</Field>
+
+			Checkbox with Value
+		</label>
+
+		<div>
+			<FieldValue name="message" />
+		</div>
+	</OneForm>
+)
+
+CheckboxValue
+.args = {
+	values: {
+		message: '',
+	},
+}
+
+export const InitialRadioValues = (
+	args,
+) => (
+	<OneForm {...args}>
+		<label>
+			<Field>
+				<input
+					name="message"
+					type="radio"
+					value="first"
+				/>
+			</Field>
+
+			First
+		</label>
+
+		<label>
+			<Field>
+				<input
+					name="message"
+					type="radio"
+					value="second"
+				/>
+			</Field>
+
+			Second
+		</label>
+
+		<div>
+			<FieldValue name="message" />
+		</div>
+	</OneForm>
+)
+
+InitialRadioValues
+.args = {
+	values: {
+		message: 'second',
+	},
+}
+
 export const Submit = (
 	args,
 ) => (
