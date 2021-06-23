@@ -42,7 +42,7 @@ You're most-likely wanting **`useFieldData`**.
       <td style="text-align:left"><code>fieldVisited</code>
       </td>
       <td style="text-align:left">
-        <p>A calback function for when a field is visited.</p>
+        <p>A callback function for when a field is visited.</p>
         <p><em>This expects to receive an HTML<code>onBlur</code> event.</em>
         </p>
       </td>
