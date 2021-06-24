@@ -6,6 +6,8 @@ Allows you to get and set error messages for any field.
 This hook is commonly used when creating custom error message components that display more than a single error message.
 {% endhint %}
 
+## Props
+
 ### Props in
 
 | Prop Name | Description |

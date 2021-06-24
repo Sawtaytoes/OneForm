@@ -2,6 +2,13 @@
 
 Displays the value for a given field name.
 
+## Props
+
+| Prop Name | Description |
+| :--- | :--- |
+| `name` | The base field name **without** a `/`. |
+
+
 ```jsx
 import {
   FieldValue,
@@ -22,10 +29,6 @@ const ValuesExample = () => (
   </OneForm>
 )
 ```
-
-| Prop Name | Description |
-| :--- | :--- |
-| `name` | The base field name **without** a `/`. |
 
 ### When to use?
 
