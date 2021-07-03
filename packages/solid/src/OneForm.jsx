@@ -2,68 +2,68 @@ import PropTypes from 'prop-types'
 import { createSignal } from 'solid-js'
 
 const propTypes = {
-	children: PropTypes.node,
-	onSubmit: PropTypes.func,
+  children: PropTypes.node,
+  onSubmit: PropTypes.func,
 }
 
 const OneForm = ({
-	children,
-	onSubmit,
+  children,
+  onSubmit,
 }) => {
-	const [
-		messageValue,
-		setMessageValue,
-	] = (
-		createSignal('')
-	)
+  const [
+    messageValue,
+    setMessageValue,
+  ] = (
+    createSignal('')
+  )
 
-	const formSubmitted = (
-		event,
-	) => {
-		event
-		.preventDefault()
+  const formSubmitted = (
+    event,
+  ) => {
+    event
+    .preventDefault()
 
-		onSubmit({
-			allFields: {
-				message: messageValue(),
-			},
-			registeredFields: {
-				message: messageValue(),
-			},
-		})
-	}
+    onSubmit({
+      allFields: {
+        message: messageValue(),
+      },
+      registeredFields: {
+        message: messageValue(),
+      },
+    })
+  }
 
-	return (
-		<form
-			onSubmit={formSubmitted}
-			role="form"
-		>
-			{children}
+  return (
+    <form
+      onSubmit={formSubmitted}
+      role="form"
+    >
+      {children}
 
-			<input
-				name="message"
-				onInput={(
-					event,
-				) => {
-					setMessageValue(
-						event
-						.target
-						.value
-					)
-				}}
-			/>
+      <input
+        name="message"
+        onInput={(
+          event,
+        ) => {
+          setMessageValue(
+            event
+            .target
+            .value
+          )
+        }}
+      />
 
-			<div>
-				{messageValue()}
-			</div>
+      <div>
+        {messageValue()}
+      </div>
 
-			<div>
-				<button>
-					SUBMIT
-				</button>
-			</div>
-		</form>
-	)
+      <div>
+        <button>
+          SUBMIT
+        </button>
+      </div>
+    </form>
+  )
 }
 
 OneForm.propTypes = propTypes

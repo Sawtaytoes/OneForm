@@ -1,47 +1,47 @@
 import {
-	useCallback,
-	useContext,
+  useCallback,
+  useContext,
 } from 'react'
 
 import RegistrationContext from './RegistrationContext.js'
 import useFieldName from './useFieldName.js'
 
 const useFieldRegistration = ({
-	name,
+  name,
 }) => {
-	const {
-		fieldName,
-	} = (
-		useFieldName({
-			name,
-		})
-	)
+  const {
+    fieldName,
+  } = (
+    useFieldName({
+      name,
+    })
+  )
 
-	const {
-		registerFieldName,
-	} = (
-		useContext(
-			RegistrationContext
-		)
-	)
+  const {
+    registerFieldName,
+  } = (
+    useContext(
+      RegistrationContext
+    )
+  )
 
-	const register = (
-		useCallback(
-			() => (
-				registerFieldName(
-					fieldName,
-				)
-			),
-			[
-				fieldName,
-				registerFieldName,
-			],
-		)
-	)
+  const register = (
+    useCallback(
+      () => (
+        registerFieldName(
+          fieldName,
+        )
+      ),
+      [
+        fieldName,
+        registerFieldName,
+      ],
+    )
+  )
 
-	return {
-		register,
-	}
+  return {
+    register,
+  }
 }
 
 export default useFieldRegistration

@@ -1,6 +1,6 @@
 import {
-	useCallback,
-	useRef,
+  useCallback,
+  useRef,
 } from 'react'
 
 import createObservable from './createObservable.js'
@@ -8,88 +8,88 @@ import createObservable from './createObservable.js'
 const initialObservables = {}
 
 const useObservableState = () => {
-	const observablesRef = (
-		useRef(
-			initialObservables
-		)
-	)
+  const observablesRef = (
+    useRef(
+      initialObservables
+    )
+  )
 
-	const getObservable = (
-		useCallback(
-			(
-				identifier,
-			) => {
-				if (
-					!(
-						observablesRef
-						.current
-						[identifier]
-					)
-				) {
-					observablesRef
-					.current = {
-						...(
-							observablesRef
-							.current
-						),
-						[identifier]: (
-							createObservable()
-						),
-					}
-				}
+  const getObservable = (
+    useCallback(
+      (
+        identifier,
+      ) => {
+        if (
+          !(
+            observablesRef
+            .current
+            [identifier]
+          )
+        ) {
+          observablesRef
+          .current = {
+            ...(
+              observablesRef
+              .current
+            ),
+            [identifier]: (
+              createObservable()
+            ),
+          }
+        }
 
-				return (
-					observablesRef
-					.current
-					[identifier]
-				)
-			},
-			[],
-		)
-	)
+        return (
+          observablesRef
+          .current
+          [identifier]
+        )
+      },
+      [],
+    )
+  )
 
-	const publishValue = (
-		useCallback(
-			(
-				identifier,
-				value,
-			) => {
-				getObservable(
-					identifier
-				)
-				.publish(
-					value
-				)
-			},
-			[
-				getObservable,
-			],
-		)
-	)
+  const publishValue = (
+    useCallback(
+      (
+        identifier,
+        value,
+      ) => {
+        getObservable(
+          identifier
+        )
+        .publish(
+          value
+        )
+      },
+      [
+        getObservable,
+      ],
+    )
+  )
 
-	const subscribeToValue = (
-		useCallback(
-			({
-				identifier,
-				subscriber,
-			}) => (
-				getObservable(
-					identifier
-				)
-				.subscribe(
-					subscriber
-				)
-			),
-			[
-				getObservable,
-			],
-		)
-	)
+  const subscribeToValue = (
+    useCallback(
+      ({
+        identifier,
+        subscriber,
+      }) => (
+        getObservable(
+          identifier
+        )
+        .subscribe(
+          subscriber
+        )
+      ),
+      [
+        getObservable,
+      ],
+    )
+  )
 
-	return {
-		publishValue,
-		subscribeToValue,
-	}
+  return {
+    publishValue,
+    subscribeToValue,
+  }
 }
 
 export default useObservableState

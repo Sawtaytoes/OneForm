@@ -1,28 +1,28 @@
 import {
-	useMemo,
+  useMemo,
 } from 'react'
 
 const useIsHtmlElement = (
-	children,
+  children,
 ) => {
-	const isHtmlElement = (
-		useMemo(
-			() => (
-				typeof (
-					children
-					.type
-				)
-				=== 'string'
-			),
-			[
-				children,
-			],
-		)
-	)
+  const isHtmlElement = (
+    useMemo(
+      () => (
+        typeof (
+          children
+          .type
+        )
+        === 'string'
+      ),
+      [
+        children,
+      ],
+    )
+  )
 
-	return (
-		isHtmlElement
-	)
+  return (
+    isHtmlElement
+  )
 }
 
 export default useIsHtmlElement

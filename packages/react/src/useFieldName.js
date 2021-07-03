@@ -1,48 +1,48 @@
 import {
-	useContext,
-	useMemo,
+  useContext,
+  useMemo,
 } from 'react'
 
 import FieldGroupContext from './FieldGroupContext'
 
 const useFieldName = ({
-	name,
+  name,
 }) => {
-	const {
-		fieldGroups,
-	} = (
-		useContext(
-			FieldGroupContext
-		)
-	)
+  const {
+    fieldGroups,
+  } = (
+    useContext(
+      FieldGroupContext
+    )
+  )
 
-	const fieldName = (
-		useMemo(
-			() => (
-				[
-					name,
-				]
-				.concat(
-					fieldGroups
-					.map(({
-						id,
-						name,
-					}) => (
-						`/${name}:${id}`
-					))
-				)
-				.join('')
-			),
-			[
-				fieldGroups,
-				name,
-			],
-		)
-	)
+  const fieldName = (
+    useMemo(
+      () => (
+        [
+          name,
+        ]
+        .concat(
+          fieldGroups
+          .map(({
+            id,
+            name,
+          }) => (
+            `/${name}:${id}`
+          ))
+        )
+        .join('')
+      ),
+      [
+        fieldGroups,
+        name,
+      ],
+    )
+  )
 
-	return {
-		fieldName,
-	}
+  return {
+    fieldName,
+  }
 }
 
 export default useFieldName

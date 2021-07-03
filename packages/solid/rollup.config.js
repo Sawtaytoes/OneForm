@@ -9,79 +9,79 @@ import packageJson from './package.json'
 process.env.NODE_ENV = 'production'
 
 const rollupConfig = {
-	external: [
-		'prop-types',
-		'react',
-		'react/jsx-runtime',
-	],
-	input: (
-		packageJson
-		.source
-	),
-	output: [
-		{
-			file: (
-				packageJson
-				.module
-			),
-			format: 'esm',
-			sourcemap: true,
-		},
-		{
-			file: (
-				packageJson
-				.main
-			),
-			format: 'cjs',
-			sourcemap: true,
-		},
-		{
-			file: (
-				packageJson
-				['umd:main']
-			),
-			format: 'umd',
-			globals: {
-				'prop-types': 'PropTypes',
-				'react': 'React',
-				'react/jsx-runtime': 'jsxRuntime',
-			},
-			name: 'OneForm',
-			sourcemap: true,
-		},
-		{
-			file: (
-				packageJson
-				.browser
-			),
-			format: 'umd',
-			globals: {
-				'prop-types': 'PropTypes',
-				'react': 'React',
-				'react/jsx-runtime': 'jsxRuntime',
-			},
-			name: 'OneForm',
-			plugins: [
-				terser(),
-			],
-			sourcemap: true,
-		},
-	],
-	plugins: [
-		babel({
-			babelHelpers: 'bundled',
-		}),
-		nodeResolve({
-			moduleDirectories: [
-				'src',
-			],
-		}),
-		sourcemaps(),
-		analyze({
-			limit: 3,
-			summaryOnly: true,
-		}),
-	],
+  external: [
+    'prop-types',
+    'react',
+    'react/jsx-runtime',
+  ],
+  input: (
+    packageJson
+    .source
+  ),
+  output: [
+    {
+      file: (
+        packageJson
+        .module
+      ),
+      format: 'esm',
+      sourcemap: true,
+    },
+    {
+      file: (
+        packageJson
+        .main
+      ),
+      format: 'cjs',
+      sourcemap: true,
+    },
+    {
+      file: (
+        packageJson
+        ['umd:main']
+      ),
+      format: 'umd',
+      globals: {
+        'prop-types': 'PropTypes',
+        'react': 'React',
+        'react/jsx-runtime': 'jsxRuntime',
+      },
+      name: 'OneForm',
+      sourcemap: true,
+    },
+    {
+      file: (
+        packageJson
+        .browser
+      ),
+      format: 'umd',
+      globals: {
+        'prop-types': 'PropTypes',
+        'react': 'React',
+        'react/jsx-runtime': 'jsxRuntime',
+      },
+      name: 'OneForm',
+      plugins: [
+        terser(),
+      ],
+      sourcemap: true,
+    },
+  ],
+  plugins: [
+    babel({
+      babelHelpers: 'bundled',
+    }),
+    nodeResolve({
+      moduleDirectories: [
+        'src',
+      ],
+    }),
+    sourcemaps(),
+    analyze({
+      limit: 3,
+      summaryOnly: true,
+    }),
+  ],
 }
 
 export default rollupConfig

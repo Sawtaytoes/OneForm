@@ -3,12 +3,8 @@ root = true
 [*]
 charset = utf-8
 indent_size = 2
-indent_style = tab
-insert_final_newline = true
-
-[*.{json}]
 indent_style = space
+insert_final_newline = true
 
 [/packages/react*.{md}]
 indent_size = 4
-indent_style = space

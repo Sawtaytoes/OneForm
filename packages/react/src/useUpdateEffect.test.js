@@ -1,91 +1,91 @@
 import {
-	renderHook,
+  renderHook,
 } from '@testing-library/react-hooks'
 
 import useUpdateEffect from './useUpdateEffect.js'
 
 describe(
-	'useUpdateEffect',
-	() => {
-		test(
-			'does not call callback on first render',
-			() => {
-				const callback = (
-					jest
-					.fn()
-				)
+  'useUpdateEffect',
+  () => {
+    test(
+      'does not call callback on first render',
+      () => {
+        const callback = (
+          jest
+          .fn()
+        )
 
-				renderHook(
-					({
-						callback,
-						dependencies,
-					}) => (
-						useUpdateEffect(
-							callback,
-							dependencies,
-						)
-					),
-					{
-						initialProps: {
-							callback,
-							dependencies: [
-								null,
-							],
-						},
-					},
-				)
+        renderHook(
+          ({
+            callback,
+            dependencies,
+          }) => (
+            useUpdateEffect(
+              callback,
+              dependencies,
+            )
+          ),
+          {
+            initialProps: {
+              callback,
+              dependencies: [
+                null,
+              ],
+            },
+          },
+        )
 
-				expect(
-					callback
-				)
-				.toHaveBeenCalledTimes(0)
-			},
-		)
+        expect(
+          callback
+        )
+        .toHaveBeenCalledTimes(0)
+      },
+    )
 
-		test(
-			'calls callback on subsequent renders',
-			() => {
-				const callback = (
-					jest
-					.fn()
-				)
+    test(
+      'calls callback on subsequent renders',
+      () => {
+        const callback = (
+          jest
+          .fn()
+        )
 
-				const {
-					rerender,
-				} = (
-					renderHook(
-						({
-							callback,
-							dependencies,
-						}) => (
-							useUpdateEffect(
-								callback,
-								dependencies,
-							)
-						),
-						{
-							initialProps: {
-								callback,
-								dependencies: [
-									null,
-								],
-							},
-						},
-					)
-				)
+        const {
+          rerender,
+        } = (
+          renderHook(
+            ({
+              callback,
+              dependencies,
+            }) => (
+              useUpdateEffect(
+                callback,
+                dependencies,
+              )
+            ),
+            {
+              initialProps: {
+                callback,
+                dependencies: [
+                  null,
+                ],
+              },
+            },
+          )
+        )
 
-				rerender({
-					callback,
-					dependencies: [
-						'',
-					],
-				})
+        rerender({
+          callback,
+          dependencies: [
+            '',
+          ],
+        })
 
-				expect(
-					callback
-				)
-				.toHaveBeenCalledTimes(1)
-			},
-		)
-	}
+        expect(
+          callback
+        )
+        .toHaveBeenCalledTimes(1)
+      },
+    )
+  }
 )
