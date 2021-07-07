@@ -6,6 +6,8 @@ Allows you to get and set error messages for any field.
 This hook is commonly used when creating custom error message components that display more than a single error message.
 {% endhint %}
 
+## Props
+
 ### Props in
 
 | Prop Name | Description |
@@ -27,14 +29,13 @@ This hook is commonly used when creating custom error message components that di
       </td>
       <td style="text-align:left">
         <p>Array of error message strings.</p>
-        <p><em>When changed, this value is updated.</em>
-        </p>
+        <p><em>When changed, this value is updated.</em></p>
       </td>
     </tr>
     <tr>
       <td style="text-align:left"><code>setErrorMessages</code>
       </td>
-      <td style="text-align:left">Function which sets error messages for this field.</td>
+      <td style="text-align:left"><em>Function which sets error messages for this field.</em></td>
     </tr>
   </tbody>
 </table>

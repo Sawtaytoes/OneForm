@@ -29,6 +29,8 @@ const FieldGroupExample = () => (
 )
 ```
 
+## Props
+
 <table>
   <thead>
     <tr>
