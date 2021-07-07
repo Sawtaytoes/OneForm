@@ -1,59 +1,59 @@
 import PropTypes from 'prop-types'
 import {
-	Children,
-	cloneElement,
-	memo,
-	useMemo,
+  Children,
+  cloneElement,
+  memo,
+  useMemo,
 } from 'react'
 
 import useSubfield from './useSubfield.js'
 
 const propTypes = {
-	children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 const Subfield = ({
-	children,
+  children,
 }) => {
-	const {
-		isHtmlElement,
-		isSelected,
-	} = (
-		useSubfield({
-			children,
-		})
-	)
+  const {
+    isHtmlElement,
+    isSelected,
+  } = (
+    useSubfield({
+      children,
+    })
+  )
 
-	const childProps = (
-		useMemo(
-			() => (
-				isHtmlElement
-				? {
-					selected: isSelected,
-				}
-				: {
-					isSelected,
-					selected: isSelected,
-				}
-			),
-			[
-				isHtmlElement,
-				isSelected,
-			],
-		)
-	)
+  const childProps = (
+    useMemo(
+      () => (
+        isHtmlElement
+        ? {
+          selected: isSelected,
+        }
+        : {
+          isSelected,
+          selected: isSelected,
+        }
+      ),
+      [
+        isHtmlElement,
+        isSelected,
+      ],
+    )
+  )
 
-	return (
-		cloneElement(
-			(
-				Children
-				.only(
-					children
-				)
-			),
-			childProps,
-		)
-	)
+  return (
+    cloneElement(
+      (
+        Children
+        .only(
+          children
+        )
+      ),
+      childProps,
+    )
+  )
 }
 
 Subfield.propTypes = propTypes

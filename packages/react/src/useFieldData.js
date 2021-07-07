@@ -5,61 +5,61 @@ import useFieldValue from './useFieldValue.js'
 import useFieldVisitation from './useFieldVisitation.js'
 
 const useFieldData = ({
-	name,
+  name,
 }) => {
-	const {
-		fieldName,
-	} = (
-		useFieldName({
-			name,
-		})
-	)
+  const {
+    fieldName,
+  } = (
+    useFieldName({
+      name,
+    })
+  )
 
-	const {
-		errorMessages,
-		setErrorMessages,
-	} = (
-		useFieldErrorMessages({
-			name,
-		})
-	)
+  const {
+    errorMessages,
+    setErrorMessages,
+  } = (
+    useFieldErrorMessages({
+      name,
+    })
+  )
 
-	const {
-		register,
-	} = (
-		useFieldRegistration({
-			name,
-		})
-	)
+  const {
+    register,
+  } = (
+    useFieldRegistration({
+      name,
+    })
+  )
 
-	const {
-		setValue,
-		value,
-	} = (
-		useFieldValue({
-			name,
-		})
-	)
+  const {
+    setValue,
+    value,
+  } = (
+    useFieldValue({
+      name,
+    })
+  )
 
-	const {
-		isVisited,
-		setVisited,
-	} = (
-		useFieldVisitation({
-			name,
-		})
-	)
+  const {
+    isVisited,
+    setVisited,
+  } = (
+    useFieldVisitation({
+      name,
+    })
+  )
 
-	return {
-		errorMessages,
-		fieldName,
-		isVisited,
-		register,
-		setErrorMessages,
-		setValue,
-		setVisited,
-		value,
-	}
+  return {
+    errorMessages,
+    fieldName,
+    isVisited,
+    register,
+    setErrorMessages,
+    setValue,
+    setVisited,
+    value,
+  }
 }
 
 export default useFieldData

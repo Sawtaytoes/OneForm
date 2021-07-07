@@ -29,39 +29,39 @@ import '@testing-library/cypress/add-commands'
 Cypress
 .Commands
 .overwrite(
-	'visit',
-	(
-		originalVisit,
-		storybookId,
-		options,
-	) => {
-		const urlSearchParams = (
-			new URLSearchParams()
-		)
+  'visit',
+  (
+    originalVisit,
+    storybookId,
+    options,
+  ) => {
+    const urlSearchParams = (
+      new URLSearchParams()
+    )
 
-		urlSearchParams
-		.append(
-			'id',
-			storybookId,
-		)
+    urlSearchParams
+    .append(
+      'id',
+      storybookId,
+    )
 
-		urlSearchParams
-		.append(
-			'viewMode',
-			'story'
-		)
+    urlSearchParams
+    .append(
+      'viewMode',
+      'story'
+    )
 
-		return (
-			originalVisit(
-				(
-					'/iframe.html'
-					.concat('?')
-					.concat(
-						urlSearchParams
-					)
-				),
-				options,
-			)
-		)
-	},
+    return (
+      originalVisit(
+        (
+          '/iframe.html'
+          .concat('?')
+          .concat(
+            urlSearchParams
+          )
+        ),
+        options,
+      )
+    )
+  },
 )

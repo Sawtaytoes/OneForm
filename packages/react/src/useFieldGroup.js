@@ -1,42 +1,42 @@
 import {
-	useContext,
-	useMemo,
+  useContext,
+  useMemo,
 } from 'react'
 
 import FieldGroupContext from './FieldGroupContext'
 
 const useFieldGroup = ({
-	id,
-	name,
+  id,
+  name,
 }) => {
-	const {
-		fieldGroups: parentFieldGroups,
-	} = (
-		useContext(
-			FieldGroupContext
-		)
-	)
+  const {
+    fieldGroups: parentFieldGroups,
+  } = (
+    useContext(
+      FieldGroupContext
+    )
+  )
 
-	const fieldGroups = (
-		useMemo(
-			() => (
-				parentFieldGroups
-				.concat({
-					id,
-					name,
-				})
-			),
-			[
-				id,
-				name,
-				parentFieldGroups,
-			],
-		)
-	)
+  const fieldGroups = (
+    useMemo(
+      () => (
+        parentFieldGroups
+        .concat({
+          id,
+          name,
+        })
+      ),
+      [
+        id,
+        name,
+        parentFieldGroups,
+      ],
+    )
+  )
 
-	return {
-		fieldGroups,
-	}
+  return {
+    fieldGroups,
+  }
 }
 
 export default useFieldGroup

@@ -1,7 +1,7 @@
 import {
-	useCallback,
-	useEffect,
-	useRef,
+  useCallback,
+  useEffect,
+  useRef,
 } from 'react'
 
 import useObservableState from './useObservableState.js'
@@ -11,319 +11,319 @@ const initialLocalValues = {}
 const initialSubsequentValues = {}
 
 const useValuesState = (
-	{
-		onChange = (
-			Function
-			.prototype
-		),
-		updatedValues = (
-			initialValues
-		),
-		values = (
-			initialValues
-		),
-	} = {}
+  {
+    onChange = (
+      Function
+      .prototype
+    ),
+    updatedValues = (
+      initialValues
+    ),
+    values = (
+      initialValues
+    ),
+  } = {}
 ) => {
-	const onChangeRef = (
-		useRef()
-	)
+  const onChangeRef = (
+    useRef()
+  )
 
-	onChangeRef
-	.current = (
-		onChange
-	)
+  onChangeRef
+  .current = (
+    onChange
+  )
 
-	const {
-		publishValue,
-		subscribeToValue,
-	} = (
-		useObservableState()
-	)
+  const {
+    publishValue,
+    subscribeToValue,
+  } = (
+    useObservableState()
+  )
 
-	const localValuesRef = (
-		useRef(
-			initialLocalValues
-		)
-	)
+  const localValuesRef = (
+    useRef(
+      initialLocalValues
+    )
+  )
 
-	const getAllLocalValues = (
-		useCallback(
-			() => (
-				localValuesRef
-				.current
-			),
-			[],
-		)
-	)
+  const getAllLocalValues = (
+    useCallback(
+      () => (
+        localValuesRef
+        .current
+      ),
+      [],
+    )
+  )
 
-	const getLocalValue = (
-		useCallback(
-			(
-				identifier,
-			) => (
-				getAllLocalValues()
-				[identifier]
-			),
-			[
-				getAllLocalValues,
-			],
-		)
-	)
+  const getLocalValue = (
+    useCallback(
+      (
+        identifier,
+      ) => (
+        getAllLocalValues()
+        [identifier]
+      ),
+      [
+        getAllLocalValues,
+      ],
+    )
+  )
 
-	const subsequentValuesRef = (
-		useRef(
-			initialSubsequentValues
-		)
-	)
+  const subsequentValuesRef = (
+    useRef(
+      initialSubsequentValues
+    )
+  )
 
-	const queueSubsequentChanges = (
-		useCallback(
-			(
-				subsequentValues,
-			) => {
-				subsequentValuesRef
-				.current = {
-					...(
-						subsequentValuesRef
-						.current
-					),
-					...subsequentValues,
-				}
-			},
-			[],
-		)
-	)
+  const queueSubsequentChanges = (
+    useCallback(
+      (
+        subsequentValues,
+      ) => {
+        subsequentValuesRef
+        .current = {
+          ...(
+            subsequentValuesRef
+            .current
+          ),
+          ...subsequentValues,
+        }
+      },
+      [],
+    )
+  )
 
-	const setLocalValue = (
-		useCallback(
-			(
-				identifier,
-				value,
-			) => {
-				if (
-					value
-					=== (
-						localValuesRef
-						.current
-						[identifier]
-					)
-				) {
-					return
-				}
+  const setLocalValue = (
+    useCallback(
+      (
+        identifier,
+        value,
+      ) => {
+        if (
+          value
+          === (
+            localValuesRef
+            .current
+            [identifier]
+          )
+        ) {
+          return
+        }
 
-				if (
-					value
-					=== undefined
-				) {
-					const copiedAllLocalValues = {
-						...getAllLocalValues(),
-					}
+        if (
+          value
+          === undefined
+        ) {
+          const copiedAllLocalValues = {
+            ...getAllLocalValues(),
+          }
 
-					Reflect
-					.deleteProperty(
-						copiedAllLocalValues,
-						identifier,
-					)
+          Reflect
+          .deleteProperty(
+            copiedAllLocalValues,
+            identifier,
+          )
 
-					localValuesRef
-					.current = (
-						copiedAllLocalValues
-					)
-				}
-				else {
-					localValuesRef
-					.current = {
-						...getAllLocalValues(),
-						[identifier]: (
-							value
-						),
-					}
-				}
+          localValuesRef
+          .current = (
+            copiedAllLocalValues
+          )
+        }
+        else {
+          localValuesRef
+          .current = {
+            ...getAllLocalValues(),
+            [identifier]: (
+              value
+            ),
+          }
+        }
 
-				queueSubsequentChanges(
-					onChangeRef
-					.current({
-						identifier,
-						value,
-						values: (
-							getAllLocalValues()
-						),
-					})
-				)
+        queueSubsequentChanges(
+          onChangeRef
+          .current({
+            identifier,
+            value,
+            values: (
+              getAllLocalValues()
+            ),
+          })
+        )
 
-				publishValue(
-					identifier,
-					value,
-				)
-			},
-			[
-				getAllLocalValues,
-				publishValue,
-				queueSubsequentChanges,
-			],
-		)
-	)
+        publishValue(
+          identifier,
+          value,
+        )
+      },
+      [
+        getAllLocalValues,
+        publishValue,
+        queueSubsequentChanges,
+      ],
+    )
+  )
 
-	const processSubsequentChanges = (
-		useCallback(
-			() => {
-				const subsequentValue = (
-					Object
-					.entries(
-						subsequentValuesRef
-						.current
-					)
-					.find(
-						Boolean
-					)
-				)
+  const processSubsequentChanges = (
+    useCallback(
+      () => {
+        const subsequentValue = (
+          Object
+          .entries(
+            subsequentValuesRef
+            .current
+          )
+          .find(
+            Boolean
+          )
+        )
 
-				if (!subsequentValue) {
-					return
-				}
+        if (!subsequentValue) {
+          return
+        }
 
-				const [
-					identifier,
-					value,
-				] = (
-					subsequentValue
-				)
+        const [
+          identifier,
+          value,
+        ] = (
+          subsequentValue
+        )
 
-				subsequentValuesRef
-				.current = {
-					...(
-						subsequentValuesRef
-						.current
-					),
-				}
+        subsequentValuesRef
+        .current = {
+          ...(
+            subsequentValuesRef
+            .current
+          ),
+        }
 
-				Reflect
-				.deleteProperty(
-					(
-						subsequentValuesRef
-						.current
-					),
-					identifier,
-				)
+        Reflect
+        .deleteProperty(
+          (
+            subsequentValuesRef
+            .current
+          ),
+          identifier,
+        )
 
-				setLocalValue(
-					identifier,
-					value,
-				)
+        setLocalValue(
+          identifier,
+          value,
+        )
 
-				processSubsequentChanges()
-			},
-			[
-				setLocalValue,
-			],
-		)
-	)
+        processSubsequentChanges()
+      },
+      [
+        setLocalValue,
+      ],
+    )
+  )
 
-	const changeLocalValue = (
-		useCallback(
-			(
-				identifier,
-				value,
-			) => {
-				typeof value === 'function'
-				? (
-					setLocalValue(
-						identifier,
-						value(
-							getLocalValue(
-								identifier
-							)
-						),
-					)
-				)
-				: (
-					setLocalValue(
-						identifier,
-						value,
-					)
-				)
+  const changeLocalValue = (
+    useCallback(
+      (
+        identifier,
+        value,
+      ) => {
+        typeof value === 'function'
+        ? (
+          setLocalValue(
+            identifier,
+            value(
+              getLocalValue(
+                identifier
+              )
+            ),
+          )
+        )
+        : (
+          setLocalValue(
+            identifier,
+            value,
+          )
+        )
 
-				processSubsequentChanges()
-			},
-			[
-				getLocalValue,
-				processSubsequentChanges,
-				setLocalValue,
-			],
-		)
-	)
+        processSubsequentChanges()
+      },
+      [
+        getLocalValue,
+        processSubsequentChanges,
+        setLocalValue,
+      ],
+    )
+  )
 
-	useEffect(
-		() => {
-			Object
-			.entries({
-				...(
-					Object
-					.fromEntries(
-						Object
-						.entries(
-							localValuesRef
-							.current
-						)
-						.map(([
-							identifier,
-						]) => ([
-							identifier,
-						]))
-					)
-				),
-				...values,
-			})
-			.forEach(([
-				identifier,
-				value,
-			]) => {
-				setLocalValue(
-					identifier,
-					value,
-				)
-			})
+  useEffect(
+    () => {
+      Object
+      .entries({
+        ...(
+          Object
+          .fromEntries(
+            Object
+            .entries(
+              localValuesRef
+              .current
+            )
+            .map(([
+              identifier,
+            ]) => ([
+              identifier,
+            ]))
+          )
+        ),
+        ...values,
+      })
+      .forEach(([
+        identifier,
+        value,
+      ]) => {
+        setLocalValue(
+          identifier,
+          value,
+        )
+      })
 
-			processSubsequentChanges()
-		},
-		[
-			processSubsequentChanges,
-			setLocalValue,
-			values,
-		],
-	)
+      processSubsequentChanges()
+    },
+    [
+      processSubsequentChanges,
+      setLocalValue,
+      values,
+    ],
+  )
 
-	useEffect(
-		() => {
-			Object
-			.entries(
-				updatedValues
-			)
-			.forEach(([
-				identifier,
-				value,
-			]) => {
-				setLocalValue(
-					identifier,
-					value,
-				)
-			})
+  useEffect(
+    () => {
+      Object
+      .entries(
+        updatedValues
+      )
+      .forEach(([
+        identifier,
+        value,
+      ]) => {
+        setLocalValue(
+          identifier,
+          value,
+        )
+      })
 
-			processSubsequentChanges()
-		},
-		[
-			processSubsequentChanges,
-			setLocalValue,
-			updatedValues,
-		],
-	)
+      processSubsequentChanges()
+    },
+    [
+      processSubsequentChanges,
+      setLocalValue,
+      updatedValues,
+    ],
+  )
 
-	return {
-		getAllValues: getAllLocalValues,
-		getValue: getLocalValue,
-		setValue: changeLocalValue,
-		subscribeToValue: subscribeToValue,
-	}
+  return {
+    getAllValues: getAllLocalValues,
+    getValue: getLocalValue,
+    setValue: changeLocalValue,
+    subscribeToValue: subscribeToValue,
+  }
 }
 
 export default useValuesState

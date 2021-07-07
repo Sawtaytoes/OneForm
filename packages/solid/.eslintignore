@@ -1,0 +1,4 @@
+*.json
+dist
+node_modules
+storybook-static

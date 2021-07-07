@@ -1,0 +1,6 @@
+defaults
+maintained node versions
+not Baidu 7
+not OperaMini all
+not Explorer <= 11
+not ExplorerMobile <= 11

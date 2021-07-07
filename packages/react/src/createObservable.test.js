@@ -1,294 +1,294 @@
 import createObservable from './createObservable.js'
 
 describe(
-	'createObservable',
-	() => {
-		test(
-			'create an observable',
-			() => {
-				const observable = (
-					createObservable()
-				)
+  'createObservable',
+  () => {
+    test(
+      'create an observable',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const unsubscribe = (
-					observable
-					.subscribe()
-				)
+        const unsubscribe = (
+          observable
+          .subscribe()
+        )
 
-				unsubscribe()
+        unsubscribe()
 
-				expect(
-					typeof (
-						observable
-						.publish
-					)
-				)
-				.toBe(
-					'function'
-				)
+        expect(
+          typeof (
+            observable
+            .publish
+          )
+        )
+        .toBe(
+          'function'
+        )
 
-				expect(
-					typeof (
-						observable
-						.subscribe
-					)
-				)
-				.toBe(
-					'function'
-				)
-			}
-		)
+        expect(
+          typeof (
+            observable
+            .subscribe
+          )
+        )
+        .toBe(
+          'function'
+        )
+      }
+    )
 
-		test(
-			'unsubscribe from a subscriber',
-			() => {
-				const observable = (
-					createObservable()
-				)
+    test(
+      'unsubscribe from a subscriber',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const unsubscribe = (
-					observable
-					.subscribe(
-						() => {}
-					)
-				)
+        const unsubscribe = (
+          observable
+          .subscribe(
+            () => {}
+          )
+        )
 
-				unsubscribe()
+        unsubscribe()
 
-				expect(
-					observable
-					._subscribersRef
-					.current
-				)
-				.toHaveLength(0)
-			}
-		)
+        expect(
+          observable
+          ._subscribersRef
+          .current
+        )
+        .toHaveLength(0)
+      }
+    )
 
-		test(
-			'unsubscribe from no subscriber',
-			() => {
-				const observable = (
-					createObservable()
-				)
+    test(
+      'unsubscribe from no subscriber',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const unsubscribe = (
-					observable
-					.subscribe()
-				)
+        const unsubscribe = (
+          observable
+          .subscribe()
+        )
 
-				unsubscribe()
+        unsubscribe()
 
-				expect(
-					observable
-					._subscribersRef
-					.current
-				)
-				.toHaveLength(0)
-			}
-		)
+        expect(
+          observable
+          ._subscribersRef
+          .current
+        )
+        .toHaveLength(0)
+      }
+    )
 
-		test(
-			'unsubscribe from all subscribers',
-			() => {
-				const observable = (
-					createObservable()
-				)
+    test(
+      'unsubscribe from all subscribers',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const unsubscribe1 = (
-					observable
-					.subscribe()
-				)
+        const unsubscribe1 = (
+          observable
+          .subscribe()
+        )
 
-				const unsubscribe2 = (
-					observable
-					.subscribe()
-				)
+        const unsubscribe2 = (
+          observable
+          .subscribe()
+        )
 
-				unsubscribe1()
+        unsubscribe1()
 
-				expect(
-					observable
-					._subscribersRef
-					.current
-				)
-				.toHaveLength(1)
+        expect(
+          observable
+          ._subscribersRef
+          .current
+        )
+        .toHaveLength(1)
 
-				unsubscribe2()
+        unsubscribe2()
 
-				expect(
-					observable
-					._subscribersRef
-					.current
-				)
-				.toHaveLength(0)
-			}
-		)
+        expect(
+          observable
+          ._subscribersRef
+          .current
+        )
+        .toHaveLength(0)
+      }
+    )
 
-		test(
-			'unsubscribe from all subscribers when unsubscribed out of order',
-			() => {
-				const observable = (
-					createObservable()
-				)
+    test(
+      'unsubscribe from all subscribers when unsubscribed out of order',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const unsubscribe1 = (
-					observable
-					.subscribe()
-				)
+        const unsubscribe1 = (
+          observable
+          .subscribe()
+        )
 
-				const unsubscribe2 = (
-					observable
-					.subscribe()
-				)
+        const unsubscribe2 = (
+          observable
+          .subscribe()
+        )
 
-				unsubscribe2()
+        unsubscribe2()
 
-				expect(
-					observable
-					._subscribersRef
-					.current
-				)
-				.toHaveLength(1)
+        expect(
+          observable
+          ._subscribersRef
+          .current
+        )
+        .toHaveLength(1)
 
-				unsubscribe1()
+        unsubscribe1()
 
-				expect(
-					observable
-					._subscribersRef
-					.current
-				)
-				.toHaveLength(0)
-			}
-		)
+        expect(
+          observable
+          ._subscribersRef
+          .current
+        )
+        .toHaveLength(0)
+      }
+    )
 
-		test(
-			'cancels subscriber when unsubscribing',
-			() => {
-				const observable = (
-					createObservable()
-				)
+    test(
+      'cancels subscriber when unsubscribing',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const cancelator = (
-					jest
-					.fn()
-				)
+        const cancelator = (
+          jest
+          .fn()
+        )
 
-				const unsubscribe = (
-					observable
-					.subscribe(
-						() => (
-							cancelator
-						)
-					)
-				)
+        const unsubscribe = (
+          observable
+          .subscribe(
+            () => (
+              cancelator
+            )
+          )
+        )
 
-				observable
-				.publish()
+        observable
+        .publish()
 
-				unsubscribe()
+        unsubscribe()
 
-				expect(
-					cancelator
-				)
-				.toHaveBeenCalledTimes(
-					1
-				)
-			}
-		)
+        expect(
+          cancelator
+        )
+        .toHaveBeenCalledTimes(
+          1
+        )
+      }
+    )
 
-		test(
-			'publish to all subscribers',
-			() => {
-				const observable = (
-					createObservable()
-				)
+    test(
+      'publish to all subscribers',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const mockSubscriber1 = (
-					jest
-					.fn()
-				)
+        const mockSubscriber1 = (
+          jest
+          .fn()
+        )
 
-				const mockSubscriber2 = (
-					jest
-					.fn()
-				)
+        const mockSubscriber2 = (
+          jest
+          .fn()
+        )
 
-				const unsubscribe1 = (
-					observable
-					.subscribe(
-						mockSubscriber1
-					)
-				)
+        const unsubscribe1 = (
+          observable
+          .subscribe(
+            mockSubscriber1
+          )
+        )
 
-				const unsubscribe2 = (
-					observable
-					.subscribe(
-						mockSubscriber2
-					)
-				)
+        const unsubscribe2 = (
+          observable
+          .subscribe(
+            mockSubscriber2
+          )
+        )
 
-				const value = {}
+        const value = {}
 
-				observable
-				.publish(
-					value
-				)
+        observable
+        .publish(
+          value
+        )
 
-				unsubscribe1()
-				unsubscribe2()
+        unsubscribe1()
+        unsubscribe2()
 
-				expect(
-					mockSubscriber1
-				)
-				.toHaveBeenCalledTimes(
-					1
-				)
+        expect(
+          mockSubscriber1
+        )
+        .toHaveBeenCalledTimes(
+          1
+        )
 
-				expect(
-					mockSubscriber2
-				)
-				.toHaveBeenCalledTimes(
-					1
-				)
+        expect(
+          mockSubscriber2
+        )
+        .toHaveBeenCalledTimes(
+          1
+        )
 
-				expect(
-					mockSubscriber1
-				)
-				.toHaveBeenCalledWith(
-					value
-				)
+        expect(
+          mockSubscriber1
+        )
+        .toHaveBeenCalledWith(
+          value
+        )
 
-				expect(
-					mockSubscriber2
-				)
-				.toHaveBeenCalledWith(
-					value
-				)
-			}
-		)
+        expect(
+          mockSubscriber2
+        )
+        .toHaveBeenCalledWith(
+          value
+        )
+      }
+    )
 
-		test(
-			'maintain the value that was published',
-			() => {
-				const observable = (
-					createObservable()
-				)
+    test(
+      'maintain the value that was published',
+      () => {
+        const observable = (
+          createObservable()
+        )
 
-				const value = {}
+        const value = {}
 
-				observable
-				.publish(
-					value
-				)
+        observable
+        .publish(
+          value
+        )
 
-				expect(
-					observable
-					.getValue()
-				)
-				.toBe(
-					value
-				)
-			}
-		)
-	}
+        expect(
+          observable
+          .getValue()
+        )
+        .toBe(
+          value
+        )
+      }
+    )
+  }
 )

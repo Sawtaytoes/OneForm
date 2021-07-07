@@ -1,144 +1,144 @@
 import {
-	useCallback,
-	useRef,
+  useCallback,
+  useRef,
 } from 'react'
 
 const initialRegistrations = {}
 
 const useRegistrationState = (
-	{
-		onRegister = (
-			Function
-			.prototype
-		),
-		onUnregister = (
-			Function
-			.prototype
-		),
-	} = {}
+  {
+    onRegister = (
+      Function
+      .prototype
+    ),
+    onUnregister = (
+      Function
+      .prototype
+    ),
+  } = {}
 ) => {
-	const onRegisterRef = (
-		useRef()
-	)
+  const onRegisterRef = (
+    useRef()
+  )
 
-	onRegisterRef
-	.current = (
-		onRegister
-	)
+  onRegisterRef
+  .current = (
+    onRegister
+  )
 
-	const onUnregisterRef = (
-		useRef()
-	)
+  const onUnregisterRef = (
+    useRef()
+  )
 
-	onUnregisterRef
-	.current = (
-		onUnregister
-	)
+  onUnregisterRef
+  .current = (
+    onUnregister
+  )
 
-	const registrationsRef = (
-		useRef(
-			initialRegistrations
-		)
-	)
+  const registrationsRef = (
+    useRef(
+      initialRegistrations
+    )
+  )
 
-	const getAllRegistrations = (
-		useCallback(
-			() => (
-				registrationsRef
-				.current
-			),
-			[],
-		)
-	)
+  const getAllRegistrations = (
+    useCallback(
+      () => (
+        registrationsRef
+        .current
+      ),
+      [],
+    )
+  )
 
-	const getIsRegistered = (
-		useCallback(
-			(
-				identifier,
-			) => (
-				Boolean(
-					registrationsRef
-					.current
-					[identifier]
-				)
-			),
-			[],
-		)
-	)
+  const getIsRegistered = (
+    useCallback(
+      (
+        identifier,
+      ) => (
+        Boolean(
+          registrationsRef
+          .current
+          [identifier]
+        )
+      ),
+      [],
+    )
+  )
 
-	const register = (
-		useCallback(
-			(
-				identifier,
-			) => {
-				registrationsRef
-				.current = {
-					...(
-						registrationsRef
-						.current
-					),
-					[identifier]: (
-						(
-							(
-								registrationsRef
-								.current
-								[identifier]
-							)
-							|| 0
-						)
-						+ 1
-					),
-				}
+  const register = (
+    useCallback(
+      (
+        identifier,
+      ) => {
+        registrationsRef
+        .current = {
+          ...(
+            registrationsRef
+            .current
+          ),
+          [identifier]: (
+            (
+              (
+                registrationsRef
+                .current
+                [identifier]
+              )
+              || 0
+            )
+            + 1
+          ),
+        }
 
-				onRegisterRef
-				.current(
-					identifier
-				)
+        onRegisterRef
+        .current(
+          identifier
+        )
 
-				return () => {
-					const {
-						[identifier]: numberOfRegistrations,
-						...otherRegistrations
-					} = (
-						registrationsRef
-						.current
-					)
+        return () => {
+          const {
+            [identifier]: numberOfRegistrations,
+            ...otherRegistrations
+          } = (
+            registrationsRef
+            .current
+          )
 
-					if (
-						numberOfRegistrations
-						=== 1
-					) {
-						registrationsRef
-						.current = (
-							otherRegistrations
-						)
-					}
-					else {
-						registrationsRef
-						.current = {
-							...otherRegistrations,
-							[identifier]: (
-								numberOfRegistrations
-								- 1
-							),
-						}
-					}
+          if (
+            numberOfRegistrations
+            === 1
+          ) {
+            registrationsRef
+            .current = (
+              otherRegistrations
+            )
+          }
+          else {
+            registrationsRef
+            .current = {
+              ...otherRegistrations,
+              [identifier]: (
+                numberOfRegistrations
+                - 1
+              ),
+            }
+          }
 
-					onUnregisterRef
-					.current(
-						identifier
-					)
-				}
-			},
-			[],
-		)
-	)
+          onUnregisterRef
+          .current(
+            identifier
+          )
+        }
+      },
+      [],
+    )
+  )
 
-	return {
-		getAllRegistrations,
-		getIsRegistered,
-		register,
-	}
+  return {
+    getAllRegistrations,
+    getIsRegistered,
+    register,
+  }
 }
 
 export default useRegistrationState

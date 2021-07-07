@@ -1,49 +1,49 @@
 import {
-	useEffect,
-	useRef,
+  useEffect,
+  useRef,
 } from 'react'
 
 const useUpdateEffect = (
-	callback,
-	dependencies = [],
+  callback,
+  dependencies = [],
 ) => {
-	const isFirstUpdateRef = (
-		useRef(
-			true
-		)
-	)
+  const isFirstUpdateRef = (
+    useRef(
+      true
+    )
+  )
 
-	const callbackRef = (
-		useRef()
-	)
+  const callbackRef = (
+    useRef()
+  )
 
-	callbackRef
-	.current = (
-		callback
-	)
+  callbackRef
+  .current = (
+    callback
+  )
 
-	useEffect(
-		() => {
-			if (
-				isFirstUpdateRef
-				.current
-			) {
-				isFirstUpdateRef
-				.current = (
-					false
-				)
+  useEffect(
+    () => {
+      if (
+        isFirstUpdateRef
+        .current
+      ) {
+        isFirstUpdateRef
+        .current = (
+          false
+        )
 
-				return
-			}
+        return
+      }
 
-			return (
-				callbackRef
-				.current()
-			)
-		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		dependencies,
-	)
+      return (
+        callbackRef
+        .current()
+      )
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dependencies,
+  )
 }
 
 export default useUpdateEffect
