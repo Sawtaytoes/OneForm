@@ -40,7 +40,7 @@ const ErrorMessagesExample = () => (
       </td>
       <td style="text-align:left">
         <p>String</p>
-        <p>The base field name without a `/`.</p>
+        <p><em>The base field name without a `/`.</em></p>
       </td>
     </tr>
   </tbody>

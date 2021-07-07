@@ -19,7 +19,7 @@
       </td>
       <td style="text-align:left">
         <p>String</p>
-        <p>The base field name without a `/`.</p>
+        <p><em>The base field name without a `/`.</em></p>
       </td>
     </tr>
   </tbody>
@@ -39,7 +39,7 @@
       <td style="text-align:left"><code>fieldName</code>
       </td>
       <td style="text-align:left">
-        <p>String value of the field name.</p>
+        <p><em>String value of the field name.</em></p>
       </td>
     </tr>
   </tbody>

@@ -19,7 +19,7 @@
       </td>
       <td style="text-align:left">
         <p>String</p>
-        <p>The base field name without a `/`.</p>
+        <p><em>The base field name without a `/`.</em></p>
       </td>
     </tr>
   </tbody>
@@ -40,14 +40,14 @@
       <td style="text-align:left"><code>isVisited</code>
       </td>
       <td style="text-align:left">
-        <p>Boolean value representing if the field has been visited.</p>
+        <p><em>Boolean value representing if the field has been visited.</em></p>
       </td>
     </tr>
     <tr>
       <td style="text-align:left"><code>setVisited</code>
       </td>
       <td style="text-align:left">
-        <p>Function which sets the visited state.</p>
+        <p><em>Function which sets the visited state.</em></p>
       </td>
     </tr>
   </tbody>

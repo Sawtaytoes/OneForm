@@ -19,7 +19,7 @@
       </td>
       <td style="text-align:left">
         <p>String</p>
-        <p>The base field name without a `/`.</p>
+        <p><em>The base field name without a `/`.</em></p>
       </td>
     </tr>
   </tbody>
@@ -39,7 +39,7 @@
       <td style="text-align:left"><code>register</code>
       </td>
       <td style="text-align:left">
-        <p>Function which registers fields in the form.</p>
+        <p><em>Function which registers fields in the form.</em></p>
       </td>
     </tr>
   </tbody>

@@ -71,7 +71,7 @@ const FieldExample = () => (
       </td>
       <td style="text-align:left">
         <p>Node</p>
-        <p>A single component.</p>
+        <p><em>A single component.</em></p>
       </td>
     </tr>
   </tbody>
