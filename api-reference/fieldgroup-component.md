@@ -35,23 +35,33 @@ const FieldGroupExample = () => (
   <thead>
     <tr>
       <th style="text-align:left">Prop Name</th>
+      <th style="text-align:left">Prop Type</th>
       <th style="text-align:left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><code>id</code>
+      <td style="text-align:left">
+        <code>id</code>
+      </td>
+      <td style="text-align:left">
+        String
       </td>
       <td style="text-align:left">
         <p>A unique identifier for this group.</p>
-        <p><em>It only has to be unique for the given group name.</em>
-        </p>
+        <p><em>It only has to be unique for the given group name.</em></p>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><code>name</code>
+      <td style="text-align:left">
+        <code>name</code>
       </td>
-      <td style="text-align:left">The group name.</td>
+      <td style="text-align:left">
+        String
+      </td>
+      <td style="text-align:left">
+        The group name.
+      </td>
     </tr>
   </tbody>
 </table>

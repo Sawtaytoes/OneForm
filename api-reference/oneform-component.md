@@ -6,12 +6,12 @@ description: 'The center of everything, the one and only, OneForm.'
 
 ## Props
 
-| Prop Name | Required Type |
-| :--- | :--- |
+| Prop Name | Prop Type | Required Type |
+| :--- | :--- | :--- |
 | `children` | Node |
 | `errorMessages` | Object |
 | `groupValidations` | Array |
-| `hasFieldChangeValidation` | Boolean \(`true`\) |
+| `hasFieldChangeValidation` | Boolean | Default value \(`true`\)
 | `onChange` | Function |
 | `onSubmit` | Function |
 | `updatedErrorMessages` | Object |

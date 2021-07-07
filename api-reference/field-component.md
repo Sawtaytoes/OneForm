@@ -62,16 +62,20 @@ const FieldExample = () => (
   <thead>
     <tr>
       <th style="text-align:left">Prop Name</th>
+      <th style="text-align:left">Prop Type</th>
       <th style="text-align:left">Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><code>children</code>
+      <td style="text-align:left">
+        <code>children</code>
       </td>
       <td style="text-align:left">
-        <p>Node</p>
-        <p><em>A single component.</em></p>
+        Node
+      </td>
+      <td style="text-align:left">
+        <em>A single component.</em>
       </td>
     </tr>
   </tbody>

@@ -4,9 +4,9 @@ Displays the value for a given field name.
 
 ## Props
 
-| Prop Name | Description |
-| :--- | :--- |
-| `name` | The base field name **without** a `/`. |
+| Prop Name | Prop Type | Description |
+| :--- | :--- | :--- |
+| `name` | String | The base field name **without** a `/`. |
 
 
 ```jsx

@@ -4,12 +4,12 @@
 
 ## Props
 
-| Prop Name | Description |
-| :--- | :--- |
+| Prop Name | Prop Type | Description |
+| :--- | :--- | :--- |
 | `children` | Node |
-| `fallback` | The alternative display when empty. |
-| `getIsVisible` | Called when the returned `isVisible` is called. |
-| `isDisabledWhenInvalid` | An HTML-safe string representation of a boolean. |
+| `fallback` | Node | The alternative display when empty. |
+| `getIsVisible` | Function | Called when the returned `isVisible` is called. |
+| `isDisabledWhenInvalid` | String | An HTML-safe string representation of a boolean. |
 
 ## When to use?
 
