@@ -51,5 +51,5 @@
 * [useFieldRegistration\(\)](api-reference/usefieldregistration-hook.md)
 * [useFieldValue\(\)](api-reference/usefieldvalue-hook.md)
 * [useFieldVisitation\(\)](api-reference/usefieldvisitation-hook.md)
-* [useFieldSubmission\(\)](api-reference/usefieldsubmission-hook.md)
+* [useFormSubmission\(\)](api-reference/useformsubmission-hook.md)
 
