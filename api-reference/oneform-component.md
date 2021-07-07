@@ -6,7 +6,7 @@ description: 'The center of everything, the one and only, OneForm.'
 
 ## Props
 
-| Prop Name | Prop Type | Required Type |
+| Prop Name | Prop Type | Description |
 | :--- | :--- | :--- |
 | `children` | Node |
 | `errorMessages` | Object |

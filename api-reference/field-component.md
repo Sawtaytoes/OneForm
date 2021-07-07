@@ -85,25 +85,25 @@ const FieldExample = () => (
 
 ### Props on the child component
 
-| Prop Name | Description |
-| :--- | :--- |
-| name | A single component. |
+| Prop Name | Prop Type | Description |
+| :--- | :--- | :--- |
+| name | String | A single component. |
 
 If you add `onBlur` and `onChange` functions, they'll work as before, but they'll be wrapped by `<Field />`.
 
 ### Props given to the child component
 
-| Prop Name | Description |
-| :--- | :--- |
-| `dirty` | An HTML-safe string representation of a boolean. |
-| `error` | An error message string of the first error message. _This may change to a boolean in the future._ |
-| `errors` | An array of error messages. |
-| `name` | The field name **without** the `/`. |
-| `onBlur` | Callback expecting a standard `onBlur` event. |
-| `onChange` | Callback expecting a standard `onChange` event. |
-| `touched` | An HTML-safe string representation of a boolean. |
-| `value` | Value of the given field name. |
-| `visited` | An HTML-safe string representation of a boolean. |
+| Prop Name | Prop Type | Description |
+| :--- | :--- | :--- |
+| `dirty` | String | An HTML-safe string representation of a boolean. |
+| `error` | String | An error message string of the first error message. _This may change to a boolean in the future._ |
+| `errors` | Array | An array of error messages. |
+| `name` | String | The field name **without** the `/`. |
+| `onBlur` | Function | Callback expecting a standard `onBlur` event. |
+| `onChange` | Function | Callback expecting a standard `onChange` event. |
+| `touched` | Boolean | An HTML-safe string representation of a boolean. |
+| `value` | Any | Value of the given field name. |
+| `visited` | Boolean | An HTML-safe string representation of a boolean. |
 
 ## Caveats
 
