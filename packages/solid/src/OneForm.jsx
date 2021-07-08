@@ -1,68 +1,112 @@
 import PropTypes from 'prop-types'
 import { createSignal } from 'solid-js'
 
+import ValuesContext from './ValuesContext'
+
 const propTypes = {
   children: PropTypes.node,
   onSubmit: PropTypes.func,
 }
 
-const OneForm = ({
-  children,
-  onSubmit,
-}) => {
+const OneForm = (
+  props
+) => {
   const [
-    messageValue,
-    setMessageValue,
+    getLocalValues,
+    setLocalValues,
   ] = (
-    createSignal('')
+    createSignal({})
   )
 
-  const formSubmitted = (
+  const fieldChanged = (
+    identifier,
+    value,
+  ) => {
+    console.log(
+      'field changed',
+      identifier,
+      value,
+    )
+  }
+
+  const getFieldValue = (
+    identifier,
+  ) => {
+    if (
+      getLocalValues()
+      [identifier]
+    ) {
+      return (
+        getLocalValues()
+        [identifier]
+      )
+    }
+    else {
+      const [
+        getValue,
+        setValue,
+      ] = (
+        createSignal()
+      )
+
+      const valueState = {
+        getValue,
+        setValue: (
+          value,
+        ) => {
+          fieldChanged(
+            identifier,
+            value,
+          )
+
+          setValue(
+            value
+          )
+        },
+      }
+
+      setLocalValues((
+        localValues,
+      ) => ({
+        ...localValues,
+        [identifier]: (
+          valueState
+        ),
+      }))
+
+      return valueState
+    }
+  }
+
+  const submitForm = (
     event,
   ) => {
     event
     .preventDefault()
 
-    onSubmit({
-      allFields: {
-        message: messageValue(),
-      },
-      registeredFields: {
-        message: messageValue(),
-      },
+    props
+    .onSubmit({
+      allFields: getLocalValues(),
+      registeredFields: getLocalValues(),
     })
   }
 
   return (
-    <form
-      onSubmit={formSubmitted}
-      role="form"
+    <ValuesContext.Provider
+      value={{
+        getFieldValue,
+      }}
     >
-      {children}
-
-      <input
-        name="message"
-        onInput={(
-          event,
-        ) => {
-          setMessageValue(
-            event
-            .target
-            .value
-          )
-        }}
-      />
-
-      <div>
-        {messageValue()}
-      </div>
-
-      <div>
-        <button>
-          SUBMIT
-        </button>
-      </div>
-    </form>
+      <form
+        onSubmit={submitForm}
+        role="form"
+      >
+        {
+          props
+          .children
+        }
+      </form>
+    </ValuesContext.Provider>
   )
 }
 

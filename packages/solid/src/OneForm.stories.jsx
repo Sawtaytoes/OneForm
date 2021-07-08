@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { action } from '@storybook/addon-actions'
 
+import Field from './Field.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
@@ -19,5 +20,9 @@ export default {
 export const DisplayInputValue = (
   args,
 ) => (
-  <OneForm {...args} />
+  <OneForm {...args}>
+    <Field>
+      <input name="message" />
+    </Field>
+  </OneForm>
 )
