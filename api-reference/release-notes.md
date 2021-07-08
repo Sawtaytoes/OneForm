@@ -4,8 +4,8 @@
 
 _May 25th, 2021_
 
+* 💥 _**BREAKING CHANGE**_ Renamed callback functions in `useField`.
 * ✨ Set an `input`‘s `checked` attribute if it has a `value` attribute.
-* 💥 _**BREAKING CHANGE**_ Renamed callback functions in useField.
 * ✨ Added Subfield component for multiselect behavior.
 
 ## 0.6.2 <a id="062"></a>
