@@ -11,7 +11,7 @@ You're most-likely wanting **`useFieldData`**.
 | Prop Name | Description |
 | :--- | :--- |
 | `name` | The base field name without a `/`. |
-| `onChange` | Called when the returned `valueChanged` is called.  |
+| `onChange` | Called when the returned `valueChanged` is called. |
 | `onVisit` | Called when the returned`fieldVisited` is called. |
 
 ## Props
@@ -152,6 +152,5 @@ Field.propTypes = propTypes
 const MemoizedField = memo(Field)
 
 export default MemoizedField
-
 ```
 

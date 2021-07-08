@@ -8,7 +8,6 @@ Displays the value for a given field name.
 | :--- | :--- | :--- |
 | `name` | String | The base field name **without** a `/`. |
 
-
 ```jsx
 import {
   FieldValue,

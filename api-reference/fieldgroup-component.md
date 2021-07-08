@@ -41,27 +41,20 @@ const FieldGroupExample = () => (
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">
-        <code>id</code>
+      <td style="text-align:left"> <code>id</code>
       </td>
-      <td style="text-align:left">
-        String
-      </td>
+      <td style="text-align:left">String</td>
       <td style="text-align:left">
         <p>A unique identifier for this group.</p>
-        <p><em>It only has to be unique for the given group name.</em></p>
+        <p><em>It only has to be unique for the given group name.</em>
+        </p>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left">
-        <code>name</code>
+      <td style="text-align:left"> <code>name</code>
       </td>
-      <td style="text-align:left">
-        String
-      </td>
-      <td style="text-align:left">
-        The group name.
-      </td>
+      <td style="text-align:left">String</td>
+      <td style="text-align:left">The group name.</td>
     </tr>
   </tbody>
 </table>
@@ -120,7 +113,7 @@ const DeeplyNestedFieldGroupExample = () => (
       <Field>
         <input name="name" />
       </Field>
-      
+
       <FieldGroup
         id="1"
         name="emailId"
@@ -129,7 +122,7 @@ const DeeplyNestedFieldGroupExample = () => (
           <input name="email" />
         </Field>
       </FieldGroup>
-      
+
       <FieldGroup
         id="2"
         name="emailId"
@@ -172,7 +165,7 @@ const FieldGroupSubmissionExample = () => {
       [], 
     )
   )
-  
+
   return (
     <OneForm
       onSubmit={formSubmitted}

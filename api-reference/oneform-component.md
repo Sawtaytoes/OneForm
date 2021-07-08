@@ -8,16 +8,16 @@ description: 'The center of everything, the one and only, OneForm.'
 
 | Prop Name | Prop Type | Description |
 | :--- | :--- | :--- |
-| `children` | Node |
-| `errorMessages` | Object |
-| `groupValidations` | Array |
-| `hasFieldChangeValidation` | Boolean | Default value \(`true`\)
-| `onChange` | Function |
-| `onSubmit` | Function |
-| `updatedErrorMessages` | Object |
-| `updatedValues` | Object |
-| `validations` | Object |
-| `values` | Object |
+| `children` | Node |  |
+| `errorMessages` | Object |  |
+| `groupValidations` | Array |  |
+| `hasFieldChangeValidation` | Boolean | Default value \(`true`\) |
+| `onChange` | Function |  |
+| `onSubmit` | Function |  |
+| `updatedErrorMessages` | Object |  |
+| `updatedValues` | Object |  |
+| `validations` | Object |  |
+| `values` | Object |  |
 
 ## `children`
 
@@ -171,7 +171,7 @@ const ShowWithCheckboxExample = () => {
       false
     )
   )
-  
+
   const formChanged = (
     useCallback(
       ({
@@ -187,7 +187,7 @@ const ShowWithCheckboxExample = () => {
       }
     )
   )
-  
+
   return (
     <OneForm
       onChange={formChanged}
@@ -218,8 +218,8 @@ This will give you:
 | `values` | All field values in a shallow object. |
 
 {% hint style="info" %}
-Returning a values object from `onChange` let's you update the value of any field in the form.  
-  
+Returning a values object from `onChange` let's you update the value of any field in the form.
+
 For example, this can be used to update the value of a domain name from `.com` to `.org` when selecting from a dropdown.
 {% endhint %}
 
@@ -275,7 +275,6 @@ Pass a callback to `onSubmit` and receive:
       <td style="text-align:left">
         <p>An object only containing fields that are registered. This almost always
           means fields which are currently mounted.</p>
-        <p></p>
         <p>This is the value <b>most will want</b>.</p>
       </td>
     </tr>

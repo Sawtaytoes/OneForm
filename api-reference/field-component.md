@@ -58,28 +58,9 @@ const FieldExample = () => (
 
 ## Props
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Prop Name</th>
-      <th style="text-align:left">Prop Type</th>
-      <th style="text-align:left">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <code>children</code>
-      </td>
-      <td style="text-align:left">
-        Node
-      </td>
-      <td style="text-align:left">
-        <em>A single component.</em>
-      </td>
-    </tr>
-  </tbody>
-</table>
+| Prop Name | Prop Type | Description |
+| :--- | :--- | :--- |
+|  `children` |  Node |  _A single component._ |
 
 ## Child props
 
