@@ -6,7 +6,7 @@ OneForm is a form library.
 
 > Okay... So what's that mean to me?
 
-OneForm is a way to manage the state of your form. Instead of home-rolling that kinda stuff, let OneForm handle it.
+OneForm is a way to manage the state of your form.
 
 Just about every developer uses forms, and you'll almost always run into a situation where you're requirements are too complex for a simple solution.
 
@@ -54,5 +54,5 @@ The logo and title are courtesy of **Noah Raskin**. He does some amazing graphic
 
 While this logo looks simple, there's a lot going on behind the scenes. The way he shaded it is as amazing as the cleanliness of OneForm's API.
 
-![Credit: Noah Raskin](.gitbook/assets/oneform-cube-textdark%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![Credit: Noah Raskin](.gitbook/assets/oneform-cube-textdark%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
