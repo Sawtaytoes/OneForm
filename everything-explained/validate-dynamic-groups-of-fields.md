@@ -113,7 +113,7 @@ export default DeepNestingExample
 ```
 {% endtab %}
 
-{% tab title="DeepNestingParentExample" %}
+{% tab title="DeepNestingParentExample.jsx" %}
 ```jsx
 import {
   OneForm,
