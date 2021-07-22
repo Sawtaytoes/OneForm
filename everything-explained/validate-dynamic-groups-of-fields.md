@@ -15,7 +15,7 @@ import {
   OneForm,
 } from "@oneform/react";
 
-const GroupingFieldsExample = () => (
+const FieldGroupsExample = () => (
   <OneForm>
     <FieldGroup
       id="b27b"
@@ -45,7 +45,7 @@ const GroupingFieldsExample = () => (
   </OneForm>
 );
 
-export default GroupingFieldsExample;
+export default FieldGroupsExample;
 ```
 
 **Under the hood**, `FieldGroup` is adding special properties to the field name that look like this internally:
@@ -73,7 +73,7 @@ import {
   OneForm,
 } from '@oneform/react'
 
-const DeepNestingExample= () => (
+const DeeplyNestedFieldGroupsExample = () => (
   <OneForm>
     <FieldGroup
       id="97ef"
@@ -108,7 +108,7 @@ const DeepNestingExample= () => (
   </OneForm>
 )
 
-export default DeepNestingExample
+export default DeeplyNestedFieldGroupsExample
 ```
 
 OneForm's **internal** values looks like:

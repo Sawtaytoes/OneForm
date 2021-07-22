@@ -108,7 +108,7 @@ import {
   OneForm,
 } from '@oneform/react'
 
-const DeeplyNestedFieldGroupExample = () => (
+const BasicDeeplyNestedFieldGroupsExample = () => (
   <OneForm>
     <FieldGroup
       id="1"
@@ -139,7 +139,7 @@ const DeeplyNestedFieldGroupExample = () => (
   </OneForm>
 )
 
-export default DeeplyNestedFieldGroupExample
+export default BasicDeeplyNestedFieldGroupsExample 
 ```
 
 ### Form submission
