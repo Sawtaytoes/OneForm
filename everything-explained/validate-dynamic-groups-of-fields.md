@@ -132,15 +132,18 @@ This method isn't recommended nor is it officially supported.
 
 ```jsx
 import { Field } from '@oneform/react'
+import { Fragment } from 'react'
 
 const NotRecommendExample = () => (
-  <Field>
-    <input name="name/addressId:97ef" />
-  </Field>
-
-  <Field>
-    <input name="address/addressId:97ef" />
-  </Field>
+  <Fragment>
+    <Field>
+      <input name="name/addressId:97ef" />
+    </Field>
+    
+    <Field>
+      <input name="address/addressId:97ef" />
+    </Field>
+  </Fragment>
 )
 
 export default NotRecommendExample

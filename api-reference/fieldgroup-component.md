@@ -27,6 +27,8 @@ const FieldGroupExample = () => (
     </FieldGroup>
   </OneForm>
 )
+
+export default FieldGroupExample
 ```
 
 ## Props

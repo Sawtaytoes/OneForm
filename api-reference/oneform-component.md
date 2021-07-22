@@ -46,6 +46,8 @@ const PassingChildrenExample = () => (
     </div>
   </OneForm>
 )
+
+export default PassingChildrenExample
 ```
 
 Can be any valid React element \(example: single or multiple components and text\).
@@ -135,13 +137,18 @@ When returning a value, instead of returning a boolean, you need to specify whic
 ## `hasFieldChangeValidation`
 
 ```jsx
-import { OneForm } from '@oneform/react'
+import {
+  Field,
+  OneForm,
+} from '@oneform/react'
 
 const ChangeValidationExample = () => (
   <OneForm hasFieldChangeValidation={false}>
     <Field name="message" />
   </OneForm>
 )
+
+export default ChangeValidationExample
 ```
 
 {% hint style="info" %}
@@ -205,6 +212,8 @@ const ShowWithCheckboxExample = () => {
     </OneForm>
   )
 }
+
+export default ShowWithCheckboxExample
 ```
 
 Pass in a callback function to `onChange`, and it'll be called anytime a field changes.
@@ -232,14 +241,16 @@ import {
 } from '@oneform/react'
 
 const formSubmitted = (
-  useCallback(({
-    allValues,
-    registeredValues,
-  }) => {
-    // do stuff
-  },
-  [],
-);
+  useCallback(
+    ({
+      allValues,
+      registeredValues,
+    }) => {
+      // do stuff
+    },
+    [],
+  )
+)
 
 const SubmittingFormExample = () => (
   <OneForm
@@ -250,6 +261,8 @@ const SubmittingFormExample = () => (
     </Field>
   </OneForm>
 )
+
+export default SubmittingFormExample
 ```
 
 Pass a callback to `onSubmit` and receive:

@@ -27,6 +27,8 @@ const FieldExample = () => (
     </Field>
   </OneForm>
 )
+
+export default FieldExample
 ```
 
 Or with Material UI's `TextField`:
@@ -41,7 +43,7 @@ import {
   OneForm,
 } from '@oneform/react'
 
-const FieldExample = () => (
+const MaterialUiFieldExample = () => (
   <OneForm>
     <Field>
       <TextField
@@ -54,6 +56,8 @@ const FieldExample = () => (
     </Field>
   </OneForm>
 )
+
+export default MaterialUiFieldExample
 ```
 
 ## Props

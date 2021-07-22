@@ -15,6 +15,8 @@ const BasicExample = () => (
     </Field>
   </OneForm>
 )
+
+export default BasicExample
 ```
 
 It's a pretty basic example, but you don't need to pass anything special to `OneForm`, just `children`.  

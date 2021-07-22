@@ -27,6 +27,8 @@ const ValuesExample = () => (
     </div>
   </OneForm>
 )
+
+export default ValuesExample
 ```
 
 ### When to use?

@@ -14,7 +14,7 @@ const errorMessages = {
   ],
 }
 
-const ErrorMessagesExample = () => (
+const BasicErrorMessagesExample = () => (
   <OneForm
     errorMessages={errorMessages}
   >
@@ -23,6 +23,8 @@ const ErrorMessagesExample = () => (
     </div>
   </OneForm>
 )
+
+export default BasicErrorMessagesExample
 ```
 
 ## Props
