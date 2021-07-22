@@ -28,6 +28,7 @@ Looking at this example, the text underneath the input updates as you type.
 ```jsx
 import {
   Field,
+  FieldValue,
   OneForm,
 } from '@oneform/react'
 
