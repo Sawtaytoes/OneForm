@@ -132,11 +132,13 @@ This method isn't recommended nor is it officially supported.
 {% endhint %}
 
 ```jsx
-import { Field } from '@oneform/react'
-import { Fragment } from 'react'
+import {
+  Field,
+  OneForm,
+} from '@oneform/react'
 
 const NotRecommendedExample = () => (
-  <Fragment>
+  <OneForm>
     <Field>
       <input name="name/addressId:97ef" />
     </Field>
@@ -144,7 +146,7 @@ const NotRecommendedExample = () => (
     <Field>
       <input name="address/addressId:97ef" />
     </Field>
-  </Fragment>
+  </OneForm>
 )
 
 export default NotRecommendedExample
