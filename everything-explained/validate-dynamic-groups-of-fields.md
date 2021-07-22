@@ -134,7 +134,7 @@ This method isn't recommended nor is it officially supported.
 import { Field } from '@oneform/react'
 import { Fragment } from 'react'
 
-const NotRecommendExample = () => (
+const NotRecommendedExample = () => (
   <Fragment>
     <Field>
       <input name="name/addressId:97ef" />
@@ -146,7 +146,7 @@ const NotRecommendExample = () => (
   </Fragment>
 )
 
-export default NotRecommendExample
+export default NotRecommendedExample
 ```
 
 It's important to use `FieldGroup` instead of manually naming fields with group names:
