@@ -16,7 +16,7 @@ import {
   OneForm,
 } from '@oneform/react'
 
-const errorsMessages = {
+const errorMessages = {
   birthdayError: [
     'You can only have one birthday.',
   ],
@@ -24,7 +24,7 @@ const errorsMessages = {
 
 const SingleErrorExample = () => (
   <OneForm
-    errorsMessages={errorsMessages}
+    errorMessages={errorMessages}
   >
     <FieldErrorMessage name="birthdayError" />
   </OneForm>
@@ -70,10 +70,10 @@ const groupValidations = [
         && values.day <= 31
       ) {
         return {
-            dateError: 'Your date is invalid.',
-            day: true,
-            month: true,
-        ]
+          dateError: 'Your date is invalid.',
+          day: true,
+          month: true,
+        }
       }
     }
   },
@@ -98,6 +98,8 @@ const GroupFieldErrorExample = () => (
     </div>
   </OneForm>
 )
+
+export default GroupFieldErrorExample
 ```
 
 The **HTML output** looks like:
