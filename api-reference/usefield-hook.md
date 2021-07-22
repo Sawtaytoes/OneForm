@@ -1,10 +1,16 @@
 # useField\(\)
 
+{% hint style="danger" %}
 This hook is meant for writing **custom** `<Field />` components.
 
-{% hint style="warning" %}
-You're most-likely wanting **`useFieldData`**.
+A better option is `useFieldData` which is designed for more generic use cases than `useField`.
 {% endhint %}
+
+`useField` is used by OneForm's `Field` component internally.
+
+Unlike `useFieldData`, this hook is specifically designed for adding props to wrapped child components and comes with callbacks.
+
+## Props
 
 ### Props in
 
@@ -13,8 +19,6 @@ You're most-likely wanting **`useFieldData`**.
 | `name` | The base field name without a `/`. |
 | `onChange` | Called when the returned `valueChanged` is called. |
 | `onVisit` | Called when the returned`fieldVisited` is called. |
-
-## Props
 
 ### Props out
 
@@ -73,10 +77,16 @@ You're most-likely wanting **`useFieldData`**.
 
 ## When to use?
 
-Common use case would be creating your own `<Field />` component. Even then, there are better ways of doing this than creating your own.
+A common use case is creating your own `<Field />` component.
+
+> Why though?
+
+OneForm has opinions on how it names props passed to child components. If you want more control over this, then you'll need to create your own `<Field />` component.
 
 Here's an example of a custom `<Field />` component:
 
+{% tabs %}
+{% tab title="CustomFieldExample.jsx" %}
 ```jsx
 import { useField } from '@oneform/react';
 import PropTypes from 'prop-types'
@@ -90,12 +100,18 @@ const CustomFieldExample = ({
   children,
 }) => {
   const {
-    name,
-    onBlur: onChildBlur,
-    onChange: onChildChange,
+    errorMessages,
+    fieldName,
+    isChecked,
+    isHtmlElement,
+    isVisited,
+    updateFieldValue,
+    value,
+    visitField,
   } = (
-    children
-    .props
+    useField({
+      children,
+    })
   )
 
   const {
@@ -146,4 +162,12 @@ const MemoizedCustomField = memo(CustomFieldExample)
 
 export default MemoizedCustomField
 ```
+{% endtab %}
+
+{% tab title="CustomFieldContainerExample.jsx" %}
+```jsx
+
+```
+{% endtab %}
+{% endtabs %}
 
