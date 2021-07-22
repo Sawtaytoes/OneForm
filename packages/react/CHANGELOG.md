@@ -1,3 +1,8 @@
+# 0.7.1
+_July 21th, 2021_
+
+- ♻️ Minor refactor to `useIsHtmlElement`.
+
 # 0.7.0
 _May 25th, 2021_
 
