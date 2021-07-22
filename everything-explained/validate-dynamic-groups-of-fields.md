@@ -13,34 +13,41 @@ import {
   Field,
   FieldGroup,
 } from '@oneform/react'
+import {
+  Fragment,
+} from 'react'
 
 const GroupingFieldsExample = () => (
-  <FieldGroup
-    id="b27b"
-    name="addressId"
-  >
-    <Field>
-      <input name="name" />
-    </Field>
-
-    <Field>
-      <input name="address" />
-    </Field>
-  </FieldGroup>
-
-  <FieldGroup
-    id="97ef"
-    name="addressId"
-  >
-    <Field>
-      <input name="name" />
-    </Field>
-
-    <Field>
-      <input name="address" />
-    </Field>
-  </FieldGroup>
+  <Fragment>
+    <FieldGroup
+      id="b27b"
+      name="addressId"
+    >
+      <Field>
+        <input name="name" />
+      </Field>
+    
+      <Field>
+        <input name="address" />
+      </Field>
+    </FieldGroup>
+    
+    <FieldGroup
+      id="97ef"
+      name="addressId"
+    >
+      <Field>
+        <input name="name" />
+      </Field>
+    
+      <Field>
+        <input name="address" />
+      </Field>
+    </FieldGroup>
+  </Fragment>
 )
+
+export default GroupingFieldsExample
 ```
 
 **Under the hood**, `FieldGroup` is adding special properties to the field name that look like this internally:
@@ -99,6 +106,8 @@ const DeeplyNestingExample = () => (
     </FieldGroup>
   </FieldGroup>
 )
+
+export default DeeplyNestingExample
 ```
 
 OneForm's **internal** values looks like:
@@ -133,6 +142,8 @@ const NotRecommendExample = () => (
     <input name="address/addressId:97ef" />
   </Field>
 )
+
+export default NotRecommendExample
 ```
 
 It's important to use `FieldGroup` instead of manually naming fields with group names:
@@ -203,6 +214,8 @@ const GroupValidationFormExample = () => (
     </FieldGroup>
   </OneForm>
 )
+
+export default GroupValidationFormExample
 ```
 
 ## Performing validations on related groups of values

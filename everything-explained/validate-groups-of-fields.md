@@ -87,6 +87,8 @@ const FieldsComponentExample = () => (
     </Field>
   </div>
 )
+
+export default FieldsComponentExample
 ```
 
 {% hint style="info" %}
