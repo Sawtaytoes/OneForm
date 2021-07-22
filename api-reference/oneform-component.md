@@ -239,6 +239,9 @@ import {
   Field,
   OneForm,
 } from '@oneform/react'
+import {
+  useCallback,
+} from 'react'
 
 const formSubmitted = (
   useCallback(
@@ -246,6 +249,7 @@ const formSubmitted = (
       allValues,
       registeredValues,
     }) => {
+      alert('form submitted')
       // do stuff
     },
     [],
