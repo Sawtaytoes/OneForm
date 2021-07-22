@@ -85,7 +85,7 @@ const FieldErrorMessagesExample = ({
     .map((
       errorMessage,
     ) => (
-      <div class="error-message">
+      <div key={errorMessage}>
         {errorMessage}
       </div>
     ))
