@@ -1,16 +1,16 @@
 # Playground
 
-If you wanna mess around with OneForm, there's a simple playground on CodeSandbox:
+If you wanna mess around with OneForm, you use playground on CodeSandbox:
 
-{% embed url="https://codesandbox.io/s/oneform-import-test-0vxbl?file=/src/App.js" caption="OneForm \(Vanilla React\)" %}
+{% embed url="https://codesandbox.io/s/oneform-import-test-0vxbl?file=/src/App.js" caption="OneForm \(React\)" %}
 
 ## Material UI
 
-Material UI is a popular React library similar to Bootstrap. OneForm natively supports it and most-likely any custom components you have in your existing forms as well.
+Material UI is a popular React library similar to Bootstrap.
 
-Here's a playground using Material UI:
+Without requiring special changes, you can use OneForm directly with Material UI.
 
-{% embed url="https://codesandbox.io/s/oneform-playground-material-ui-3sxzi" caption="OneForm \(Material-UI\)" %}
+{% embed url="https://codesandbox.io/s/oneform-playground-material-ui-3sxzi" caption="OneForm \(React + Material-UI\)" %}
 
 
 

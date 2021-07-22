@@ -7,5 +7,11 @@ description: Contact us for help.
 To get help, it's pretty simple:
 
 * [@ us on Twitter](https://twitter.com/OneForm_js).
-* [join the Discord](https://discord.gg/zqzj9q9E) and ask in `#support`.
+* [join the Discord](https://discord.gg/m93eRDgXMY) and ask in `#support`.
+
+{% embed url="https://discord.gg/m93eRDgXMY" %}
+
+{% embed url="https://twitter.com/OneForm\_js" %}
+
+
 
