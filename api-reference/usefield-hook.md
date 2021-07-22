@@ -1,14 +1,16 @@
 # useField\(\)
 
+OneForm's `<Field />` comes with a lot of props to fit all components' needs, but there's no way it'll be suitable for every existing project.
+
+That's where `useField` comes into play.
+
 {% hint style="danger" %}
 This hook is meant for writing **custom** `<Field />` components.
 
-A better option is `useFieldData` which is designed for more generic use cases than `useField`.
+A better option might be `useFieldData` which is designed for generic unopinionated use cases.
 {% endhint %}
 
-`useField` is used by OneForm's `Field` component internally.
-
-Unlike `useFieldData`, this hook is specifically designed for adding props to wrapped child components and comes with callbacks.
+`useField` is used by OneForm's `Field` component internally which allows you to build components using the exact same tooling in your own projects.
 
 ## Props
 
@@ -83,7 +85,7 @@ A common use case is creating your own `<Field />` component.
 
 OneForm has opinions on how it names props passed to child components. If you want more control over this, then you'll need to create your own `<Field />` component.
 
-Here's an example of a custom `<Field />` component:
+Here's an example of a slimmed down custom `<Field />` component:
 
 {% tabs %}
 {% tab title="CustomFieldExample.jsx" %}
@@ -192,4 +194,6 @@ export default CustomFieldContainerExample
 ```
 {% endtab %}
 {% endtabs %}
+
+The actual `<Field />` component in OneForm is much more complex, but that's because it has more generic requirements. In general, you want to tier a custom `<Field />` component to your project's needs based on the component structure and props naming you want to do.
 
