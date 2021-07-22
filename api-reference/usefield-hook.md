@@ -91,7 +91,6 @@ Here's an example of a slimmed down custom `<Field />` component:
 {% tab title="CustomFieldExample.jsx" %}
 ```jsx
 import { useField } from '@oneform/react';
-import PropTypes from 'prop-types'
 import {
   Children,
   cloneElement,
