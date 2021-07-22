@@ -144,7 +144,9 @@ import {
 
 const ChangeValidationExample = () => (
   <OneForm hasFieldChangeValidation={false}>
-    <Field name="message" />
+    <Field>
+      <input name="message" />
+    </Field>
   </OneForm>
 )
 
