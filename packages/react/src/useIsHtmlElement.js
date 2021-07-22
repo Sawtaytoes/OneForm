@@ -2,20 +2,19 @@ import {
   useMemo,
 } from 'react'
 
-const useIsHtmlElement = (
-  children,
-) => {
+const useIsHtmlElement = ({
+  type: reactNodeType,
+}) => {
   const isHtmlElement = (
     useMemo(
       () => (
         typeof (
-          children
-          .type
+          reactNodeType
         )
         === 'string'
       ),
       [
-        children,
+        reactNodeType,
       ],
     )
   )
