@@ -91,6 +91,7 @@ Here's an example of a custom `<Field />` component:
 import { useField } from '@oneform/react';
 import PropTypes from 'prop-types'
 import {
+  Children,
   cloneElement,
   memo,
   useMemo,
@@ -98,34 +99,34 @@ import {
 
 const CustomFieldExample = ({
   children,
+  isCheckbox,
 }) => {
+  const {
+    name,
+    onBlur: onVisit,
+    onChange,
+    // Unless `children` is a radio button, the `value` prop should never be set.
+    value: inputValue,
+  } = (
+    children
+    .props
+  )
+
   const {
     errorMessages,
     fieldName,
     isChecked,
-    isHtmlElement,
     isVisited,
     updateFieldValue,
     value,
     visitField,
   } = (
     useField({
-      children,
-    })
-  )
-
-  const {
-    errorMessages,
-    fieldName,
-    fieldVisited,
-    isVisited,
-    value,
-    valueChanged,
-  } = (
-    useField({
+      inputValue,
+      isCheckboxElement: isCheckbox,
       name,
-      onChange: onChildChange,
-      onVisit: onChildBlur,
+      onChange,
+      onVisit,
     })
   )
 
@@ -133,26 +134,33 @@ const CustomFieldExample = ({
     useMemo(
       () => ({
         errorMessages,
+        isChecked,
         isVisited,
         name: fieldName,
-        onBlur: fieldVisited,
-        onChange: valueChanged,
+        onBlur: visitField,
+        onChange: updateFieldValue,
         value,
       }),
       [
         errorMessages,
         fieldName,
-        fieldVisited,
+        isChecked,
         isVisited,
+        updateFieldValue,
         value,
-        valueChanged,
+        visitField,
       ],
     )
   )
 
   return (
     cloneElement(
-      children,
+      (
+        Children
+        .only(
+          children
+        )
+      ),
       childProps,
     )
   )
@@ -166,7 +174,21 @@ export default MemoizedCustomField
 
 {% tab title="CustomFieldContainerExample.jsx" %}
 ```jsx
+import {
+  OneForm,
+} from '@oneform/react'
 
+import CustomFieldExample from './CustomFieldExample.jsx'
+
+const CustomFieldContainerExample = () => (
+  <OneForm>
+    <CustomFieldExample>
+      <input name="message" />
+    </CustomFieldExample>
+  </OneForm>
+)
+
+export default CustomFieldContainerExample
 ```
 {% endtab %}
 {% endtabs %}

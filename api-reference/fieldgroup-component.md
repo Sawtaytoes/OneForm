@@ -139,7 +139,7 @@ const BasicDeeplyNestedFieldGroupsExample = () => (
   </OneForm>
 )
 
-export default BasicDeeplyNestedFieldGroupsExample 
+export default BasicDeeplyNestedFieldGroupsExample
 ```
 
 ### Form submission
