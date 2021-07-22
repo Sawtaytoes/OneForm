@@ -1,3 +1,11 @@
+# 1.0.1
+_July 22, 2021_
+
+- 🏗️ Added `useIsCheckboxElement` to library export
+- 🏗️ Added `useIsHtmlElement` to library export
+- 🏗️ Added `Subfield` to library export
+- 🏗️ Added `useSubfield` to library export
+
 # 1.0.0
 _July 21, 2021_
 
@@ -8,7 +16,7 @@ _July 21, 2021_
 # 0.7.1
 _July 21, 2021_
 
-- ♻️ Minor refactor to `useIsHtmlElement`.
+- ♻️ Minor refactor in `useIsHtmlElement`.
 
 # 0.7.0
 _May 25, 2021_
