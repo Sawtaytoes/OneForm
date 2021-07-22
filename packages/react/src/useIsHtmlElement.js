@@ -3,18 +3,18 @@ import {
 } from 'react'
 
 const useIsHtmlElement = ({
-  type: reactNodeType,
+  type: reactElementType,
 }) => {
   const isHtmlElement = (
     useMemo(
       () => (
         typeof (
-          reactNodeType
+          reactElementType
         )
         === 'string'
       ),
       [
-        reactNodeType,
+        reactElementType,
       ],
     )
   )
