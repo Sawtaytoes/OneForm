@@ -29,6 +29,8 @@ const SingleErrorExample = () => (
     <FieldErrorMessage name="birthdayError" />
   </OneForm>
 )
+
+export default SingleErrorExample
 ```
 
 The **HTML output** looks like:
