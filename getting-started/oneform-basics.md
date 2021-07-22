@@ -15,6 +15,8 @@ const BasicExample = () => (
     </Field>
   </OneForm>
 )
+
+export default BasicExample
 ```
 
 OneForm's `Field` component can take any input element or a React component.
@@ -42,6 +44,8 @@ const UpdatingValueExample = () => (
     </div>
   </OneForm>
 )
+
+export default UpdatingValueExample 
 ```
 
 {% embed url="https://codesandbox.io/embed/oneform-basics-react-llton?fontsize=14&hidenavigation=1&theme=dark" %}

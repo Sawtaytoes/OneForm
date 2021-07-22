@@ -35,6 +35,8 @@ const ErrorMessagesExample = () => (
     </div>
   </OneForm>
 )
+
+export default ErrorMessagesExample
 ```
 
 The **HTML output** looks like:
@@ -89,11 +91,13 @@ const FieldErrorMessagesExample = ({
     ))
   )
 }
+
+export default FieldErrorMessagesExample
 ```
 
 ## When is this useful?
 
 If you have an external API which returns error messages when someone fails to write to the database, this is the perfect example of when you'd want to wipe all form errors.
 
-Another instance would be if you have no client-side validation and want to do everything server-side. At that point, it makes sense to always wipe OneForm's errors with whatever `errorMessages` object you've passed in.  
+Another instance would be if you have no client-side validation and want to do everything server-side. At that point, it makes sense to always wipe OneForm's errors with whatever `errorMessages` object you've passed in.
 

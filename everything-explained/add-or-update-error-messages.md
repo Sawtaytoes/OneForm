@@ -31,6 +31,8 @@ const UpdatingErrorMessagesExample = () => (
     </div>
   </OneForm>
 )
+
+export default UpdatingErrorMessagesExample
 ```
 
 The **HTML output** looks like:
