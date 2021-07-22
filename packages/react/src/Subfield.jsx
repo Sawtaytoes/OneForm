@@ -7,6 +7,7 @@ import {
 } from 'react'
 
 import useSubfield from './useSubfield.js'
+import useIsHtmlElement from './useIsHtmlElement.js'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -16,11 +17,23 @@ const Subfield = ({
   children,
 }) => {
   const {
-    isHtmlElement,
+    value: inputValue,
+  } = (
+    children
+    .props
+  )
+
+  const isHtmlElement = (
+    useIsHtmlElement(
+      children
+    )
+  )
+
+  const {
     isSelected,
   } = (
     useSubfield({
-      children,
+      inputValue,
     })
   )
 

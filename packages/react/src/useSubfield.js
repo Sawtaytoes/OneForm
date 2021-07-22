@@ -3,18 +3,10 @@ import {
 } from 'react'
 
 import FieldContext from './FieldContext.js'
-import useIsHtmlElement from './useIsHtmlElement.js'
 
 const useSubfield = ({
-  children,
+  inputValue,
 }) => {
-  const {
-    value: inputValue,
-  } = (
-    children
-    .props
-  )
-
   const {
     value,
   } = (
@@ -23,14 +15,7 @@ const useSubfield = ({
     )
   )
 
-  const isHtmlElement = (
-    useIsHtmlElement(
-      children
-    )
-  )
-
   return {
-    isHtmlElement,
     isSelected: (
       value
       .includes(
