@@ -22,7 +22,7 @@ OneForm solves the problem of maintaining form state in React.
 
 There are plenty of similar libraries, but even the most-popular are flawed. 
 
-OneForm can be _the_ solution to form state in React; the **one form library you need!**
+OneForm could be your __solution to form state in React; the **one form library you need!**
 
 ### Who needs OneForm?
 
