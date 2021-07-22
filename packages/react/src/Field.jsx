@@ -58,10 +58,6 @@ const Field = ({
       name,
       onChange,
       onVisit,
-      reactNodeType: (
-        children
-        ?.type
-      ),
     })
   )
 
