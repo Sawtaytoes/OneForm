@@ -91,7 +91,7 @@ const propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-const FieldExample = ({
+const CustomFieldExample = ({
   children,
 }) => {
   const {
@@ -147,10 +147,10 @@ const FieldExample = ({
   )
 }
 
-Field.propTypes = propTypes
+CustomField.propTypes = propTypes
 
-const MemoizedField = memo(Field)
+const MemoizedCustomField = memo(CustomField)
 
-export default MemoizedField
+export default MemoizedCustomField
 ```
 
