@@ -67,7 +67,9 @@ You can output multiple field error messages like so:
 ```jsx
 import { useFieldErrorMessages } from '@oneform/react'
 
-const FieldErrorMessagesExample = () => {
+const FieldErrorMessagesExample = ({
+  name,
+}) => {
   const {
     errorMessages = [],
   } = (
