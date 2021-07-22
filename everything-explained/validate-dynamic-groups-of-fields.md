@@ -12,13 +12,11 @@ Before going into dynamic field validation, you need to first know how we group 
 import {
   Field,
   FieldGroup,
-} from '@oneform/react'
-import {
-  Fragment,
-} from 'react'
+  OneForm,
+} from "@oneform/react";
 
 const GroupingFieldsExample = () => (
-  <Fragment>
+  <OneForm>
     <FieldGroup
       id="b27b"
       name="addressId"
@@ -26,12 +24,12 @@ const GroupingFieldsExample = () => (
       <Field>
         <input name="name" />
       </Field>
-    
+
       <Field>
         <input name="address" />
       </Field>
     </FieldGroup>
-    
+
     <FieldGroup
       id="97ef"
       name="addressId"
@@ -39,15 +37,15 @@ const GroupingFieldsExample = () => (
       <Field>
         <input name="name" />
       </Field>
-    
+
       <Field>
         <input name="address" />
       </Field>
     </FieldGroup>
-  </Fragment>
-)
+  </OneForm>
+);
 
-export default GroupingFieldsExample
+export default GroupingFieldsExample;
 ```
 
 **Under the hood**, `FieldGroup` is adding special properties to the field name that look like this internally:
@@ -68,69 +66,50 @@ Since OneForm contains a shallow object of all field values, it needs some way t
 
 You can even deeply nest `FieldGroup` components:
 
-{% tabs %}
-{% tab title="DeepNestingExample.jsx" %}
 ```jsx
 import {
   Field,
   FieldGroup,
+  OneForm,
 } from '@oneform/react'
 
 const DeepNestingExample= () => (
-  <FieldGroup
-    id="97ef"
-    name="addressId"
-  >
-    <Field>
-      <input name="name" />
-    </Field>
-
-    <Field>
-      <input name="address" />
-    </Field>
-
+  <OneForm>
     <FieldGroup
-      id="a6d1"
-      name="emailId"
+      id="97ef"
+      name="addressId"
     >
       <Field>
-        <input name="email" />
+        <input name="name" />
       </Field>
-    </FieldGroup>
-
-    <FieldGroup
-      id="c232"
-      name="emailId"
-    >
+    
       <Field>
-        <input name="email" />
+        <input name="address" />
       </Field>
+    
+      <FieldGroup
+        id="a6d1"
+        name="emailId"
+      >
+        <Field>
+          <input name="email" />
+        </Field>
+      </FieldGroup>
+    
+      <FieldGroup
+        id="c232"
+        name="emailId"
+      >
+        <Field>
+          <input name="email" />
+        </Field>
+      </FieldGroup>
     </FieldGroup>
-  </FieldGroup>
+  </OneForm>
 )
 
 export default DeepNestingExample
 ```
-{% endtab %}
-
-{% tab title="DeepNestingParentExample.jsx" %}
-```jsx
-import {
-  OneForm,
-} from '@oneform/react'
-
-import DeepNestingExample from './DeepNestingExample.jsx'
-
-const DeepNestingParentExample = () => (
-  <OneForm>
-    <DeepNestingExample />
-  </OneForm>
-)
-
-export default DeepNestingParentExample
-```
-{% endtab %}
-{% endtabs %}
 
 OneForm's **internal** values looks like:
 
