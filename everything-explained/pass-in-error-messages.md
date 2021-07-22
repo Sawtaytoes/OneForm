@@ -95,6 +95,27 @@ const FieldErrorMessagesExample = ({
 export default FieldErrorMessagesExample
 ```
 
+```jsx
+import { OneForm } from "@oneform/react";
+
+import FieldErrorMessagesExample from "./FieldErrorMessagesExample.jsx";
+
+const errorMessages = {
+  email: [
+    "Email addresses require an `@` sign.",
+    "Only `.org` domains are valid."
+  ]
+};
+
+const CustomErrorMessagesExample = () => (
+  <OneForm errorMessages={errorMessages}>
+    <FieldErrorMessagesExample name="email" />
+  </OneForm>
+);
+
+export default CustomErrorMessagesExample;
+```
+
 ## When is this useful?
 
 If you have an external API which returns error messages when someone fails to write to the database, this is the perfect example of when you'd want to wipe all form errors.
