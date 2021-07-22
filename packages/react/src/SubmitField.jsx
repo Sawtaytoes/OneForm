@@ -7,6 +7,7 @@ import {
 } from 'react'
 
 import useFormSubmission from './useFormSubmission'
+import useIsHtmlElement from './useIsHtmlElement'
 
 const defaultGetIsVisible = () => (
   true
@@ -25,6 +26,12 @@ const SubmitField = ({
   getIsVisible = defaultGetIsVisible,
   isDisabledWhenInvalid,
 }) => {
+  const isHtmlElement = (
+    useIsHtmlElement(
+      children
+    )
+  )
+
   const {
     disabled,
     isDisabled,
@@ -36,7 +43,6 @@ const SubmitField = ({
   const {
     formChangeState,
     isFormValid,
-    isHtmlElement,
     isSubmitting,
     submissionState,
     totalErrorMessages,

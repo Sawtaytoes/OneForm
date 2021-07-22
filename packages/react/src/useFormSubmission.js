@@ -6,14 +6,11 @@ import {
 } from 'react'
 
 import SubmissionContext from './SubmissionContext.js'
-import useIsHtmlElement from './useIsHtmlElement.js'
 import {
   submissionStates,
 } from './useSubmissionState'
 
-const useFormSubmission = ({
-  children,
-}) => {
+const useFormSubmission = () => {
   const {
     getFormChangeState,
     getFormValidationState,
@@ -24,12 +21,6 @@ const useFormSubmission = ({
   } = (
     useContext(
       SubmissionContext
-    )
-  )
-
-  const isHtmlElement = (
-    useIsHtmlElement(
-      children
     )
   )
 
@@ -114,7 +105,6 @@ const useFormSubmission = ({
       formValidationState
       .isFormValid
     ),
-    isHtmlElement,
     isSubmitting,
     submissionState,
     totalErrorMessages: (
