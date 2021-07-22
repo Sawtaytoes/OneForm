@@ -78,18 +78,13 @@ Common use case would be creating your own `<Field />` component. Even then, the
 Here's an example of a custom `<Field />` component:
 
 ```jsx
+import { useField } from '@oneform/react';
 import PropTypes from 'prop-types'
 import {
   cloneElement,
   memo,
   useMemo,
 } from 'react'
-
-import useField from './useField.js'
-
-const propTypes = {
-  children: PropTypes.node.isRequired,
-}
 
 const CustomFieldExample = ({
   children,
@@ -147,9 +142,7 @@ const CustomFieldExample = ({
   )
 }
 
-CustomField.propTypes = propTypes
-
-const MemoizedCustomField = memo(CustomField)
+const MemoizedCustomField = memo(CustomFieldExample)
 
 export default MemoizedCustomField
 ```

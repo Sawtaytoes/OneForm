@@ -95,6 +95,8 @@ const SharedFieldGroupIdExample = () => (
     </FieldGroup>
   </OneForm>
 )
+
+export default SharedFieldGroupIdExample
 ```
 
 ### Deeply nesting dynamic fields
@@ -136,6 +138,8 @@ const DeeplyNestedFieldGroupExample = () => (
     </FieldGroup>
   </OneForm>
 )
+
+export default DeeplyNestedFieldGroupExample
 ```
 
 ### Form submission
@@ -183,6 +187,8 @@ const FieldGroupSubmissionExample = () => {
     </OneForm>
   )
 }
+
+export default FieldGroupSubmissionExample
 ```
 
 `console.log` will log this object:
