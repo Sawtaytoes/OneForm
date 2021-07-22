@@ -91,6 +91,22 @@ const FieldsComponentExample = () => (
 export default FieldsComponentExample
 ```
 
+```jsx
+import {
+  OneForm,
+} from '@oneform/react'
+
+import FieldsComponentExample from './FieldsComponentExample.jsx'
+
+const FieldsParentComponentExample = () => (
+  <OneForm>
+    <FieldsComponentExample />
+  </OneForm>
+)
+
+export default FieldsParentComponentExample
+```
+
 {% hint style="info" %}
 This is only recommended if you're packaging fields in separate components as it shouldn't matter otherwise.
 {% endhint %}
