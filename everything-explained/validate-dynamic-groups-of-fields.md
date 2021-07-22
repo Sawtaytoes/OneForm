@@ -68,13 +68,15 @@ Since OneForm contains a shallow object of all field values, it needs some way t
 
 You can even deeply nest `FieldGroup` components:
 
+{% tabs %}
+{% tab title="DeepNestingExample.jsx" %}
 ```jsx
 import {
   Field,
   FieldGroup,
 } from '@oneform/react'
 
-const DeeplyNestingExample = () => (
+const DeepNestingExample= () => (
   <FieldGroup
     id="97ef"
     name="addressId"
@@ -107,8 +109,28 @@ const DeeplyNestingExample = () => (
   </FieldGroup>
 )
 
-export default DeeplyNestingExample
+export default DeepNestingExample
 ```
+{% endtab %}
+
+{% tab title="DeepNestingParentExample" %}
+```jsx
+import {
+  OneForm,
+} from '@oneform/react'
+
+import DeepNestingExample from './DeepNestingExample.jsx'
+
+const DeepNestingParentExample = () => (
+  <OneForm>
+    <DeepNestingExample />
+  </OneForm>
+)
+
+export default DeepNestingParentExample
+```
+{% endtab %}
+{% endtabs %}
 
 OneForm's **internal** values looks like:
 

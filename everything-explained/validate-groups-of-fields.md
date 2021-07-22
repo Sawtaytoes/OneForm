@@ -73,6 +73,8 @@ A good example is when you might not want to show an error message about a date 
 
 To avoid namespace conflicts, prefix your field names with the component name:
 
+{% tabs %}
+{% tab title="FieldsComponentExample.jsx" %}
 ```jsx
 import { Field } from '@oneform/react'
 
@@ -90,7 +92,9 @@ const FieldsComponentExample = () => (
 
 export default FieldsComponentExample
 ```
+{% endtab %}
 
+{% tab title="FieldsParentComponentExample .jsx" %}
 ```jsx
 import {
   OneForm,
@@ -106,6 +110,8 @@ const FieldsParentComponentExample = () => (
 
 export default FieldsParentComponentExample
 ```
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 This is only recommended if you're packaging fields in separate components as it shouldn't matter otherwise.
