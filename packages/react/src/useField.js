@@ -4,27 +4,15 @@ import {
 } from 'react'
 
 import useFieldData from './useFieldData.js'
-import useIsHtmlElement from './useIsHtmlElement.js'
-
-const checkboxRegex = (
-  /.*checkbox.*/i
-)
 
 const useField = ({
-  children,
+  inputValue,
+  isCheckbox,
+  isMultiFieldElement,
+  name,
+  onChange,
+  onVisit,
 }) => {
-  const {
-    name,
-    onBlur: onVisit,
-    onChange,
-    type: inputType,
-    // Unless `children` is a radio button, the `value` prop should never be set.
-    value: inputValue,
-  } = (
-    children
-    .props
-  )
-
   const {
     errorMessages = [],
     fieldName,
@@ -144,36 +132,8 @@ const useField = ({
     )
   )
 
-  const isHtmlElement = (
-    useIsHtmlElement(
-      children
-    )
-  )
-
   useEffect(
     () => {
-      const isCheckbox = (
-        isHtmlElement
-        ? (
-          inputType
-          === 'checkbox'
-        )
-        : (
-          checkboxRegex
-          .test(
-            (
-              children
-              ?.displayName
-            )
-            || (
-              children
-              ?.type
-              ?.displayName
-            )
-          )
-        )
-      )
-
       if (
         isCheckbox
       ) {
@@ -181,10 +141,7 @@ const useField = ({
       }
     },
     [
-      children,
-      inputType,
-      isHtmlElement,
-      setVisited,
+      isCheckbox,
     ]
   )
 
@@ -214,7 +171,6 @@ const useField = ({
       )
       : null
     ),
-    isHtmlElement,
     isVisited: (
       isVisited
       ? 'true'
@@ -223,11 +179,7 @@ const useField = ({
     updateFieldValue,
     value: (
       (
-        (
-          children
-          .props
-          .multiple
-        )
+        isMultiFieldElement
         && (
           value
           === ''

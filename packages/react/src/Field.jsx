@@ -8,6 +8,8 @@ import {
 
 import FieldContext from './FieldContext.js'
 import useField from './useField.js'
+import useIsCheckboxElement from './useIsCheckboxElement.js'
+import useIsHtmlElement from './useIsHtmlElement.js'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -17,17 +19,49 @@ const Field = ({
   children,
 }) => {
   const {
+    multiple: isMultiFieldElement,
+    name,
+    onBlur: onVisit,
+    onChange,
+    // Unless `children` is a radio button, the `value` prop should never be set.
+    value: inputValue,
+  } = (
+    children
+    .props
+  )
+
+  const isHtmlElement = (
+    useIsHtmlElement(
+      children
+    )
+  )
+
+  const isCheckboxElement = (
+    useIsCheckboxElement(
+      children
+    )
+  )
+
+  const {
     errorMessages,
     fieldName,
     isChecked,
-    isHtmlElement,
     isVisited,
     updateFieldValue,
     value,
     visitField,
   } = (
     useField({
-      children,
+      inputValue,
+      isCheckboxElement,
+      isMultiFieldElement,
+      name,
+      onChange,
+      onVisit,
+      reactNodeType: (
+        children
+        ?.type
+      ),
     })
   )
 
