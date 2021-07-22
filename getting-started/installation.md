@@ -1,9 +1,12 @@
+---
+description: How to install OneForm?
+---
+
 # Installation
 
-Key points
-
-* This has to be in a React project.
-* That's a dependency.
+{% hint style="info" %}
+OneForm requires React.
+{% endhint %}
 
 With `npm`:
 
