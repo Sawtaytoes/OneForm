@@ -13,10 +13,12 @@ import useIsHtmlElement from './useIsHtmlElement.js'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
+  isCheckbox: PropTypes.bool,
 }
 
 const Field = ({
   children,
+  isCheckbox = false,
 }) => {
   const {
     multiple: isMultiFieldElement,
@@ -53,7 +55,10 @@ const Field = ({
   } = (
     useField({
       inputValue,
-      isCheckboxElement,
+      isCheckboxElement: (
+        isCheckbox
+        || isCheckboxElement
+      ),
       isMultiFieldElement,
       name,
       onChange,

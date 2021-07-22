@@ -7,7 +7,7 @@ import useFieldData from './useFieldData.js'
 
 const useField = ({
   inputValue,
-  isCheckbox,
+  isCheckboxElement,
   isMultiFieldElement,
   name,
   onChange,
@@ -135,13 +135,14 @@ const useField = ({
   useEffect(
     () => {
       if (
-        isCheckbox
+        isCheckboxElement
       ) {
         setVisited()
       }
     },
     [
-      isCheckbox,
+      isCheckboxElement,
+      setVisited,
     ]
   )
 
@@ -164,12 +165,21 @@ const useField = ({
     errorMessages,
     fieldName,
     isChecked: (
-      inputValue
-      ? (
-        value
-        === inputValue
+      (
+        isCheckboxElement
+        ? (
+          (
+            inputValue
+            === undefined
+          )
+          ? value
+          : (
+            value
+            === inputValue
+          )
+        )
+        : null
       )
-      : null
     ),
     isVisited: (
       isVisited
