@@ -243,28 +243,30 @@ import {
   useCallback,
 } from 'react'
 
-const formSubmitted = (
-  useCallback(
-    ({
-      allValues,
-      registeredValues,
-    }) => {
-      alert('form submitted')
-      // do stuff
-    },
-    [],
+const SubmittingFormExample = () => {
+  const formSubmitted = (
+    useCallback(
+      ({
+        allValues,
+        registeredValues,
+      }) => {
+        alert('form submitted')
+        // do stuff
+      },
+      [],
+    )
   )
-)
 
-const SubmittingFormExample = () => (
-  <OneForm
-    onSubmit={formSubmitted}
-  >
-    <Field>
-      <input name="message" />
-    </Field>
-  </OneForm>
-)
+  return (
+    <OneForm
+      onSubmit={formSubmitted}
+    >
+      <Field>
+        <input name="message" />
+      </Field>
+    </OneForm>
+  )
+}
 
 export default SubmittingFormExample
 ```
