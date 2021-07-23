@@ -21,7 +21,7 @@ export default {
   title: 'OneForm',
 }
 
-export const DisplayInputValue = (
+export const DisplayTextValue = (
   args,
 ) => (
   <OneForm {...args}>
@@ -37,7 +37,7 @@ export const DisplayInputValue = (
   </OneForm>
 )
 
-export const InitialValues = (
+export const InitialTextValues = (
   args,
 ) => (
   <OneForm {...args}>
@@ -53,7 +53,7 @@ export const InitialValues = (
   </OneForm>
 )
 
-InitialValues
+InitialTextValues
 .args = {
   values: {
     message: 'Hello World!',
