@@ -1266,25 +1266,17 @@ export const Spreadsheet = () => {
     <div>
       <div>
         <p>
-          This spreadsheet app built with OneForm is meant as a proof-of-concept to show the kinds of cool applications we can build with this technology.
-        </p>
-
-        <p>
-          You see, OneForm isn&apos;t so much a form library as a state manager. This example shows how easily you can unlock that functionality in OneForm.
-        </p>
-
-        <p>
-          This not only accepts numbers, but two math operations as well. For example, try:
-          {' '}
+          Summation:
           <code>
             =SUM(A1:B1)
           </code>
-          . You can also do averages using:
-          {' '}
+        </p>
+
+        <p>
+          Average:
           <code>
             =AVG(A1:A3)
           </code>
-          .
         </p>
       </div>
 
