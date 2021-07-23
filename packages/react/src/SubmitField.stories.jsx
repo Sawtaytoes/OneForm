@@ -14,7 +14,7 @@ export default {
     onSubmit: 'submitted',
   },
   // component: SubmitField,
-  title: 'Components/SubmitField',
+  title: 'Fields/SubmitField',
 }
 
 export const Submission = (

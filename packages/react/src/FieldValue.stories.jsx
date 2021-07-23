@@ -13,7 +13,7 @@ export default {
     onChange: 'changed',
     onSubmit: 'submitted',
   },
-  title: 'Components/FieldValue',
+  title: 'Fields/FieldValue',
 }
 
 export const Text = (

@@ -14,7 +14,7 @@ export default {
     onChange: 'changed',
     onSubmit: 'submitted',
   },
-  title: 'Components/FieldGroup',
+  title: 'Fields/FieldGroup',
 }
 
 export const Sample = () => (

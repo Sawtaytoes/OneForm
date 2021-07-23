@@ -15,7 +15,7 @@ export default {
     onSubmit: 'submitted',
   },
   component: Field,
-  title: 'Components/Field',
+  title: 'Fields/Field',
 }
 
 export const HTMLInput = (

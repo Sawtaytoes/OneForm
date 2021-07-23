@@ -13,7 +13,7 @@ export default {
     onChange: 'changed',
     onSubmit: 'submitted',
   },
-  title: 'Components/FieldErrorMessage',
+  title: 'Fields/FieldErrorMessage',
 }
 
 export const Text = (
