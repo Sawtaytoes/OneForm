@@ -24,7 +24,7 @@ const GlobalStyles = () => (
         input,
         option,
         select {
-          background-color: #fff;
+          background-color: #fcfcfc;
           border-radius: 10px;
           border: 2px solid transparent;
           margin-bottom: 6px;
