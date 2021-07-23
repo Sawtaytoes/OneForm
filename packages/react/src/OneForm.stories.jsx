@@ -68,7 +68,7 @@ export const CheckboxWithValue = (
     <label>
       <Field>
         <input
-          name="message"
+          name="checkbox"
           type="checkbox"
           value="The Checkbox Value"
         />
@@ -78,7 +78,7 @@ export const CheckboxWithValue = (
     </label>
 
     <div>
-      <FieldValue name="message" />
+      <FieldValue name="checkbox" />
     </div>
   </OneForm>
 )
@@ -86,7 +86,7 @@ export const CheckboxWithValue = (
 CheckboxWithValue
 .args = {
   values: {
-    message: '',
+    checkbox: false,
   },
 }
 
