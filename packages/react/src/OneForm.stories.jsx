@@ -90,6 +90,44 @@ CheckboxValue
   },
 }
 
+export const InitialCheckboxValues = (
+  args,
+) => (
+  <OneForm {...args}>
+    <label>
+      <Field>
+        <input
+          name="checkbox1"
+          type="checkbox"
+          value="The First Checkbox Value"
+        />
+      </Field>
+
+      Checkbox with Value 1
+    </label>
+
+    <label>
+      <Field>
+        <input
+          name="checkbox2"
+          type="checkbox"
+          value="The Second Checkbox Value"
+        />
+      </Field>
+
+      Checkbox with Value 2
+    </label>
+  </OneForm>
+)
+
+InitialCheckboxValues
+.args = {
+  values: {
+    checkbox1: 'The First Checkbox Value',
+    checkbox2: true,
+  },
+}
+
 export const InitialRadioValues = (
   args,
 ) => (

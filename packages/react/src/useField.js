@@ -165,19 +165,19 @@ const useField = ({
     errorMessages,
     fieldName,
     isChecked: (
-      (
-        isCheckboxElement
-        ? (
-          (
-            inputValue
-            === undefined
-          )
-          ? value
-          : (
-            value
-            === inputValue
-          )
+      isCheckboxElement
+      ? (
+        Boolean(
+          value
         )
+        || null
+      )
+      : (
+        (
+          value
+          === inputValue
+        )
+        ? value
         : null
       )
     ),

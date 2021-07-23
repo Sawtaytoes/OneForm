@@ -75,14 +75,18 @@ export const HTMLCheckbox = (
 )
 
 const Checkbox = ({
+  isChecked,
   name,
   onChange,
+  value,
 }) => (
   <label>
     <input
+      checked={isChecked}
       name={name}
       onChange={onChange}
       type="checkbox"
+      value={value}
     />
 
     Check me!
@@ -95,7 +99,10 @@ export const CheckboxComponent = (
   <OneForm {...args}>
     <div>
       <Field>
-        <Checkbox name="message" />
+        <Checkbox
+          name="message"
+          value="This is my message value."
+        />
       </Field>
     </div>
   </OneForm>
