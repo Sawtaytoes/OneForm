@@ -604,7 +604,7 @@ GroupValidation
   ],
 }
 
-export const GroupValidationGrouping = (
+export const FieldGroupValidation = (
   args,
 ) => (
   <OneForm {...args}>
@@ -618,14 +618,14 @@ export const GroupValidationGrouping = (
     </div>
 
     <FieldGroup
-      id="a452"
-      name="itemId"
+      id="7b23"
+      name="prohibitedWordId"
     >
       <div>
         <Field>
           <input
-            name="item"
-            placeholder="Item a452"
+            name="prohibitedWord"
+            placeholder="Prohibited Word 1"
           />
         </Field>
       </div>
@@ -636,14 +636,14 @@ export const GroupValidationGrouping = (
     </FieldGroup>
 
     <FieldGroup
-      id="7b23"
-      name="itemId"
+      id="a452"
+      name="prohibitedWordId"
     >
       <div>
         <Field>
           <input
-            name="item"
-            placeholder="Item 7b23"
+            name="prohibitedWord"
+            placeholder="Prohibited Word 2"
           />
         </Field>
       </div>
@@ -663,12 +663,12 @@ export const GroupValidationGrouping = (
   </OneForm>
 )
 
-GroupValidationGrouping
+FieldGroupValidation
 .args = {
   groupValidations: [
     {
       fieldNames: [
-        'item',
+        'prohibitedWord',
         'message',
       ],
       getErrorMessages: ({
@@ -679,7 +679,7 @@ GroupValidationGrouping
           'group.error'
           .concat(
             groups
-            .itemId
+            .prohibitedWordId
             .groupString
           )
         ]: (
@@ -687,21 +687,22 @@ GroupValidationGrouping
           .message
           .includes(
             values
-            .item
+            .prohibitedWord
           )
           && (
-            'You cannot have items in your message.'
+            'You cannot have prohibited words in your message.'
           )
         ),
       }),
       groupNames: [
-        'itemId',
+        'prohibitedWordId',
       ],
     },
   ],
   updatedValues: {
-    'item/itemId:7b23': 'w',
-    'item/itemId:a452': 'h',
-    'message': 'hw',
+    'message': 'Time is fun and amazing.',
+    'prohibitedWord/prohibitedWordId:7b23': 'amazing',
+    'prohibitedWord/prohibitedWordId:a452': 'fun',
   },
+}
 }
