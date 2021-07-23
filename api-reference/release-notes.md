@@ -27,9 +27,9 @@ _July 22, 2021_
 
 _July 21, 2021_
 
-* 💥 Modified useField to take an object, not children.
-* 💥 Modified useFormSubmission to take no args rather than children.
-* 💥 Modified useSubfield to take an object, not children.
+* 💥 Modified `useField` to take an object, not children.
+* 💥 Modified `useFormSubmission` to take no args rather than children.
+* 💥 Modified `useSubfield` to take an object, not children.
 
 ## 0.7.1
 
