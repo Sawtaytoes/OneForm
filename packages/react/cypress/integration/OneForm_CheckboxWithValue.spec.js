@@ -1,5 +1,5 @@
 describe(
-  'OneForm CheckboxValue',
+  'OneForm CheckboxWithValue',
   () => {
     it(
       'Sets value when checked.',

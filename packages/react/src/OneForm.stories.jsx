@@ -61,7 +61,7 @@ InitialValues
   },
 }
 
-export const CheckboxValue = (
+export const CheckboxWithValue = (
   args,
 ) => (
   <OneForm {...args}>
@@ -83,7 +83,7 @@ export const CheckboxValue = (
   </OneForm>
 )
 
-CheckboxValue
+CheckboxWithValue
 .args = {
   values: {
     message: '',
