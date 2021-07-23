@@ -16,7 +16,7 @@ describe(
           'Message 1'
         )
         .should(
-          'to.be',
+          'have.value',
           '',
         )
 
@@ -25,7 +25,7 @@ describe(
           'Message 2'
         )
         .should(
-          'to.be',
+          'have.value',
           '',
         )
       },
