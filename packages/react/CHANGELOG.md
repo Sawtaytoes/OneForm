@@ -1,3 +1,10 @@
+# 1.0.3
+_July 23, 2021_
+
+- 🐛 Fixed a bug where initial checkbox values weren't set correctly.
+- 🐛 Fixed a bug where checkboxes are switching between controlled and uncontrolled if they have undefined values.
+- 🐛 Fixed the `Subfield` export importing `SubmitField.jsx`.
+
 # 1.0.2
 _July 22, 2021_
 
