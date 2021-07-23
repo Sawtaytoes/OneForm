@@ -117,6 +117,17 @@ export const InitialCheckboxValues = (
 
       Checkbox with Value 2
     </label>
+
+    <label>
+      <Field>
+        <input
+          name="checkbox3"
+          type="checkbox"
+        />
+      </Field>
+
+      Checkbox without Value
+    </label>
   </OneForm>
 )
 
@@ -125,6 +136,7 @@ InitialCheckboxValues
   values: {
     checkbox1: 'The First Checkbox Value',
     checkbox2: true,
+    checkbox3: true,
   },
 }
 

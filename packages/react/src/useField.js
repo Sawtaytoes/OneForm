@@ -170,7 +170,7 @@ const useField = ({
         Boolean(
           value
         )
-        || null
+        || false
       )
       : (
         (
@@ -178,7 +178,7 @@ const useField = ({
           === inputValue
         )
         ? value
-        : null
+        : false
       )
     ),
     isVisited: (

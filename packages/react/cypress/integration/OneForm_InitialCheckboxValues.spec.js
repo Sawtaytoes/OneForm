@@ -24,6 +24,14 @@ describe(
         .should(
           'be.checked',
         )
+
+        cy
+        .findByLabelText(
+          'Checkbox without Value'
+        )
+        .should(
+          'be.checked',
+        )
       },
     )
 
@@ -51,6 +59,19 @@ describe(
         cy
         .findByLabelText(
           'Checkbox with Value 2'
+        )
+        .click()
+        .should(
+          'not.be.checked',
+        )
+        .click()
+        .should(
+          'be.checked'
+        )
+
+        cy
+        .findByLabelText(
+          'Checkbox without Value'
         )
         .click()
         .should(
