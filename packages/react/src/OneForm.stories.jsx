@@ -1,5 +1,12 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react-hooks/rules-of-hooks */
 import { action } from '@storybook/addon-actions'
+import {
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 
 import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
@@ -7,6 +14,7 @@ import FieldGroup from './FieldGroup.jsx'
 import FieldValue from './FieldValue.jsx'
 import OneForm from './OneForm.jsx'
 import SubmitField from './SubmitField.jsx'
+import useFieldValue from './useFieldValue.js'
 
 export default {
   args: {
@@ -705,4 +713,598 @@ FieldGroupValidation
     'prohibitedWord/prohibitedWordId:a452': 'fun',
   },
 }
+
+export const Spreadsheet = () => {
+  const numberOfColumns = 3
+
+  const cells = (
+    useMemo(
+      () => (
+        Array(
+          numberOfColumns
+          * 3
+        )
+        .fill()
+        .map((
+          value,
+          index,
+        ) => ({
+          positionX: (
+            String
+            .fromCharCode(
+              65 + (index % numberOfColumns)
+            )
+          ),
+          positionY: (
+            Math
+            .ceil(
+              (index + 1) / numberOfColumns
+            )
+          ),
+        }))
+        .map(({
+          positionX,
+          positionY,
+        }) => (
+          `${positionX}${positionY}`
+        ))
+      ),
+      [],
+    )
+  )
+
+  const getRangeCalculationBoundaries = (
+    useCallback(
+      (
+        calculation,
+      ) => (
+        (/^=\w+\(([a-zA-Z])(\d+):([a-zA-Z])(\d+)\)$/)
+        .exec(
+          calculation
+        )
+        .slice(1)
+      ),
+      [],
+    )
+  )
+
+  const getRangeCalculationNumbers = (
+    useCallback(
+      ({
+        calculation,
+        values,
+      }) => {
+        const [
+          lowerColumnBound,
+          lowerRowBound,
+          upperColumnBound,
+          upperRowBound,
+        ] = (
+          getRangeCalculationBoundaries(
+            calculation
+          )
+        )
+
+        const rangeCalculationNumbers = (
+          Object
+          .entries(
+            values
+          )
+          .map(([
+            cellName,
+            cellValue,
+          ]) => ({
+            cellName,
+            cellValue,
+          }))
+          .filter(({
+            cellName,
+          }) => (
+            !(
+              cellName
+              .startsWith('calculation')
+            )
+          ))
+          .filter(({
+            cellName,
+          }) => {
+            const [
+              cellColumn,
+              cellRow,
+            ] = cellName
+
+            return (
+              cellColumn >= lowerColumnBound
+              && cellColumn <= upperColumnBound
+              && cellRow >= lowerRowBound
+              && cellRow <= upperRowBound
+            )
+          })
+          .map(({
+            cellValue,
+          }) => (
+            Number(
+              cellValue
+            )
+          ))
+        )
+
+        return rangeCalculationNumbers
+      },
+      [
+        getRangeCalculationBoundaries,
+      ],
+    )
+  )
+
+  const getAverage = (
+    useCallback(
+      ({
+        calculation,
+        values,
+      }) => {
+        const rangeCalculationNumbers = (
+          getRangeCalculationNumbers({
+            calculation,
+            values,
+          })
+        )
+
+        const summedNumbers = (
+          rangeCalculationNumbers
+          .reduce(
+            (
+              summation,
+              number,
+            ) => (
+              summation + number
+            ),
+            0,
+          )
+        )
+
+        const numberOfSummedNumbers = (
+          rangeCalculationNumbers
+          .length
+        )
+
+        return (
+          String(
+            summedNumbers / numberOfSummedNumbers
+          )
+        )
+      },
+      [
+        getRangeCalculationNumbers,
+      ],
+    )
+  )
+
+  const getSummation = (
+    useCallback(
+      ({
+        calculation,
+        values,
+      }) => {
+        const rangeCalculationNumbers = (
+          getRangeCalculationNumbers({
+            calculation,
+            values,
+          })
+        )
+
+        return (
+          String(
+            rangeCalculationNumbers
+            .reduce(
+              (
+                summation,
+                number,
+              ) => (
+                summation + number
+              ),
+              0,
+            )
+          )
+        )
+      },
+      [
+        getRangeCalculationNumbers,
+      ],
+    )
+  )
+
+  const calculations = (
+    useMemo(
+      () => ({
+        AVG: getAverage,
+        SUM: getSummation,
+      }),
+      [
+        getAverage,
+        getSummation,
+      ],
+    )
+  )
+
+  const rangeCalculationsRegExp = (
+    useMemo(
+      () => {
+        const calculationNamesRegExp = (
+          Object
+          .keys(
+            calculations
+          )
+          .join('|')
+        )
+
+        return (
+          new RegExp(
+            `^=(${calculationNamesRegExp})\\([a-zA-Z]\\d+:[a-zA-Z]\\d+\\)$`
+          )
+        )
+      },
+      [
+        calculations,
+      ],
+    )
+  )
+
+  const getIsRangeCalculation = (
+    useCallback(
+      (
+        value,
+      ) => (
+        rangeCalculationsRegExp
+        .test(value)
+      ),
+      [
+        rangeCalculationsRegExp,
+      ],
+    )
+  )
+
+  const calculateRangeValue = (
+    useCallback(
+      ({
+        calculation,
+        values,
+      }) => {
+        const [
+          calculationName,
+        ] = (
+          rangeCalculationsRegExp
+          .exec(calculation)
+          .slice(1)
+        )
+
+        return (
+          calculations
+          [calculationName]({
+            calculation,
+            values,
+          })
+        )
+      },
+      [
+        calculations,
+        rangeCalculationsRegExp,
+      ],
+    )
+  )
+
+  const Cell = (
+    useCallback(
+      ({
+        id,
+      }) => {
+        const cellRef = useRef()
+
+        const {
+          value: cellValue,
+        } = (
+          useFieldValue({
+            name: id,
+          })
+        )
+
+        const {
+          value: calculation,
+        } = (
+          useFieldValue({
+            name: `calculation.${id}`,
+          })
+        )
+
+        const [
+          isFocused,
+          setIsFocused,
+        ] = (
+          useState(
+            false
+          )
+        )
+
+        const onBlur = (
+          useCallback(
+            () => {
+              setIsFocused(
+                false
+              )
+            },
+            [],
+          )
+        )
+
+        const onFocus = (
+          useCallback(
+            () => {
+              setIsFocused(
+                true
+              )
+            },
+            [],
+          )
+        )
+
+        const onChange = (
+          useCallback(
+            ({
+              target,
+            }) => {
+              const {
+                selectionDirection,
+                selectionEnd,
+                selectionStart,
+              } = (
+                target
+              )
+
+              setTimeout(() => {
+                if (
+                  cellRef
+                  .current
+                ) {
+                  cellRef
+                  .current
+                  .setSelectionRange(
+                    selectionStart,
+                    selectionEnd,
+                    selectionDirection,
+                  )
+                }
+              })
+            },
+            [],
+          )
+        )
+
+        return (
+          <div>
+            <div>
+              <label htmlFor={id}>
+                {
+                  (
+                    isFocused
+                    && calculation
+                  )
+                  ? (
+                    `${id} ${cellValue}`
+                  )
+                  : (
+                    calculation
+                    ? `${id} ${calculation}`
+                    : id
+                  )
+                }
+              </label>
+            </div>
+
+            <div>
+              <Field>
+                <input
+                  id={id}
+                  name={
+                    (
+                      isFocused
+                      && calculation
+                    )
+                    ? `calculation.${id}`
+                    : id
+                  }
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  onFocus={onFocus}
+                  ref={cellRef}
+                />
+              </Field>
+            </div>
+          </div>
+        )
+      },
+      [],
+    )
+  )
+
+  const formChanged = (
+    useCallback(
+      ({
+        fieldName,
+        value,
+        values,
+      }) => {
+        let returnValueAssembly = {
+          [fieldName]: value,
+        }
+
+        if (
+          fieldName
+          .startsWith('calculation')
+          && (
+            !(
+              getIsRangeCalculation(
+                value
+              )
+            )
+          )
+        ) {
+          const cellName = (
+            fieldName
+            .replace(
+              /^calculation\.([a-zA-Z]\d)$/,
+              '$1',
+            )
+          )
+
+          returnValueAssembly = {
+            ...returnValueAssembly,
+            [cellName]: (
+              value
+            ),
+            [fieldName]: (
+              ''
+            ),
+          }
+        }
+
+        if (
+          !(
+            fieldName
+            .startsWith('calculation')
+          )
+          && (
+            getIsRangeCalculation(
+              value
+            )
+          )
+        ) {
+          returnValueAssembly = {
+            ...returnValueAssembly,
+            [fieldName]: (
+              calculateRangeValue({
+                calculation: value,
+                values,
+              })
+            ),
+            [`calculation.${fieldName}`]: (
+              value
+            ),
+          }
+        }
+
+        const calculatedFields = (
+          Object
+          .entries(
+            values
+          )
+          .filter(([
+            calculatedFieldName,
+            calculatedFieldValue,
+          ]) => (
+            (
+              calculatedFieldName
+              .startsWith('calculation')
+            )
+            && (
+              calculatedFieldValue !== ''
+            )
+            && (
+              calculatedFieldName !== fieldName
+            )
+          ))
+          .map(([
+            calculationId,
+            calculation,
+          ]) => ({
+            calculation,
+            fieldName: (
+              calculationId
+              .replace(
+                /^calculation\.([a-zA-Z]\d)$/,
+                '$1',
+              )
+            ),
+          }))
+        )
+
+        if (calculatedFields.length > 0) {
+          const calculatedFieldValues = (
+            Object
+            .fromEntries(
+              calculatedFields
+              .map(({
+                calculation,
+                fieldName,
+              }) => ([
+                fieldName,
+                (
+                  calculateRangeValue({
+                    calculation,
+                    values,
+                  })
+                ),
+              ]))
+            )
+          )
+
+          returnValueAssembly = {
+            ...returnValueAssembly,
+            ...calculatedFieldValues,
+          }
+        }
+
+        return returnValueAssembly
+      },
+      [
+        calculateRangeValue,
+        getIsRangeCalculation,
+      ],
+    )
+  )
+
+  return (
+    <div>
+      <div>
+        <p>
+          This spreadsheet app built with OneForm is meant as a proof-of-concept to show the kinds of cool applications we can build with this technology.
+        </p>
+
+        <p>
+          You see, OneForm isn&apos;t so much a form library as a state manager. This example shows how easily you can unlock that functionality in OneForm.
+        </p>
+
+        <p>
+          This not only accepts numbers, but two math operations as well. For example, try:
+          {' '}
+          <code>
+            =SUM(A1:B1)
+          </code>
+          . You can also do averages using:
+          {' '}
+          <code>
+            =AVG(A1:A3)
+          </code>
+          .
+        </p>
+      </div>
+
+      <div>
+        <OneForm onChange={formChanged}>
+          <div data-table>
+            {
+              cells
+              .map((
+                id,
+              ) => (
+                <Cell
+                  id={id}
+                  key={id}
+                />
+              ))
+            }
+          </div>
+        </OneForm>
+      </div>
+    </div>
+  )
 }

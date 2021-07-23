@@ -129,6 +129,32 @@ const GlobalStyles = () => (
           background-color: limegreen;
           box-shadow: rgb(0, 128, 0) 0 0 0 0;
         }
+
+        [data-table] {
+          column-gap: 4px;
+          display: inline-grid;
+          grid-template-columns: repeat(3, 1fr);
+          row-gap: 4px;
+        }
+
+        [data-table] input {
+          width: 200px;
+        }
+
+        [data-table] > div {
+          margin-bottom: 20px;
+        }
+
+        code {
+          font-family: monospace;
+          background-color: #ddd;
+          color: #000;
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+          padding-top: 0.15rem;
+          padding-bottom: 0.15rem;
+          border-radius: 0.25rem;
+        }
       `
     }
   </style>
