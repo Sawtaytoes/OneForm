@@ -2,7 +2,6 @@
 import { action } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
-import Subfield from './Subfield.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldGroup from './FieldGroup.jsx'
 import FieldValue from './FieldValue.jsx'
@@ -195,23 +194,17 @@ export const InitialMultiSelect = (
         multiple
         name="color"
       >
-        <Subfield>
-          <option value="green">
-            Green
-          </option>
-        </Subfield>
+        <option value="green">
+          Green
+        </option>
 
-        <Subfield>
-          <option value="red">
-            Red
-          </option>
-        </Subfield>
+        <option value="red">
+          Red
+        </option>
 
-        <Subfield>
-          <option value="blue">
-            Blue
-          </option>
-        </Subfield>
+        <option value="blue">
+          Blue
+        </option>
       </select>
     </Field>
 
