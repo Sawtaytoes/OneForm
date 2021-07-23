@@ -58,5 +58,5 @@ The logo and title are courtesy of **Noah Raskin**. He does some amazing graphic
 
 While this logo looks simple, there's a lot going on behind the scenes. The way he shaded it is as amazing as the cleanliness of OneForm's API.
 
-![Credit: Noah Raskin](.gitbook/assets/oneform-cube-textdark%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
+![Credit: Noah Raskin](.gitbook/assets/oneform-cube-textdark%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 

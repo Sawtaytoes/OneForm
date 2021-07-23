@@ -11,7 +11,7 @@ import {
 const BasicExample = () => (
   <OneForm>
     <Field>
-      <input name="message" />
+      <input name="firstName" />
     </Field>
   </OneForm>
 )
@@ -36,12 +36,12 @@ const UpdatingValueExample = () => (
   <OneForm>
     <div>
       <Field>
-        <input name="message" />
+        <input name="firstName" />
       </Field>
     </div>
     
     <div>
-      <FieldValue name="message" />
+      <FieldValue name="firstName" />
     </div>
   </OneForm>
 )
@@ -88,8 +88,8 @@ If you wanted to load in some values yourself, just pass in `values`:
 
 ```javascript
 values={{
-  message1: 'Hello',
-  message2: 'World!'
+  firstName: 'Hello',
+  lastName: 'World!'
 }}
 ```
 
@@ -99,7 +99,7 @@ You can even control error messages in much the same way using `errorMessages`:
 
 ```javascript
 errorMessages={{
-  message: [
+  firstName: [
     'This is an error'
   ],
 }}
@@ -115,12 +115,12 @@ If you update `errorMessages` or `values`, doing so will overwrite the entire fo
 
 ```javascript
 updatedErrorMessages={{
-  message: [
+  firstName: [
     'This is an error that was added by an async check.'
   ],
 }}
 updatedValues={{
-  message: 'This is my updated value.',
+  firstName: 'This is my updated value.',
 }}
 ```
 
