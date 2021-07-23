@@ -1,12 +1,14 @@
 describe(
   'OneForm SelectOptionGroupValue',
   () => {
+    const storybookPath = 'oneform--select-option-group-value'
+
     it(
       'Defaults to unselected.',
       () => {
         cy
         .visit(
-          'oneform--select-option-group-value'
+          storybookPath
         )
 
         cy
@@ -17,6 +19,15 @@ describe(
           'to.be',
           'Select a color.',
         )
+
+        cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.be',
+          'Selected Color: ',
+        )
       },
     )
 
@@ -25,7 +36,7 @@ describe(
       () => {
         cy
         .visit(
-          'oneform--select-option-group-value'
+          storybookPath
         )
 
         cy
@@ -46,6 +57,15 @@ describe(
         )
 
         cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.have',
+          'red',
+        )
+
+        cy
         .findByRole(
           'combobox'
         )
@@ -63,6 +83,15 @@ describe(
         )
 
         cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.have',
+          'blue',
+        )
+
+        cy
         .findByRole(
           'combobox'
         )
@@ -77,6 +106,15 @@ describe(
         .should(
           'to.be',
           'Green',
+        )
+
+        cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.have',
+          'green',
         )
       },
     )

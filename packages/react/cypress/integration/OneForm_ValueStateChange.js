@@ -1,7 +1,7 @@
 describe(
-  'OneForm GroupValidation',
+  'OneForm ValueStateChange',
   () => {
-    const storybookPath = 'oneform--group-validation'
+    const storybookPath = 'oneform--value-state-change'
 
     it(
       'Has no initial values.',
@@ -32,7 +32,7 @@ describe(
     )
 
     it(
-      'Validates multiple fields with a single error message.',
+      'Updates two fields when typing in one field.',
       () => {
         cy
         .visit(
@@ -52,23 +52,18 @@ describe(
         )
 
         cy
-        .findByRole(
-          'button'
-        )
-        .click()
-
-        cy
-        .findByText(
-          'Messages need to be identical.'
+        .findByPlaceholderText(
+          'Message 2'
         )
         .should(
-          'to.exist'
+          'have.value',
+          'aa'
         )
       },
     )
 
     it(
-      'Does not show errors when valid.',
+      'Updates one field when typing in one field.',
       () => {
         cy
         .visit(
@@ -80,11 +75,7 @@ describe(
           'Message 1'
         )
         .type(
-          'aab'
-        )
-        .should(
-          'have.value',
-          'aab'
+          'aa'
         )
 
         cy
@@ -92,38 +83,21 @@ describe(
           'Message 2'
         )
         .type(
-          'aa'
+          'bb'
         )
         .should(
           'have.value',
-          'aa'
+          'aabb'
         )
 
         cy
         .findByPlaceholderText(
           'Message 1'
         )
-        .type(
-          '{backspace}'
-        )
         .should(
           'have.value',
           'aa'
         )
-
-        cy
-        .findByText(
-          'Messages need to be identical.'
-        )
-        .should(
-          'to.not.exist'
-        )
-
-        cy
-        .findByRole(
-          'button'
-        )
-        .click()
       },
     )
   }

@@ -1,12 +1,14 @@
 describe(
   'OneForm CheckboxWithValue',
   () => {
+    const storybookPath = 'oneform--checkbox-with-value'
+
     it(
-      'Sets value when checked.',
+      'Has no initial value.',
       () => {
         cy
         .visit(
-          'oneform--checkbox-value'
+          storybookPath
         )
 
         cy
@@ -15,6 +17,16 @@ describe(
         )
         .should(
           'not.exist',
+        )
+      },
+    )
+
+    it(
+      'Sets value when checked.',
+      () => {
+        cy
+        .visit(
+          storybookPath
         )
 
         cy
@@ -32,6 +44,23 @@ describe(
         )
         .should(
           'exist',
+        )
+
+        cy
+        .findByLabelText(
+          'Checkbox with Value'
+        )
+        .click()
+        .should(
+          'not.be.checked',
+        )
+
+        cy
+        .findByText(
+          'The Checkbox Value'
+        )
+        .should(
+          'not.exist',
         )
       },
     )

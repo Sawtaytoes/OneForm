@@ -1,12 +1,14 @@
 describe(
   'OneForm SelectValue',
   () => {
+    const storybookPath = 'oneform--select-value'
+
     it(
       'Defaults to unselected.',
       () => {
         cy
         .visit(
-          'oneform--select-value'
+          storybookPath
         )
 
         cy
@@ -17,6 +19,15 @@ describe(
           'to.be',
           'Select a color.',
         )
+
+        cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.be',
+          'Selected Color: ',
+        )
       },
     )
 
@@ -25,7 +36,7 @@ describe(
       () => {
         cy
         .visit(
-          'oneform--select-value'
+          storybookPath
         )
 
         cy
@@ -60,6 +71,15 @@ describe(
         .should(
           'to.be',
           'Blue',
+        )
+
+        cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.have',
+          'blue',
         )
       },
     )

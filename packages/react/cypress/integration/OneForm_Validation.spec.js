@@ -1,17 +1,47 @@
 describe(
   'OneForm Validation',
   () => {
+    const storybookPath = 'oneform--validation'
+
+    it(
+      'Has no initial values.',
+      () => {
+        cy
+        .visit(
+          storybookPath
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 1'
+        )
+        .should(
+          'to.be',
+          '',
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 2'
+        )
+        .should(
+          'to.be',
+          '',
+        )
+      },
+    )
+
     it(
       'Validates a single field.',
       () => {
         cy
         .visit(
-          'oneform--validation'
+          storybookPath
         )
 
         cy
-        .findByRole(
-          'textbox'
+        .findByPlaceholderText(
+          'Message 1'
         )
         .type(
           'aa'
@@ -34,25 +64,39 @@ describe(
         .should(
           'to.exist'
         )
+      },
+    )
+
+    it(
+      'Validates multiple fields individually.',
+      () => {
+        cy
+        .visit(
+          storybookPath
+        )
 
         cy
-        .findByRole(
-          'textbox'
+        .findByPlaceholderText(
+          'Message 1'
         )
         .type(
-          '{selectall}{backspace}B'
+          'aa'
         )
         .should(
           'have.value',
-          'B'
+          'aa'
         )
 
         cy
-        .findByText(
-          'No lowercase letters.'
+        .findByPlaceholderText(
+          'Message 2'
+        )
+        .type(
+          'BB'
         )
         .should(
-          'to.not.exist'
+          'have.value',
+          'BB'
         )
 
         cy
@@ -60,6 +104,102 @@ describe(
           'button'
         )
         .click()
+
+        cy
+        .findByText(
+          'No lowercase letters.'
+        )
+        .should(
+          'to.exist'
+        )
+
+        cy
+        .findByText(
+          'No uppercase letters.'
+        )
+        .should(
+          'to.exist'
+        )
+      },
+    )
+
+    it(
+      'Does not show errors when valid.',
+      () => {
+        cy
+        .visit(
+          storybookPath
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 1'
+        )
+        .type(
+          'aa'
+        )
+        .should(
+          'have.value',
+          'aa'
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 2'
+        )
+        .type(
+          'BB'
+        )
+        .should(
+          'have.value',
+          'BB'
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 1'
+        )
+        .type(
+          '{backspace}{backspace}AA'
+        )
+        .should(
+          'have.value',
+          'AA'
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 2'
+        )
+        .type(
+          '{backspace}{backspace}bb'
+        )
+        .should(
+          'have.value',
+          'bb'
+        )
+
+        cy
+        .findByRole(
+          'button'
+        )
+        .click()
+
+        cy
+        .findByText(
+          'No lowercase letters.'
+        )
+        .should(
+          'not.to.exist'
+        )
+
+        cy
+        .findByText(
+          'No uppercase letters.'
+        )
+        .should(
+          'not.to.exist'
+        )
       },
     )
   }

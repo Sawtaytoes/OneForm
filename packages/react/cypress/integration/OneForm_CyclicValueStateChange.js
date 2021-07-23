@@ -1,24 +1,23 @@
 describe(
   'OneForm CyclicValueStateChange',
   () => {
+    const storybookPath = 'oneform--cyclic-value-state-change'
+
     it(
-      'Handles cyclic state changes.',
+      'Has no initial values.',
       () => {
         cy
         .visit(
-          'oneform--cyclic-value-state-change'
+          storybookPath
         )
 
         cy
         .findByPlaceholderText(
           'Message 1'
         )
-        .type(
-          'aa'
-        )
         .should(
-          'have.value',
-          'aa'
+          'to.be',
+          '',
         )
 
         cy
@@ -26,15 +25,46 @@ describe(
           'Message 2'
         )
         .should(
-          'have.value',
+          'to.be',
+          '',
+        )
+      },
+    )
+
+    it(
+      'Handles cyclic state changes.',
+      () => {
+        cy
+        .visit(
+          storybookPath
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 1'
+        )
+        .type(
           'aa'
+        )
+        .should(
+          'to.be',
+          'aa',
+        )
+
+        cy
+        .findByPlaceholderText(
+          'Message 2'
+        )
+        .should(
+          'to.be',
+          'aa',
         )
         .type(
           'bb'
         )
         .should(
-          'have.value',
-          'aabb'
+          'to.be',
+          'aabb',
         )
 
         cy
@@ -42,8 +72,8 @@ describe(
           'Message 1'
         )
         .should(
-          'have.value',
-          'aabb'
+          'to.be',
+          'aabb',
         )
       },
     )

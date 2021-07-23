@@ -1,12 +1,14 @@
 describe(
   'OneForm InitialCheckboxValues',
   () => {
+    const storybookPath = 'oneform--initial-checkbox-values'
+
     it(
       'Defaults to checked.',
       () => {
         cy
         .visit(
-          'oneform--initial-checkbox-values'
+          storybookPath
         )
 
         cy
@@ -40,7 +42,7 @@ describe(
       () => {
         cy
         .visit(
-          'oneform--initial-checkbox-values'
+          storybookPath
         )
 
         cy

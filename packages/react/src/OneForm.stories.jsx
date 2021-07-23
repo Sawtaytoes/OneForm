@@ -146,7 +146,7 @@ export const InitialRadioValues = (
     <label>
       <Field>
         <input
-          name="message"
+          name="item"
           type="radio"
           value="first"
         />
@@ -158,7 +158,7 @@ export const InitialRadioValues = (
     <label>
       <Field>
         <input
-          name="message"
+          name="item"
           type="radio"
           value="second"
         />
@@ -168,7 +168,7 @@ export const InitialRadioValues = (
     </label>
 
     <div>
-      <FieldValue name="message" />
+      Selected Item: <FieldValue name="item" />
     </div>
   </OneForm>
 )
@@ -176,7 +176,7 @@ export const InitialRadioValues = (
 InitialRadioValues
 .args = {
   values: {
-    message: 'second',
+    item: 'second',
   },
 }
 
@@ -209,7 +209,7 @@ export const SelectValue = (
     </Field>
 
     <div>
-      <FieldValue name="color" />
+      Selected Color: <FieldValue name="color" />
     </div>
   </OneForm>
 )
@@ -247,7 +247,7 @@ export const SelectOptionGroupValue = (
     </Field>
 
     <div>
-      <FieldValue name="color" />
+      Selected Color: <FieldValue name="color" />
     </div>
   </OneForm>
 )
@@ -284,7 +284,7 @@ export const InitialSelectValue = (
     </Field>
 
     <div>
-      <FieldValue name="color" />
+      Selected Color: <FieldValue name="color" />
     </div>
   </OneForm>
 )
@@ -310,9 +310,14 @@ export const InitialMultiSelect = (
       <select
         id="color"
         multiple
-        size="4"
         name="color"
+        size="4"
       >
+        <option
+          hidden
+          value=""
+        />
+
         <option value="red">
           Red
         </option>
@@ -332,7 +337,7 @@ export const InitialMultiSelect = (
     </Field>
 
     <div>
-      <FieldValue name="color" />
+      Selected Colors: <FieldValue name="color" />
     </div>
   </OneForm>
 )
@@ -342,6 +347,7 @@ InitialMultiSelect
   values: {
     color: [
       'yellow',
+      'green',
     ],
   },
 }
@@ -444,12 +450,32 @@ export const Validation = (
   <OneForm {...args}>
     <div>
       <Field>
-        <input name="message" />
+        <input
+          id="message1"
+          name="message1"
+          placeholder="Message 1"
+        />
       </Field>
     </div>
+
     <div>
-      <FieldErrorMessage name="message" />
+      <FieldErrorMessage name="message1" />
     </div>
+
+    <div>
+      <Field>
+        <input
+          id="message2"
+          name="message2"
+          placeholder="Message 2"
+        />
+      </Field>
+    </div>
+
+    <div>
+      <FieldErrorMessage name="message2" />
+    </div>
+
     <div>
       <SubmitField>
         <button type="submit">
@@ -463,7 +489,7 @@ export const Validation = (
 Validation
 .args = {
   validations: {
-    message: [
+    message1: [
       {
         errorMessage: (
           'No lowercase letters.'
@@ -477,6 +503,25 @@ Validation
             === (
               value
               .toUpperCase()
+            )
+          )
+        ),
+      },
+    ],
+    message2: [
+      {
+        errorMessage: (
+          'No uppercase letters.'
+        ),
+        getIsValid: ({
+          value,
+        }) => (
+          value
+          && (
+            value
+            === (
+              value
+              .toLowerCase()
             )
           )
         ),

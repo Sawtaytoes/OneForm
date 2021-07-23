@@ -1,12 +1,14 @@
 describe(
   'OneForm InitialSelectValue',
   () => {
+    const storybookPath = 'oneform--initial-select-value'
+
     it(
       'Defaults to selected.',
       () => {
         cy
         .visit(
-          'oneform--initial-select-value'
+          storybookPath
         )
 
         cy
@@ -17,15 +19,24 @@ describe(
           'to.be',
           'Yellow',
         )
+
+        cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.have',
+          'yellow',
+        )
       },
     )
 
     it(
-      'Selects another value.',
+      'Selects values.',
       () => {
         cy
         .visit(
-          'oneform--initial-select-value'
+          storybookPath
         )
 
         cy
@@ -46,6 +57,15 @@ describe(
         )
 
         cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.have',
+          'green',
+        )
+
+        cy
         .findByRole(
           'combobox'
         )
@@ -60,6 +80,15 @@ describe(
         .should(
           'to.be',
           'Red',
+        )
+
+        cy
+        .findByText(
+          'Selected Color:'
+        )
+        .should(
+          'to.have',
+          'red',
         )
       },
     )

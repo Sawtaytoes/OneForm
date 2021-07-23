@@ -1,30 +1,14 @@
 describe(
   'OneForm InitialRadioValue',
   () => {
+    const storybookPath = 'oneform--initial-radio-value'
+
     it(
-      'OneForm state checks radio.',
+      'Has initial value.',
       () => {
         cy
         .visit(
-          'oneform--initial-radio-value'
-        )
-
-        cy
-        .findByText(
-          'second'
-        )
-        .should(
-          'exist',
-        )
-      },
-    )
-
-    it(
-      'Changes value when checking radio.',
-      () => {
-        cy
-        .visit(
-          'oneform--initial-radio-value'
+          storybookPath
         )
 
         cy
@@ -33,6 +17,25 @@ describe(
         )
         .should(
           'be.checked',
+        )
+
+        cy
+        .findByText(
+          'Selected Item:'
+        )
+        .should(
+          'to.have',
+          'second',
+        )
+      },
+    )
+
+    it(
+      'Changes values when checking radio buttons.',
+      () => {
+        cy
+        .visit(
+          storybookPath
         )
 
         cy
@@ -45,11 +48,82 @@ describe(
         )
 
         cy
-        .findByText(
-          'first'
+        .findByLabelText(
+          'Second'
         )
         .should(
-          'exist',
+          'not.be.checked',
+        )
+
+        cy
+        .findByText(
+          'Selected Item:'
+        )
+        .should(
+          'to.have',
+          'first',
+        )
+
+        cy
+        .findByLabelText(
+          'Second'
+        )
+        .click()
+        .should(
+          'be.checked',
+        )
+
+        cy
+        .findByLabelText(
+          'First'
+        )
+        .should(
+          'not.be.checked',
+        )
+
+        cy
+        .findByText(
+          'Selected Item:'
+        )
+        .should(
+          'to.have',
+          'second',
+        )
+      },
+    )
+
+    it(
+      'Retains value after being selected twice.',
+      () => {
+        cy
+        .visit(
+          storybookPath
+        )
+
+        cy
+        .findByLabelText(
+          'Second'
+        )
+        .click()
+        .should(
+          'be.checked',
+        )
+
+        cy
+        .findByLabelText(
+          'First'
+        )
+        .should(
+          'not.be.checked',
+        )
+
+        cy
+        .findByText(
+          'Selected Item:'
+        )
+        .should(
+          'to.have',
+          'second',
         )
       },
     )
