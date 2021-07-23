@@ -1,5 +1,36 @@
 # Changelog
 
+## 1.0.3
+
+_July 23, 2021_
+
+* 🐛 Fixed a bug where initial checkbox values weren't set correctly.
+* 🐛 Fixed a bug where checkboxes are switching between controlled and uncontrolled if they have undefined values.
+* 🐛 Fixed the `Subfield` export importing `SubmitField.jsx`.
+
+## 1.0.2
+
+_July 22, 2021_
+
+* 🐛 Fixed issue where some checkboxes wouldn't check because it was incorrectly passing the `value` prop rather than the `checked` or `isChecked` prop.
+
+## 1.0.1
+
+_July 22, 2021_
+
+* 🏗️ Added `useIsCheckboxElement` to library export
+* 🏗️ Added `useIsHtmlElement` to library export
+* 🏗️ Added `Subfield` to library export
+* 🏗️ Added `useSubfield` to library export
+
+## 1.0.0
+
+_July 21, 2021_
+
+* 💥 Modified useField to take an object, not children.
+* 💥 Modified useFormSubmission to take no args rather than children.
+* 💥 Modified useSubfield to take an object, not children.
+
 ## 0.7.1
 
 _July 21th, 2021_
