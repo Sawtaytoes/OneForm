@@ -180,6 +180,124 @@ InitialRadioValues
   },
 }
 
+export const SelectValue = (
+  args,
+) => (
+  <OneForm {...args}>
+    <Field>
+      <select name="color">
+        <option value="">
+          Select a color.
+        </option>
+
+        <option value="red">
+          Red
+        </option>
+
+        <option value="yellow">
+          Yellow
+        </option>
+
+        <option value="green">
+          Green
+        </option>
+
+        <option value="blue">
+          Blue
+        </option>
+      </select>
+    </Field>
+
+    <div>
+      <FieldValue name="color" />
+    </div>
+  </OneForm>
+)
+
+export const SelectOptionGroupValue = (
+  args,
+) => (
+  <OneForm {...args}>
+    <Field>
+      <select name="color">
+        <option value="">
+          Select a color.
+        </option>
+
+        <optgroup label="Warm">
+          <option value="red">
+            Red
+          </option>
+
+          <option value="yellow">
+            Yellow
+          </option>
+        </optgroup>
+
+        <optgroup label="Cool">
+          <option value="green">
+            Green
+          </option>
+
+          <option value="blue">
+            Blue
+          </option>
+        </optgroup>
+      </select>
+    </Field>
+
+    <div>
+      <FieldValue name="color" />
+    </div>
+  </OneForm>
+)
+
+export const InitialSelectValue = (
+  args,
+) => (
+  <OneForm {...args}>
+    <label htmlFor="color">
+      Select a color.
+    </label>
+
+    <Field>
+      <select
+        id="color"
+        name="color"
+      >
+        <option value="red">
+          Red
+        </option>
+
+        <option value="yellow">
+          Yellow
+        </option>
+
+        <option value="green">
+          Green
+        </option>
+
+        <option value="blue">
+          Blue
+        </option>
+      </select>
+    </Field>
+
+    <div>
+      <FieldValue name="color" />
+    </div>
+  </OneForm>
+)
+
+InitialSelectValue
+.args = {
+  values: {
+    color: [
+      'yellow',
+    ],
+  },
+}
+
 export const InitialMultiSelect = (
   args,
 ) => (
@@ -192,14 +310,19 @@ export const InitialMultiSelect = (
       <select
         id="color"
         multiple
+        size="4"
         name="color"
       >
-        <option value="green">
-          Green
-        </option>
-
         <option value="red">
           Red
+        </option>
+
+        <option value="yellow">
+          Yellow
+        </option>
+
+        <option value="green">
+          Green
         </option>
 
         <option value="blue">
@@ -218,7 +341,7 @@ InitialMultiSelect
 .args = {
   values: {
     color: [
-      'red',
+      'yellow',
     ],
   },
 }
