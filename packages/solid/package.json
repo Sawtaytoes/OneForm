@@ -58,8 +58,7 @@
 		"rollup-plugin-sourcemaps": "^0.6.3",
 		"rollup-plugin-terser": "^7.0.2",
 		"solid-jest": "^0.1.1",
-		"solid-js": "^1.0.0",
-		"uuid": "^8.3.2"
+		"solid-js": "^1.0.0"
 	},
 	"gitHead": "3a82b7e8af444ad07d73891875f049774078a230"
 }
