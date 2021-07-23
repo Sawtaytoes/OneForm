@@ -1,3 +1,8 @@
+# 1.0.2
+_July 22, 2021_
+
+- 🐛 Fixed issue where some checkboxes wouldn't check because it was incorrectly passing the `value` prop rather than the `checked` or `isChecked` prop.
+
 # 1.0.1
 _July 22, 2021_
 
