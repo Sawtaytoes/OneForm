@@ -1,4 +1,4 @@
-const VanillaReactStyles = () => (
+const GlobalStyles = () => (
   <style>
     {
       `
@@ -134,4 +134,4 @@ const VanillaReactStyles = () => (
   </style>
 )
 
-export default VanillaReactStyles
+export default GlobalStyles
