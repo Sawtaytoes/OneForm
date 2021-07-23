@@ -30,7 +30,7 @@ const useFieldValue = ({
   )
 
   const [
-    ,
+    localValue,
     setLocalValue,
   ] = (
     useState(
@@ -76,11 +76,7 @@ const useFieldValue = ({
 
   return {
     setValue,
-    value: (
-      getFieldValue(
-        fieldName
-      )
-    ),
+    value: localValue,
   }
 }
 

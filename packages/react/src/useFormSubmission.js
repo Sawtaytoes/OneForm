@@ -1,6 +1,7 @@
 import {
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react'
 
@@ -24,7 +25,7 @@ const useFormSubmission = () => {
   )
 
   const [
-    ,
+    formChangeState,
     setFormChangeState,
   ] = (
     useState(
@@ -33,7 +34,7 @@ const useFormSubmission = () => {
   )
 
   const [
-    ,
+    formValidationState,
     setFormValidationState,
   ] = (
     useState(
@@ -42,11 +43,26 @@ const useFormSubmission = () => {
   )
 
   const [
-    ,
+    submissionState,
     setSubmissionState,
   ] = (
     useState(
       getSubmissionState()
+    )
+  )
+
+  const isSubmitting = (
+    useMemo(
+      () => (
+        submissionState
+        === (
+          submissionStates
+          .pendingSubmission
+        )
+      ),
+      [
+        submissionState,
+      ]
     )
   )
 
@@ -84,25 +100,15 @@ const useFormSubmission = () => {
   )
 
   return {
-    formChangeState: (
-      getFormChangeState()
-    ),
+    formChangeState,
     isFormValid: (
-      getFormValidationState()
+      formValidationState
       .isFormValid
     ),
-    isSubmitting: (
-      getSubmissionState()
-      === (
-        submissionStates
-        .pendingSubmission
-      )
-    ),
-    submissionState: (
-      getSubmissionState()
-    ),
+    isSubmitting,
+    submissionState,
     totalErrorMessages: (
-      getFormValidationState()
+      formValidationState
       .totalErrorMessages
     ),
   }

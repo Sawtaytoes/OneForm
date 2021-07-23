@@ -30,7 +30,7 @@ const useFieldVisitation = ({
   )
 
   const [
-    ,
+    isVisited,
     setIsVisited,
   ] = (
     useState(
@@ -72,11 +72,7 @@ const useFieldVisitation = ({
   )
 
   return {
-    isVisited: (
-      getIsFieldVisited(
-        fieldName
-      )
-    ),
+    isVisited,
     setVisited,
   }
 }

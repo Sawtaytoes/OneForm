@@ -40,7 +40,7 @@ const useFieldErrorMessages = ({
   )
 
   const [
-    ,
+    localErrorMessages,
     setLocalErrorMessages,
   ] = (
     useState(
@@ -91,11 +91,7 @@ const useFieldErrorMessages = ({
   )
 
   return {
-    errorMessages: (
-      getFieldErrorMessages(
-        fieldName
-      )
-    ),
+    errorMessages: localErrorMessages,
     setErrorMessages,
   }
 }
