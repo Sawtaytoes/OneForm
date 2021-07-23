@@ -2,6 +2,7 @@
 import { action } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
+import FieldValue from './FieldValue.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
@@ -43,7 +44,7 @@ const Input = ({
   />
 )
 
-export const InputComponent = (
+export const ReactInputComponent = (
   args,
 ) => (
   <OneForm {...args}>
@@ -63,13 +64,17 @@ export const HTMLCheckbox = (
       <label>
         <Field>
           <input
-            name="message"
+            name="checkbox"
             type="checkbox"
           />
         </Field>
 
         Check me!
       </label>
+    </div>
+
+    <div>
+      <FieldValue name="checkbox" />
     </div>
   </OneForm>
 )
@@ -80,7 +85,12 @@ const Checkbox = ({
   onChange,
   value,
 }) => (
-  <label>
+  <label
+    style={{
+      backgroundColor: 'darkred',
+      color: 'pink',
+    }}
+  >
     <input
       checked={isChecked}
       name={name}
@@ -93,15 +103,15 @@ const Checkbox = ({
   </label>
 )
 
-export const CheckboxComponent = (
+export const ReactCheckboxComponent = (
   args,
 ) => (
   <OneForm {...args}>
     <div>
       <Field>
         <Checkbox
-          name="message"
-          value="This is my message value."
+          name="checkbox"
+          value="This is my checkbox value."
         />
       </Field>
     </div>
@@ -115,7 +125,7 @@ export const HTMLRadio = (
     <label>
       <Field>
         <input
-          name="message"
+          name="item"
           type="radio"
           value="first"
         />
@@ -127,7 +137,7 @@ export const HTMLRadio = (
     <label>
       <Field>
         <input
-          name="message"
+          name="item"
           type="radio"
           value="second"
         />
@@ -144,7 +154,12 @@ const Radio = ({
   onChange,
   value,
 }) => (
-  <label>
+  <label
+    style={{
+      backgroundColor: 'darkgreen',
+      color: 'lightgreen',
+    }}
+  >
     <input
       name={name}
       onChange={onChange}
@@ -156,14 +171,14 @@ const Radio = ({
   </label>
 )
 
-export const RadioComponent = (
+export const ReactRadioComponent = (
   args,
 ) => (
   <OneForm {...args}>
     <div>
       <Field>
         <Radio
-          name="message"
+          name="item"
           value="first"
         >
           First
@@ -174,12 +189,16 @@ export const RadioComponent = (
     <div>
       <Field>
         <Radio
-          name="message"
+          name="item"
           value="second"
         >
           Second
         </Radio>
       </Field>
+    </div>
+
+    <div>
+      Selected Item: <FieldValue name="item" />
     </div>
   </OneForm>
 )
@@ -188,26 +207,70 @@ export const HTMLSelect = (
   args,
 ) => (
   <OneForm {...args}>
+    <Field>
+      <select name="color">
+        <option value="">
+          Select a color.
+        </option>
+
+        <option value="red">
+          Red
+        </option>
+
+        <option value="yellow">
+          Yellow
+        </option>
+
+        <option value="green">
+          Green
+        </option>
+
+        <option value="blue">
+          Blue
+        </option>
+      </select>
+    </Field>
+
     <div>
-      <Field>
-        <select name="color">
-          <option value="">
-            Color
-          </option>
+      Selected Color: <FieldValue name="color" />
+    </div>
+  </OneForm>
+)
 
-          <option value="green">
-            Green
-          </option>
+export const HTMLSelectOptionGroupValue = (
+  args,
+) => (
+  <OneForm {...args}>
+    <Field>
+      <select name="color">
+        <option value="">
+          Select a color.
+        </option>
 
+        <optgroup label="Warm">
           <option value="red">
             Red
+          </option>
+
+          <option value="yellow">
+            Yellow
+          </option>
+        </optgroup>
+
+        <optgroup label="Cool">
+          <option value="green">
+            Green
           </option>
 
           <option value="blue">
             Blue
           </option>
-        </select>
-      </Field>
+        </optgroup>
+      </select>
+    </Field>
+
+    <div>
+      Selected Color: <FieldValue name="color" />
     </div>
   </OneForm>
 )
@@ -216,24 +279,166 @@ export const HTMLMultiSelect = (
   args,
 ) => (
   <OneForm {...args}>
+    <Field>
+      <select
+        multiple
+        name="color"
+      >
+        <option value="red">
+          Red
+        </option>
+
+        <option value="yellow">
+          Yellow
+        </option>
+
+        <option value="green">
+          Green
+        </option>
+
+        <option value="blue">
+          Blue
+        </option>
+      </select>
+    </Field>
+
+    <div>
+      Selected Colors: <FieldValue name="color" />
+    </div>
+  </OneForm>
+)
+
+export const HTMLColor = (
+  args,
+) => (
+  <OneForm {...args}>
     <div>
       <Field>
-        <select
-          multiple
+        <input
           name="color"
-        >
-          <option value="green">
-            Green
-          </option>
+          type="color"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
 
-          <option value="red">
-            Red
-          </option>
+export const HTMLDate = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          name="date"
+          type="date"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
 
-          <option value="blue">
-            Blue
-          </option>
-        </select>
+export const HTMLTime = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          name="time"
+          type="time"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
+
+export const HTMLDateTime = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          name="datetime"
+          type="datetime-local"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
+
+export const HTMLMonth = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          name="month"
+          type="month"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
+
+export const HTMLWeek = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          name="week"
+          type="week"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
+
+export const HTMLFile = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          name="file"
+          type="file"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
+
+export const HTMLFiles = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          multiple
+          name="file"
+          type="file"
+        />
+      </Field>
+    </div>
+  </OneForm>
+)
+
+export const HTMLRange = (
+  args,
+) => (
+  <OneForm {...args}>
+    <div>
+      <Field>
+        <input
+          name="range"
+          type="range"
+        />
       </Field>
     </div>
   </OneForm>
