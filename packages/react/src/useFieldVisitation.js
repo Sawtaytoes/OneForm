@@ -71,6 +71,20 @@ const useFieldVisitation = ({
     ],
   )
 
+  useEffect(
+    () => (
+      setIsVisited(
+        getIsFieldVisited(
+          fieldName
+        )
+      )
+    ),
+    [
+      fieldName,
+      getIsFieldVisited,
+    ],
+  )
+
   return {
     isVisited,
     setVisited,

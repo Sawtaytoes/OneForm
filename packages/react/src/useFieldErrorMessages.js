@@ -90,6 +90,20 @@ const useFieldErrorMessages = ({
     ],
   )
 
+  useEffect(
+    () => (
+      setLocalErrorMessages(
+        getFieldErrorMessages(
+          fieldName
+        )
+      )
+    ),
+    [
+      fieldName,
+      getFieldErrorMessages,
+    ],
+  )
+
   return {
     errorMessages: localErrorMessages,
     setErrorMessages,

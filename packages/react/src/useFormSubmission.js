@@ -51,21 +51,6 @@ const useFormSubmission = () => {
     )
   )
 
-  const isSubmitting = (
-    useMemo(
-      () => (
-        submissionState
-        === (
-          submissionStates
-          .pendingSubmission
-        )
-      ),
-      [
-        submissionState,
-      ]
-    )
-  )
-
   useEffect(
     () => (
       subscribeToFormChangeState(
@@ -74,6 +59,17 @@ const useFormSubmission = () => {
     ),
     [
       subscribeToFormChangeState,
+    ],
+  )
+
+  useEffect(
+    () => (
+      setFormChangeState(
+        getFormChangeState()
+      )
+    ),
+    [
+      getFormChangeState,
     ],
   )
 
@@ -90,6 +86,17 @@ const useFormSubmission = () => {
 
   useEffect(
     () => (
+      setFormValidationState(
+        getFormValidationState()
+      )
+    ),
+    [
+      getFormValidationState,
+    ],
+  )
+
+  useEffect(
+    () => (
       subscribeToSubmissionState(
         setSubmissionState
       )
@@ -99,13 +106,30 @@ const useFormSubmission = () => {
     ],
   )
 
+  useEffect(
+    () => (
+      setSubmissionState(
+        getSubmissionState()
+      )
+    ),
+    [
+      getSubmissionState,
+    ],
+  )
+
   return {
     formChangeState,
     isFormValid: (
       formValidationState
       .isFormValid
     ),
-    isSubmitting,
+    isSubmitting: (
+      submissionState
+      === (
+        submissionStates
+        .pendingSubmission
+      )
+    ),
     submissionState,
     totalErrorMessages: (
       formValidationState

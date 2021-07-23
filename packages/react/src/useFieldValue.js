@@ -59,6 +59,20 @@ const useFieldValue = ({
 
   useEffect(
     () => (
+      setLocalValue(
+        getFieldValue(
+          fieldName
+        )
+      )
+    ),
+    [
+      fieldName,
+      getFieldValue,
+    ],
+  )
+
+  useEffect(
+    () => (
       subscribeToFieldValue({
         identifier: (
           fieldName
