@@ -186,7 +186,7 @@ export const InitialMultiSelect = (
 ) => (
   <OneForm {...args}>
     <label htmlFor="color">
-      Select one of many values.
+      Select zero to many colors.
     </label>
 
     <Field>
