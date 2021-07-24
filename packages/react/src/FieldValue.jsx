@@ -1,24 +1,15 @@
 import PropTypes from 'prop-types'
 import {
-  Children,
-  cloneElement,
   memo,
-  useMemo,
 } from 'react'
 
 import useFieldValue from './useFieldValue'
 
 const propTypes = {
-  children: PropTypes.node,
-  fallback: PropTypes.node,
-  getIsVisible: PropTypes.func,
   name: PropTypes.string.isRequired,
 }
 
 const FieldValue = ({
-  children,
-  fallback,
-  getIsVisible = Boolean,
   name,
 }) => {
   const {
@@ -29,58 +20,8 @@ const FieldValue = ({
     })
   )
 
-  const childProps = (
-    useMemo(
-      () => ({
-        children: value,
-      }),
-      [
-        value,
-      ]
-    )
-  )
-
-  const isVisible = (
-    useMemo(
-      () => (
-        getIsVisible(
-          value
-        )
-      ),
-      [
-        getIsVisible,
-        value,
-      ]
-    )
-  )
-
   return (
-    isVisible
-    ? (
-      children
-      ? (
-        cloneElement(
-          (
-            Children
-            .only(
-              children
-            )
-          ),
-          childProps,
-        )
-      )
-      : (
-        childProps
-        .children
-      )
-    )
-    : (
-      fallback
-      || (
-        childProps
-        .children
-      )
-    )
+    value
   )
 }
 
