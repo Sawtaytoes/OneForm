@@ -1,6 +1,6 @@
 {
   "name": "@oneform/react",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "The OneForm library you need.",
   "scripts": {
     "build": "npm-run-all --sequential build:test --race --parallel dev:storybook build:cypress --sequential build:package",
