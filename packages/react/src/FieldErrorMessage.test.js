@@ -28,7 +28,9 @@ describe(
           )
           .innerHTML
         )
-        .toContain('')
+        .toBe(
+          ''
+        )
       },
     )
 
