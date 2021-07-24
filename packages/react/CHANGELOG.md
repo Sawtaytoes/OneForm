@@ -1,3 +1,9 @@
+# 1.1.0
+_July 24, 2021_
+
+- 💥 Separated boolean logic from `FieldValue` into `IfFieldValue`. This feature was never documented.
+- 💥 Separated boolean logic from `FieldErrorMessage` into `IfFieldErrorMessage`. This feature was never documented.
+
 # 1.0.3
 _July 23, 2021_
 
