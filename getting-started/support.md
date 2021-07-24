@@ -11,7 +11,5 @@ To get help, it's pretty simple:
 
 {% embed url="https://discord.gg/P8xzcTzMV7" %}
 
-{% embed url="https://twitter.com/OneForm\_js" %}
-
-
+How it was built from scratch \(every step of the way\): [https://www.youtube.com/playlist?list=PLzyto\_t73djpaDg2LM-CWGQOMej0JyKFv](https://www.youtube.com/playlist?list=PLzyto_t73djpaDg2LM-CWGQOMej0JyKFv)
 
