@@ -13,3 +13,7 @@ To get help, it's pretty simple:
 
 How it was built from scratch \(every step of the way\): [https://www.youtube.com/playlist?list=PLzyto\_t73djpaDg2LM-CWGQOMej0JyKFv](https://www.youtube.com/playlist?list=PLzyto_t73djpaDg2LM-CWGQOMej0JyKFv)
 
+{% embed url="https://www.youtube.com/watch?v=vBAmqetaGyg&list=PLzyto\_t73djpaDg2LM-CWGQOMej0JyKFv" %}
+
+
+
