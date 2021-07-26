@@ -181,11 +181,7 @@ const useField = ({
         : false
       )
     ),
-    isVisited: (
-      isVisited
-      ? 'true'
-      : ''
-    ),
+    isVisited,
     updateFieldValue,
     value: (
       (
