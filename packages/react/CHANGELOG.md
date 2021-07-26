@@ -1,3 +1,8 @@
+# 1.1.1
+_July 26, 2021_
+
+- 🐛 Fixed a bug where isVisited was returning a string instead of a boolean.
+
 # 1.1.0
 _July 24, 2021_
 
@@ -132,11 +137,11 @@ _March 29, 2021_
 _March 29, 2021_
 
 - 💥 API changes:
-	+ `validations` now takes a `getIsValid` function rather than `validate`. This function now receives an object with a `values` prop.
-	+ `groupValidations` takes a `getErrorMessages` function and the return value is now an `errorMessages` object, the same as you pass into `OneForm` with the only difference being you can return a string rather than an array of error messages.
+  + `validations` now takes a `getIsValid` function rather than `validate`. This function now receives an object with a `values` prop.
+  + `groupValidations` takes a `getErrorMessages` function and the return value is now an `errorMessages` object, the same as you pass into `OneForm` with the only difference being you can return a string rather than an array of error messages.
 - There were quite a few bugs with `groupValidations`. Those are fixed in this version.
-	+ 🐛 There's currently one issue with `groupValidations`:
-		* If you have two which take the exact same field names (and they share or both don't have `groupNames`, their errors will interfere with each other.
-		* This will be fixed in a later update.
-		* A workaround is to change the order of `fieldNames` and `groupNames` your validations.
+  + 🐛 There's currently one issue with `groupValidations`:
+    * If you have two which take the exact same field names (and they share or both don't have `groupNames`, their errors will interfere with each other.
+    * This will be fixed in a later update.
+    * A workaround is to change the order of `fieldNames` and `groupNames` your validations.
 - ♻️ The entire error message system has been completely rewritten from the ground up.
