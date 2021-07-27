@@ -1,3 +1,9 @@
+# 1.2.0
+_July 26, 2021_
+
+- ✨ Added `translateProps` prop to `Field`. This allows creating new `Field` components without relying on `useField`.
+- ✨ Added `MaterialUiField`. This removes console errors from using `Field`.
+
 # 1.1.1
 _July 26, 2021_
 
