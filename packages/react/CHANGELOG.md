@@ -1,3 +1,11 @@
+# 1.4.0
+_July 27, 2021_
+
+- ✨ Added `IfFieldErrorMessage`.
+- ✨ Added `IfFieldValue`.
+- ✨ Added `IfFieldVisitation`.
+- 🐛 Fixed a bug in OneForm where visitation state isn't set from `values` on first mount.
+
 # 1.3.0
 _July 27, 2021_
 
