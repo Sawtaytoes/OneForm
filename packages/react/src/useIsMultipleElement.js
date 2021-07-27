@@ -1,6 +1,6 @@
 import useIsHtmlElement from './useIsHtmlElement.js'
 
-const useIsMultiFieldElement = (
+const useIsMultipleElement = (
   reactElement,
 ) => {
   const isHtmlElement = (
@@ -19,4 +19,4 @@ const useIsMultiFieldElement = (
   )
 }
 
-export default useIsMultiFieldElement
+export default useIsMultipleElement

@@ -10,19 +10,19 @@ import FieldContext from './FieldContext.js'
 import useField from './useField.js'
 import useIsCheckboxElement from './useIsCheckboxElement.js'
 import useIsHtmlElement from './useIsHtmlElement.js'
-import useIsMultiFieldElement from './useIsMultiFieldElement.js'
+import useIsMultipleElement from './useIsMultipleElement.js'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
   isCheckboxElement: PropTypes.bool,
-  isMultiFieldElement: PropTypes.bool,
+  isMultipleElement: PropTypes.bool,
   translateProps: PropTypes.func,
 }
 
 const Field = ({
   children,
   isCheckboxElement = false,
-  isMultiFieldElement = false,
+  isMultipleElement = false,
   translateProps = (
     Function
     .prototype
@@ -51,8 +51,8 @@ const Field = ({
     )
   )
 
-  const isMultiFieldHtmlElement = (
-    useIsMultiFieldElement(
+  const isMultipleHtmlElement = (
+    useIsMultipleElement(
       children
     )
   )
@@ -72,9 +72,9 @@ const Field = ({
         isCheckboxElement
         || isCheckboxHtmlElement
       ),
-      isMultiFieldElement: (
-        isMultiFieldElement
-        || isMultiFieldHtmlElement
+      isMultipleElement: (
+        isMultipleElement
+        || isMultipleHtmlElement
       ),
       name,
       onChange,

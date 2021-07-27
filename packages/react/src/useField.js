@@ -8,7 +8,7 @@ import useFieldData from './useFieldData.js'
 const useField = ({
   inputValue,
   isCheckboxElement,
-  isMultiFieldElement,
+  isMultipleElement,
   name,
   onChange,
   onVisit,
@@ -66,19 +66,60 @@ const useField = ({
         ) {
           setVisited()
 
-          setValue((value) => (
-            inputValue === undefined
-            || typeof value === 'boolean'
-            ? isTargetChecked
-            : (
-              isTargetChecked
-              ? (
-                inputValue
-                || targetValue
+          setValue((
+            value,
+          ) => {
+            if (
+              isMultipleElement
+              || (
+                Array
+                .isArray(
+                  value
+                )
               )
-              : 'unchecked'
-            )
-          ))
+            ) {
+              return (
+                isTargetChecked
+                ? (
+                  (
+                    value
+                    || []
+                  )
+                  .concat(
+                    targetValue
+                  )
+                )
+                : (
+                  (
+                    value
+                    || []
+                  )
+                  .filter((
+                    subValue,
+                  ) => (
+                    subValue
+                    !== targetValue
+                  ))
+                )
+              )
+            }
+            else if (
+              inputValue === undefined
+              || typeof value === 'boolean'
+            ) {
+              return isTargetChecked
+            }
+            else {
+              return (
+                isTargetChecked
+                ? (
+                  inputValue
+                  || targetValue
+                )
+                : 'unchecked'
+              )
+            }
+          })
         }
         else if (
           targetType
@@ -194,7 +235,7 @@ const useField = ({
     updateFieldValue,
     value: (
       (
-        isMultiFieldElement
+        isMultipleElement
         && (
           value
           === ''
