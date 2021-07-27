@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import {
   memo,
   useCallback,
+  useEffect,
   useMemo,
   useRef,
 } from 'react'
@@ -341,7 +342,7 @@ const OneForm = ({
     })
   )
 
-  useUpdateEffect(
+  useEffect(
     () => {
       resetAllFieldVisitations()
 
@@ -354,6 +355,8 @@ const OneForm = ({
       )
     },
     [
+      resetAllFieldVisitations,
+      setFieldVisited,
       values,
     ],
   )
@@ -369,6 +372,7 @@ const OneForm = ({
       )
     },
     [
+      setFieldVisited,
       updatedValues,
     ],
   )
