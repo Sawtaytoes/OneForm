@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { action } from '@storybook/addon-actions'
-
 import FieldValue from './FieldValue.jsx'
+import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
+  decorators: htmlStyleDecorators,
   title: 'Fields/FieldValue',
 }
 

@@ -1,13 +1,5 @@
 /* eslint-disable react/prop-types */
 import {
-  Field,
-  FieldErrorMessage,
-  FieldGroup,
-  FieldValue,
-  OneForm,
-  SubmitField,
-} from '@oneform/react'
-import {
   action,
 } from '@storybook/addon-actions'
 import {
@@ -15,7 +7,13 @@ import {
   useState,
 } from 'react'
 
-import VanillaReactStyles from './VanillaReactStyles.jsx'
+import Field from './Field.jsx'
+import FieldErrorMessage from './FieldErrorMessage.jsx'
+import FieldGroup from './FieldGroup.jsx'
+import FieldValue from './FieldValue.jsx'
+import htmlStyleDecorators from '././htmlStyleDecorators.jsx'
+import OneForm from './OneForm.jsx'
+import SubmitField from './SubmitField.jsx'
 
 export default {
   args: {
@@ -26,7 +24,8 @@ export default {
     onChange: 'changed',
     onSubmit: 'submitted',
   },
-  title: 'Vanilla React',
+  decorators: htmlStyleDecorators,
+  title: 'Examples/HTML',
 }
 
 export const Registration = (
@@ -76,8 +75,6 @@ export const Registration = (
       {...args}
       onSubmit={formSubmitted}
     >
-      <VanillaReactStyles />
-
       <div>
         <label>
           <Field>
@@ -251,8 +248,6 @@ export const ProductSelection = (
       {...args}
       onSubmit={formSubmitted}
     >
-      <VanillaReactStyles />
-
       {
         products
         .map(({

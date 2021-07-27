@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import FieldErrorMessage from './FieldErrorMessage.jsx'
+import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import IfFieldErrorMessage from './IfFieldErrorMessage.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
+  decorators: htmlStyleDecorators,
   title: 'Fields/IfFieldErrorMessage',
 }
 

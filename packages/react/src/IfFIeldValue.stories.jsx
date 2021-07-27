@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 import FieldValue from './FieldValue.jsx'
+import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import IfFieldValue from './IfFieldValue.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
+  decorators: htmlStyleDecorators,
   title: 'Fields/IfFieldValue',
 }
 

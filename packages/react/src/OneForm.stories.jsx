@@ -12,6 +12,7 @@ import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldGroup from './FieldGroup.jsx'
 import FieldValue from './FieldValue.jsx'
+import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneForm from './OneForm.jsx'
 import SubmitField from './SubmitField.jsx'
 import useFieldValue from './useFieldValue.js'
@@ -26,6 +27,7 @@ export default {
     onSubmit: 'submitted',
   },
   component: OneForm,
+  decorators: htmlStyleDecorators,
   title: 'OneForm',
 }
 

@@ -3,6 +3,7 @@ import { action } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
 import FieldGroup from './FieldGroup.jsx'
+import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneForm from './OneForm.jsx'
 
 export default {
@@ -14,6 +15,7 @@ export default {
     onChange: 'changed',
     onSubmit: 'submitted',
   },
+  decorators: htmlStyleDecorators,
   title: 'Fields/FieldGroup',
 }
 

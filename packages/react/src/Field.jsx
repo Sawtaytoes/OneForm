@@ -10,26 +10,39 @@ import FieldContext from './FieldContext.js'
 import useField from './useField.js'
 import useIsCheckboxElement from './useIsCheckboxElement.js'
 import useIsHtmlElement from './useIsHtmlElement.js'
+import useIsMultiFieldElement from './useIsMultiFieldElement.js'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
-  isCheckbox: PropTypes.bool,
+  isCheckboxElement: PropTypes.bool,
+  isMultiFieldElement: PropTypes.bool,
+  translateProps: PropTypes.func,
 }
 
 const Field = ({
   children,
-  isCheckbox = false,
+  isCheckboxElement = false,
+  isMultiFieldElement = false,
+  translateProps = (
+    Function
+    .prototype
+  ),
 }) => {
   const {
-    multiple: isMultiFieldElement,
     name,
     onBlur: onVisit,
     onChange,
-    // Unless `children` is a radio button, the `value` prop should never be set.
+    // This should only be relevant to checkboxes and radio buttons.
     value: inputValue,
   } = (
     children
     .props
+  )
+
+  const isCheckboxHtmlElement = (
+    useIsCheckboxElement(
+      children
+    )
   )
 
   const isHtmlElement = (
@@ -38,8 +51,8 @@ const Field = ({
     )
   )
 
-  const isCheckboxElement = (
-    useIsCheckboxElement(
+  const isMultiFieldHtmlElement = (
+    useIsMultiFieldElement(
       children
     )
   )
@@ -56,10 +69,13 @@ const Field = ({
     useField({
       inputValue,
       isCheckboxElement: (
-        isCheckbox
-        || isCheckboxElement
+        isCheckboxElement
+        || isCheckboxHtmlElement
       ),
-      isMultiFieldElement,
+      isMultiFieldElement: (
+        isMultiFieldElement
+        || isMultiFieldHtmlElement
+      ),
       name,
       onChange,
       onVisit,
@@ -80,56 +96,99 @@ const Field = ({
   const childProps = (
     useMemo(
       () => (
-        isHtmlElement
-        ? {
-          'checked': isChecked,
-          'data-error': (
-            (
+        (
+          translateProps({
+            errorMessages,
+            fieldName,
+            isChecked,
+            isVisited,
+            updateFieldValue,
+            value,
+            visitField,
+          })
+        )
+        || (
+          isHtmlElement
+          ? {
+            'checked': isChecked,
+            'data-error': (
               (
-                errorMessages
-                .length
+                (
+                  errorMessages
+                  .length
+                )
+                > 0
               )
-              > 0
-            )
-            ? 'true'
-            : null
-          ),
-          'data-visited': (
-            isVisited
-            ? 'true'
-            : null
-          ),
-          'name': fieldName,
-          'onBlur': visitField,
-          'onChange': updateFieldValue,
-          value,
-        }
-        : {
-          checked: isChecked,
-          dirty: isVisited,
-          error: (
-            Boolean(
-              errorMessages
-              [0]
-            )
-          ),
-          errorMessages: (
-            errorMessages
-          ),
-          errors: (
-            errorMessages
-          ),
-          isChecked,
-          isDirty: isVisited,
-          isTouched: isVisited,
-          isVisited,
-          name: fieldName,
-          onBlur: visitField,
-          onChange: updateFieldValue,
-          touched: isVisited,
-          value,
-          visited: isVisited,
-        }
+              ? true
+              : null
+            ),
+            'data-visited': (
+              isVisited
+              ? true
+              : null
+            ),
+            'name': fieldName,
+            'onBlur': visitField,
+            'onChange': updateFieldValue,
+            value,
+          }
+          : (
+            isHtmlElement
+            ? {
+              'checked': isChecked,
+              'data-error': (
+                (
+                  (
+                    errorMessages
+                    .length
+                  )
+                  > 0
+                )
+                ? true
+                : null
+              ),
+              'data-visited': (
+                isVisited
+                ? true
+                : null
+              ),
+              'name': fieldName,
+              'onBlur': visitField,
+              'onChange': updateFieldValue,
+              value,
+            }
+            : {
+              checked: isChecked,
+              dirty: isVisited,
+              error: (
+                Boolean(
+                  errorMessages
+                  [0]
+                )
+              ),
+              errorMessages: (
+                errorMessages
+              ),
+              errors: (
+                errorMessages
+              ),
+              helperText: (
+                errorMessages
+                [0]
+              ),
+              isChecked,
+              isDirty: isVisited,
+              isTouched: isVisited,
+              isVisited,
+              name: fieldName,
+              onBlur: visitField,
+              onChange: updateFieldValue,
+              touched: isVisited,
+              value,
+              visited: isVisited,
+            }
+          )
+        )
       ),
       [
         errorMessages,
@@ -137,6 +196,7 @@ const Field = ({
         isChecked,
         isHtmlElement,
         isVisited,
+        translateProps,
         updateFieldValue,
         value,
         visitField,

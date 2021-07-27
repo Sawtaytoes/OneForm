@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { action } from '@storybook/addon-actions'
 
+import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneForm from './OneForm.jsx'
 import SubmitField from './SubmitField.jsx'
 
@@ -14,6 +15,7 @@ export default {
     onSubmit: 'submitted',
   },
   // component: SubmitField,
+  decorators: htmlStyleDecorators,
   title: 'Fields/SubmitField',
 }
 
