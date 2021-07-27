@@ -132,62 +132,32 @@ const Field = ({
             'onChange': updateFieldValue,
             value,
           }
-          : (
-            isHtmlElement
-            ? {
-              'checked': isChecked,
-              'data-error': (
-                (
-                  (
-                    errorMessages
-                    .length
-                  )
-                  > 0
-                )
-                ? true
-                : null
-              ),
-              'data-visited': (
-                isVisited
-                ? true
-                : null
-              ),
-              'name': fieldName,
-              'onBlur': visitField,
-              'onChange': updateFieldValue,
-              value,
-            }
-            : {
-              checked: isChecked,
-              dirty: isVisited,
-              error: (
-                Boolean(
-                  errorMessages
-                  [0]
-                )
-              ),
-              errorMessages: (
-                errorMessages
-              ),
-              errors: (
-                errorMessages
-              ),
-              helperText: (
+          : {
+            checked: isChecked,
+            dirty: isVisited,
+            error: (
+              Boolean(
                 errorMessages
                 [0]
-              ),
-              isChecked,
-              isDirty: isVisited,
-              isTouched: isVisited,
-              isVisited,
-              name: fieldName,
-              onBlur: visitField,
-              onChange: updateFieldValue,
-              touched: isVisited,
-              value,
-              visited: isVisited,
-            }
-          )
+              )
+            ),
+            errorMessages: (
+              errorMessages
+            ),
+            errors: (
+              errorMessages
+            ),
+            isChecked,
+            isDirty: isVisited,
+            isTouched: isVisited,
+            isVisited,
+            name: fieldName,
+            onBlur: visitField,
+            onChange: updateFieldValue,
+            touched: isVisited,
+            value,
+            visited: isVisited,
+          }
         )
       ),
       [
