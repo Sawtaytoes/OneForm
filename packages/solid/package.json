@@ -18,7 +18,7 @@
 	"main": "dist/oneform.cjs.js",
 	"umd:main": "dist/oneform.umd.js",
 	"module": "dist/oneform.esm.js",
-	"source": "src/main.js",
+	"source": "src/entrypoint.js",
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public"

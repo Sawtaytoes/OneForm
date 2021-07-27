@@ -30,7 +30,7 @@ const rollupConfig = {
     {
       file: (
         packageJson
-        .main
+        .entrypoint
       ),
       format: 'cjs',
       sourcemap: true,
