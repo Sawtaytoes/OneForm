@@ -116,7 +116,7 @@ const useField = ({
                   inputValue
                   || targetValue
                 )
-                : 'unchecked'
+                : ''
               )
             }
           })
@@ -172,6 +172,7 @@ const useField = ({
       },
       [
         inputValue,
+        isMultipleElement,
         onChange,
         setValue,
         setVisited,
@@ -214,12 +215,8 @@ const useField = ({
     isChecked: (
       isCheckboxElement
       ? (
-        value === 'unchecked'
-        ? false
-        : (
-          Boolean(
-            value
-          )
+        Boolean(
+          value
         )
       )
       : (

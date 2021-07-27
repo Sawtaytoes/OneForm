@@ -97,7 +97,7 @@ export const CheckboxWithValue = (
 CheckboxWithValue
 .args = {
   values: {
-    checkbox: false,
+    checkbox: '',
   },
 }
 
