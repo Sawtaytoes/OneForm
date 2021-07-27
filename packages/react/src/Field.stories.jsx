@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-import { action } from '@storybook/addon-actions'
+import {
+  action,
+} from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
 import FieldValue from './FieldValue.jsx'
@@ -303,6 +305,104 @@ export const HTMLMultiSelect = (
         </option>
       </select>
     </Field>
+
+    <div>
+      Selected Colors: <FieldValue name="color" />
+    </div>
+  </OneForm>
+)
+
+const MultiPicker = ({
+  name,
+  onChange,
+  value,
+}) => (
+  <div>
+    <label htmlFor="red">
+      <input
+        checked={
+          value
+          .includes(
+            'red'
+          )
+        }
+        id="red"
+        name={name}
+        onChange={onChange}
+        type="checkbox"
+        value="red"
+      />
+
+      Red
+    </label>
+
+    <label htmlFor="yellow">
+      <input
+        checked={
+          value
+          .includes(
+            'yellow'
+          )
+        }
+        id="yellow"
+        name={name}
+        onChange={onChange}
+        type="checkbox"
+        value="yellow"
+      />
+
+      Yellow
+    </label>
+
+    <label htmlFor="green">
+      <input
+        checked={
+          value
+          .includes(
+            'green'
+          )
+        }
+        id="green"
+        name={name}
+        onChange={onChange}
+        type="checkbox"
+        value="green"
+      />
+
+      Green
+    </label>
+
+    <label htmlFor="blue">
+      <input
+        checked={
+          value
+          .includes(
+            'blue'
+          )
+        }
+        id="blue"
+        name={name}
+        onChange={onChange}
+        type="checkbox"
+        value="blue"
+      />
+
+      Blue
+    </label>
+  </div>
+)
+
+export const MultiPickerComponent = (
+  args,
+) => (
+  <OneForm {...args}>
+    <label>
+      <Field isMultipleElement>
+        <MultiPicker
+          name="color"
+        />
+      </Field>
+    </label>
 
     <div>
       Selected Colors: <FieldValue name="color" />

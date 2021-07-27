@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { action } from '@storybook/addon-actions'
+import {
+  action,
+} from '@storybook/addon-actions'
 import {
   useCallback,
   useMemo,

@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
-import { action } from '@storybook/addon-actions'
+import {
+  action,
+} from '@storybook/addon-actions'
 
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneForm from './OneForm.jsx'
