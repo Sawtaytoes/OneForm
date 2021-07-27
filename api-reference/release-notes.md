@@ -1,5 +1,41 @@
 # Changelog
 
+## 1.4.0
+
+_July 27, 2021_
+
+* ✨ Added `IfFieldErrorMessage`.
+* ✨ Added `IfFieldValue`.
+* ✨ Added `IfFieldVisitation`.
+* 🐛 Fixed a bug in OneForm where visitation state isn't set from `values` on first mount.
+
+## 1.3.0
+
+_July 27, 2021_
+
+* ✨ Added multi-element support for checkboxes that share the same `name` prop.
+* ✨ Unchecked string-value checkboxes are marked with the string `unchecked` instead of `false` per the HTML spec.
+
+## 1.2.0
+
+_July 26, 2021_
+
+* ✨ Added `translateProps` prop to `Field`. This allows creating new `Field` components without relying on `useField`.
+* ✨ Added `MaterialUiField`. This removes console errors from using `Field`.
+
+## 1.1.1
+
+_July 26, 2021_
+
+* 🐛 Fixed a bug where isVisited was returning a string instead of a boolean.
+
+## 1.1.0
+
+_July 24, 2021_
+
+* 💥 Separated boolean logic from `FieldValue` into `IfFieldValue`. This feature was never documented.
+* 💥 Separated boolean logic from `FieldErrorMessage` into `IfFieldErrorMessage`. This feature was never documented.
+
 ## 1.0.3
 
 _July 23, 2021_
