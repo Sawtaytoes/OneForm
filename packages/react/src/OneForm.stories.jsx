@@ -104,36 +104,24 @@ export const InitialCheckboxValues = (
     <label>
       <Field>
         <input
-          name="checkbox1"
-          type="checkbox"
-          value="The First Checkbox Value"
-        />
-      </Field>
-
-      Checkbox with Value 1
-    </label>
-
-    <label>
-      <Field>
-        <input
-          name="checkbox2"
-          type="checkbox"
-          value="The Second Checkbox Value"
-        />
-      </Field>
-
-      Checkbox with Value 2
-    </label>
-
-    <label>
-      <Field>
-        <input
-          name="checkbox3"
+          name="checkboxWithoutValue"
           type="checkbox"
         />
       </Field>
 
       Checkbox without Value
+    </label>
+
+    <label>
+      <Field>
+        <input
+          name="checkboxWithValue"
+          type="checkbox"
+          value="The Checkbox Value"
+        />
+      </Field>
+
+      Checkbox with Value
     </label>
   </OneForm>
 )
@@ -141,9 +129,8 @@ export const InitialCheckboxValues = (
 InitialCheckboxValues
 .args = {
   values: {
-    checkbox1: 'The First Checkbox Value',
-    checkbox2: true,
-    checkbox3: true,
+    checkboxWithoutValue: true,
+    checkboxWithValue: 'The Checkbox Value',
   },
 }
 
