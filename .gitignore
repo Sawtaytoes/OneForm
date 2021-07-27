@@ -1,5 +1,6 @@
 *.log
-*.mp4
+packages/*/cypress/screenshots
+packages/*/cypress/videos
 dist
 node_modules
 storybook-static
