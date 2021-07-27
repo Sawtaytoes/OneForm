@@ -19,7 +19,7 @@ describe(
             useFieldRegistration,
             {
               initialProps: {
-                fieldName: 'email',
+                name: 'email',
               },
               wrapper: OneForm,
             },
