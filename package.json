@@ -3,6 +3,11 @@
   "private": true,
   "author": "Kevin Ghadyani",
   "license": "ISC",
+  "scripts": {
+    "example": "yarn workspace @oneform/example",
+    "react": "yarn workspace @oneform/react",
+    "solid": "yarn workspace @oneform/solid"
+  },
   "workspaces": [
     "packages/*"
   ],
