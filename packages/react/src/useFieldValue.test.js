@@ -118,5 +118,86 @@ describe(
         )
       }
     )
+
+    test(
+      'changes the value if `name` changes',
+      () => {
+        const name = 'email'
+
+        const {
+          rerender,
+          result,
+        } = (
+          renderHook(
+            useFieldValue,
+            {
+              initialProps: {
+                name,
+              },
+              wrapper: OneForm,
+            },
+          )
+        )
+
+        const value = 'john.smith@test.com'
+
+        act(() => {
+          result
+          .current
+          .setValue(
+            value
+          )
+        })
+
+        const newName = 'name'
+
+        act(() => {
+          rerender({
+            name: newName,
+          })
+        })
+
+        expect(
+          result
+          .current
+          .value
+        )
+        .toBeUndefined()
+
+        const newValue = 'John Smith'
+
+        act(() => {
+          result
+          .current
+          .setValue(
+            newValue
+          )
+        })
+
+        expect(
+          result
+          .current
+          .value
+        )
+        .toBe(
+          newValue
+        )
+
+        act(() => {
+          rerender({
+            name,
+          })
+        })
+
+        expect(
+          result
+          .current
+          .value
+        )
+        .toBe(
+          value
+        )
+      }
+    )
   }
 )
