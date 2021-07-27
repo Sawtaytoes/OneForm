@@ -1,4 +1,4 @@
-# &lt;FieldValue /&gt;
+# &lt;FieldValue&gt;
 
 Displays the value for a given field name.
 

@@ -1,4 +1,4 @@
-# &lt;FieldGroup /&gt;
+# &lt;FieldGroup&gt;
 
 A wrapper for wrapping dynamic fields.
 
@@ -42,6 +42,12 @@ export default FieldGroupExample
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td style="text-align:left"><code>children</code>
+      </td>
+      <td style="text-align:left">Node</td>
+      <td style="text-align:left">Any number of components.</td>
+    </tr>
     <tr>
       <td style="text-align:left"> <code>id</code>
       </td>

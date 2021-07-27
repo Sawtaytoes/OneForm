@@ -1,4 +1,4 @@
-# &lt;FieldErrorMessage /&gt;
+# &lt;FieldErrorMessage&gt;
 
 Displays the first error message for a given field name.
 

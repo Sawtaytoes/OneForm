@@ -1,4 +1,4 @@
-# &lt;SubmitField /&gt;
+# &lt;SubmitField&gt;
 
 ## Props
 

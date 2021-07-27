@@ -2,7 +2,7 @@
 description: 'The center of everything, the one and only, OneForm.'
 ---
 
-# &lt;OneForm /&gt;
+# &lt;OneForm&gt;
 
 ## Props
 

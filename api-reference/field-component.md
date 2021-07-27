@@ -2,7 +2,7 @@
 description: 'I''ve got no strings, to hold me down...'
 ---
 
-# &lt;Field /&gt;
+# &lt;Field&gt;
 
 Use this when wrapping HTML input components or your own custom input components.
 
