@@ -52,42 +52,47 @@ const useField = ({
       ) => {
         const {
           checked: isTargetChecked,
-          selectedOptions: targetInputSelectedOptions,
-          type: targetInputType,
-          value: targetInputValue,
+          selectedOptions: targetSelectedOptions,
+          type: targetType,
+          value: targetValue,
         } = (
           event
           .target
         )
 
         if (
-          targetInputType
+          targetType
           === 'checkbox'
         ) {
           setVisited()
 
-          setValue(
-            isTargetChecked
-            ? (
-              inputValue
-              || isTargetChecked
+          setValue((value) => (
+            inputValue === undefined
+            || typeof value === 'boolean'
+            ? isTargetChecked
+            : (
+              isTargetChecked
+              ? (
+                inputValue
+                || targetValue
+              )
+              : 'unchecked'
             )
-            : isTargetChecked
-          )
+          ))
         }
         else if (
-          targetInputType
+          targetType
           === 'radio'
         ) {
           setVisited()
 
           setValue(
             inputValue
-            || targetInputValue
+            || targetValue
           )
         }
         else if (
-          targetInputType
+          targetType
           === 'select-multiple'
         ) {
           setVisited()
@@ -95,7 +100,7 @@ const useField = ({
           setValue(
             Array
             .from(
-              targetInputSelectedOptions
+              targetSelectedOptions
             )
             .map(({
               value,
@@ -105,18 +110,18 @@ const useField = ({
           )
         }
         else if (
-          targetInputType
+          targetType
           === 'select-one'
         ) {
           setVisited()
 
           setValue(
-            targetInputValue
+            targetValue
           )
         }
         else {
           setValue(
-            targetInputValue
+            targetValue
           )
         }
 
@@ -168,10 +173,13 @@ const useField = ({
     isChecked: (
       isCheckboxElement
       ? (
-        Boolean(
-          value
+        value === 'unchecked'
+        ? false
+        : (
+          Boolean(
+            value
+          )
         )
-        || false
       )
       : (
         (

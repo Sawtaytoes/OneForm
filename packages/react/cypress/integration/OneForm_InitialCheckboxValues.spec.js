@@ -13,15 +13,7 @@ describe(
 
         cy
         .findByLabelText(
-          'Checkbox with Value 1'
-        )
-        .should(
-          'be.checked',
-        )
-
-        cy
-        .findByLabelText(
-          'Checkbox with Value 2'
+          'Checkbox with Value'
         )
         .should(
           'be.checked',
@@ -47,20 +39,7 @@ describe(
 
         cy
         .findByLabelText(
-          'Checkbox with Value 1'
-        )
-        .click()
-        .should(
-          'not.be.checked',
-        )
-        .click()
-        .should(
-          'be.checked'
-        )
-
-        cy
-        .findByLabelText(
-          'Checkbox with Value 2'
+          'Checkbox with Value'
         )
         .click()
         .should(
