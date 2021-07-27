@@ -83,6 +83,7 @@ const useField = ({
 
           setValue(
             inputValue
+            || targetInputValue
           )
         }
         else if (
