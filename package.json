@@ -4,7 +4,7 @@
   "author": "Kevin Ghadyani",
   "license": "ISC",
   "scripts": {
-    "example": "yarn workspace @oneform/example",
+    "examples": "yarn workspace examples",
     "react": "yarn workspace @oneform/react",
     "solid": "yarn workspace @oneform/solid"
   },
