@@ -1,3 +1,9 @@
+# 1.3.0
+_July 27, 2021_
+
+- ✨ Added multi-element support for checkboxes that share the same `name` prop.
+- ✨ Unchecked string-value checkboxes are marked with the string `unchecked` instead of `false` per the HTML spec.
+
 # 1.2.0
 _July 26, 2021_
 
