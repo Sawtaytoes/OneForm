@@ -89,12 +89,7 @@ const SharedFieldGroupIdExample = () => (
       <Field>
         <input name="email" />
       </Field>
-    </FieldGroup>
-
-    <FieldGroup
-      id="1"
-      name="accountId"
-    >
+      
       <Field>
         <input name="name" />
       </Field>
