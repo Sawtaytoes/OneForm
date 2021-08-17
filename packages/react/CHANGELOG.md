@@ -1,3 +1,9 @@
+# 1.5.0
+_August 17, 2021_
+
+- ✨ Improved tree-shaking by defining the library as side-effect free and not-bundling the ESM files.
+- 🐛 Fixed an error which occurred when `onChange` doesn't receive a valid `InputEvent`.
+
 # 1.4.0
 _July 27, 2021_
 
