@@ -1,7 +1,6 @@
 const babelConfig = {
   env: {
     development: {
-      plugins: [],
       presets: [
         [
           '@babel/preset-env',
@@ -21,7 +20,6 @@ const babelConfig = {
     },
 
     production: {
-      plugins: [],
       presets: [
         [
           '@babel/preset-env',
@@ -41,7 +39,6 @@ const babelConfig = {
     },
 
     test: {
-      plugins: [],
       presets: [
         [
           '@babel/preset-env',
