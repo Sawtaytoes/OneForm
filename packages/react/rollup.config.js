@@ -1,5 +1,6 @@
 import { babel } from '@rollup/plugin-babel'
 import nodeResolve from '@rollup/plugin-node-resolve'
+import { rmdirSync } from 'fs'
 import analyze from 'rollup-plugin-analyzer'
 import sourcemaps from 'rollup-plugin-sourcemaps'
 import { terser } from 'rollup-plugin-terser'
@@ -7,6 +8,13 @@ import { terser } from 'rollup-plugin-terser'
 import packageJson from './package.json'
 
 process.env.NODE_ENV = 'production'
+
+rmdirSync(
+  './dist',
+  {
+    recursive: true,
+  },
+)
 
 const rollupConfig = {
   external: [
@@ -20,19 +28,22 @@ const rollupConfig = {
   ),
   output: [
     {
-      file: (
+      dir: (
         packageJson
         .module
       ),
       format: 'esm',
+      preserveModules: true,
       sourcemap: true,
     },
     {
-      file: (
+      dir: (
         packageJson
         .main
       ),
+      exports: 'auto',
       format: 'cjs',
+      preserveModules: true,
       sourcemap: true,
     },
     {
