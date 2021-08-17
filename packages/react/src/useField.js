@@ -57,10 +57,20 @@ const useField = ({
           value: targetValue,
         } = (
           event
-          .target
+          ?.target
         )
 
         if (
+          !(
+            'target'
+            in event
+          )
+        ) {
+          setValue(
+            event
+          )
+        }
+        else if (
           targetType
           === 'checkbox'
         ) {
