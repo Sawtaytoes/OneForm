@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   render,
   screen,
@@ -180,6 +181,198 @@ describe(
         )
         .toHaveBeenCalledTimes(
           2
+        )
+      },
+    )
+
+    test(
+      'sets the exact value from `onChange` if it is a non-object value.',
+      () => {
+        const NonStandardInput = ({
+          name,
+          onChange,
+          value,
+        }) => (
+          <input
+            name={name}
+            onChange={(
+              event,
+            ) => (
+              onChange(
+                event
+                .target
+                .value
+              )
+            )}
+            value={value}
+          />
+        )
+
+        render(
+          <OneForm>
+            <Field>
+              <NonStandardInput
+                name="email"
+              />
+            </Field>
+          </OneForm>
+        )
+
+        const domElement = (
+          screen
+          .getByRole(
+            'textbox'
+          )
+        )
+
+        userEvent
+        .type(
+          domElement,
+          'a',
+        )
+
+        userEvent
+        .type(
+          domElement,
+          'b',
+        )
+
+        expect(
+          domElement
+          .value
+        )
+        .toBe(
+          'ab'
+        )
+      },
+    )
+
+    test(
+      'sets the exact value from `onChange` if passes an object.',
+      () => {
+        const NonStandardInput = ({
+          name,
+          onChange,
+          value,
+        }) => (
+          <input
+            name={name}
+            onChange={(
+              event,
+            ) => (
+              onChange({
+                data: (
+                  event
+                  .target
+                  .value
+                )
+              })
+            )}
+            value={value}
+          />
+        )
+
+        render(
+          <OneForm>
+            <Field>
+              <NonStandardInput
+                name="email"
+              />
+            </Field>
+          </OneForm>
+        )
+
+        const domElement = (
+          screen
+          .getByRole(
+            'textbox'
+          )
+        )
+
+        userEvent
+        .type(
+          domElement,
+          'a',
+        )
+
+        userEvent
+        .type(
+          domElement,
+          'b',
+        )
+
+        expect(
+          domElement
+          .value
+        )
+        .toBe(
+          '[object Object]'
+        )
+      },
+    )
+
+    test(
+      'sets the exact value from `onChange` if passes an invalid event object.',
+      () => {
+        const NonStandardInput = ({
+          name,
+          onChange,
+          value,
+        }) => (
+          <input
+            name={name}
+            onChange={(
+              event,
+            ) => (
+              onChange({
+                target: {
+                  value: (
+                    event
+                    .target
+                    .value
+                  ),
+                },
+              })
+            )}
+            value={value}
+          />
+        )
+
+        render(
+          <OneForm>
+            <Field>
+              <NonStandardInput
+                name="email"
+              />
+            </Field>
+          </OneForm>
+        )
+
+        const domElement = (
+          screen
+          .getByRole(
+            'textbox'
+          )
+        )
+
+        userEvent
+        .type(
+          domElement,
+          'a',
+        )
+
+        userEvent
+        .type(
+          domElement,
+          'b',
+        )
+
+        expect(
+          domElement
+          .value
+        )
+        .toBe(
+          'ab'
         )
       },
     )

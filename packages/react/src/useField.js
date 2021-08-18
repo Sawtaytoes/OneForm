@@ -56,14 +56,23 @@ const useField = ({
           type: targetType,
           value: targetValue,
         } = (
-          event
-          ?.target
+          (
+            event
+            ?.target
+          )
+          || {}
         )
 
         if (
-          !(
-            'target'
-            in event
+          (
+            typeof event
+            !== 'object'
+          )
+          || (
+            !(
+              'target'
+              in event
+            )
           )
         ) {
           setValue(
