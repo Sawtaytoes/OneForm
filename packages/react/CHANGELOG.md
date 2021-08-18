@@ -1,3 +1,9 @@
+# 1.5.1
+_August 18, 2021_
+
+- ✨ Added a console error when `name` is `undefined`.
+- 🐛 Fixed a bug where passing a non-object from `onChange` (instead of an input event) would cause an error.
+
 # 1.5.0
 _August 17, 2021_
 
