@@ -2,7 +2,6 @@ import {
   render,
   screen,
 } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 
 import IfFieldVisitation from './IfFieldVisitation.jsx'
 import OneForm from './OneForm.jsx'

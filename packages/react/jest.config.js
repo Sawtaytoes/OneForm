@@ -1,7 +1,9 @@
 const jestConfig = {
   clearMocks: true,
   rootDir: './src',
-  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: [
+    '<rootDir>/jest-setup.js',
+  ],
   testPathIgnorePatterns: [
     '/cypress/',
     '/node_modules/',

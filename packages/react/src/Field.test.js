@@ -4,7 +4,6 @@ import {
   screen,
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import '@testing-library/jest-dom/extend-expect'
 
 import OneForm from './OneForm.jsx'
 import Field from './Field.jsx'
