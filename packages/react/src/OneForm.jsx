@@ -622,6 +622,22 @@ const OneForm = ({
     })
   )
 
+  const submitForm = (
+    useCallback(
+      (
+        event,
+      ) => {
+        event
+        ?.preventDefault()
+
+        formSubmitted()
+      },
+      [
+        formSubmitted,
+      ],
+    )
+  )
+
   const errorMessagesProviderValue = (
     useMemo(
       () => ({
@@ -728,7 +744,7 @@ const OneForm = ({
                 value={visitationProviderValue}
               >
                 <form
-                  onSubmit={formSubmitted}
+                  onSubmit={submitForm}
                   role="form"
                 >
                   {children}

@@ -7,13 +7,6 @@ import useSubmissionState, {
   submissionStates,
 } from './useSubmissionState.js'
 
-const mockedSubmitEvent = {
-  preventDefault: (
-    Function
-    .prototype
-  ),
-}
-
 describe(
   'useSubmissionState',
   () => {
@@ -69,9 +62,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(
@@ -117,9 +108,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(
@@ -177,9 +166,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(
@@ -223,9 +210,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(
@@ -264,9 +249,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(
@@ -308,9 +291,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         return (
@@ -367,9 +348,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         return (
@@ -435,9 +414,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(
@@ -501,9 +478,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(
@@ -578,9 +553,7 @@ describe(
         act(() => {
           result
           .current
-          .formSubmitted(
-            mockedSubmitEvent
-          )
+          .formSubmitted()
         })
 
         expect(

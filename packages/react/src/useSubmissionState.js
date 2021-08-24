@@ -112,12 +112,7 @@ const useSubmissionState = (
 
   const formSubmitted = (
     useCallback(
-      (
-        event
-      ) => {
-        event
-        .preventDefault()
-
+      () => {
         onBeforeSubmitRef
         .current()
 
