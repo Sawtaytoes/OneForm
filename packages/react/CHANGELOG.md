@@ -1,3 +1,10 @@
+# 1.6.0
+_August 24, 2021_
+
+- ✨ Added `getErrorMessages` to `useFormSubmission`.
+- ✨ Added `isVisited` to `useFormSubmission`.
+- ✨ Added `submitForm` to `useFormSubmission`.
+
 # 1.5.1
 _August 18, 2021_
 
