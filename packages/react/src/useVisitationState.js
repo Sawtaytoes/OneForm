@@ -37,6 +37,16 @@ const useVisitationState = (
     )
   )
 
+  const getAllVisitations = (
+    useCallback(
+      () => (
+        visitationsRef
+        .current
+      ),
+      [],
+    )
+  )
+
   const getIsVisited = (
     useCallback(
       (
@@ -138,6 +148,7 @@ const useVisitationState = (
   )
 
   return {
+    getAllVisitations,
     getIsVisited,
     resetAllVisitations,
     setVisited,
