@@ -10,7 +10,7 @@ describe(
   'useFieldValue',
   () => {
     test(
-      'have an `undefined` value',
+      'has an `undefined` value',
       () => {
         const {
           result,
@@ -36,7 +36,7 @@ describe(
     )
 
     test(
-      'set the value',
+      'sets the value',
       () => {
         const {
           result,
@@ -74,7 +74,7 @@ describe(
     )
 
     test(
-      'get the latest set value',
+      'gets the latest set value',
       () => {
         const {
           result,
