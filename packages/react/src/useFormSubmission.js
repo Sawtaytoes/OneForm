@@ -17,6 +17,7 @@ const useFormSubmission = (
   } = {}
 ) => {
   const {
+    getErrorMessages,
     getFormChangeState,
     getFormValidationState,
     getFormVisitationState,
@@ -171,6 +172,7 @@ const useFormSubmission = (
 
   return {
     formChangeState,
+    getErrorMessages,
     isSubmitting: (
       submissionState
       === (
@@ -182,10 +184,6 @@ const useFormSubmission = (
       formValidationState
       .isFormValid
     ),
-    isVisited: (
-      formVisitationState
-      .isFormVisited
-    ),
     isValidForSubmission: (
       (
         formValidationState
@@ -195,6 +193,10 @@ const useFormSubmission = (
         formVisitationState
         .isFormVisited
       )
+    ),
+    isVisited: (
+      formVisitationState
+      .isFormVisited
     ),
     submissionState,
     submitForm,

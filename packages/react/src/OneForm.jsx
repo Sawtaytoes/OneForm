@@ -152,6 +152,21 @@ const OneForm = ({
     })
   )
 
+  const getAllErrorMessages = (
+    useCallback(
+      () => (
+        Object
+        .values(
+          getAllFieldErrorMessages()
+        )
+        .flat()
+      ),
+      [
+        getAllFieldErrorMessages,
+      ],
+    )
+  )
+
   const updateErrorMessages = (
     useCallback(
       (
@@ -434,11 +449,7 @@ const OneForm = ({
         )
 
         const errorMessagesLength = (
-          Object
-          .values(
-            getAllFieldErrorMessages()
-          )
-          .flat()
+          getAllErrorMessages()
           .length
         )
 
@@ -447,7 +458,7 @@ const OneForm = ({
         })
       },
       [
-        getAllFieldErrorMessages,
+        getAllErrorMessages,
         setFormValidationState,
         validate,
         validateGroups,
@@ -512,17 +523,13 @@ const OneForm = ({
     useCallback(
       () => (
         (
-          Object
-          .values(
-            getAllFieldErrorMessages()
-          )
-          .flat()
+          getAllErrorMessages()
           .length
         )
         === 0
       ),
       [
-        getAllFieldErrorMessages,
+        getAllErrorMessages,
       ],
     )
   )
@@ -630,6 +637,7 @@ const OneForm = ({
   const submissionProviderValue = (
     useMemo(
       () => ({
+        getErrorMessages: getAllErrorMessages,
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,
@@ -643,6 +651,7 @@ const OneForm = ({
         subscribeToSubmissionState,
       }),
       [
+        getAllErrorMessages,
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,
