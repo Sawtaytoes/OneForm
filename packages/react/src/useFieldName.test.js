@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   act,
   renderHook,
@@ -51,7 +52,6 @@ describe(
         }
 
         const Wrapper = ({
-          // eslint-disable-next-line react/prop-types
           children,
         }) => (
           <OneForm>
@@ -116,7 +116,6 @@ describe(
         }
 
         const Wrapper = ({
-          // eslint-disable-next-line react/prop-types
           children,
         }) => (
           <OneForm>
