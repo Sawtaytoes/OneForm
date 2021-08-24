@@ -167,9 +167,9 @@ const CustomFieldExample = ({
   )
 }
 
-const MemoizedCustomField = memo(CustomFieldExample)
+const MemoizedCustomFieldExample = memo(CustomFieldExample)
 
-export default MemoizedCustomField
+export default MemoizedCustomFieldExample
 ```
 {% endtab %}
 
