@@ -7,12 +7,16 @@ import {
   useRef,
 } from 'react'
 
-import createObservable from './createObservable.js'
 import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
 import RegistrationContext from './RegistrationContext.js'
 import SubmissionContext from './SubmissionContext.js'
 import useErrorMessagesState from './useErrorMessagesState.js'
+import useFormChangeState, {
+  formChangeStates,
+} from './useFormChangeState.js'
+import useFormValidationState from './useFormValidationState.js'
+import useFormVisitationState from './useFormVisitationState.js'
 import useGroupValidationsState from './useGroupValidationsState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubmissionState from './useSubmissionState.js'
@@ -25,11 +29,6 @@ import useValuesState from './useValuesState.js'
 import useVisitationState from './useVisitationState.js'
 import ValuesContext from './ValuesContext.js'
 import VisitationContext from './VisitationContext.js'
-
-export const formChangeStates = {
-  committed: 'committed',
-  staged: 'staged',
-}
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -99,108 +98,28 @@ const OneForm = ({
     useRef()
   )
 
+  const setFormVisitationStateRef = (
+    useRef()
+  )
+
   const validateFieldsRef = (
     useRef()
   )
 
-  const formChangeStateObservable = (
-    useMemo(
-      () => (
-        createObservable()
-      ),
-      [],
-    )
+  const {
+    getFormChangeState,
+    setFormChangeState,
+    subscribeToFormChangeState,
+  } = (
+    useFormChangeState()
   )
 
-  const getFormChangeState = (
-    useCallback(
-      () => (
-        formChangeStateObservable
-        .getValue()
-      ),
-      [
-        formChangeStateObservable,
-      ],
-    )
-  )
-
-  const setFormChangeState = (
-    useCallback(
-      (
-        changeState,
-      ) => {
-        if (
-          changeState
-          === getFormChangeState()
-        ) {
-          return
-        }
-
-        formChangeStateObservable
-        .publish(
-          changeState
-        )
-      },
-      [
-        formChangeStateObservable,
-        getFormChangeState,
-      ],
-    )
-  )
-
-  const subscribeToFormChangeState = (
-    useCallback(
-      (
-        subscriber,
-      ) => (
-        formChangeStateObservable
-        .subscribe(
-          subscriber
-        )
-      ),
-      [
-        formChangeStateObservable,
-      ],
-    )
-  )
-
-  const formValidationStateObservable = (
-    useMemo(
-      () => (
-        createObservable(
-          {}
-        )
-      ),
-      [],
-    )
-  )
-
-  const getFormValidationState = (
-    useCallback(
-      () => (
-        formValidationStateObservable
-        .getValue()
-      ),
-      [
-        formValidationStateObservable,
-      ],
-    )
-  )
-
-  const subscribeToFormValidationState = (
-    useCallback(
-      (
-        subscriber,
-      ) => (
-        formValidationStateObservable
-        .subscribe(
-          subscriber
-        )
-      ),
-      [
-        formValidationStateObservable,
-      ],
-    )
+  const {
+    getFormValidationState,
+    setFormValidationState,
+    subscribeToFormValidationState,
+  } = (
+    useFormValidationState()
   )
 
   const {
@@ -326,6 +245,7 @@ const OneForm = ({
   )
 
   const {
+    getAllVisitations: getAllFieldVisitations,
     getIsVisited: getIsFieldVisited,
     resetAllVisitations: resetAllFieldVisitations,
     setVisited: setFieldVisited,
@@ -338,6 +258,9 @@ const OneForm = ({
         updateErrorMessages(
           identifier
         )
+
+        setFormVisitationStateRef
+        .current()
       },
     })
   )
@@ -346,13 +269,20 @@ const OneForm = ({
     () => {
       resetAllFieldVisitations()
 
-      Object
-      .keys(
-        values
+      const fieldNames = (
+        Object
+        .keys(
+          values
+        )
       )
+
+      fieldNames
       .forEach(
         setFieldVisited
       )
+
+      // setFormVisitationStateRef
+      // .current()
     },
     [
       resetAllFieldVisitations,
@@ -363,13 +293,20 @@ const OneForm = ({
 
   useUpdateEffect(
     () => {
-      Object
-      .keys(
-        updatedValues
+      const fieldNames = (
+        Object
+        .keys(
+          values
+        )
       )
+
+      fieldNames
       .forEach(
         setFieldVisited
       )
+
+      // setFormVisitationStateRef
+      // .current()
     },
     [
       setFieldVisited,
@@ -398,6 +335,20 @@ const OneForm = ({
     })
   )
 
+  const getRegisteredFieldNames = (
+    useCallback(
+      () => (
+        Object
+        .keys(
+          getAllFieldNameRegistrations()
+        )
+      ),
+      [
+        getAllFieldNameRegistrations,
+      ],
+    )
+  )
+
   const getIsFieldReadyForValidation = (
     useCallback(
       (
@@ -417,20 +368,6 @@ const OneForm = ({
       [
         getIsFieldRegistered,
         getIsFieldVisited,
-      ],
-    )
-  )
-
-  const getRegisteredFieldNames = (
-    useCallback(
-      () => (
-        Object
-        .keys(
-          getAllFieldNameRegistrations()
-        )
-      ),
-      [
-        getAllFieldNameRegistrations,
       ],
     )
   )
@@ -505,22 +442,15 @@ const OneForm = ({
           .length
         )
 
-        formValidationStateObservable
-        .publish({
-          isFormValid: (
-            errorMessagesLength
-            === 0
-          ),
-          totalErrorMessages: (
-            errorMessagesLength
-          ),
+        setFormValidationState({
+          errorMessagesLength,
         })
       },
       [
-        formValidationStateObservable,
         getAllFieldErrorMessages,
-        validateGroups,
+        setFormValidationState,
         validate,
+        validateGroups,
       ],
     )
   )
@@ -544,14 +474,38 @@ const OneForm = ({
     )
   )
 
-  useUpdateEffect(
+  useEffect(
     () => {
-      validateAllFields()
+      if (
+        groupValidations
+        || validations
+      ) {
+        validateAllFields()
+      }
     },
     [
       groupValidations,
+      validateAllFields,
       validations,
     ],
+  )
+
+  const {
+    getFormVisitationState,
+    setFormVisitationState,
+    setRequiredFieldNames,
+    subscribeToFormVisitationState,
+  } = (
+    useFormVisitationState({
+      getAllFieldVisitations,
+      getIsFieldVisited,
+      getRegisteredFieldNames,
+    })
+  )
+
+  setFormVisitationStateRef
+  .current = (
+    setFormVisitationState
   )
 
   const getIsFormValid = (
@@ -678,17 +632,27 @@ const OneForm = ({
       () => ({
         getFormChangeState,
         getFormValidationState,
+        getFormVisitationState,
         getSubmissionState,
+        setFormVisitationState,
+        setRequiredFieldNames,
+        submitForm,
         subscribeToFormChangeState,
         subscribeToFormValidationState,
+        subscribeToFormVisitationState,
         subscribeToSubmissionState,
       }),
       [
         getFormChangeState,
         getFormValidationState,
+        getFormVisitationState,
         getSubmissionState,
+        setFormVisitationState,
+        setRequiredFieldNames,
+        submitForm,
         subscribeToFormChangeState,
         subscribeToFormValidationState,
+        subscribeToFormVisitationState,
         subscribeToSubmissionState,
       ],
     )

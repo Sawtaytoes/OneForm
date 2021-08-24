@@ -1,7 +1,6 @@
 import {
   useContext,
   useEffect,
-  useMemo,
   useState,
 } from 'react'
 
@@ -10,13 +9,23 @@ import {
   submissionStates,
 } from './useSubmissionState'
 
-const useFormSubmission = () => {
+const initialRequiredFieldNames = []
+
+const useFormSubmission = (
+  {
+    requiredFieldNames = initialRequiredFieldNames,
+  } = {}
+) => {
   const {
     getFormChangeState,
     getFormValidationState,
+    getFormVisitationState,
     getSubmissionState,
+    setRequiredFieldNames,
+    submitForm,
     subscribeToFormChangeState,
     subscribeToFormValidationState,
+    subscribeToFormVisitationState,
     subscribeToSubmissionState,
   } = (
     useContext(
@@ -39,6 +48,15 @@ const useFormSubmission = () => {
   ] = (
     useState(
       getFormValidationState()
+    )
+  )
+
+  const [
+    formVisitationState,
+    setFormVisitationState,
+  ] = (
+    useState(
+      getFormVisitationState()
     )
   )
 
@@ -86,12 +104,46 @@ const useFormSubmission = () => {
 
   useEffect(
     () => (
+      subscribeToFormVisitationState(
+        setFormVisitationState
+      )
+    ),
+    [
+      subscribeToFormVisitationState,
+    ],
+  )
+
+  useEffect(
+    () => (
       setFormValidationState(
         getFormValidationState()
       )
     ),
     [
       getFormValidationState,
+    ],
+  )
+
+  useEffect(
+    () => (
+      setFormVisitationState(
+        getFormVisitationState()
+      )
+    ),
+    [
+      getFormVisitationState,
+    ],
+  )
+
+  useEffect(
+    () => (
+      setRequiredFieldNames(
+        requiredFieldNames
+      )
+    ),
+    [
+      requiredFieldNames,
+      setRequiredFieldNames,
     ],
   )
 
@@ -119,10 +171,6 @@ const useFormSubmission = () => {
 
   return {
     formChangeState,
-    isFormValid: (
-      formValidationState
-      .isFormValid
-    ),
     isSubmitting: (
       submissionState
       === (
@@ -130,10 +178,37 @@ const useFormSubmission = () => {
         .pendingSubmission
       )
     ),
+    isValid: (
+      formValidationState
+      .isFormValid
+    ),
+    isVisited: (
+      formVisitationState
+      .isFormVisited
+    ),
+    isValidForSubmission: (
+      (
+        formValidationState
+        .isFormValid
+      )
+      && (
+        formVisitationState
+        .isFormVisited
+      )
+    ),
     submissionState,
+    submitForm,
     totalErrorMessages: (
       formValidationState
       .totalErrorMessages
+    ),
+    totalUnvisitedFields: (
+      formVisitationState
+      .totalUnvisitedFields
+    ),
+    totalVisitedFields: (
+      formVisitationState
+      .totalVisitedFields
     ),
   }
 }
