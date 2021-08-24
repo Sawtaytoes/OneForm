@@ -32,11 +32,8 @@ You can even use it to display a list of notifications which disappear after 5 s
 ```javascript
 import { useFieldValue } from '@oneform/react';
 import {
-  Children,
-  cloneElement,
   memo,
   useEffect,
-  useMemo,
 } from 'react'
 
 const NotificationsExample = () => {
