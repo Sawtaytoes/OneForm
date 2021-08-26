@@ -1,5 +1,6 @@
 import {
   useCallback,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -29,12 +30,43 @@ const useSubformState = (
     )
   )
 
+  const valuesRef = (
+    useRef(
+      values
+    )
+  )
+
+  const initialValues = (
+    useMemo(
+      () => (
+        (
+          typeof (
+            valuesRef
+            .current
+          )
+          === 'function'
+        )
+        ? (
+          () => (
+            valuesRef
+            .current
+          )
+        )
+        : (
+          valuesRef
+          .current
+        )
+      ),
+      [],
+    )
+  )
+
   const [
     localValues,
     setLocalValues,
   ] = (
     useState(
-      values
+      initialValues
     )
   )
 

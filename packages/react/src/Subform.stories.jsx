@@ -12,14 +12,14 @@ import OneForm from './OneForm.jsx'
 import Subform from './Subform.jsx'
 
 export default {
-  // args: {
-  //   onChange: action(),
-  //   onSubmit: action(),
-  // },
-  // argTypes: {
-  //   onChange: 'changed',
-  //   onSubmit: 'submitted',
-  // },
+  args: {
+    onChange: action(),
+    onSubmit: action(),
+  },
+  argTypes: {
+    onChange: 'changed',
+    onSubmit: 'submitted',
+  },
   component: Subform,
   decorators: htmlStyleDecorators,
   title: 'Forms/Subform',
@@ -139,7 +139,7 @@ Validations
 export const GroupValidation = (
   args,
 ) => (
-  <OneForm values={args.values}>
+  <OneForm>
     <Subform {...args} />
 
     <div>
@@ -211,3 +211,46 @@ GroupValidation
     },
   ],
 }
+
+export const OnChange = (
+  args,
+) => (
+  <OneForm>
+    <Subform {...args} />
+
+    <div>
+      <Field>
+        <input
+          name="message"
+          placeholder="Message"
+        />
+      </Field>
+    </div>
+
+    <div>
+      <FieldValue name="copiedMessage" />
+    </div>
+  </OneForm>
+)
+
+OnChange
+.args = {
+  onChange: ({
+    value,
+  }) => ({
+    copiedMessage: value,
+    message: value,
+  }),
+}
+
+export const OnSubmit = (
+  args,
+) => (
+  <OneForm>
+    <Subform {...args} />
+
+    <button type="submit">
+      Submit
+    </button>
+  </OneForm>
+)

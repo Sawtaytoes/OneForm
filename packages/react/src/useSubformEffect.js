@@ -7,8 +7,8 @@ import useSubformData from './useSubformData.js'
 const useSubformEffect = ({
   errorMessages,
   groupValidations,
-  // onChange,
-  // onSubmit,
+  onChange,
+  onSubmit,
   updatedErrorMessages,
   updatedValues,
   validations,
@@ -17,12 +17,16 @@ const useSubformEffect = ({
   const {
     addErrorMessages,
     addGroupValidations,
+    addOnChange,
+    addOnSubmit,
     addUpdatedErrorMessages,
     addUpdatedValues,
     addValidations,
     addValues,
     removeErrorMessages,
     removeGroupValidations,
+    removeOnChange,
+    removeOnSubmit,
     removeUpdatedErrorMessages,
     removeUpdatedValues,
     removeValidations,
@@ -72,6 +76,50 @@ const useSubformEffect = ({
       addGroupValidations,
       groupValidations,
       removeGroupValidations,
+    ]
+  )
+
+  useEffect(
+    () => {
+      if (onChange) {
+        addOnChange(
+          onChange
+        )
+      }
+      else {
+        removeOnChange()
+      }
+
+      return () => {
+        removeOnChange()
+      }
+    },
+    [
+      addOnChange,
+      onChange,
+      removeOnChange,
+    ]
+  )
+
+  useEffect(
+    () => {
+      if (onSubmit) {
+        addOnSubmit(
+          onSubmit
+        )
+      }
+      else {
+        removeOnSubmit()
+      }
+
+      return () => {
+        removeOnSubmit()
+      }
+    },
+    [
+      addOnSubmit,
+      onSubmit,
+      removeOnSubmit,
     ]
   )
 

@@ -10,6 +10,8 @@ import {
 import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
 import flattenSegmentedArrayValues from './flattenSegmentedArrayValues.js'
+import flattenSegmentedFunctionObjectValues from './flattenSegmentedFunctionObjectValues.js'
+import flattenSegmentedFunctionPromiseValues from './flattenSegmentedFunctionPromiseValues.js'
 import flattenSegmentedObjectArrayValues from './flattenSegmentedObjectArrayValues.js'
 import flattenSegmentedObjectValues from './flattenSegmentedObjectValues.js'
 import RegistrationContext from './RegistrationContext.js'
@@ -74,11 +76,11 @@ const OneForm = ({
     initialProps
     .hasFieldChangeValidation
   ),
-  onChange = (
+  onChange: rootOnChange = (
     initialProps
     .onChange
   ),
-  onSubmit = (
+  onSubmit: rootOnSubmit = (
     initialProps
     .onSubmit
   ),
@@ -122,6 +124,32 @@ const OneForm = ({
         flattenSegmentedArrayValues
       ),
       values: rootGroupValidations,
+    })
+  )
+
+  const {
+    addValues: addOnChange,
+    removeValues: removeOnChange,
+    values: onChange,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedFunctionObjectValues
+      ),
+      values: rootOnChange,
+    })
+  )
+
+  const {
+    addValues: addOnSubmit,
+    removeValues: removeOnSubmit,
+    values: onSubmit,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedFunctionPromiseValues
+      ),
+      values: rootOnSubmit,
     })
   )
 
@@ -716,12 +744,16 @@ const OneForm = ({
       () => ({
         addErrorMessages,
         addGroupValidations,
+        addOnChange,
+        addOnSubmit,
         addUpdatedErrorMessages,
         addUpdatedValues,
         addValidations,
         addValues,
         removeErrorMessages,
         removeGroupValidations,
+        removeOnChange,
+        removeOnSubmit,
         removeUpdatedErrorMessages,
         removeUpdatedValues,
         removeValidations,
@@ -730,12 +762,16 @@ const OneForm = ({
       [
         addErrorMessages,
         addGroupValidations,
+        addOnChange,
+        addOnSubmit,
         addUpdatedErrorMessages,
         addUpdatedValues,
         addValidations,
         addValues,
         removeErrorMessages,
         removeGroupValidations,
+        removeOnChange,
+        removeOnSubmit,
         removeUpdatedErrorMessages,
         removeUpdatedValues,
         removeValidations,
