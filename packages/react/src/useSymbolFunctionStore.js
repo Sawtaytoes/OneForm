@@ -65,7 +65,7 @@ const useSymbolFunctionStore = () => {
           valuesRef
           .current
         )
-        .forEach(([
+        .map(([
           symbol,
           functionsMap,
         ]) => (
