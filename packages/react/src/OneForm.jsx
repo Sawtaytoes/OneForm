@@ -11,6 +11,7 @@ import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
 import flattenSegmentedArrayValues from './flattenSegmentedArrayValues.js'
 import flattenSegmentedObjectArrayValues from './flattenSegmentedObjectArrayValues.js'
+import flattenSegmentedObjectValues from './flattenSegmentedObjectValues.js'
 import RegistrationContext from './RegistrationContext.js'
 import SubformContext from './SubformContext.js'
 import SubmissionContext from './SubmissionContext.js'
@@ -85,7 +86,7 @@ const OneForm = ({
     initialProps
     .updatedErrorMessages
   ),
-  updatedValues = (
+  updatedValues: rootUpdatedValues = (
     initialProps
     .updatedValues
   ),
@@ -93,7 +94,7 @@ const OneForm = ({
     initialProps
     .validations
   ),
-  values = (
+  values: rootValues = (
     initialProps
     .values
   ),
@@ -138,6 +139,19 @@ const OneForm = ({
   )
 
   const {
+    addValues: addUpdatedValues,
+    removeValues: removeUpdatedValues,
+    values: updatedValues,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedObjectValues
+      ),
+      values: rootUpdatedValues,
+    })
+  )
+
+  const {
     addValues: addValidations,
     removeValues: removeValidations,
     values: validations,
@@ -147,6 +161,19 @@ const OneForm = ({
         flattenSegmentedObjectArrayValues
       ),
       values: rootValidations,
+    })
+  )
+
+  const {
+    addValues,
+    removeValues,
+    values,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedObjectValues
+      ),
+      values: rootValues,
     })
   )
 
@@ -690,21 +717,29 @@ const OneForm = ({
         addErrorMessages,
         addGroupValidations,
         addUpdatedErrorMessages,
+        addUpdatedValues,
         addValidations,
+        addValues,
         removeErrorMessages,
         removeGroupValidations,
         removeUpdatedErrorMessages,
+        removeUpdatedValues,
         removeValidations,
+        removeValues,
       }),
       [
         addErrorMessages,
         addGroupValidations,
         addUpdatedErrorMessages,
+        addUpdatedValues,
         addValidations,
+        addValues,
         removeErrorMessages,
         removeGroupValidations,
         removeUpdatedErrorMessages,
+        removeUpdatedValues,
         removeValidations,
+        removeValues,
       ],
     )
   )

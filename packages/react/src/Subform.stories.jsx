@@ -25,6 +25,38 @@ export default {
   title: 'Forms/Subform',
 }
 
+export const Values = (
+  args,
+) => (
+  <OneForm>
+    <Subform {...args} />
+    <FieldValue name="message" />
+  </OneForm>
+)
+
+Values
+.args = {
+  values: {
+    message: 'Hello World!',
+  },
+}
+
+export const UpdatedValues = (
+  args,
+) => (
+  <OneForm>
+    <Subform {...args} />
+    <FieldValue name="message" />
+  </OneForm>
+)
+
+UpdatedValues
+.args = {
+  values: {
+    message: 'I am LEGEND!',
+  },
+}
+
 export const ErrorMessages = (
   args,
 ) => (
