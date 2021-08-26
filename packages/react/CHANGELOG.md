@@ -1,3 +1,8 @@
+# 1.7.1
+_August 26, 2021_
+
+- 🐛 Added missing `Subform` and `useSubformEffect` to the library export.
+
 # 1.7.0
 _August 26, 2021_
 
