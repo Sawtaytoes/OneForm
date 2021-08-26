@@ -1,3 +1,9 @@
+# 1.7.0
+_August 26, 2021_
+
+- ✨ Added `Subform` as a way of passing props to `OneForm` without returning them back up the chain.
+- 🐛 Fixed a bug where OneForm would stop working if `groupValidations` received an updated value.
+
 # 1.6.0
 _August 24, 2021_
 
