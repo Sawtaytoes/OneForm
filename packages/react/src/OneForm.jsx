@@ -351,9 +351,6 @@ const OneForm = ({
       .forEach(
         setFieldVisited
       )
-
-      // setFormVisitationStateRef
-      // .current()
     },
     [
       resetAllFieldVisitations,
@@ -375,9 +372,6 @@ const OneForm = ({
       .forEach(
         setFieldVisited
       )
-
-      // setFormVisitationStateRef
-      // .current()
     },
     [
       setFieldVisited,
