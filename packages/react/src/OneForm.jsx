@@ -9,7 +9,10 @@ import {
 
 import ErrorMessagesContext from './ErrorMessagesContext.js'
 import FieldGroupContext from './FieldGroupContext.js'
+import flattenSegmentedArrayValues from './flattenSegmentedArrayValues.js'
+import flattenSegmentedObjectArrayValues from './flattenSegmentedObjectArrayValues.js'
 import RegistrationContext from './RegistrationContext.js'
+import SubformContext from './SubformContext.js'
 import SubmissionContext from './SubmissionContext.js'
 import useErrorMessagesState from './useErrorMessagesState.js'
 import useFormChangeState, {
@@ -19,6 +22,7 @@ import useFormValidationState from './useFormValidationState.js'
 import useFormVisitationState from './useFormVisitationState.js'
 import useGroupValidationsState from './useGroupValidationsState.js'
 import useRegistrationState from './useRegistrationState.js'
+import useSubformState from './useSubformState.js'
 import useSubmissionState from './useSubmissionState.js'
 import useUpdateEffect from './useUpdateEffect.js'
 import useValidationType, {
@@ -57,11 +61,11 @@ const initialProps = {
 
 const OneForm = ({
   children,
-  errorMessages = (
+  errorMessages: rootErrorMessages = (
     initialProps
     .errorMessages
   ),
-  groupValidations = (
+  groupValidations: rootGroupValidations = (
     initialProps
     .groupValidations
   ),
@@ -77,7 +81,7 @@ const OneForm = ({
     initialProps
     .onSubmit
   ),
-  updatedErrorMessages = (
+  updatedErrorMessages: rootUpdatedErrorMessages = (
     initialProps
     .updatedErrorMessages
   ),
@@ -85,7 +89,7 @@ const OneForm = ({
     initialProps
     .updatedValues
   ),
-  validations = (
+  validations: rootValidations = (
     initialProps
     .validations
   ),
@@ -94,6 +98,58 @@ const OneForm = ({
     .values
   ),
 }) => {
+  const {
+    addValues: addErrorMessages,
+    removeValues: removeErrorMessages,
+    values: errorMessages,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedObjectArrayValues
+      ),
+      values: rootErrorMessages,
+    })
+  )
+
+  const {
+    addValues: addGroupValidations,
+    removeValues: removeGroupValidations,
+    values: groupValidations,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedArrayValues
+      ),
+      values: rootGroupValidations,
+    })
+  )
+
+  const {
+    addValues: addUpdatedErrorMessages,
+    removeValues: removeUpdatedErrorMessages,
+    values: updatedErrorMessages,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedObjectArrayValues
+      ),
+      values: rootUpdatedErrorMessages,
+    })
+  )
+
+  const {
+    addValues: addValidations,
+    removeValues: removeValidations,
+    values: validations,
+  } = (
+    useSubformState({
+      flattenSegmentedValues: (
+        flattenSegmentedObjectArrayValues
+      ),
+      values: rootValidations,
+    })
+  )
+
   const registerIdentifierForGroupValidationRef = (
     useRef()
   )
@@ -392,7 +448,7 @@ const OneForm = ({
     validateGroups,
   } = (
     useGroupValidationsState({
-      getAllFieldNames: (
+      getAllIdentifiers: (
         getRegisteredFieldNames
       ),
       getIsReadyForValidation: (
@@ -488,8 +544,8 @@ const OneForm = ({
   useEffect(
     () => {
       if (
-        groupValidations
-        || validations
+        validations
+        || groupValidations
       ) {
         validateAllFields()
       }
@@ -634,6 +690,31 @@ const OneForm = ({
     )
   )
 
+  const subformProviderValue = (
+    useMemo(
+      () => ({
+        addErrorMessages,
+        addGroupValidations,
+        addUpdatedErrorMessages,
+        addValidations,
+        removeErrorMessages,
+        removeGroupValidations,
+        removeUpdatedErrorMessages,
+        removeValidations,
+      }),
+      [
+        addErrorMessages,
+        addGroupValidations,
+        addUpdatedErrorMessages,
+        addValidations,
+        removeErrorMessages,
+        removeGroupValidations,
+        removeUpdatedErrorMessages,
+        removeValidations,
+      ],
+    )
+  )
+
   const submissionProviderValue = (
     useMemo(
       () => ({
@@ -707,24 +788,28 @@ const OneForm = ({
         <RegistrationContext.Provider
           value={registrationProviderValue}
         >
-          <SubmissionContext.Provider
-            value={submissionProviderValue}
+          <SubformContext.Provider
+            value={subformProviderValue}
           >
-            <ValuesContext.Provider
-              value={valuesProviderValue}
+            <SubmissionContext.Provider
+              value={submissionProviderValue}
             >
-              <VisitationContext.Provider
-                value={visitationProviderValue}
+              <ValuesContext.Provider
+                value={valuesProviderValue}
               >
-                <form
-                  onSubmit={submitForm}
-                  role="form"
+                <VisitationContext.Provider
+                  value={visitationProviderValue}
                 >
-                  {children}
-                </form>
-              </VisitationContext.Provider>
-            </ValuesContext.Provider>
-          </SubmissionContext.Provider>
+                  <form
+                    onSubmit={submitForm}
+                    role="form"
+                  >
+                    {children}
+                  </form>
+                </VisitationContext.Provider>
+              </ValuesContext.Provider>
+            </SubmissionContext.Provider>
+          </SubformContext.Provider>
         </RegistrationContext.Provider>
       </FieldGroupContext.Provider>
     </ErrorMessagesContext.Provider>

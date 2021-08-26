@@ -881,17 +881,28 @@ const useGroupValidationsState = (
       resetItemGroups()
       resetSubscribedGroupValidations()
 
-      getAllIdentifiers()
+      registeredIdentifiersRef
+      .current = (
+        initialRegisteredIdentifiers
+      )
+
+      const identifiers = (
+        getAllIdentifiers()
+      )
+
+      identifiers
       .forEach(
         registerIdentifierForGroupValidation
       )
     },
     [
       getAllIdentifiers,
+      getAllPreviousErrorMessages,
       groupValidations, // We're listening to this value to tigger an update even if we don't use it.
       registerIdentifierForGroupValidation,
       resetItemGroups,
       resetPreviousErrorMessages,
+      resetSubscribedGroupValidations,
       setErrorMessages,
     ]
   )

@@ -17,6 +17,15 @@ const useFilteredValuesState = ({
     )
   )
 
+  const identifiersListRef = (
+    useRef()
+  )
+
+  identifiersListRef
+  .current = (
+    identifiersList
+  )
+
   const getFilteredValue = (
     useCallback(
       (
@@ -51,7 +60,8 @@ const useFilteredValuesState = ({
             .current
           ),
           [identifier]: (
-            identifiersList
+            identifiersListRef
+            .current
             .filter(({
               identifiers,
             }) => (
@@ -70,7 +80,6 @@ const useFilteredValuesState = ({
       },
       [
         getFilteredValue,
-        identifiersList,
       ],
     )
   )
