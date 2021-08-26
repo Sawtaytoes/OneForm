@@ -4,6 +4,7 @@ const jestConfig = {
   setupFilesAfterEnv: [
     '<rootDir>/jest-setup.js',
   ],
+  testEnvironment: 'jsdom',
   testPathIgnorePatterns: [
     '/cypress/',
     '/node_modules/',
