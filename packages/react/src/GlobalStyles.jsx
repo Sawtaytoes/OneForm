@@ -77,7 +77,8 @@ const GlobalStyles = () => (
           border-color: #88f;
         }
 
-        [data-error] {
+        input[data-error],
+        select[data-error] {
           border-color: #f00;
         }
 
