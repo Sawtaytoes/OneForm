@@ -3,7 +3,7 @@ import {
   memo,
 } from 'react'
 
-import useFieldValue from './useFieldValue'
+import useFieldValue from './useFieldValue.js'
 
 const propTypes = {
   name: PropTypes.string.isRequired,

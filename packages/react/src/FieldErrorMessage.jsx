@@ -3,7 +3,7 @@ import {
   memo,
 } from 'react'
 
-import useFieldErrorMessages from './useFieldErrorMessages'
+import useFieldErrorMessages from './useFieldErrorMessages.js'
 
 const propTypes = {
   name: PropTypes.string.isRequired,
