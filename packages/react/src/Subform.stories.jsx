@@ -2,6 +2,9 @@
 import {
   action,
 } from '@storybook/addon-actions'
+import {
+  useMemo,
+} from 'react'
 
 import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
@@ -54,6 +57,41 @@ UpdatedValues
 .args = {
   values: {
     message: 'I am LEGEND!',
+  },
+}
+
+export const CombinedValues = (
+  args,
+) => {
+  const oneformValues = (
+    useMemo(
+      () => ({
+        message1: 'OneForm value',
+        message2: 'OneForm value to be overridden',
+      }),
+      [],
+    )
+  )
+
+  return (
+    <OneForm values={oneformValues}>
+      <Subform {...args} />
+
+      <div>
+        <FieldValue name="message1" />
+      </div>
+
+      <div>
+        <FieldValue name="message2" />
+      </div>
+    </OneForm>
+  )
+}
+
+CombinedValues
+.args = {
+  values: {
+    message2: 'Subform value',
   },
 }
 

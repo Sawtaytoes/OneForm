@@ -1,5 +1,6 @@
 import {
   useCallback,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -31,9 +32,12 @@ const useSubformState = (
   )
 
   const valuesRef = (
-    useRef(
-      values
-    )
+    useRef()
+  )
+
+  valuesRef
+  .current = (
+    values
   )
 
   const initialValues = (
@@ -59,6 +63,25 @@ const useSubformState = (
       ),
       [],
     )
+  )
+
+  useLayoutEffect(
+    () => {
+      segmentedValuesRef
+      .current = (
+        new Map(
+          segmentedValuesRef
+          .current
+        )
+        .set(
+          'root',
+          initialValues,
+        )
+      )
+    },
+    [
+      initialValues,
+    ],
   )
 
   const [
@@ -145,7 +168,13 @@ const useSubformState = (
 
   useUpdateEffect(
     () => {
-      if (values) {
+      if (
+        values
+        && (
+          typeof values
+          !== 'function'
+        )
+      ) {
         addValues(
           'root',
           values,
