@@ -1,3 +1,8 @@
+# 1.7.2
+_August 30, 2021_
+
+- 🐛 Fixed a bug where passing `updatedValues` or `values` both `OneForm` and `Subform` would only take the values in `Subform`.
+
 # 1.7.1
 _August 26, 2021_
 
