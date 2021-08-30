@@ -1,5 +1,6 @@
 {
   "baseUrl": "http://localhost:6006",
+  "browser": "chrome",
   "projectId": "jf9xu1",
   "viewportHeight": 660,
   "viewportWidth": 400
