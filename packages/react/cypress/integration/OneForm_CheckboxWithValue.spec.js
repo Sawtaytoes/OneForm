@@ -1,7 +1,7 @@
 describe(
   'OneForm CheckboxWithValue',
   () => {
-    const storybookPath = 'oneform--checkbox-with-value'
+    const storybookPath = 'forms-oneform--checkbox-with-value'
 
     it(
       'Has no initial value.',

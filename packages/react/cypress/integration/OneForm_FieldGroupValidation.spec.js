@@ -1,7 +1,7 @@
 describe(
   'OneForm FieldGroupValidation',
   () => {
-    const storybookPath = 'oneform--field-group-validation'
+    const storybookPath = 'forms-oneform--field-group-validation'
 
     it(
       'Has initial values.',

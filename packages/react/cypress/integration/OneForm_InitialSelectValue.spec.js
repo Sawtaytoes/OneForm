@@ -1,7 +1,7 @@
 describe(
   'OneForm InitialSelectValue',
   () => {
-    const storybookPath = 'oneform--initial-select-value'
+    const storybookPath = 'forms-oneform--initial-select-value'
 
     it(
       'Defaults to selected.',

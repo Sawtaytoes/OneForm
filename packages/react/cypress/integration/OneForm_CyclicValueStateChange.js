@@ -1,7 +1,7 @@
 describe(
   'OneForm CyclicValueStateChange',
   () => {
-    const storybookPath = 'oneform--cyclic-value-state-change'
+    const storybookPath = 'forms-oneform--cyclic-value-state-change'
 
     it(
       'Has no initial values.',

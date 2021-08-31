@@ -1,7 +1,7 @@
 describe(
   'OneForm SelectValue',
   () => {
-    const storybookPath = 'oneform--select-value'
+    const storybookPath = 'forms-oneform--select-value'
 
     it(
       'Defaults to unselected.',

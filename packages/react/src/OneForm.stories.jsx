@@ -30,7 +30,7 @@ export default {
   },
   component: OneForm,
   decorators: htmlStyleDecorators,
-  title: 'OneForm',
+  title: 'Forms/OneForm',
 }
 
 export const DisplayTextValue = (
