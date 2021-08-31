@@ -1,3 +1,8 @@
+# 1.7.3
+_August 30, 2021_
+
+- 🐛 Changed `useLayoutEffect` to `useMemo` with a side-effect.
+
 # 1.7.2
 _August 30, 2021_
 
