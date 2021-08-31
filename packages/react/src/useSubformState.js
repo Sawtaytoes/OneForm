@@ -1,6 +1,5 @@
 import {
   useCallback,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -22,7 +21,7 @@ const useSubformState = (
     flattenSegmentedValues = (
       initialFlattenSegmentedValues
     ),
-    values,
+    value,
   } = {}
 ) => {
   const segmentedValuesRef = (
@@ -31,33 +30,33 @@ const useSubformState = (
     )
   )
 
-  const valuesRef = (
+  const valueRef = (
     useRef()
   )
 
-  valuesRef
+  valueRef
   .current = (
-    values
+    value
   )
 
-  const initialValues = (
+  const initialRootValue = (
     useMemo(
       () => (
         (
           typeof (
-            valuesRef
+            valueRef
             .current
           )
           === 'function'
         )
         ? (
           () => (
-            valuesRef
+            valueRef
             .current
           )
         )
         : (
-          valuesRef
+          valueRef
           .current
         )
       ),
@@ -65,7 +64,8 @@ const useSubformState = (
     )
   )
 
-  useLayoutEffect(
+  // `useMemo` side-effect because `useLayoutEffect` doesn't run on the server.
+  useMemo(
     () => {
       segmentedValuesRef
       .current = (
@@ -75,28 +75,28 @@ const useSubformState = (
         )
         .set(
           'root',
-          initialValues,
+          initialRootValue,
         )
       )
     },
     [
-      initialValues,
+      initialRootValue,
     ],
   )
 
   const [
-    localValues,
-    setLocalValues,
+    localValue,
+    setLocalValue,
   ] = (
     useState(
-      initialValues
+      initialRootValue
     )
   )
 
-  const updateLocalValues = (
+  const updateLocalValue = (
     useCallback(
       () => {
-        setLocalValues(
+        setLocalValue(
           flattenSegmentedValues(
             Array
             .from(
@@ -113,11 +113,11 @@ const useSubformState = (
     )
   )
 
-  const addValues = (
+  const addValue = (
     useCallback(
       (
         identifier,
-        values,
+        value,
       ) => {
         segmentedValuesRef
         .current = (
@@ -127,19 +127,19 @@ const useSubformState = (
           )
           .set(
             identifier,
-            values,
+            value,
           )
         )
 
-        updateLocalValues()
+        updateLocalValue()
       },
       [
-        updateLocalValues,
+        updateLocalValue,
       ],
     )
   )
 
-  const removeValues = (
+  const removeValue = (
     useCallback(
       (
         identifier,
@@ -158,10 +158,10 @@ const useSubformState = (
           identifier,
         )
 
-        updateLocalValues()
+        updateLocalValue()
       },
       [
-        updateLocalValues,
+        updateLocalValue,
       ],
     )
   )
@@ -169,35 +169,35 @@ const useSubformState = (
   useUpdateEffect(
     () => {
       if (
-        values
+        value
         && (
-          typeof values
+          typeof value
           !== 'function'
         )
       ) {
-        addValues(
+        addValue(
           'root',
-          values,
+          value,
         )
       }
 
       return () => {
-        removeValues(
+        removeValue(
           'root',
         )
       }
     },
     [
-      addValues,
-      removeValues,
-      values,
+      addValue,
+      removeValue,
+      value,
     ]
   )
 
   return {
-    addValues,
-    removeValues,
-    values: localValues,
+    addValue,
+    removeValue,
+    value: localValue,
   }
 }
 
