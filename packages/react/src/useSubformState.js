@@ -39,6 +39,27 @@ const useSubformState = (
     value
   )
 
+  // `useMemo` side-effect because `useLayoutEffect` doesn't run on the server.
+  useMemo(
+    () => {
+      segmentedValuesRef
+      .current = (
+        new Map(
+          segmentedValuesRef
+          .current
+        )
+        .set(
+          'root',
+          (
+            valueRef
+            .current
+          ),
+        )
+      )
+    },
+    [],
+  )
+
   const initialRootValue = (
     useMemo(
       () => (
@@ -62,26 +83,6 @@ const useSubformState = (
       ),
       [],
     )
-  )
-
-  // `useMemo` side-effect because `useLayoutEffect` doesn't run on the server.
-  useMemo(
-    () => {
-      segmentedValuesRef
-      .current = (
-        new Map(
-          segmentedValuesRef
-          .current
-        )
-        .set(
-          'root',
-          initialRootValue,
-        )
-      )
-    },
-    [
-      initialRootValue,
-    ],
   )
 
   const [
@@ -130,6 +131,11 @@ const useSubformState = (
             value,
           )
         )
+
+        console.log(
+          segmentedValuesRef
+          .current
+        );
 
         updateLocalValue()
       },

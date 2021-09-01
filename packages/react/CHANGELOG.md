@@ -1,3 +1,8 @@
+# 1.7.4
+_September 1, 2021_
+
+- 🐛 Fixed a bug where `onSubmit` wouldn't execute on `OneForm` if it was passed into `Subform`.
+
 # 1.7.3
 _August 30, 2021_
 
