@@ -29,6 +29,7 @@
 | Prop Name | Description |
 | :--- | :--- |
 | `formChangeState` | Either `'unchanged'`, `'staged'`, or `'committed'`. |
+| `getErrorMessages` | Function that returns an array of all error messages on the form. |
 | `isValid` | Boolean value representing no invalid fields. |
 | `isVisited` | Boolean value representing all registered or optionally required fields being visited. |
 | `isSubmitting` | Boolean value representing if the form is submitting. |
