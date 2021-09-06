@@ -250,10 +250,10 @@ const OneForm = ({
     useErrorMessagesState({
       errorMessages,
       onErrorMessages: ({
+        errorMessages,
         identifier,
-        value,
       }) => {
-        if (value) {
+        if (errorMessages) {
           setFieldVisited(
             identifier
           )
