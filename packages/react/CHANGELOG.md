@@ -1,3 +1,8 @@
+# 1.7.5
+_September 5, 2021_
+
+- 🐛 Fixed error messages not marking fields as visited. Most people would never see this bug.
+
 # 1.7.4
 _September 1, 2021_
 
