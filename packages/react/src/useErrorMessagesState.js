@@ -188,7 +188,7 @@ const useErrorMessagesState = (
           ),
         }
 
-        const errorMessageslist = (
+        const errorMessagesList = (
           getLocalErrorMessagesList(
             identifier
           )
@@ -196,7 +196,7 @@ const useErrorMessagesState = (
 
         if (
           (
-            errorMessageslist
+            errorMessagesList
             .length
           )
           === 0
@@ -223,13 +223,13 @@ const useErrorMessagesState = (
 
         onErrorMessagesRef
         .current({
-          errorMessages: errorMessageslist,
+          errorMessages: errorMessagesList,
           identifier,
         })
 
         publishValue(
           identifier,
-          errorMessageslist,
+          errorMessagesList,
         )
       },
       [
