@@ -60,10 +60,11 @@ const useSymbolFunctionStore = () => {
   const getAllValues = (
     useCallback(
       () => (
-        Object
-        .entries(
+        Array
+        .from(
           valuesRef
           .current
+          .entries
         )
         .map(([
           symbol,
