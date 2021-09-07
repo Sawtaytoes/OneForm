@@ -1,3 +1,8 @@
+# 1.7.7
+_September 6, 2021_
+
+- 🐛 Fixed group validations not properly storing the previous error state.
+
 # 1.7.6
 _September 6, 2021_
 
