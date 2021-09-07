@@ -1,3 +1,8 @@
+# 1.7.6
+_September 6, 2021_
+
+- 🐛 Fixed validations not re-running when new validations passed.
+
 # 1.7.5
 _September 5, 2021_
 
