@@ -523,7 +523,7 @@ const OneForm = ({
     validate,
   } = (
     useValidationsState({
-      getAllFieldNames: (
+      getAllIdentifiers: (
         getRegisteredFieldNames
       ),
       getIsReadyForValidation: (
