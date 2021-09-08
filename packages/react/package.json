@@ -18,6 +18,7 @@
   "main": "dist/cjs",
   "umd:main": "dist/oneform.umd.js",
   "module": "dist/esm",
+  "types": "src/index.d.ts",
   "source": "src",
   "sideEffects": false,
   "license": "MIT",
