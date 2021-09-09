@@ -1,12 +1,12 @@
 {
   "name": "@oneform/react",
-  "version": "1.7.7",
+  "version": "1.8.0",
   "description": "The OneForm library you need.",
   "scripts": {
     "ci:buildAll": "npm-run-all --sequential ci:test --race --parallel dev:storybook ci:cypress --sequential ci:buildPackage",
     "ci:buildPackage": "rollup --config",
     "ci:buildStorybook": "build-storybook",
-    "ci:cypress": "cypress run --browser chrome --record --key 7395df6b-47f2-498e-82c6-a785cc463947",
+    "ci:cypress": "cypress run --parallel --browser chrome --record --key 7395df6b-47f2-498e-82c6-a785cc463947",
     "ci:test": "jest --errorOnDeprecated",
     "dev": "npm-run-all --parallel dev:storybook dev:cypress",
     "dev:cypress": "cypress open",
