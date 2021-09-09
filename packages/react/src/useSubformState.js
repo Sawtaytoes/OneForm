@@ -132,11 +132,6 @@ const useSubformState = (
           )
         )
 
-        console.log(
-          segmentedValuesRef
-          .current
-        );
-
         updateLocalValue()
       },
       [
