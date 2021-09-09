@@ -1,3 +1,9 @@
+# 1.8.0
+_September 9, 2021_
+
+- 🎉 Added TypeScript types!
+- 🔥 Removed unnecessary `console.log` messages in `useSubformEffect`.
+
 # 1.7.7
 _September 6, 2021_
 
