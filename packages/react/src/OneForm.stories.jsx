@@ -499,7 +499,7 @@ export const UpdatingOnChange = () => {
 
       <button onClick={updateOnChange}>
         Update
-
+        {' '}
         <code>
           onChange
         </code>
