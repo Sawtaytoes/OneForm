@@ -60,12 +60,21 @@ const useSymbolFunctionStore = () => {
   const getAllValues = (
     useCallback(
       () => (
-        Array
-        .from(
+        Object
+        .getOwnPropertySymbols(
           valuesRef
           .current
-          .entries
         )
+        .map((
+          symbol,
+        ) => ({
+          key: symbol,
+          value: (
+            valuesRef
+            .current
+            [symbol]
+          ),
+        }))
         .map(([
           symbol,
           functionsMap,
