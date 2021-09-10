@@ -443,6 +443,71 @@ CyclicValueStateChange
   }),
 }
 
+export const UpdatingOnChange = () => {
+  const [
+    count,
+    setCount,
+  ] = useState(0)
+
+  const onChange = (
+    useCallback(
+      ({
+        value,
+      }) => ({
+        copiedMessage: value,
+        count,
+      }),
+      [
+        count,
+      ],
+    )
+  )
+
+  const updateOnChange = (
+    useCallback(
+      () => {
+        setCount((
+          count,
+        ) => (
+          console.log(count)||
+          count
+          + 1
+        ))
+      },
+      [],
+    )
+  )
+
+  return (
+    <OneForm onChange={onChange}>
+      <div>
+        <Field>
+          <input
+            name="message"
+            placeholder="Message"
+          />
+        </Field>
+      </div>
+
+      <div>
+        <FieldValue name="copiedMessage" />
+      </div>
+
+      <div>
+        <FieldValue name="count" />
+      </div>
+
+      <button onClick={updateOnChange}>
+        Update
+
+        <code>
+          onChange
+        </code>
+      </button>
+    </OneForm>
+  )
+}
+
 export const Validation = (
   args,
 ) => (
