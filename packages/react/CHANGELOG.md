@@ -1,3 +1,8 @@
+# 1.8.2
+_September 9, 2021_
+
+- 🐛 Fixed a bug where the root onChange would stop working after updating.
+
 # 1.8.1
 _September 9, 2021_
 

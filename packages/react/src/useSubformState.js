@@ -39,6 +39,7 @@ const useSubformState = (
     value
   )
 
+  // This function initializes without updating the already-initialized `localValue`.
   // `useMemo` side-effect because `useLayoutEffect` doesn't run on the server.
   useMemo(
     () => {
@@ -169,28 +170,15 @@ const useSubformState = (
 
   useUpdateEffect(
     () => {
-      if (
-        value
-        && (
-          typeof value
-          !== 'function'
-        )
-      ) {
+      if (value) {
         addValue(
           'root',
           value,
         )
       }
-
-      return () => {
-        removeValue(
-          'root',
-        )
-      }
     },
     [
       addValue,
-      removeValue,
       value,
     ]
   )
