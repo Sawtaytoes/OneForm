@@ -469,7 +469,6 @@ export const UpdatingOnChange = () => {
         setCount((
           count,
         ) => (
-          console.log(count)||
           count
           + 1
         ))
