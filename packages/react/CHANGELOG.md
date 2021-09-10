@@ -1,3 +1,8 @@
+# 1.8.1
+_September 9, 2021_
+
+- 🐛 Fixed a bug where symbol looping was incorrectly setup in the internal `useSymbolFunctionStore`.
+
 # 1.8.0
 _September 9, 2021_
 
