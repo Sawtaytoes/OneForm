@@ -243,6 +243,7 @@ const OneForm = ({
 
   const {
     getAllErrorMessages: getAllFieldErrorMessages,
+    getAllErrorMessagesByField,
     getErrorMessages: getFieldErrorMessages,
     setErrorMessages: setFieldErrorMessages,
     subscribeToErrorMessages: subscribeToFieldErrorMessages,
@@ -783,7 +784,9 @@ const OneForm = ({
   const submissionProviderValue = (
     useMemo(
       () => ({
+        getAllFieldValues,
         getErrorMessages: getAllErrorMessages,
+        getErrorMessagesByField: getAllErrorMessagesByField,
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,
@@ -797,7 +800,9 @@ const OneForm = ({
         subscribeToSubmissionState,
       }),
       [
+        getAllFieldValues,
         getAllErrorMessages,
+        getAllErrorMessagesByField,
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,

@@ -17,7 +17,9 @@ const useFormSubmission = (
   } = {}
 ) => {
   const {
+    getAllFieldValues,
     getErrorMessages,
+    getErrorMessagesByField,
     getFormChangeState,
     getFormValidationState,
     getFormVisitationState,
@@ -172,7 +174,9 @@ const useFormSubmission = (
 
   return {
     formChangeState,
+    getAllFieldValues,
     getErrorMessages,
+    getErrorMessagesByField,
     isSubmitting: (
       submissionState
       === (
