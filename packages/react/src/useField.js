@@ -234,7 +234,14 @@ const useField = ({
     isChecked: (
       isCheckboxElement
       ? (
-        Boolean(
+        isMultipleElement
+        ? (
+          value
+          .includes(
+            inputValue
+          )
+        )
+        : Boolean(
           value
         )
       )
@@ -255,6 +262,16 @@ const useField = ({
         && (
           value
           === ''
+        )
+        && (
+          (
+            inputValue
+            == null
+          )
+          || (
+            inputValue
+            === ''
+          )
         )
       )
       ? []
