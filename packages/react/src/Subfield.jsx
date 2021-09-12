@@ -42,9 +42,12 @@ const Subfield = ({
       () => (
         isHtmlElement
         ? {
+          checked: isSelected,
           selected: isSelected,
         }
         : {
+          checked: isSelected,
+          isChecked: isSelected,
           isSelected,
           selected: isSelected,
         }
