@@ -190,17 +190,14 @@ const useSubmissionState = (
         )
 
         ;(
-          (
-            onSubmitRef
-            .current({
-              allValues,
-              registeredValues,
-            })
-          )
-          || (
-            Promise
-            .resolve()
-          )
+          Promise
+            .resolve(
+              onSubmitRef
+              .current({
+                allValues,
+                registeredValues,
+              })
+            )
         )
         .then(() => {
           if (
