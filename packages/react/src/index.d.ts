@@ -319,7 +319,9 @@ export declare const useFormSubmission: ({
   requiredFieldNames?: string[] | undefined;
 }) => {
   formChangeState: FormChangeState;
+  getAllFieldValues: () => Record<string, any>;
   getErrorMessages: () => string[];
+  getErrorMessagesByField: () => Record<string, string[]>;
   isSubmitting: boolean;
   isValid: boolean;
   isValidForSubmission: boolean;
