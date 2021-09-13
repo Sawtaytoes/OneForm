@@ -1,3 +1,9 @@
+# 1.9.0
+_September 12, 2021_
+
+- 🐛 Fixed a bug where `Field` didn't handle the use case of using both `isCheckbox` and `isMultiple`.
+- 🔥 Removed the experimental `Subfield` and `useSubfield` files. `Field` took over this role in `1.3.0`.
+
 # 1.8.2
 _September 9, 2021_
 
