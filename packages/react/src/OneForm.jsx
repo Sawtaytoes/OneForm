@@ -243,6 +243,7 @@ const OneForm = ({
 
   const {
     getAllErrorMessages: getAllFieldErrorMessages,
+    getAllErrorMessagesByField,
     getErrorMessages: getFieldErrorMessages,
     setErrorMessages: setFieldErrorMessages,
     subscribeToErrorMessages: subscribeToFieldErrorMessages,
@@ -465,6 +466,32 @@ const OneForm = ({
       ),
       [
         getAllFieldNameRegistrations,
+      ],
+    )
+  )
+
+  const getRegisteredFieldValues = (
+    useCallback(
+      () => (
+        Object
+        .fromEntries(
+          Object
+          .keys(
+            getAllFieldNameRegistrations()
+          )
+          .map(
+            (fieldName) => [
+              fieldName,
+              getFieldValue(
+                fieldName
+              ),
+            ]
+          )
+        )
+      ),
+      [
+        getAllFieldNameRegistrations,
+        getFieldValue,
       ],
     )
   )
@@ -783,10 +810,13 @@ const OneForm = ({
   const submissionProviderValue = (
     useMemo(
       () => ({
+        getAllFieldValues,
         getErrorMessages: getAllErrorMessages,
+        getErrors: getAllErrorMessagesByField,
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,
+        getRegisteredFieldValues,
         getSubmissionState,
         setFormVisitationState,
         setRequiredFieldNames,
@@ -797,10 +827,13 @@ const OneForm = ({
         subscribeToSubmissionState,
       }),
       [
+        getAllFieldValues,
         getAllErrorMessages,
+        getAllErrorMessagesByField,
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,
+        getRegisteredFieldValues,
         getSubmissionState,
         setFormVisitationState,
         setRequiredFieldNames,
