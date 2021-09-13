@@ -1,3 +1,9 @@
+# 1.9.1
+_September 12, 2021_
+
+- 🐛 Fixed an edge-case bug where `0` and non-boolean values can be set for `isChecked` instead of a boolean inside of `useField`.
+- 🔥 Removed the experimental `Subfield` and `useSubfield` files. `Field` took over this role in `1.3.0`.
+
 # 1.9.0
 _September 12, 2021_
 

@@ -241,8 +241,16 @@ const useField = ({
             inputValue
           )
         )
-        : Boolean(
-          value
+        : (
+          (
+            value
+            === 0
+          )
+          || (
+            Boolean(
+              value
+            )
+          )
         )
       )
       : (
@@ -250,7 +258,17 @@ const useField = ({
           value
           === inputValue
         )
-        ? value
+        ? (
+          (
+            value
+            === 0
+          )
+          || (
+            Boolean(
+              value
+            )
+          )
+        )
         : false
       )
     ),
