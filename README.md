@@ -35,28 +35,32 @@ Everyone.
 * Even for simple forms with a select box and a button, I recommend OneForm.
 * Even if you don't have a submit button, I recommend OneForm.
 
-If your form is extremely complex and has multiple dynamic fields and those dynamic fields render other dynamic fields, and you also need to some how maintain validation that queries the values of multiple fields, OneForm is most-definitely the **only** solution I'd recommend.
+If your form is extremely complex and has multiple dynamic fields and those dynamic fields render other dynamic fields, and you also need to somehow maintain validation that queries the values of multiple fields, OneForm is most-definitely the **only** solution I'd recommend.
 
 And if you need to build an application, and you want to use a state manager that's not Redux or MobX, use OneForm. Yes, it's completely possible. I think you'll be surprised at how easy it can be. While OneForm is primarily a form library, it's only this powerful because it's also a state manager.
 
+## Contributors
+
+* Kevin Ghadyani \(creator\)
+* Ionut Costica \(code, bug fixes, TypeScript types\)
+* Giselle Ghadyani \(documentation\)
+
 ## Special Thanks
 
-While Kevin Ghadyani is the creator of `OneForm`, he didn't make it in a bubble.
+The ideas behind OneForm originated from Kevin Ghadyani's time at Minted where they created their own form library to build highly customizable, complex forms. That library was called Minted Forms.
 
-The ideas behind this library originated from a need at Minted to have highly-customizable complex forms.
+Minted Forms is closed-source which is why Kevin Ghadyani got persmission to build OneForm, an open-source version of Minted Forms with more features and functionality. Eventually, Minted would go on to use OneForm instead of Minted Forms.
 
-The original implementation was closed-source and other folks at Minted played a big part its creation:
+Many folks at Minted played a part in the creation of Minted Forms:
 
 * Giselle Ghadyani
 * Rebekah Heacock Jones
+* David Helgeson
 * Peter Carnesciali
-* Everyone else at Minted!
 
-### The logo is important too!
+### OneForm's logo
 
-The logo and title are courtesy of **Noah Raskin**. He does some amazing graphic design and even creates custom icon libraries. Talk about dedication to small details!
-
-While this logo looks simple, there's a lot going on behind the scenes. The way he shaded it is as amazing as the cleanliness of OneForm's API.
+OneForm's logo is courtesy of **Noah Raskin**. He does some amazing graphic design and spent a long time making this logo as cool as it is today.
 
 ![Credit: Noah Raskin](.gitbook/assets/oneform-cube-textdark%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29%20%282%29.png)
 
