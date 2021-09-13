@@ -45,7 +45,7 @@ And if you need to build an application, and you want to use a state manager tha
 * Ionut Costica \(code, bug fixes, TypeScript types\)
 * Giselle Ghadyani \(documentation\)
 
-## Special Thanks
+### Special Thanks
 
 The ideas behind OneForm originated from Kevin Ghadyani's time at Minted where they created their own form library to build highly customizable, complex forms. That library was called Minted Forms.
 
