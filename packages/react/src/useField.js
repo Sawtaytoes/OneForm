@@ -266,11 +266,15 @@ const useField = ({
         && (
           (
             inputValue
-            == null
+            === ''
           )
           || (
             inputValue
-            === ''
+            === null
+          )
+          || (
+            inputValue
+            === undefined
           )
         )
       )

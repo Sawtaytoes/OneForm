@@ -19,10 +19,11 @@ const useFormSubmission = (
   const {
     getAllFieldValues,
     getErrorMessages,
-    getErrorMessagesByField,
+    getErrors,
     getFormChangeState,
     getFormValidationState,
     getFormVisitationState,
+    getRegisteredFieldValues,
     getSubmissionState,
     setRequiredFieldNames,
     submitForm,
@@ -176,7 +177,8 @@ const useFormSubmission = (
     formChangeState,
     getAllFieldValues,
     getErrorMessages,
-    getErrorMessagesByField,
+    getErrors,
+    getRegisteredFieldValues,
     isSubmitting: (
       submissionState
       === (

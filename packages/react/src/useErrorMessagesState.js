@@ -77,30 +77,36 @@ const useErrorMessagesState = (
     )
   )
 
-  const getAllLocalErrorMessagesObject = (
+  const getLocalErrorMessagesByField = (
     useCallback(
       () => (
         Object
-        .fromEntries(
-          Object
-          .entries(
-            localErrorMessagesRef
-            .current
-          )
-          .map(
-            ([
-              fieldName,
-              errorsMap,
-            ]) => [
-              fieldName,
-              Array
-              .from(
-                errorsMap
-                .values()
-              )
-              .flat(),
-            ]
-          )
+        .entries(
+          localErrorMessagesRef
+          .current
+        )
+        .map(
+          ([
+            fieldName,
+            errorsMap,
+          ]) => [
+            fieldName,
+            Array
+            .from(
+              errorsMap
+              .values()
+            )
+            .flat(),
+          ]
+        )
+        .map(
+          ([
+            fieldName,
+            errorMessages,
+          ]) => ({
+            errorMessages,
+            fieldName,
+          })
         )
       ),
       [
@@ -341,7 +347,7 @@ const useErrorMessagesState = (
 
   return {
     getAllErrorMessages: getAllLocalErrorMessagesList,
-		getAllErrorMessagesByField: getAllLocalErrorMessagesObject,
+    getAllErrorMessagesByField: getLocalErrorMessagesByField,
     getErrorMessages: getLocalErrorMessagesList,
     setErrorMessages: setLocalErrorMessages,
     subscribeToErrorMessages: subscribeToValue,

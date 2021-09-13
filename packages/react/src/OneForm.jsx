@@ -470,6 +470,32 @@ const OneForm = ({
     )
   )
 
+  const getRegisteredFieldValues = (
+    useCallback(
+      () => (
+        Object
+        .fromEntries(
+          Object
+          .keys(
+            getAllFieldNameRegistrations()
+          )
+          .map(
+            (fieldName) => [
+              fieldName,
+              getFieldValue(
+                fieldName
+              ),
+            ]
+          )
+        )
+      ),
+      [
+        getAllFieldNameRegistrations,
+        getFieldValue,
+      ],
+    )
+  )
+
   const getIsFieldReadyForValidation = (
     useCallback(
       (
@@ -786,10 +812,11 @@ const OneForm = ({
       () => ({
         getAllFieldValues,
         getErrorMessages: getAllErrorMessages,
-        getErrorMessagesByField: getAllErrorMessagesByField,
+        getErrors: getAllErrorMessagesByField,
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,
+        getRegisteredFieldValues,
         getSubmissionState,
         setFormVisitationState,
         setRequiredFieldNames,
@@ -806,6 +833,7 @@ const OneForm = ({
         getFormChangeState,
         getFormValidationState,
         getFormVisitationState,
+        getRegisteredFieldValues,
         getSubmissionState,
         setFormVisitationState,
         setRequiredFieldNames,
