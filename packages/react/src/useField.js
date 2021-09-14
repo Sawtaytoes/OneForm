@@ -69,6 +69,10 @@ const useField = ({
             !== 'object'
           )
           || (
+            event
+            === null
+          )
+          || (
             !(
               'target'
               in event
