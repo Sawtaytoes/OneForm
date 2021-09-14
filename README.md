@@ -12,7 +12,7 @@ OneForm is a form library.
 
 OneForm is a way to manage the state of your form.
 
-Just about every developer uses forms, and you'll almost always run into a situation where you're requirements are too complex for a simple solution.
+Just about every developer uses forms, and you'll almost always run into a situation where your requirements are too complex for a simple solution.
 
 That's where OneForm comes in. It's very plug 'n play.
 
