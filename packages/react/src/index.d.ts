@@ -234,9 +234,9 @@ export declare interface TranslateProps {
   fieldName: string;
   isChecked: boolean;
   isVisited: boolean;
-  updateFieldValue: (event: SyntheticEvent) => void;
+  updateFieldValue: (event: SyntheticEvent | unknown) => void;
   value: any;
-  visitField: (event: SyntheticEvent) => void;
+  visitField: (event: SyntheticEvent | unknown) => void;
 }
 
 declare type Unsubscriber = (() => void) | void;
@@ -253,9 +253,9 @@ export declare const useField: ({
   fieldName: string;
   isChecked: boolean;
   isVisited: boolean;
-  updateFieldValue: (event: SyntheticEvent) => void;
+  updateFieldValue: (event: SyntheticEvent | unknown) => void;
   value: any;
-  visitField: (event: SyntheticEvent) => void;
+  visitField: (event: SyntheticEvent | unknown) => void;
 };
 
 export declare const useFieldData: <T = any>({
@@ -291,8 +291,8 @@ export declare interface UseFieldProps {
   isCheckboxElement: boolean;
   isMultipleElement: boolean;
   name: string;
-  onChange: (event: SyntheticEvent) => void;
-  onVisit: (event: SyntheticEvent) => void;
+  onChange: (event: SyntheticEvent | unknown) => void;
+  onVisit: (event: SyntheticEvent | unknown) => void;
 }
 
 export declare const useFieldRegistration: ({ name }: { name: string }) => {
