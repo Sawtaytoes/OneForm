@@ -110,6 +110,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedObjectArrayValues
       ),
+      hasPermanentValues: true,
       value: rootErrorMessages,
     })
   )
@@ -123,6 +124,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedArrayValues
       ),
+      hasPermanentValues: true,
       value: rootGroupValidations,
     })
   )
@@ -136,6 +138,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedFunctionObjectValues
       ),
+      hasPermanentValues: true,
       value: rootOnChange,
     })
   )
@@ -149,6 +152,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedFunctionPromiseValues
       ),
+      hasPermanentValues: true,
       value: rootOnSubmit,
     })
   )
@@ -162,6 +166,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedObjectArrayValues
       ),
+      hasPermanentValues: false,
       value: rootUpdatedErrorMessages,
     })
   )
@@ -175,6 +180,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedObjectValues
       ),
+      hasPermanentValues: false,
       value: rootUpdatedValues,
     })
   )
@@ -188,6 +194,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedObjectArrayValues
       ),
+      hasPermanentValues: true,
       value: rootValidations,
     })
   )
@@ -201,6 +208,7 @@ const OneForm = ({
       flattenSegmentedValues: (
         flattenSegmentedObjectValues
       ),
+      hasPermanentValues: true,
       value: rootValues,
     })
   )

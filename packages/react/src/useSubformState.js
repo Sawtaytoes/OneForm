@@ -1,5 +1,6 @@
 import {
   useCallback,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -21,7 +22,7 @@ const useSubformState = (
     flattenSegmentedValues = (
       initialFlattenSegmentedValues
     ),
-    hasPermenantValues = false,
+    hasPermanentValues = false,
     value,
   } = {}
 ) => {
@@ -109,17 +110,9 @@ const useSubformState = (
             )
           )
         )
-
-        // if (!hasPermenantValues) {
-        //   segmentedValuesRef
-        //   .current = (
-        //     new Map()
-        //   )
-        // }
       },
       [
         flattenSegmentedValues,
-        hasPermenantValues,
       ],
     )
   )
@@ -189,6 +182,40 @@ const useSubformState = (
     [
       addValue,
       value,
+    ]
+  )
+
+  const hasPermanentValuesRef = (
+    useRef()
+  )
+
+  useEffect(() => {
+    hasPermanentValuesRef
+    .current = (
+      hasPermanentValues
+    )
+  })
+
+  useUpdateEffect(
+    () => {
+      if (
+        localValue
+        && (
+          !(
+            hasPermanentValuesRef
+            .current
+          )
+        )
+      ) {
+        segmentedValuesRef
+        .current = (
+          new Map()
+        )
+      }
+    },
+    [
+      // We only want this to run when `localValue` changes.
+      localValue,
     ]
   )
 

@@ -96,33 +96,48 @@ UpdatedValues
   },
 }
 
-export const DoubleUpdatedValues = (
-  args,
-) => {
+const Message3Field = () => {
   useFieldValue({
-    name: 'message2'
+    name: 'message2',
   })
 
   return (
-    <OneForm>
-      <Subform {...args} />
-
-      <div>
-        <Field>
-          <input name="message1" />
-        </Field>
-      </div>
-
-      <div>
-        <Field>
-          <input name="message2" />
-        </Field>
-      </div>
-    </OneForm>
+    <div>
+      <Subform
+        updatedValues={{
+          message3: Math.random(),
+        }}
+      />
+      <Field>
+        <input name="message3" />
+      </Field>
+    </div>
   )
 }
 
-DoubleUpdatedValues
+export const MultipleUpdatedValues = (
+  args,
+) => (
+  <OneForm>
+    <Subform {...args} />
+
+    <div>
+      <Field>
+        <input name="message1" />
+      </Field>
+    </div>
+
+    <div>
+      <Field>
+        <input name="message2" />
+      </Field>
+    </div>
+
+    <Message3Field />
+  </OneForm>
+)
+
+MultipleUpdatedValues
 .args = {
   updatedValues: {
     message1: 'I am LEGEND!',
