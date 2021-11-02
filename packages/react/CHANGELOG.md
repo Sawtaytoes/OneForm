@@ -1,7 +1,12 @@
-# 1.9.3
+# 1.9.4
 _November 2, 2021_
 
 - 🐛 Fixed a subform's `updatedValues` overriding other field values because all `updatedValues` were being stored. Also fixed for `updatedErrorMessages`.
+
+# 1.9.3
+_November 2, 2021_
+
+- 💩 Forgot to build before publishing in this version.
 
 # 1.9.2
 _September 14, 2021_
