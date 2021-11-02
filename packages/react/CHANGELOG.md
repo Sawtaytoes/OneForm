@@ -1,3 +1,13 @@
+# 1.9.3
+_November 2, 2021_
+
+- 🐛 Fixed a subform's `updatedValues` overriding other field values because all `updatedValues` were being stored. Also fixed for `updatedErrorMessages`.
+
+# 1.9.2
+_September 14, 2021_
+
+- 🐛 Fixed a bug where events could be `null` in non-standard `onChange` callbacks.
+
 # 1.9.1
 _September 12, 2021_
 
