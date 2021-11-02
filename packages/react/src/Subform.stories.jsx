@@ -96,21 +96,23 @@ UpdatedValues
   },
 }
 
-const Message3Field = () => {
+const RandomNumberFieldValue = () => {
   useFieldValue({
-    name: 'message2',
+    name: 'changingMessage',
   })
 
   return (
     <div>
       <Subform
         updatedValues={{
-          message3: Math.random(),
+          randomNumber: (
+            Math
+            .random()
+          ),
         }}
       />
-      <Field>
-        <input name="message3" />
-      </Field>
+
+      <FieldValue name="randomNumber" />
     </div>
   )
 }
@@ -121,26 +123,26 @@ export const MultipleUpdatedValues = (
   <OneForm>
     <Subform {...args} />
 
+    <RandomNumberFieldValue />
+
     <div>
       <Field>
-        <input name="message1" />
+        <input name="staticMessage" />
       </Field>
     </div>
 
     <div>
       <Field>
-        <input name="message2" />
+        <input name="changingMessage" />
       </Field>
     </div>
-
-    <Message3Field />
   </OneForm>
 )
 
 MultipleUpdatedValues
 .args = {
   updatedValues: {
-    message1: 'I am LEGEND!',
+    staticMessage: 'I am LEGEND!',
   },
 }
 
