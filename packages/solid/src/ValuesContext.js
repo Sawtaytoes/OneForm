@@ -3,7 +3,7 @@ import {
 } from 'solid-js'
 
 const ValuesContext = (
-  createContext()
+  createContext({})
 )
 
 export default ValuesContext

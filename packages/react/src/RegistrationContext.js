@@ -2,6 +2,10 @@ import {
   createContext,
 } from 'react'
 
-const RegistrationContext = createContext()
+const RegistrationContext = (
+  createContext({
+    registerFieldName: () => {},
+  })
+)
 
 export default RegistrationContext

@@ -4,16 +4,18 @@ import {
 
 import useSubformData from './useSubformData.js'
 
-const useSubformEffect = ({
-  errorMessages,
-  groupValidations,
-  onChange,
-  onSubmit,
-  updatedErrorMessages,
-  updatedValues,
-  validations,
-  values,
-}) => {
+const useSubformEffect = (
+  {
+    errorMessages,
+    groupValidations,
+    onChange,
+    onSubmit,
+    updatedErrorMessages,
+    updatedValues,
+    validations,
+    values,
+  } = {}
+) => {
   const {
     addErrorMessages,
     addGroupValidations,

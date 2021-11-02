@@ -2,6 +2,12 @@ import {
   createContext,
 } from 'react'
 
-const ValuesContext = createContext()
+const ValuesContext = (
+  createContext({
+    getFieldValue: () => {},
+    setFieldValue: () => {},
+    subscribeToFieldValue: () => {},
+  })
+)
 
 export default ValuesContext

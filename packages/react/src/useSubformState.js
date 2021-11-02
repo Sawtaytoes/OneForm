@@ -21,6 +21,7 @@ const useSubformState = (
     flattenSegmentedValues = (
       initialFlattenSegmentedValues
     ),
+    hasPermenantValues = false,
     value,
   } = {}
 ) => {
@@ -108,9 +109,17 @@ const useSubformState = (
             )
           )
         )
+
+        // if (!hasPermenantValues) {
+        //   segmentedValuesRef
+        //   .current = (
+        //     new Map()
+        //   )
+        // }
       },
       [
         flattenSegmentedValues,
+        hasPermenantValues,
       ],
     )
   )

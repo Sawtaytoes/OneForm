@@ -2,6 +2,10 @@ import {
   createContext,
 } from 'react'
 
-const FieldGroupContext = createContext()
+const FieldGroupContext = (
+  createContext({
+    fieldGroups: [],
+  })
+)
 
 export default FieldGroupContext

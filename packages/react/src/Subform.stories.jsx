@@ -13,6 +13,7 @@ import SubmitField from './SubmitField.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneForm from './OneForm.jsx'
 import Subform from './Subform.jsx'
+import useFieldValue from './useFieldValue.js'
 
 export default {
   args: {
@@ -41,22 +42,6 @@ Values
 .args = {
   values: {
     message: 'Hello World!',
-  },
-}
-
-export const UpdatedValues = (
-  args,
-) => (
-  <OneForm>
-    <Subform {...args} />
-    <FieldValue name="message" />
-  </OneForm>
-)
-
-UpdatedValues
-.args = {
-  values: {
-    message: 'I am LEGEND!',
   },
 }
 
@@ -92,6 +77,55 @@ CombinedValues
 .args = {
   values: {
     message2: 'Subform value',
+  },
+}
+
+export const UpdatedValues = (
+  args,
+) => (
+  <OneForm>
+    <Subform {...args} />
+    <FieldValue name="message" />
+  </OneForm>
+)
+
+UpdatedValues
+.args = {
+  updatedValues: {
+    message: 'I am LEGEND!',
+  },
+}
+
+export const DoubleUpdatedValues = (
+  args,
+) => {
+  useFieldValue({
+    name: 'message2'
+  })
+
+  return (
+    <OneForm>
+      <Subform {...args} />
+
+      <div>
+        <Field>
+          <input name="message1" />
+        </Field>
+      </div>
+
+      <div>
+        <Field>
+          <input name="message2" />
+        </Field>
+      </div>
+    </OneForm>
+  )
+}
+
+DoubleUpdatedValues
+.args = {
+  updatedValues: {
+    message1: 'I am LEGEND!',
   },
 }
 
