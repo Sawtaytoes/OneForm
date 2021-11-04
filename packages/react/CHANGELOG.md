@@ -1,3 +1,8 @@
+# 1.10.1
+_November 3, 2021_
+
+- 🚑 Fixed missing import for `useRegisteredFieldEffect`.
+
 # 1.10.0
 _November 3, 2021_
 
