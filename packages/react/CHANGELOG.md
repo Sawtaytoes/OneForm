@@ -1,3 +1,8 @@
+# 1.10.0
+_November 3, 2021_
+
+- ✨ Added `useRegisteredFieldEffect` to allow registering a field on component mount. This is different from `useField` in that the intent is only to register. It prevents people from copy-pasting `useField` and placing it in other parts of the code. It's recommended to use `useRegisteredFieldEffect` in tandem with `useFieldValue` rather than `useField` to make your intent clear.
+
 # 1.9.4
 _November 2, 2021_
 
