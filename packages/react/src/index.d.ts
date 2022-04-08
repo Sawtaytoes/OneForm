@@ -341,10 +341,6 @@ export declare const useIsCheckboxElement: (
   reactElement: ReactElement
 ) => boolean;
 
-export declare const useIsHtmlElement: ({
-  type: reactElementType,
-}: ReactElement) => boolean;
-
 export declare const useIsMultipleElement: (
   reactElement: ReactElement
 ) => boolean;

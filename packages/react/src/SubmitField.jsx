@@ -54,62 +54,33 @@ const SubmitField = ({
 
   const childProps = (
     useMemo(
-      () => (
-        isHtmlElement
-        ? {
-          'data-loading': (
-            isSubmitting
-            ? 'true'
-            : null
-          ),
-          'data-submission-state': (
-            submissionState
-          ),
-          'disabled': (
-            isSubmitting
-            || (
-              isDisabledWhenInvalid
-              ? !isFormValid
-              : disabled
+      () => ({
+        'data-form-change-state': (
+          formChangeState
+        ),
+        'data-loading': (
+          isSubmitting
+          ? 'true'
+          : null
+        ),
+        'data-submission-state': (
+          submissionState
+        ),
+        'data-total-error-messages': (
+          totalErrorMessages
+        ),
+        'disabled': (
+          isSubmitting
+          || (
+            isDisabledWhenInvalid
+            ? !isFormValid
+            : (
+              disabled
+              || isDisabled
             )
-          ),
-        }
-        : {
-          disabled: (
-            isSubmitting
-            || (
-              isDisabledWhenInvalid
-              ? !isFormValid
-              : disabled
-            )
-          ),
-          formChangeState,
-          isDisabled: (
-            isSubmitting
-            || (
-              isDisabledWhenInvalid
-              ? !isFormValid
-              : isDisabled
-            )
-          ),
-          isLoading: isSubmitting,
-          isSubmitting,
-          loading: isSubmitting,
-          submissionState,
-          totalErrorMessages,
-        }
-      ),
-      [
-        disabled,
-        formChangeState,
-        isDisabled,
-        isDisabledWhenInvalid,
-        isFormValid,
-        isHtmlElement,
-        isSubmitting,
-        submissionState,
-        totalErrorMessages,
-      ]
+          )
+        ),
+      }),
     )
   )
 
