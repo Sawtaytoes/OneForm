@@ -1,3 +1,9 @@
+# 2.0.0
+_April 4, 2020_
+
+- 💥 Stopped passing non-HTML props from `Field` and `SubmitField`. This should help with compatibility where rest props such as `...inputProps` are being used in custom inputs.
+- 💥 Removed `useIsHtmlElement` from library export.
+
 # 1.10.1
 _November 3, 2021_
 
