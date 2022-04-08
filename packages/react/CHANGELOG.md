@@ -1,3 +1,8 @@
+# 2.0.1
+_April 7, 2020_
+
+- 🔧 Added repository config to package.json for npm.
+
 # 2.0.0
 _April 4, 2020_
 

@@ -70,6 +70,10 @@
   "peerDependencies": {
     "react": ">=16"
   },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/Sawtaytoes/OneForm.git"
+  },
   "gitHead": "3a82b7e8af444ad07d73891875f049774078a230",
   "dependencies": {
     "prop-types": "^15.7.2"
