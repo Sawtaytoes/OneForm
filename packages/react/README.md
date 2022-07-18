@@ -7,7 +7,7 @@ _The OneForm you need!_
 
 ## Features
 
-* No external dependencies \(except React\).
+* No external dependencies \(except [React](https://reactjs.org/)\).
 * Super clean API.
 * Validation and group validation built-in.
 * Write your own validations or use your favorite library.
