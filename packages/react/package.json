@@ -1,6 +1,6 @@
 {
   "name": "@oneform/react",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "The OneForm library you need.",
   "author": "Kevin Ghadyani",
   "scripts": {
@@ -48,13 +48,12 @@
     "@storybook/node-logger": "^6.3.6",
     "@storybook/react": "^6.3.6",
     "@testing-library/cypress": "^7.0.4",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^5.1.0",
     "@testing-library/user-event": "^13.0.6",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "caniuse-lite": "^1.0.30001325",
     "cypress": "^8.0.0",
     "eslint": "^7.22.0",
     "eslint-plugin-compat": "^3.9.0",
