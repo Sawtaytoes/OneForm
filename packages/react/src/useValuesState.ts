@@ -73,6 +73,11 @@ export type ValuesState<
     identifier: ObservableIdentifier,
     value: (
       | ValueType
+      | (
+        () => (
+          ValueType
+        )
+      )
       | undefined
     ),
   ) => (
@@ -224,15 +229,14 @@ export const useValuesState = <
     )
   )
 
-  const setLocalValue: (
-    ValuesState<
-      ValueType
-    >["setValue"]
-  ) = (
+  const setLocalValue = (
     useCallback(
       (
-        identifier,
-        value,
+        identifier: ObservableIdentifier,
+        value: (
+          | ValueType
+          | undefined
+        ),
       ) => {
         if (
           value
@@ -353,22 +357,21 @@ export const useValuesState = <
     )
   )
 
-  const changeLocalValue = (
+  const changeLocalValue: (
+    ValuesState<
+      ValueType
+    >["setValue"]
+  ) = (
     useCallback(
       (
-        identifier: ObservableIdentifier,
-        value: (
-          | ValueType
-          | (
-            () => (
-              ValueType
-            )
-          )
-        ),
+        identifier,
+        value,
       ) => {
         if (
-          typeof value
-          === 'function'
+          (
+            typeof value
+            === 'function'
+          )
         ) {
           setLocalValue(
             identifier,
