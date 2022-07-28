@@ -8,7 +8,7 @@ const eslintConfig = {
     'plugin:jest/recommended',
     'plugin:jest/style',
     '@ghadyani-eslint/node',
-    '@ghadyani-eslint/web',
+    '@ghadyani-eslint/react',
   ],
   parser: '@babel/eslint-parser',
   plugins: [
@@ -18,7 +18,7 @@ const eslintConfig = {
   ],
   rules: {
     '@getify/proper-ternary/nested': 'off',
-    '@ghadyani-eslint/arrow-body-parens/parens': 'off', // TEMP. Remove 'off' when fixed in @ghadyani-eslint
+    '@ghadyani-eslint/arrow-body-parens/parens': 'warn',
     'array-bracket-newline': [
       'warn',
       {

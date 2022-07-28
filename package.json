@@ -4,14 +4,14 @@
   "author": "Kevin Ghadyani",
   "license": "ISC",
   "scripts": {
-    "react": "yarn workspace @oneform/react",
-    "solid": "yarn workspace @oneform/solid"
+    "mui": "yarn workspace @oneform/material-ui",
+    "react": "yarn workspace @oneform/react"
   },
+  "packageManager": "yarn@3.2.2",
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "lerna": "^4.0.0"
-  },
-  "packageManager": "yarn@3.2.2"
+    "lerna": "^5.3.0"
+  }
 }
