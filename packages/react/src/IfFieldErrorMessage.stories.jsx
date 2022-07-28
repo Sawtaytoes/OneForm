@@ -2,7 +2,7 @@
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import IfFieldErrorMessage from './IfFieldErrorMessage.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 export default {
   decorators: htmlStyleDecorators,
@@ -12,13 +12,13 @@ export default {
 export const Default = (
   updatedErrorMessages,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
   >
     <IfFieldErrorMessage name="message">
       Error: <FieldErrorMessage name="message" />
     </IfFieldErrorMessage>
-  </OneForm>
+  </OneFormProvider>
 )
 
 Default
@@ -29,7 +29,7 @@ Default
 export const Fallback = (
   updatedErrorMessages,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
   >
     <IfFieldErrorMessage
@@ -42,7 +42,7 @@ export const Fallback = (
     >
       Error: <FieldErrorMessage name="message" />
     </IfFieldErrorMessage>
-  </OneForm>
+  </OneFormProvider>
 )
 
 Fallback
@@ -53,7 +53,7 @@ Fallback
 export const CustomVisibility = (
   updatedErrorMessages,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
   >
     <IfFieldErrorMessage
@@ -78,7 +78,7 @@ export const CustomVisibility = (
     >
       Error: <FieldErrorMessage name="message" />
     </IfFieldErrorMessage>
-  </OneForm>
+  </OneFormProvider>
 )
 
 CustomVisibility

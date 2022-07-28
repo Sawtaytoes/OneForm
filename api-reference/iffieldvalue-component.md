@@ -55,7 +55,7 @@ import {
 } from '@oneform/react'
 
 const ConditionalFieldValueExample = () => (
-  <OneForm
+  <OneFormProvider
     values={{
       firstName: 'Kevin',
     }}
@@ -65,7 +65,7 @@ const ConditionalFieldValueExample = () => (
         That's a nice name.
       </IfFieldValue>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default ConditionalFieldValueExample 

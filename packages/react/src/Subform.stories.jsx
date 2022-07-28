@@ -11,7 +11,7 @@ import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldValue from './FieldValue.jsx'
 import SubmitField from './SubmitField.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import Subform from './Subform.jsx'
 import useFieldValue from './useFieldValue.js'
 
@@ -32,10 +32,10 @@ export default {
 export const Values = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
     <FieldValue name="message" />
-  </OneForm>
+  </OneFormProvider>
 )
 
 Values
@@ -59,7 +59,7 @@ export const CombinedValues = (
   )
 
   return (
-    <OneForm values={oneformValues}>
+    <OneFormProvider values={oneformValues}>
       <Subform {...args} />
 
       <div>
@@ -69,7 +69,7 @@ export const CombinedValues = (
       <div>
         <FieldValue name="message2" />
       </div>
-    </OneForm>
+    </OneFormProvider>
   )
 }
 
@@ -83,10 +83,10 @@ CombinedValues
 export const UpdatedValues = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
     <FieldValue name="message" />
-  </OneForm>
+  </OneFormProvider>
 )
 
 UpdatedValues
@@ -120,7 +120,7 @@ const RandomNumberFieldValue = () => {
 export const MultipleUpdatedValues = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
 
     <RandomNumberFieldValue />
@@ -136,7 +136,7 @@ export const MultipleUpdatedValues = (
         <input name="changingMessage" />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 MultipleUpdatedValues
@@ -149,10 +149,10 @@ MultipleUpdatedValues
 export const ErrorMessages = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
     <FieldErrorMessage name="message" />
-  </OneForm>
+  </OneFormProvider>
 )
 
 ErrorMessages
@@ -167,10 +167,10 @@ ErrorMessages
 export const UpdatedErrorMessages = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
     <FieldErrorMessage name="message" />
-  </OneForm>
+  </OneFormProvider>
 )
 
 UpdatedErrorMessages
@@ -185,7 +185,7 @@ UpdatedErrorMessages
 export const Validations = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
 
     <div>
@@ -197,7 +197,7 @@ export const Validations = (
     <div>
       <FieldErrorMessage name="message" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 Validations
@@ -228,7 +228,7 @@ Validations
 export const GroupValidation = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
 
     <div>
@@ -260,7 +260,7 @@ export const GroupValidation = (
         </button>
       </SubmitField>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 GroupValidation
@@ -304,7 +304,7 @@ GroupValidation
 export const OnChange = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
 
     <div>
@@ -319,7 +319,7 @@ export const OnChange = (
     <div>
       <FieldValue name="copiedMessage" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 OnChange
@@ -335,11 +335,11 @@ OnChange
 export const OnSubmit = (
   args,
 ) => (
-  <OneForm>
+  <OneFormProvider>
     <Subform {...args} />
 
     <button type="submit">
       Submit
     </button>
-  </OneForm>
+  </OneFormProvider>
 )

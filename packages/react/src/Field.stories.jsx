@@ -6,7 +6,7 @@ import {
 import Field from './Field.jsx'
 import FieldValue from './FieldValue.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 export default {
   args: {
@@ -25,13 +25,13 @@ export default {
 export const HTMLInput = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input name="message" />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 const Input = ({
@@ -51,19 +51,19 @@ const Input = ({
 export const ReactInputComponent = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <Input name="message" />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLCheckbox = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <label>
         <Field>
@@ -80,7 +80,7 @@ export const HTMLCheckbox = (
     <div>
       <FieldValue name="checkbox" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 const Checkbox = ({
@@ -110,7 +110,7 @@ const Checkbox = ({
 export const ReactCheckboxComponent = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <Checkbox
@@ -119,13 +119,13 @@ export const ReactCheckboxComponent = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLRadio = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <label>
       <Field>
         <input
@@ -149,7 +149,7 @@ export const HTMLRadio = (
 
       Second
     </label>
-  </OneForm>
+  </OneFormProvider>
 )
 
 const Radio = ({
@@ -178,7 +178,7 @@ const Radio = ({
 export const ReactRadioComponent = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <Radio
@@ -204,13 +204,13 @@ export const ReactRadioComponent = (
     <div>
       Selected Item: <FieldValue name="item" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLSelect = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <Field>
       <select name="color">
         <option value="">
@@ -238,13 +238,13 @@ export const HTMLSelect = (
     <div>
       Selected Color: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLSelectOptionGroupValue = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <Field>
       <select name="color">
         <option value="">
@@ -276,13 +276,13 @@ export const HTMLSelectOptionGroupValue = (
     <div>
       Selected Color: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLMultiSelect = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <Field>
       <select
         multiple
@@ -309,7 +309,7 @@ export const HTMLMultiSelect = (
     <div>
       Selected Colors: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 const MultiPicker = ({
@@ -395,7 +395,7 @@ const MultiPicker = ({
 export const MultiPickerComponent = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <label>
       <Field isMultipleElement>
         <MultiPicker
@@ -407,13 +407,13 @@ export const MultiPickerComponent = (
     <div>
       Selected Colors: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLColor = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -422,13 +422,13 @@ export const HTMLColor = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLDate = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -437,13 +437,13 @@ export const HTMLDate = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLTime = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -452,13 +452,13 @@ export const HTMLTime = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLDateTime = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -467,13 +467,13 @@ export const HTMLDateTime = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLMonth = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -482,13 +482,13 @@ export const HTMLMonth = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLWeek = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -497,13 +497,13 @@ export const HTMLWeek = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLFile = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -512,13 +512,13 @@ export const HTMLFile = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLFiles = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -528,13 +528,13 @@ export const HTMLFiles = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const HTMLRange = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -543,5 +543,5 @@ export const HTMLRange = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )

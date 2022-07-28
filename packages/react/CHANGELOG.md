@@ -1,10 +1,17 @@
+# 3.0.0
+_July 27, 2022_
+
+- 💥 Separated HTML `form` from `OneForm`.
+- 💥 Renamed `OneForm` to `OneFormProvider`.
+- ✨ Added `Form` as an HTML `form` wrapper similar to `Field`.
+
 # 2.0.1
-_April 7, 2020_
+_April 7, 2022_
 
 - 🔧 Added repository config to package.json for npm.
 
 # 2.0.0
-_April 4, 2020_
+_April 4, 2022_
 
 - 💥 Stopped passing non-HTML props from `Field` and `SubmitField`. This should help with compatibility where rest props such as `...inputProps` are being used in custom inputs.
 - 💥 Removed `useIsHtmlElement` from library export.

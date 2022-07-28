@@ -182,11 +182,11 @@ import {
 import CustomFieldExample from './CustomFieldExample.jsx'
 
 const CustomFieldContainerExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <CustomFieldExample>
       <input name="message" />
     </CustomFieldExample>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default CustomFieldContainerExample

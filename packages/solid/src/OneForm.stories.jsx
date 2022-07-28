@@ -4,7 +4,7 @@ import {
 } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 export default {
   args: {
@@ -22,9 +22,9 @@ export default {
 export const DisplayInputValue = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <Field>
       <input name="message" />
     </Field>
-  </OneForm>
+  </OneFormProvider>
 )

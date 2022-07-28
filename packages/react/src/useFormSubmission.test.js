@@ -5,7 +5,7 @@ import {
 } from '@testing-library/react-hooks'
 
 import Field from './Field.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import {
   formChangeStates,
 } from './useFormChangeState.js'
@@ -25,13 +25,13 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <input name="name" />
             </Field>
 
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -112,9 +112,9 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm values={values}>
+          <OneFormProvider values={values}>
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -151,9 +151,9 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm values={values}>
+          <OneFormProvider values={values}>
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -204,7 +204,7 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm
+          <OneFormProvider
             validations={validations}
             values={values}
           >
@@ -213,7 +213,7 @@ describe(
             </Field>
 
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -266,7 +266,7 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm
+          <OneFormProvider
             validations={validations}
             values={values}
           >
@@ -275,7 +275,7 @@ describe(
             </Field>
 
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -319,13 +319,13 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm values={values}>
+          <OneFormProvider values={values}>
             <Field>
               <input name="name" />
             </Field>
 
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -378,7 +378,7 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm values={values}>
+          <OneFormProvider values={values}>
             <Field>
               <input name="email" />
             </Field>
@@ -388,7 +388,7 @@ describe(
             </Field>
 
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -441,7 +441,7 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm values={values}>
+          <OneFormProvider values={values}>
             <Field>
               <input name="email" />
             </Field>
@@ -451,7 +451,7 @@ describe(
             </Field>
 
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {
@@ -505,7 +505,7 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <input name="email" />
             </Field>
@@ -515,7 +515,7 @@ describe(
             </Field>
 
             {children}
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {

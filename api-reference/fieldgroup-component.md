@@ -16,7 +16,7 @@ import {
 } from '@oneform/react'
 
 const FieldGroupExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <FieldGroup
       id="1"
       name="addressId"
@@ -25,7 +25,7 @@ const FieldGroupExample = () => (
         <input name="name" />
       </Field>
     </FieldGroup>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default FieldGroupExample
@@ -81,7 +81,7 @@ import {
 } from '@oneform/react'
 
 const SharedFieldGroupIdExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <FieldGroup
       id="1"
       name="accountId"
@@ -94,7 +94,7 @@ const SharedFieldGroupIdExample = () => (
         <input name="name" />
       </Field>
     </FieldGroup>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default SharedFieldGroupIdExample
@@ -110,7 +110,7 @@ import {
 } from '@oneform/react'
 
 const BasicDeeplyNestedFieldGroupsExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <FieldGroup
       id="1"
       name="addressId"
@@ -137,7 +137,7 @@ const BasicDeeplyNestedFieldGroupsExample = () => (
         </Field>
       </FieldGroup>
     </FieldGroup>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default BasicDeeplyNestedFieldGroupsExample
@@ -174,7 +174,7 @@ const FieldGroupSubmissionExample = () => {
   )
 
   return (
-    <OneForm
+    <OneFormProvider
       onSubmit={formSubmitted}
     >
       <FieldGroup
@@ -185,7 +185,7 @@ const FieldGroupSubmissionExample = () => {
           <input name="name" />
         </Field>
       </FieldGroup>
-    </OneForm>
+    </OneFormProvider>
   )
 }
 

@@ -15,13 +15,13 @@ const errorMessages = {
 }
 
 const BasicErrorMessagesExample = () => (
-  <OneForm
+  <OneFormProvider
     errorMessages={errorMessages}
   >
     <div>
       <FieldErrorMessage name="name" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default BasicErrorMessagesExample

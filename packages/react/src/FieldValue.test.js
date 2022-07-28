@@ -3,7 +3,7 @@ import {
   screen,
 } from '@testing-library/react'
 
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import FieldValue from './FieldValue.jsx'
 
 describe(
@@ -15,7 +15,7 @@ describe(
         const emailValue = 'john.smith@test.com'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
@@ -23,7 +23,7 @@ describe(
             <FieldValue
               name="email"
             />
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
@@ -42,7 +42,7 @@ describe(
         const emailValue = 'john.smith@test.com'
 
         render(
-          <OneForm
+          <OneFormProvider
             updatedValues={{
               email: emailValue,
             }}
@@ -50,7 +50,7 @@ describe(
             <FieldValue
               name="email"
             />
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(

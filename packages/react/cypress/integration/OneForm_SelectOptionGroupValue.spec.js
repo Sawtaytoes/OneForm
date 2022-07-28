@@ -1,7 +1,7 @@
 describe(
   'OneForm SelectOptionGroupValue',
   () => {
-    const storybookPath = 'forms-oneform--select-option-group-value'
+    const storybookPath = 'forms-oneformprovider--select-option-group-value'
 
     it(
       'Defaults to unselected.',

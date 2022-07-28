@@ -1,7 +1,7 @@
 describe(
   'OneForm InitialCheckboxValues',
   () => {
-    const storybookPath = 'forms-oneform--initial-checkbox-values'
+    const storybookPath = 'forms-oneformprovider--initial-checkbox-values'
 
     it(
       'Defaults to checked.',

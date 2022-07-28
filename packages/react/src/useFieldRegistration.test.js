@@ -3,7 +3,7 @@ import {
   renderHook,
 } from '@testing-library/react-hooks'
 
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import useFieldRegistration from './useFieldRegistration.js'
 
 describe(
@@ -21,7 +21,7 @@ describe(
               initialProps: {
                 name: 'email',
               },
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )

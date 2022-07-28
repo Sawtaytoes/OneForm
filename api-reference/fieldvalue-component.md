@@ -19,13 +19,13 @@ const values = {
 }
 
 const ValuesExample = () => (
-  <OneForm
+  <OneFormProvider
     values={values}
   >
     <div>
       <FieldValue name="name" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default ValuesExample

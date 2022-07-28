@@ -62,7 +62,7 @@ const initialProps = {
   values: {},
 }
 
-const OneForm = ({
+const OneFormProvider = ({
   children,
   errorMessages: rootErrorMessages = (
     initialProps
@@ -906,12 +906,7 @@ const OneForm = ({
                 <VisitationContext.Provider
                   value={visitationProviderValue}
                 >
-                  <form
-                    onSubmit={submitForm}
-                    role="form"
-                  >
-                    {children}
-                  </form>
+                  {children}
                 </VisitationContext.Provider>
               </ValuesContext.Provider>
             </SubmissionContext.Provider>
@@ -922,8 +917,8 @@ const OneForm = ({
   )
 }
 
-OneForm.propTypes = propTypes
+OneFormProvider.propTypes = propTypes
 
-const MemoizedOneForm = memo(OneForm)
+const MemoizedOneFormProvider = memo(OneFormProvider)
 
-export default MemoizedOneForm
+export default MemoizedOneFormProvider

@@ -6,7 +6,7 @@ import {
 import Field from './Field.jsx'
 import FieldGroup from './FieldGroup.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 export default {
   args: {
@@ -22,7 +22,7 @@ export default {
 }
 
 export const Sample = () => (
-  <OneForm>
+  <OneFormProvider>
     <FieldGroup
       id="1"
       name="addressId"
@@ -59,5 +59,5 @@ export const Sample = () => (
         </div>
       </FieldGroup>
     </FieldGroup>
-  </OneForm>
+  </OneFormProvider>
 )

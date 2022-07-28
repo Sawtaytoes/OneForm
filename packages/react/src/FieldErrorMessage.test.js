@@ -4,7 +4,7 @@ import {
 } from '@testing-library/react'
 
 import FieldErrorMessage from './FieldErrorMessage.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 describe(
   'FieldErrorMessage',
@@ -13,11 +13,13 @@ describe(
       'renders no errors when none provided',
       () => {
         render(
-          <OneForm>
-            <FieldErrorMessage
-              name="email"
-            />
-          </OneForm>
+          <OneFormProvider>
+            <form role="form">
+              <FieldErrorMessage
+                name="email"
+              />
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -45,13 +47,13 @@ describe(
         }
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={errorMessages}
           >
             <FieldErrorMessage
               name="email"
             />
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
@@ -60,7 +62,7 @@ describe(
             errorMessage
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
       },
     )
   }

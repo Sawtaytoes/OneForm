@@ -14,8 +14,9 @@ import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldGroup from './FieldGroup.jsx'
 import FieldValue from './FieldValue.jsx'
+import Form from './Form.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import SubmitField from './SubmitField.jsx'
 import useFieldValue from './useFieldValue.js'
 
@@ -28,15 +29,15 @@ export default {
     onChange: 'changed',
     onSubmit: 'submitted',
   },
-  component: OneForm,
+  component: OneFormProvider,
   decorators: htmlStyleDecorators,
-  title: 'Forms/OneForm',
+  title: 'Forms/OneFormProvider',
 }
 
 export const DisplayTextValue = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input name="message" />
@@ -46,13 +47,13 @@ export const DisplayTextValue = (
     <div>
       <FieldValue name="message" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const InitialTextValues = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input name="message" />
@@ -62,7 +63,7 @@ export const InitialTextValues = (
     <div>
       <FieldValue name="message" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 InitialTextValues
@@ -75,7 +76,7 @@ InitialTextValues
 export const CheckboxWithValue = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <label>
       <Field>
         <input
@@ -91,7 +92,7 @@ export const CheckboxWithValue = (
     <div>
       <FieldValue name="checkbox" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 CheckboxWithValue
@@ -104,7 +105,7 @@ CheckboxWithValue
 export const InitialCheckboxValues = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <label>
       <Field>
         <input
@@ -127,7 +128,7 @@ export const InitialCheckboxValues = (
 
       Checkbox with Value
     </label>
-  </OneForm>
+  </OneFormProvider>
 )
 
 InitialCheckboxValues
@@ -141,7 +142,7 @@ InitialCheckboxValues
 export const InitialRadioValues = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <label>
       <Field>
         <input
@@ -169,7 +170,7 @@ export const InitialRadioValues = (
     <div>
       Selected Item: <FieldValue name="item" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 InitialRadioValues
@@ -182,7 +183,7 @@ InitialRadioValues
 export const SelectValue = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <Field>
       <select name="color">
         <option value="">
@@ -210,13 +211,13 @@ export const SelectValue = (
     <div>
       Selected Color: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const SelectOptionGroupValue = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <Field>
       <select name="color">
         <option value="">
@@ -248,13 +249,13 @@ export const SelectOptionGroupValue = (
     <div>
       Selected Color: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export const InitialSelectValue = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <label htmlFor="color">
       Select a color.
     </label>
@@ -285,7 +286,7 @@ export const InitialSelectValue = (
     <div>
       Selected Color: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 InitialSelectValue
@@ -300,7 +301,7 @@ InitialSelectValue
 export const InitialMultiSelect = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <label htmlFor="color">
       Select zero to many colors.
     </label>
@@ -338,7 +339,7 @@ export const InitialMultiSelect = (
     <div>
       Selected Colors: <FieldValue name="color" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 InitialMultiSelect
@@ -354,27 +355,31 @@ InitialMultiSelect
 export const Submit = (
   args,
 ) => (
-  <OneForm {...args}>
-    <div>
-      <Field>
-        <input name="message" />
-      </Field>
-    </div>
+  <OneFormProvider {...args}>
+    <Form>
+      <form>
+        <div>
+          <Field>
+            <input name="message" />
+          </Field>
+        </div>
 
-    <div>
-      <SubmitField>
-        <button type="submit">
-          Submit
-        </button>
-      </SubmitField>
-    </div>
-  </OneForm>
+        <div>
+          <SubmitField>
+            <button type="submit">
+              Submit
+            </button>
+          </SubmitField>
+        </div>
+      </form>
+    </Form>
+  </OneFormProvider>
 )
 
 export const ValueStateChange = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -392,7 +397,7 @@ export const ValueStateChange = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 ValueStateChange
@@ -412,7 +417,7 @@ ValueStateChange
 export const CyclicValueStateChange = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <div>
       <Field>
         <input
@@ -430,7 +435,7 @@ export const CyclicValueStateChange = (
         />
       </Field>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 CyclicValueStateChange
@@ -478,75 +483,83 @@ export const UpdatingOnChange = () => {
   )
 
   return (
-    <OneForm onChange={onChange}>
-      <div>
-        <Field>
-          <input
-            name="message"
-            placeholder="Message"
-          />
-        </Field>
-      </div>
+    <OneFormProvider onChange={onChange}>
+      <Form>
+        <form action="">
+          <div>
+            <Field>
+              <input
+                name="message"
+                placeholder="Message"
+              />
+            </Field>
+          </div>
 
-      <div>
-        <FieldValue name="copiedMessage" />
-      </div>
+          <div>
+            <FieldValue name="copiedMessage" />
+          </div>
 
-      <div>
-        <FieldValue name="count" />
-      </div>
+          <div>
+            <FieldValue name="count" />
+          </div>
 
-      <button onClick={updateOnChange}>
-        Update
-        {' '}
-        <code>
-          onChange
-        </code>
-      </button>
-    </OneForm>
+          <button onClick={updateOnChange}>
+            Update
+            {' '}
+            <code>
+              onChange
+            </code>
+          </button>
+        </form>
+      </Form>
+    </OneFormProvider>
   )
 }
 
 export const Validation = (
   args,
 ) => (
-  <OneForm {...args}>
-    <div>
-      <Field>
-        <input
-          id="message1"
-          name="message1"
-          placeholder="Message 1"
-        />
-      </Field>
-    </div>
+  <OneFormProvider {...args}>
+    <Form>
+      <form action="">
+        <div>
+          <Field>
+            <input
+              id="message1"
+              name="message1"
+              placeholder="Message 1"
+            />
+          </Field>
+        </div>
 
-    <div>
-      <FieldErrorMessage name="message1" />
-    </div>
+        <div>
+          <FieldErrorMessage name="message1" />
+        </div>
 
-    <div>
-      <Field>
-        <input
-          id="message2"
-          name="message2"
-          placeholder="Message 2"
-        />
-      </Field>
-    </div>
+        <div>
+          <Field>
+            <input
+              id="message2"
+              name="message2"
+              placeholder="Message 2"
+            />
+          </Field>
+        </div>
 
-    <div>
-      <FieldErrorMessage name="message2" />
-    </div>
+        <div>
+          <FieldErrorMessage name="message2" />
+        </div>
 
-    <div>
-      <SubmitField>
-        <button type="submit">
-          Submit
-        </button>
-      </SubmitField>
-    </div>
-  </OneForm>
+        <div>
+          <SubmitField>
+            <button type="submit">
+              Submit
+            </button>
+          </SubmitField>
+        </div>
+      </form>
+    </Form>
+  </OneFormProvider>
 )
 
 Validation
@@ -596,37 +609,41 @@ Validation
 export const GroupValidation = (
   args,
 ) => (
-  <OneForm {...args}>
-    <div>
-      <Field>
-        <input
-          name="message1"
-          placeholder="Message 1"
-        />
-      </Field>
-    </div>
+  <OneFormProvider {...args}>
+    <Form>
+      <form action="">
+        <div>
+          <Field>
+            <input
+              name="message1"
+              placeholder="Message 1"
+            />
+          </Field>
+        </div>
 
-    <div>
-      <Field>
-        <input
-          name="message2"
-          placeholder="Message 2"
-        />
-      </Field>
-    </div>
+        <div>
+          <Field>
+            <input
+              name="message2"
+              placeholder="Message 2"
+            />
+          </Field>
+        </div>
 
-    <div>
-      <FieldErrorMessage name="message.error" />
-    </div>
+        <div>
+          <FieldErrorMessage name="message.error" />
+        </div>
 
-    <div>
-      <SubmitField>
-        <button type="submit">
-          Submit
-        </button>
-      </SubmitField>
-    </div>
-  </OneForm>
+        <div>
+          <SubmitField>
+            <button type="submit">
+              Submit
+            </button>
+          </SubmitField>
+        </div>
+      </form>
+    </Form>
+  </OneFormProvider>
 )
 
 GroupValidation
@@ -670,60 +687,64 @@ GroupValidation
 export const FieldGroupValidation = (
   args,
 ) => (
-  <OneForm {...args}>
-    <div>
-      <Field>
-        <input
-          name="message"
-          placeholder="Message"
-        />
-      </Field>
-    </div>
+  <OneFormProvider {...args}>
+    <Form>
+      <form action="">
+        <div>
+          <Field>
+            <input
+              name="message"
+              placeholder="Message"
+            />
+          </Field>
+        </div>
 
-    <FieldGroup
-      id="7b23"
-      name="prohibitedWordId"
-    >
-      <div>
-        <Field>
-          <input
-            name="prohibitedWord"
-            placeholder="Prohibited Word 1"
-          />
-        </Field>
-      </div>
+        <FieldGroup
+          id="7b23"
+          name="prohibitedWordId"
+        >
+          <div>
+            <Field>
+              <input
+                name="prohibitedWord"
+                placeholder="Prohibited Word 1"
+              />
+            </Field>
+          </div>
 
-      <div>
-        <FieldErrorMessage name="group.error" />
-      </div>
-    </FieldGroup>
+          <div>
+            <FieldErrorMessage name="group.error" />
+          </div>
+        </FieldGroup>
 
-    <FieldGroup
-      id="a452"
-      name="prohibitedWordId"
-    >
-      <div>
-        <Field>
-          <input
-            name="prohibitedWord"
-            placeholder="Prohibited Word 2"
-          />
-        </Field>
-      </div>
+        <FieldGroup
+          id="a452"
+          name="prohibitedWordId"
+        >
+          <div>
+            <Field>
+              <input
+                name="prohibitedWord"
+                placeholder="Prohibited Word 2"
+              />
+            </Field>
+          </div>
 
-      <div>
-        <FieldErrorMessage name="group.error" />
-      </div>
-    </FieldGroup>
+          <div>
+            <FieldErrorMessage name="group.error" />
+          </div>
+        </FieldGroup>
 
-    <div>
-      <SubmitField>
-        <button type="submit">
-          Submit
-        </button>
-      </SubmitField>
-    </div>
-  </OneForm>
+        <div>
+          <SubmitField>
+            <button type="submit">
+              Submit
+            </button>
+          </SubmitField>
+        </div>
+      </form>
+    </Form>
+  </OneFormProvider>
 )
 
 FieldGroupValidation
@@ -1336,7 +1357,7 @@ export const Spreadsheet = () => {
       </div>
 
       <div>
-        <OneForm onChange={formChanged}>
+        <OneFormProvider onChange={formChanged}>
           <div data-table>
             {
               cells
@@ -1350,7 +1371,7 @@ export const Spreadsheet = () => {
               ))
             }
           </div>
-        </OneForm>
+        </OneFormProvider>
       </div>
     </div>
   )

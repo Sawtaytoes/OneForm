@@ -3,7 +3,7 @@ import {
   renderHook,
 } from '@testing-library/react-hooks'
 
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import useFieldErrorMessages from './useFieldErrorMessages.js'
 
 describe(
@@ -21,7 +21,7 @@ describe(
               initialProps: {
                 name: 'email',
               },
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )
@@ -49,7 +49,7 @@ describe(
               initialProps: {
                 name: 'email',
               },
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )
@@ -90,7 +90,7 @@ describe(
               initialProps: {
                 name: 'email',
               },
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )

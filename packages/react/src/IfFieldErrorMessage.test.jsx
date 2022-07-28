@@ -5,7 +5,7 @@ import {
 
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import IfFieldErrorMessage from './IfFieldErrorMessage.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 describe(
   'IfFieldErrorMessage',
@@ -16,20 +16,22 @@ describe(
         const errorMessage = ''
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={{
               email: errorMessage,
             }}
           >
-            <IfFieldErrorMessage
-              name="email"
-            >
-              Email:
-              <FieldErrorMessage
+            <form role="form">
+              <IfFieldErrorMessage
                 name="email"
-              />
-            </IfFieldErrorMessage>
-          </OneForm>
+              >
+                Email:
+                <FieldErrorMessage
+                  name="email"
+                />
+              </IfFieldErrorMessage>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -39,7 +41,8 @@ describe(
           )
           .innerHTML
         )
-        .toBe(''
+        .toBe(
+          ''
         )
       },
     )
@@ -50,7 +53,7 @@ describe(
         const errorMessage = 'You forgot the `@` sign!'
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={{
               email: errorMessage,
             }}
@@ -62,7 +65,7 @@ describe(
                 name="email"
               />
             </IfFieldErrorMessage>
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
@@ -71,7 +74,7 @@ describe(
             errorMessage
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
       },
     )
 
@@ -82,20 +85,22 @@ describe(
         const fallbackValue = 'All clear.'
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={{
               email: errorMessage,
             }}
           >
-            <IfFieldErrorMessage
-              fallback={fallbackValue}
-              name="email"
-            >
-              <FieldErrorMessage
+            <form role="form">
+              <IfFieldErrorMessage
+                fallback={fallbackValue}
                 name="email"
-              />
-            </IfFieldErrorMessage>
-          </OneForm>
+              >
+                <FieldErrorMessage
+                  name="email"
+                />
+              </IfFieldErrorMessage>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -104,7 +109,7 @@ describe(
             fallbackValue
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen
@@ -126,20 +131,22 @@ describe(
         const fallbackValue = 'All clear.'
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={{
               email: errorMessage,
             }}
           >
-            <IfFieldErrorMessage
-              fallback={fallbackValue}
-              name="email"
-            >
-              <FieldErrorMessage
+            <form role="form">
+              <IfFieldErrorMessage
+                fallback={fallbackValue}
                 name="email"
-              />
-            </IfFieldErrorMessage>
-          </OneForm>
+              >
+                <FieldErrorMessage
+                  name="email"
+                />
+              </IfFieldErrorMessage>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -148,7 +155,7 @@ describe(
             errorMessage
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen
@@ -163,32 +170,33 @@ describe(
       },
     )
 
-
     test(
       'shows no value when set invisible.',
       () => {
         const errorMessage = 'john.smith'
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={{
               email: errorMessage,
             }}
           >
-            <IfFieldErrorMessage
-              getIsVisible={([
-                errorMessage,
-              ]) => (
-                errorMessage
-                === 'You forgot the `@` sign!'
-              )}
-              name="email"
-            >
-              <FieldErrorMessage
+            <form role="form">
+              <IfFieldErrorMessage
+                getIsVisible={([
+                  errorMessage,
+                ]) => (
+                  errorMessage
+                  === 'You forgot the `@` sign!'
+                )}
                 name="email"
-              />
-            </IfFieldErrorMessage>
-          </OneForm>
+              >
+                <FieldErrorMessage
+                  name="email"
+                />
+              </IfFieldErrorMessage>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -198,7 +206,8 @@ describe(
           )
           .innerHTML
         )
-        .toBe(''
+        .toBe(
+          ''
         )
       },
     )
@@ -210,26 +219,28 @@ describe(
         const fallbackValue = 'All clear.'
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={{
               email: errorMessage,
             }}
           >
-            <IfFieldErrorMessage
-              fallback={fallbackValue}
-              getIsVisible={([
-                errorMessage,
-              ]) => (
-                errorMessage
-                === 'You forgot the `@` sign!'
-              )}
-              name="email"
-            >
-              <FieldErrorMessage
+            <form role="form">
+              <IfFieldErrorMessage
+                fallback={fallbackValue}
+                getIsVisible={([
+                  errorMessage,
+                ]) => (
+                  errorMessage
+                  === 'You forgot the `@` sign!'
+                )}
                 name="email"
-              />
-            </IfFieldErrorMessage>
-          </OneForm>
+              >
+                <FieldErrorMessage
+                  name="email"
+                />
+              </IfFieldErrorMessage>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -238,7 +249,7 @@ describe(
             fallbackValue
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen
@@ -260,26 +271,28 @@ describe(
         const fallbackValue = 'All clear.'
 
         render(
-          <OneForm
+          <OneFormProvider
             errorMessages={{
               email: errorMessage,
             }}
           >
-            <IfFieldErrorMessage
-              fallback={fallbackValue}
-              getIsVisible={([
-                errorMessage,
-              ]) => (
-                errorMessage
-                === 'You forgot the `@` sign!'
-              )}
-              name="email"
-            >
-              <FieldErrorMessage
+            <form role="form">
+              <IfFieldErrorMessage
+                fallback={fallbackValue}
+                getIsVisible={([
+                  errorMessage,
+                ]) => (
+                  errorMessage
+                  === 'You forgot the `@` sign!'
+                )}
                 name="email"
-              />
-            </IfFieldErrorMessage>
-          </OneForm>
+              >
+                <FieldErrorMessage
+                  name="email"
+                />
+              </IfFieldErrorMessage>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -288,7 +301,7 @@ describe(
             errorMessage
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen

@@ -22,7 +22,7 @@ import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldValue from './FieldValue.jsx'
 import MaterialUiField from './MaterialUiField.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import SubmitField from './SubmitField.jsx'
 
 export default {
@@ -70,7 +70,7 @@ export const Basic = (
   )
 
   return (
-    <OneForm
+    <OneFormProvider
       {...args}
       onSubmit={formSubmitted}
     >
@@ -112,7 +112,7 @@ export const Basic = (
           </SubmitField>
         </Card>
       </Container>
-    </OneForm>
+    </OneFormProvider>
   )
 }
 

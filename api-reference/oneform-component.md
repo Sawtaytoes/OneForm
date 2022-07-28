@@ -29,7 +29,7 @@ import {
 } from '@oneform/react'
 
 const PassingChildrenExample = () => (
-  <OneForm>
+  <OneFormProvider>
     Text or React components can appear in here.
 
     <label htmlFor="message">
@@ -44,7 +44,7 @@ const PassingChildrenExample = () => (
     <div>
       <FieldErrorMessage name="message" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default PassingChildrenExample
@@ -143,11 +143,11 @@ import {
 } from '@oneform/react'
 
 const ChangeValidationExample = () => (
-  <OneForm hasFieldChangeValidation={false}>
+  <OneFormProvider hasFieldChangeValidation={false}>
     <Field>
       <input name="message" />
     </Field>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default ChangeValidationExample
@@ -198,7 +198,7 @@ const ShowWithCheckboxExample = () => {
   )
 
   return (
-    <OneForm
+    <OneFormProvider
       onChange={formChanged}
     >
       {
@@ -211,7 +211,7 @@ const ShowWithCheckboxExample = () => {
           </div>
         )
       }
-    </OneForm>
+    </OneFormProvider>
   )
 }
 
@@ -260,13 +260,13 @@ const SubmittingFormExample = () => {
   )
 
   return (
-    <OneForm
+    <OneFormProvider
       onSubmit={formSubmitted}
     >
       <Field>
         <input name="message" />
       </Field>
-    </OneForm>
+    </OneFormProvider>
   )
 }
 

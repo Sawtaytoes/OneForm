@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 export default {
   decorators: htmlStyleDecorators,
@@ -11,11 +11,11 @@ export default {
 export const Text = (
   updatedErrorMessages,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
   >
     <FieldErrorMessage name="message" />
-  </OneForm>
+  </OneFormProvider>
 )
 
 Text
@@ -26,7 +26,7 @@ Text
 export const StyledText = (
   updatedErrorMessages,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
   >
     <div
@@ -36,7 +36,7 @@ export const StyledText = (
     >
       <FieldErrorMessage name="message" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 StyledText

@@ -4,7 +4,7 @@ import {
 } from '@testing-library/react'
 
 import IfFieldVisitation from './IfFieldVisitation.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 describe(
   'IfFieldVisitation',
@@ -15,25 +15,23 @@ describe(
         const children = 'Hello World!'
 
         render(
-          <OneForm>
+          <OneFormProvider>
             <IfFieldVisitation
               name="email"
             >
               {children}
             </IfFieldVisitation>
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
           screen
-          .getByRole(
-            'form'
+          .queryByText(
+            'Hello World!'
           )
-          .innerHTML
         )
-        .toBe(
-          ''
-        )
+        .not
+        .toBeInTheDocument()
       },
     )
 
@@ -43,7 +41,7 @@ describe(
         const children = 'Hello World!'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: 'john.smith@test.com',
             }}
@@ -53,7 +51,7 @@ describe(
             >
               {children}
             </IfFieldVisitation>
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
@@ -62,7 +60,7 @@ describe(
             'Hello World!'
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
       },
     )
 
@@ -73,14 +71,14 @@ describe(
         const fallbackValue = 'Goodbye World!'
 
         render(
-          <OneForm>
+          <OneFormProvider>
             <IfFieldVisitation
               fallback={fallbackValue}
               name="email"
             >
               {children}
             </IfFieldVisitation>
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
@@ -89,18 +87,7 @@ describe(
             fallbackValue
           )
         )
-        .toBeTruthy()
-
-        expect(
-          screen
-          .getByRole(
-            'form'
-          )
-          .innerHTML
-        )
-        .toBe(
-          fallbackValue
-        )
+        .toBeVisible()
       },
     )
 
@@ -111,7 +98,7 @@ describe(
         const fallbackValue = 'Goodbye World!'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: 'john.smith@test.com',
             }}
@@ -122,7 +109,7 @@ describe(
             >
               {children}
             </IfFieldVisitation>
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
@@ -131,18 +118,7 @@ describe(
             children
           )
         )
-        .toBeTruthy()
-
-        expect(
-          screen
-          .getByRole(
-            'form'
-          )
-          .innerHTML
-        )
-        .toBe(
-          children
-        )
+        .toBeVisible()
       },
     )
   }

@@ -36,11 +36,11 @@ With OneForm, you don't need to worry about forms ever again. Not because it's t
 Here's a simple example of OneForm in action:
 
 ```jsx
-<OneForm>
+<OneFormProvider>
   <Field>
     <input name="message" />
   </Field>
-</OneForm>
+</OneFormProvider>
 ```
 
 No magic, it _just works_. Don't believe me? Here's a realistic example:
@@ -54,7 +54,7 @@ import {
   OneForm,
 } from '@oneform/react'
 
-<OneForm
+<OneFormProvider
   onSubmit={({
     registeredValues,
   }) => (
@@ -74,7 +74,7 @@ import {
       Submit
     </button>
   </div>
-</OneForm>
+</OneFormProvider>
 ```
 
 **OneForm handles everything for you.** Values, errors, messages, submit button disabling, `onChange` handlers, etc. Unlike other form libraries, you don't have to pass any special props to `Field`, just give it an input, and you're ready to go!

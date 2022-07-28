@@ -1,7 +1,7 @@
 describe(
   'OneForm ValueStateChange',
   () => {
-    const storybookPath = 'forms-oneform--value-state-change'
+    const storybookPath = 'forms-oneformprovider--value-state-change'
 
     it(
       'Has no initial values.',

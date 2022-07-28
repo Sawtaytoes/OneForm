@@ -1,7 +1,7 @@
 describe(
   'OneForm InitialRadioValue',
   () => {
-    const storybookPath = 'forms-oneform--initial-radio-value'
+    const storybookPath = 'forms-oneformprovider--initial-radio-value'
 
     it(
       'Has initial value.',

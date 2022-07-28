@@ -4,7 +4,7 @@ description: By passing group validations.
 
 # Validate groups of fields
 
-Group validations utilize the `groupValidation` prop on `<OneForm />`. It's not often you'll need to validate groups of fields, but when you do, OneForm provides a powerful API.
+Group validations utilize the `groupValidation` prop on `<OneFormProvider />`. It's not often you'll need to validate groups of fields, but when you do, OneForm provides a powerful API.
 
 ## Validate field groups
 
@@ -103,9 +103,9 @@ import {
 import FieldsComponentExample from './FieldsComponentExample.jsx'
 
 const FieldsParentComponentExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <FieldsComponentExample />
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default FieldsParentComponentExample

@@ -52,7 +52,7 @@ import {
 } from '@oneform/react'
 
 const ConditionalFieldErrorMessageExample = () => (
-  <OneForm
+  <OneFormProvider
     errorMessages={{
       firstName: ['You need a name'],
     }}
@@ -64,7 +64,7 @@ const ConditionalFieldErrorMessageExample = () => (
         </small>
       </IfFieldErrorMessage >
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default ConditionalFieldErrorMessageExample 

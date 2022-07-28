@@ -8,7 +8,7 @@ There are a few ways of setting up error messages under a group of fields, the c
 
 ### Displaying errors anywhere by passing them in
 
-The simplest way is passing `errorMessages` into `<OneForm />` on a field that'll only be used for displaying error messages:
+The simplest way is passing `errorMessages` into `<OneFormProvider />` on a field that'll only be used for displaying error messages:
 
 ```jsx
 import {
@@ -23,11 +23,11 @@ const errorMessages = {
 }
 
 const SingleErrorExample = () => (
-  <OneForm
+  <OneFormProvider
     errorMessages={errorMessages}
   >
     <FieldErrorMessage name="birthdayError" />
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default SingleErrorExample
@@ -80,7 +80,7 @@ const groupValidations = [
 ]
 
 const GroupFieldErrorExample = () => (
-  <OneForm
+  <OneFormProvider
     groupValidations={groupValidations}
   >
     <div>
@@ -96,7 +96,7 @@ const GroupFieldErrorExample = () => (
     <div>
       <FieldErrorMessage name="dateError" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default GroupFieldErrorExample

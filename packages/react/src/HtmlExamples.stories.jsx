@@ -12,7 +12,7 @@ import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldGroup from './FieldGroup.jsx'
 import FieldValue from './FieldValue.jsx'
 import htmlStyleDecorators from '././htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import SubmitField from './SubmitField.jsx'
 
 export default {
@@ -71,7 +71,7 @@ export const Registration = (
   )
 
   return (
-    <OneForm
+    <OneFormProvider
       {...args}
       onSubmit={formSubmitted}
     >
@@ -146,7 +146,7 @@ export const Registration = (
           </pre>
         )
       }
-    </OneForm>
+    </OneFormProvider>
   )
 }
 
@@ -244,7 +244,7 @@ export const ProductSelection = (
   )
 
   return (
-    <OneForm
+    <OneFormProvider
       {...args}
       onSubmit={formSubmitted}
     >
@@ -411,7 +411,7 @@ export const ProductSelection = (
           </pre>
         )
       }
-    </OneForm>
+    </OneFormProvider>
   )
 }
 

@@ -1,7 +1,7 @@
 describe(
   'OneForm InitialMultiSelect',
   () => {
-    const storybookPath = 'forms-oneform--initial-multi-select'
+    const storybookPath = 'forms-oneformprovider--initial-multi-select'
 
     it(
       'Has the initial values set.',

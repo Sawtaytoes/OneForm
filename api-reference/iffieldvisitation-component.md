@@ -50,7 +50,7 @@ import {
 } from '@oneform/react'
 
 const ConditionalFieldVisitationExample = () => (
-  <OneForm
+  <OneFormProvider
     values={{
       firstName: '',
     }}
@@ -60,7 +60,7 @@ const ConditionalFieldVisitationExample = () => (
         That's a nice name.
       </IfFieldVisitation>
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default ConditionalFieldVisitationExample 

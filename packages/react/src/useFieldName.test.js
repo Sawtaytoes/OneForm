@@ -5,7 +5,7 @@ import {
 } from '@testing-library/react-hooks'
 
 import FieldGroup from './FieldGroup.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import useFieldName, {
   errorMessages,
 } from './useFieldName.js'
@@ -27,7 +27,7 @@ describe(
               initialProps: {
                 name: fieldName,
               },
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )
@@ -54,13 +54,13 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm>
+          <OneFormProvider>
             <FieldGroup
               {...fieldGroupProps}
             >
               {children}
             </FieldGroup>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const fieldName = 'zipCode'
@@ -118,7 +118,7 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm>
+          <OneFormProvider>
             <FieldGroup
               {...fieldGroup1Props}
             >
@@ -128,7 +128,7 @@ describe(
                 {children}
               </FieldGroup>
             </FieldGroup>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const fieldName = 'zipCode'
@@ -192,7 +192,7 @@ describe(
               initialProps: {
                 name: 0,
               },
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )
@@ -222,7 +222,7 @@ describe(
             useFieldName,
             {
               initialProps: 'email',
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )
@@ -251,7 +251,7 @@ describe(
           renderHook(
             useFieldName,
             {
-              wrapper: OneForm,
+              wrapper: OneFormProvider,
             },
           )
         )

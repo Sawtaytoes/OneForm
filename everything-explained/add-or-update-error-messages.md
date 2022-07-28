@@ -19,7 +19,7 @@ const updatedErrorMessages = {
 }
 
 const UpdatingErrorMessagesExample = () => (
-  <OneForm
+  <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
   >
     <div>
@@ -29,7 +29,7 @@ const UpdatingErrorMessagesExample = () => (
     <div>
       <FieldErrorMessage name="email" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default UpdatingErrorMessagesExample

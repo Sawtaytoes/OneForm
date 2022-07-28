@@ -9,11 +9,11 @@ import {
 } from '@oneform/react'
 
 const BasicExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <Field>
       <input name="message" />
     </Field>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default BasicExample

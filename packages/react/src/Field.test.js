@@ -5,7 +5,7 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import Field from './Field.jsx'
 
 describe(
@@ -21,13 +21,13 @@ describe(
         }
 
         render(
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <input
                 {...props}
               />
             </Field>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const domElement = (
@@ -61,13 +61,13 @@ describe(
       'contains the given value when changed',
       () => {
         render(
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <input
                 name="email"
               />
             </Field>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const domElement = (
@@ -99,13 +99,13 @@ describe(
       'contains the last given value',
       () => {
         render(
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <input
                 name="email"
               />
             </Field>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const domElement = (
@@ -146,14 +146,14 @@ describe(
         )
 
         render(
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <input
                 name="email"
                 onChange={valueChanged}
               />
             </Field>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const domElement = (
@@ -208,13 +208,13 @@ describe(
         )
 
         render(
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <NonStandardInput
                 name="email"
               />
             </Field>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const domElement = (
@@ -272,13 +272,13 @@ describe(
         )
 
         render(
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <NonStandardInput
                 name="email"
               />
             </Field>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const domElement = (
@@ -338,13 +338,13 @@ describe(
         )
 
         render(
-          <OneForm>
+          <OneFormProvider>
             <Field>
               <NonStandardInput
                 name="email"
               />
             </Field>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const domElement = (

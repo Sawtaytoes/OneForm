@@ -1,7 +1,7 @@
 describe(
   'OneForm Validation',
   () => {
-    const storybookPath = 'forms-oneform--validation'
+    const storybookPath = 'forms-oneformprovider--validation'
 
     it(
       'Has no initial values.',

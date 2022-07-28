@@ -5,7 +5,7 @@ import {
 
 import FieldValue from './FieldValue.jsx'
 import IfFieldValue from './IfFieldValue.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 describe(
   'IfFieldValue',
@@ -16,20 +16,22 @@ describe(
         const emailValue = ''
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
           >
-            <IfFieldValue
-              name="email"
-            >
-              Email:
-              <FieldValue
+            <form role="form">
+              <IfFieldValue
                 name="email"
-              />
-            </IfFieldValue>
-          </OneForm>
+              >
+                Email:
+                <FieldValue
+                  name="email"
+                />
+              </IfFieldValue>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -51,7 +53,7 @@ describe(
         const emailValue = 'john.smith@test.com'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
@@ -63,7 +65,7 @@ describe(
                 name="email"
               />
             </IfFieldValue>
-          </OneForm>
+          </OneFormProvider>
         )
 
         expect(
@@ -72,7 +74,7 @@ describe(
             emailValue
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
       },
     )
 
@@ -83,20 +85,22 @@ describe(
         const fallbackValue = 'your.email@test.com'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
           >
-            <IfFieldValue
-              fallback={fallbackValue}
-              name="email"
-            >
-              <FieldValue
+            <form role="form">
+              <IfFieldValue
+                fallback={fallbackValue}
                 name="email"
-              />
-            </IfFieldValue>
-          </OneForm>
+              >
+                <FieldValue
+                  name="email"
+                />
+              </IfFieldValue>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -105,7 +109,7 @@ describe(
             fallbackValue
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen
@@ -127,20 +131,22 @@ describe(
         const fallbackValue = 'your.email@test.com'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
           >
-            <IfFieldValue
-              fallback={fallbackValue}
-              name="email"
-            >
-              <FieldValue
+            <form role="form">
+              <IfFieldValue
+                fallback={fallbackValue}
                 name="email"
-              />
-            </IfFieldValue>
-          </OneForm>
+              >
+                <FieldValue
+                  name="email"
+                />
+              </IfFieldValue>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -149,7 +155,7 @@ describe(
             emailValue
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen
@@ -171,25 +177,27 @@ describe(
         const emailValue = 'john.smith'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
           >
-            <IfFieldValue
-              getIsVisible={(
-                value,
-              ) => (
-                value
-                === 'john.smith@test.com'
-              )}
-              name="email"
-            >
-              <FieldValue
+            <form role="form">
+              <IfFieldValue
+                getIsVisible={(
+                  value,
+                ) => (
+                  value
+                  === 'john.smith@test.com'
+                )}
                 name="email"
-              />
-            </IfFieldValue>
-          </OneForm>
+              >
+                <FieldValue
+                  name="email"
+                />
+              </IfFieldValue>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -212,26 +220,28 @@ describe(
         const fallbackValue = 'your.email@test.com'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
           >
-            <IfFieldValue
-              fallback={fallbackValue}
-              getIsVisible={(
-                value,
-              ) => (
-                value
-                === 'john.smith@test.com'
-              )}
-              name="email"
-            >
-              <FieldValue
+            <form role="form">
+              <IfFieldValue
+                fallback={fallbackValue}
+                getIsVisible={(
+                  value,
+                ) => (
+                  value
+                  === 'john.smith@test.com'
+                )}
                 name="email"
-              />
-            </IfFieldValue>
-          </OneForm>
+              >
+                <FieldValue
+                  name="email"
+                />
+              </IfFieldValue>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -240,7 +250,7 @@ describe(
             fallbackValue
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen
@@ -262,26 +272,28 @@ describe(
         const fallbackValue = 'your.email@test.com'
 
         render(
-          <OneForm
+          <OneFormProvider
             values={{
               email: emailValue,
             }}
           >
-            <IfFieldValue
-              fallback={fallbackValue}
-              getIsVisible={(
-                value,
-              ) => (
-                value
-                === 'john.smith@test.com'
-              )}
-              name="email"
-            >
-              <FieldValue
+            <form role="form">
+              <IfFieldValue
+                fallback={fallbackValue}
+                getIsVisible={(
+                  value,
+                ) => (
+                  value
+                  === 'john.smith@test.com'
+                )}
                 name="email"
-              />
-            </IfFieldValue>
-          </OneForm>
+              >
+                <FieldValue
+                  name="email"
+                />
+              </IfFieldValue>
+            </form>
+          </OneFormProvider>
         )
 
         expect(
@@ -290,7 +302,7 @@ describe(
             emailValue
           )
         )
-        .toBeTruthy()
+        .toBeVisible()
 
         expect(
           screen

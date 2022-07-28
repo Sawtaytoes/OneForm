@@ -16,7 +16,7 @@ import {
 } from "@oneform/react";
 
 const FieldGroupsExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <FieldGroup
       id="b27b"
       name="addressId"
@@ -42,7 +42,7 @@ const FieldGroupsExample = () => (
         <input name="address" />
       </Field>
     </FieldGroup>
-  </OneForm>
+  </OneFormProvider>
 );
 
 export default FieldGroupsExample;
@@ -74,7 +74,7 @@ import {
 } from '@oneform/react'
 
 const DeeplyNestedFieldGroupsExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <FieldGroup
       id="97ef"
       name="addressId"
@@ -105,7 +105,7 @@ const DeeplyNestedFieldGroupsExample = () => (
         </Field>
       </FieldGroup>
     </FieldGroup>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default DeeplyNestedFieldGroupsExample
@@ -138,7 +138,7 @@ import {
 } from '@oneform/react'
 
 const NotRecommendedExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <Field>
       <input name="name/addressId:97ef" />
     </Field>
@@ -146,7 +146,7 @@ const NotRecommendedExample = () => (
     <Field>
       <input name="address/addressId:97ef" />
     </Field>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default NotRecommendedExample
@@ -198,7 +198,7 @@ const groupValidations = [
 ]
 
 const GroupValidationFormExample = () => (
-  <OneForm
+  <OneFormProvider
     groupValidations={groupValidations}
   >
     <FieldGroup
@@ -218,7 +218,7 @@ const GroupValidationFormExample = () => (
         <input name="phoneNumber" />
       </Field>
     </FieldGroup>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default GroupValidationFormExample

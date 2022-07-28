@@ -4,7 +4,7 @@ import {
 } from '@storybook/addon-actions'
 
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import SubmitField from './SubmitField.jsx'
 
 export default {
@@ -24,13 +24,13 @@ export default {
 export const Submission = (
   args,
 ) => (
-  <OneForm {...args}>
+  <OneFormProvider {...args}>
     <SubmitField>
       <button type="submit">
         Submit
       </button>
     </SubmitField>
-  </OneForm>
+  </OneFormProvider>
 )
 
 Submission

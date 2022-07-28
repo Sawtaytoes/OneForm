@@ -2,7 +2,7 @@
 import FieldValue from './FieldValue.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import IfFieldValue from './IfFieldValue.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 export default {
   decorators: htmlStyleDecorators,
@@ -12,13 +12,13 @@ export default {
 export const Default = (
   updatedValues,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedValues={updatedValues}
   >
     <IfFieldValue name="message">
       Field: <FieldValue name="message" />
     </IfFieldValue>
-  </OneForm>
+  </OneFormProvider>
 )
 
 Default
@@ -29,7 +29,7 @@ Default
 export const Fallback = (
   updatedValues,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedValues={updatedValues}
   >
     <IfFieldValue
@@ -42,7 +42,7 @@ export const Fallback = (
     >
       Field: <FieldValue name="message" />
     </IfFieldValue>
-  </OneForm>
+  </OneFormProvider>
 )
 
 Fallback
@@ -53,7 +53,7 @@ Fallback
 export const CustomVisibility = (
   updatedValues,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedValues={updatedValues}
   >
     <IfFieldValue
@@ -71,7 +71,7 @@ export const CustomVisibility = (
     >
       Field: <FieldValue name="message" />
     </IfFieldValue>
-  </OneForm>
+  </OneFormProvider>
 )
 
 CustomVisibility

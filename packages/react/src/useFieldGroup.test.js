@@ -4,7 +4,7 @@ import {
 } from '@testing-library/react-hooks'
 
 import FieldGroup from './FieldGroup.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 import useFieldGroup from './useFieldGroup.js'
 
 describe(
@@ -28,7 +28,7 @@ describe(
                 fieldGroupProps
               ),
               wrapper: (
-                OneForm
+                OneFormProvider
               ),
             },
           )
@@ -56,13 +56,13 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm>
+          <OneFormProvider>
             <FieldGroup
               {...fieldGroup1Props}
             >
               {children}
             </FieldGroup>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const fieldGroup2Props = {
@@ -109,13 +109,13 @@ describe(
         const Wrapper = ({
           children,
         }) => (
-          <OneForm>
+          <OneFormProvider>
             <FieldGroup
               {...fieldGroup1Props}
             >
               {children}
             </FieldGroup>
-          </OneForm>
+          </OneFormProvider>
         )
 
         const {

@@ -23,7 +23,7 @@ const errorMessages = {
 }
 
 const ErrorMessagesExample = () => (
-  <OneForm
+  <OneFormProvider
     errorMessages={errorMessages}
   >
     <div>
@@ -33,7 +33,7 @@ const ErrorMessagesExample = () => (
     <div>
       <FieldErrorMessage name="email" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default ErrorMessagesExample
@@ -108,9 +108,9 @@ const errorMessages = {
 };
 
 const CustomErrorMessagesExample = () => (
-  <OneForm errorMessages={errorMessages}>
+  <OneFormProvider errorMessages={errorMessages}>
     <FieldErrorMessagesExample name="email" />
-  </OneForm>
+  </OneFormProvider>
 );
 
 export default CustomErrorMessagesExample;

@@ -118,9 +118,9 @@ const values = {
 }
 
 const NotificationsContainerExample = () => (
-  <OneForm values={values}>
+  <OneFormProvider values={values}>
     <NotificationsExample />
-  </OneForm>
+  </OneFormProvider>
 );
 
 export default NotificationsContainerExample;

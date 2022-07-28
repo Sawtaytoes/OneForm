@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import FieldValue from './FieldValue.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
+import OneFormProvider from './OneFormProvider.jsx'
 
 export default {
   decorators: htmlStyleDecorators,
@@ -11,11 +11,11 @@ export default {
 export const Text = (
   updatedValues,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedValues={updatedValues}
   >
     <FieldValue name="message" />
-  </OneForm>
+  </OneFormProvider>
 )
 
 Text
@@ -26,7 +26,7 @@ Text
 export const StyledText = (
   updatedValues,
 ) => (
-  <OneForm
+  <OneFormProvider
     updatedValues={updatedValues}
   >
     <div
@@ -36,7 +36,7 @@ export const StyledText = (
     >
       <FieldValue name="message" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 StyledText

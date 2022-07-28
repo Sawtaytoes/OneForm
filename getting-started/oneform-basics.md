@@ -9,11 +9,11 @@ import {
 } from '@oneform/react'
 
 const BasicExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <Field>
       <input name="firstName" />
     </Field>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default BasicExample
@@ -33,7 +33,7 @@ import {
 } from '@oneform/react'
 
 const UpdatingValueExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <div>
       <Field>
         <input name="firstName" />
@@ -43,7 +43,7 @@ const UpdatingValueExample = () => (
     <div>
       <FieldValue name="firstName" />
     </div>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default UpdatingValueExample 

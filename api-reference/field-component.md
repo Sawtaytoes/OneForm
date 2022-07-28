@@ -21,11 +21,11 @@ import {
 } from '@oneform/react'
 
 const FieldExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <Field>
       <input name="email" />
     </Field>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default FieldExample
@@ -48,7 +48,7 @@ import {
 } from '@oneform/react'
 
 const MaterialUiFieldExample = () => (
-  <OneForm>
+  <OneFormProvider>
     <MaterialUiField>
       <TextField
         helperText={
@@ -58,7 +58,7 @@ const MaterialUiFieldExample = () => (
         name="message"
       />
     </MaterialUiField>
-  </OneForm>
+  </OneFormProvider>
 )
 
 export default MaterialUiFieldExample
