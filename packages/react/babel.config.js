@@ -3,6 +3,9 @@ const babelConfig = {
     development: {
       presets: [
         [
+          '@babel/preset-typescript',
+        ],
+        [
           '@babel/preset-env',
           {
             modules: false,
@@ -22,6 +25,9 @@ const babelConfig = {
     production: {
       presets: [
         [
+          '@babel/preset-typescript',
+        ],
+        [
           '@babel/preset-env',
           {
             modules: false,
@@ -40,6 +46,9 @@ const babelConfig = {
 
     test: {
       presets: [
+        [
+          '@babel/preset-typescript',
+        ],
         [
           '@babel/preset-env',
           {
