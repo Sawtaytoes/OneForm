@@ -3,9 +3,11 @@ import {
   useMemo,
 } from 'react'
 
-import createObservable from './createObservable'
+import {
+  createObservable,
+} from './createObservable'
 
-const useFormValidationState = () => {
+export const useFormValidationState = () => {
   const formValidationStateObservable = (
     useMemo(
       () => (
@@ -74,5 +76,3 @@ const useFormValidationState = () => {
     subscribeToFormValidationState,
   }
 }
-
-export default useFormValidationState

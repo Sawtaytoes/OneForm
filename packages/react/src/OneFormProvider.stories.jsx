@@ -18,7 +18,9 @@ import Form from './Form.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneFormProvider from './OneFormProvider.jsx'
 import SubmitField from './SubmitField.jsx'
-import useFieldValue from './useFieldValue.js'
+import {
+  useFieldValue,
+} from './useFieldValue'
 
 export default {
   args: {

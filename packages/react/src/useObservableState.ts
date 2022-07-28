@@ -3,13 +3,54 @@ import {
   useRef,
 } from 'react'
 
-import createObservable from './createObservable'
+import {
+  createObservable,
+  Observable,
+  Subscriber,
+  Unsubscriber,
+} from './createObservable'
+
+export type ObservableIdentifier = (
+  | string
+  | symbol
+)
+
+export type ObservableState<
+  ObservableValue
+> = {
+  publishValue: (
+    identifier: ObservableIdentifier,
+    value: ObservableValue,
+  ) => void,
+  subscribeToValue: ({
+    identifier,
+    subscriber,
+  }: {
+    identifier: ObservableIdentifier,
+    subscriber: (
+      Subscriber<
+        ObservableValue
+      >
+    ),
+  }) => Unsubscriber,
+}
 
 const initialObservables = {}
 
-const useObservableState = () => {
+export const useObservableState = <
+  ObservableValue
+>() => {
   const observablesRef = (
-    useRef(
+    useRef<(
+      Record<
+        ObservableIdentifier,
+        (
+          Observable<
+            ObservableValue
+          >
+        )
+      >
+    )>(
       initialObservables
     )
   )
@@ -17,7 +58,7 @@ const useObservableState = () => {
   const getObservable = (
     useCallback(
       (
-        identifier,
+        identifier: ObservableIdentifier,
       ) => {
         if (
           !(
@@ -33,7 +74,9 @@ const useObservableState = () => {
               .current
             ),
             [identifier]: (
-              createObservable()
+              createObservable<
+                ObservableValue
+              >()
             ),
           }
         }
@@ -48,7 +91,11 @@ const useObservableState = () => {
     )
   )
 
-  const publishValue = (
+  const publishValue: (
+    ObservableState<
+      ObservableValue
+    >["publishValue"]
+  ) = (
     useCallback(
       (
         identifier,
@@ -67,7 +114,11 @@ const useObservableState = () => {
     )
   )
 
-  const subscribeToValue = (
+  const subscribeToValue: (
+    ObservableState<
+      ObservableValue
+    >["subscribeToValue"]
+  ) = (
     useCallback(
       ({
         identifier,
@@ -91,5 +142,3 @@ const useObservableState = () => {
     subscribeToValue,
   }
 }
-
-export default useObservableState

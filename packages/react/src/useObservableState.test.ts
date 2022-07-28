@@ -3,7 +3,13 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useObservableState from './useObservableState.js'
+import {
+  Unsubscriber,
+} from './createObservable'
+
+import {
+  useObservableState,
+} from './useObservableState'
 
 describe(
   'useObservableState',
@@ -15,7 +21,9 @@ describe(
           result,
         } = (
           renderHook(
-            useObservableState,
+            useObservableState<
+              string
+            >
           )
         )
 
@@ -24,54 +32,37 @@ describe(
           .fn()
         )
 
-        const unsubscribe1Ref = {
-          current: null,
-        }
-
-        const unsubscribe2Ref = {
-          current: null,
-        }
-
-        act(() => {
-          unsubscribe1Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
-        act(() => {
-          unsubscribe2Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
         const value = 'John Smith'
 
         act(() => {
+          const unsubscribe1 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+
+          const unsubscribe2 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+
           result
           .current
           .publishValue(
             'name',
             value,
           )
+
+          unsubscribe1()
+          unsubscribe2()
         })
-
-        unsubscribe1Ref
-        .current()
-
-        unsubscribe2Ref
-        .current()
 
         expect(
           subscriber
@@ -105,7 +96,9 @@ describe(
           result,
         } = (
           renderHook(
-            useObservableState,
+            useObservableState<
+              string
+            >
           )
         )
 
@@ -114,66 +107,46 @@ describe(
           .fn()
         )
 
-        const unsubscribe1Ref = {
-          current: null,
-        }
-
-        const unsubscribe2Ref = {
-          current: null,
-        }
-
-        act(() => {
-          unsubscribe1Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
-        act(() => {
-          unsubscribe2Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
         const value1 = 'John Smith'
+        const value2 = 'Jane of the Jungle'
 
         act(() => {
+          const unsubscribe1 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+
+          const unsubscribe2 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+
           result
           .current
           .publishValue(
             'name',
             value1,
           )
-        })
 
-        const value2 = 'Jane of the Jungle'
-
-        act(() => {
           result
           .current
           .publishValue(
             'name',
             value2,
           )
+
+          unsubscribe1()
+          unsubscribe2()
         })
-
-        unsubscribe1Ref
-        .current()
-
-        unsubscribe2Ref
-        .current()
-
+        
         expect(
           subscriber
         )
@@ -216,13 +189,16 @@ describe(
     )
 
     test(
-      'allows publishing undefined values to subscribers',
+      'allows publishing null values to subscribers',
       () => {
         const {
           result,
         } = (
           renderHook(
-            useObservableState,
+            useObservableState<
+              | string
+              | null
+            >
           )
         )
 
@@ -231,17 +207,11 @@ describe(
           .fn()
         )
 
-        const unsubscribe1Ref = {
-          current: null,
-        }
-
-        const unsubscribe2Ref = {
-          current: null,
-        }
+        const emailValue = 'john.smith@test.com'
+        const nameValue = 'John Smith'
 
         act(() => {
-          unsubscribe1Ref
-          .current = (
+          const unsubscribe1 = (
             result
             .current
             .subscribeToValue({
@@ -249,11 +219,8 @@ describe(
               subscriber,
             })
           )
-        })
 
-        act(() => {
-          unsubscribe2Ref
-          .current = (
+          const unsubscribe2 = (
             result
             .current
             .subscribeToValue({
@@ -261,32 +228,22 @@ describe(
               subscriber,
             })
           )
-        })
 
-        const emailValue = 'john.smith@test.com'
-
-        act(() => {
           result
           .current
           .publishValue(
             'email',
             emailValue,
           )
-        })
 
-        const nameValue = 'John Smith'
-
-        act(() => {
           result
           .current
           .publishValue(
             'name',
             nameValue,
           )
-        })
 
-        act(() => {
-          [
+          ;[
             'email',
             'name',
           ]
@@ -297,15 +254,13 @@ describe(
             .current
             .publishValue(
               identifier,
+              null,
             )
           })
+          
+          unsubscribe1()
+          unsubscribe2()
         })
-
-        unsubscribe1Ref
-        .current()
-
-        unsubscribe2Ref
-        .current()
 
         expect(
           subscriber
@@ -335,7 +290,7 @@ describe(
         )
         .toHaveBeenNthCalledWith(
           3,
-          undefined,
+          null,
         )
 
         expect(
@@ -343,7 +298,7 @@ describe(
         )
         .toHaveBeenNthCalledWith(
           4,
-          undefined,
+          null,
         )
       }
     )

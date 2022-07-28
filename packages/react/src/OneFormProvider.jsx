@@ -8,7 +8,9 @@ import {
 } from 'react'
 
 import ErrorMessagesContext from './ErrorMessagesContext.js'
-import FieldGroupContext from './FieldGroupContext.js'
+import {
+  FieldGroupContext,
+} from './FieldGroupContext'
 import flattenSegmentedArrayValues from './flattenSegmentedArrayValues.js'
 import flattenSegmentedFunctionObjectValues from './flattenSegmentedFunctionObjectValues.js'
 import flattenSegmentedFunctionPromiseValues from './flattenSegmentedFunctionPromiseValues.js'
@@ -19,10 +21,14 @@ import SubformContext from './SubformContext.js'
 import SubmissionContext from './SubmissionContext.js'
 import useErrorMessagesState from './useErrorMessagesState.js'
 import useFormChangeState, {
-  formChangeStates,
-} from './useFormChangeState.js'
-import useFormValidationState from './useFormValidationState.js'
-import useFormVisitationState from './useFormVisitationState.js'
+  FormChangeState,
+} from './useFormChangeState'
+import {
+  useFormValidationState,
+} from './useFormValidationState'
+import {
+  useFormVisitationState,
+} from './useFormVisitationState'
 import useGroupValidationsState from './useGroupValidationsState.js'
 import useRegistrationState from './useRegistrationState.js'
 import useSubformState from './useSubformState.js'
@@ -32,9 +38,13 @@ import useValidationType, {
   validationTypes,
 } from './useValidationType.js'
 import useValidationsState from './useValidationsState.js'
-import useValuesState from './useValuesState.js'
+import {
+  useValuesState,
+} from './useValuesState'
 import useVisitationState from './useVisitationState.js'
-import ValuesContext from './ValuesContext.js'
+import {
+  ValuesContext,
+} from './ValuesContext'
 import VisitationContext from './VisitationContext.js'
 
 const propTypes = {
@@ -337,7 +347,7 @@ const OneFormProvider = ({
         values,
       }) => {
         setFormChangeState(
-          formChangeStates
+          FormChangeState
           .staged
         )
 
@@ -712,7 +722,7 @@ const OneFormProvider = ({
         )
 
         setFormChangeState(
-          formChangeStates
+          FormChangeState
           .committed
         )
 

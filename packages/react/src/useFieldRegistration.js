@@ -4,7 +4,9 @@ import {
 } from 'react'
 
 import RegistrationContext from './RegistrationContext.js'
-import useFieldName from './useFieldName.js'
+import {
+  useFieldName,
+} from './useFieldName'
 
 const useFieldRegistration = ({
   name,

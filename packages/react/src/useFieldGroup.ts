@@ -3,12 +3,17 @@ import {
   useMemo,
 } from 'react'
 
-import FieldGroupContext from './FieldGroupContext'
+import {
+  FieldGroupContext,
+  FieldGroupType,
+} from './FieldGroupContext'
 
-const useFieldGroup = ({
+export const useFieldGroup = ({
   id,
   name,
-}) => {
+}: (
+  FieldGroupType
+)) => {
   const {
     fieldGroups: parentFieldGroups,
   } = (
@@ -38,5 +43,3 @@ const useFieldGroup = ({
     fieldGroups,
   }
 }
-
-export default useFieldGroup

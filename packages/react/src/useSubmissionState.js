@@ -5,7 +5,9 @@ import {
   useRef,
 } from 'react'
 
-import createObservable from './createObservable'
+import {
+  createObservable,
+} from './createObservable'
 
 export const submissionStates = {
   failedSubmission: 'failedSubmission',

@@ -3,7 +3,16 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useValuesState from './useValuesState.js'
+import {
+  useValuesState,
+} from './useValuesState'
+
+type ValueRef = {
+  current: (
+    | string
+    | undefined
+  )
+}
 
 describe(
   'useValuesState',
@@ -15,7 +24,9 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            useValuesState<
+              string
+            >
           )
         )
 
@@ -24,54 +35,37 @@ describe(
           .fn()
         )
 
-        const unsubscribe1Ref = {
-          current: null,
-        }
-
-        const unsubscribe2Ref = {
-          current: null,
-        }
-
-        act(() => {
-          unsubscribe1Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
-        act(() => {
-          unsubscribe2Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
         const value = 'John Smith'
 
         act(() => {
+          const unsubscribe1 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+          
+          const unsubscribe2 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+
           result
           .current
           .setValue(
             'name',
             value,
           )
+          
+          unsubscribe1()
+          unsubscribe2()
         })
-
-        unsubscribe1Ref
-        .current()
-
-        unsubscribe2Ref
-        .current()
 
         expect(
           subscriber
@@ -105,7 +99,9 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            useValuesState<
+              string
+            >
           )
         )
 
@@ -114,65 +110,45 @@ describe(
           .fn()
         )
 
-        const unsubscribe1Ref = {
-          current: null,
-        }
-
-        const unsubscribe2Ref = {
-          current: null,
-        }
-
-        act(() => {
-          unsubscribe1Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
-        act(() => {
-          unsubscribe2Ref
-          .current = (
-            result
-            .current
-            .subscribeToValue({
-              identifier: 'name',
-              subscriber,
-            })
-          )
-        })
-
         const value1 = 'John Smith'
+        const value2 = 'Jane of the Jungle'
 
         act(() => {
+          const unsubscribe1 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+          
+          const unsubscribe2 = (
+            result
+            .current
+            .subscribeToValue({
+              identifier: 'name',
+              subscriber,
+            })
+          )
+
           result
           .current
           .setValue(
             'name',
             value1,
           )
-        })
 
-        const value2 = 'Jane of the Jungle'
-
-        act(() => {
           result
           .current
           .setValue(
             'name',
             value2,
           )
+
+          unsubscribe1()
+          unsubscribe2()
         })
-
-        unsubscribe1Ref
-        .current()
-
-        unsubscribe2Ref
-        .current()
 
         expect(
           subscriber
@@ -222,7 +198,9 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            useValuesState<
+              string
+            >
           )
         )
 
@@ -231,13 +209,11 @@ describe(
           .fn()
         )
 
-        const unsubscribeRef = {
-          current: null,
-        }
+        const emailValue = 'john.smith@test.com'
+        const nameValue = 'John Smith'
 
         act(() => {
-          unsubscribeRef
-          .current = (
+          const unsubscribe = (
             result
             .current
             .subscribeToValue({
@@ -245,32 +221,23 @@ describe(
               subscriber,
             })
           )
-        })
-
-        const nameValue = 'John Smith'
-
-        act(() => {
+          
           result
           .current
           .setValue(
             'name',
             nameValue,
           )
-        })
 
-        const emailValue = 'john.smith@test.com'
-
-        act(() => {
           result
           .current
           .setValue(
             'email',
             emailValue,
           )
-        })
 
-        unsubscribeRef
-        .current()
+          unsubscribe()
+        })
 
         expect(
           subscriber
@@ -296,7 +263,9 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            useValuesState<
+              string
+            >
           )
         )
 
@@ -311,8 +280,10 @@ describe(
           )
         })
 
-        const valueRef = {
-          current: null,
+        const valueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {
@@ -343,12 +314,16 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            useValuesState<
+              string
+            >
           )
         )
 
-        const valueRef = {
-          current: null,
+        const valueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {
@@ -382,7 +357,11 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            (
+              useValuesState<
+                string
+              >
+            ),
             {
               initialProps: {
                 onChange: (
@@ -395,6 +374,7 @@ describe(
 
         const identifier = 'email'
         const value1 = 'jane.of.the.jungle@test.com'
+        const value2 = 'john.smith@test.com'
 
         act(() => {
           result
@@ -403,11 +383,7 @@ describe(
             identifier,
             value1,
           )
-        })
-
-        const value2 = 'john.smith@test.com'
-
-        act(() => {
+          
           result
           .current
           .setValue(
@@ -465,12 +441,21 @@ describe(
           .fn()
         )
 
+        const changeCallback2 = (
+          jest
+          .fn()
+        )
+
         const {
           rerender,
           result,
         } = (
           renderHook(
-            useValuesState,
+            (
+              useValuesState<
+                string
+              >
+            ),
             {
               initialProps: {
                 onChange: (
@@ -483,6 +468,7 @@ describe(
 
         const identifier = 'email'
         const value1 = 'jane.of.the.jungle@test.com'
+        const value2 = 'john.smith@test.com'
 
         act(() => {
           result
@@ -493,18 +479,11 @@ describe(
           )
         })
 
-        const changeCallback2 = (
-          jest
-          .fn()
-        )
-
         rerender({
           onChange: (
             changeCallback2
           ),
         })
-
-        const value2 = 'john.smith@test.com'
 
         act(() => {
           result
@@ -567,7 +546,11 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            (
+              useValuesState<
+                string
+              >
+            ),
             {
               initialProps: {
                 updatedValues: {
@@ -583,8 +566,10 @@ describe(
           )
         )
 
-        const nameValueRef = {
-          current: null,
+        const nameValueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {
@@ -598,8 +583,10 @@ describe(
           )
         })
 
-        const emailValueRef = {
-          current: null,
+        const emailValueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {
@@ -639,7 +626,9 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            useValuesState<
+              string
+            >
           )
         )
 
@@ -705,7 +694,11 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            (
+              useValuesState<
+                string
+              >
+            ),
             {
               initialProps: {
                 values: {
@@ -721,8 +714,10 @@ describe(
           )
         )
 
-        const nameValueRef = {
-          current: null,
+        const nameValueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {
@@ -736,8 +731,10 @@ describe(
           )
         })
 
-        const emailValueRef = {
-          current: null,
+        const emailValueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {
@@ -777,7 +774,9 @@ describe(
           result,
         } = (
           renderHook(
-            useValuesState,
+            useValuesState<
+              string
+            >
           )
         )
 
@@ -807,8 +806,10 @@ describe(
           },
         })
 
-        const emailValueRef = {
-          current: null,
+        const emailValueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {
@@ -822,8 +823,10 @@ describe(
           )
         })
 
-        const nameValueRef = {
-          current: null,
+        const nameValueRef: (
+          ValueRef
+        ) = {
+          current: '',
         }
 
         act(() => {

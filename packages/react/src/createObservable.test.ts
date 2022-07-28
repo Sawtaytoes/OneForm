@@ -1,4 +1,6 @@
-import createObservable from './createObservable'
+import {
+  createObservable,
+} from './createObservable'
 
 describe(
   'createObservable',
@@ -12,7 +14,9 @@ describe(
 
         const unsubscribe = (
           observable
-          .subscribe()
+          .subscribe(
+            () => {}
+          )
         )
 
         unsubscribe()
@@ -73,7 +77,9 @@ describe(
 
         const unsubscribe = (
           observable
-          .subscribe()
+          .subscribe(
+            () => {}
+          )
         )
 
         unsubscribe()
@@ -96,12 +102,16 @@ describe(
 
         const unsubscribe1 = (
           observable
-          .subscribe()
+          .subscribe(
+            () => {}
+          )
         )
 
         const unsubscribe2 = (
           observable
-          .subscribe()
+          .subscribe(
+            () => {}
+          )
         )
 
         unsubscribe1()
@@ -133,12 +143,16 @@ describe(
 
         const unsubscribe1 = (
           observable
-          .subscribe()
+          .subscribe(
+            () => {}
+          )
         )
 
         const unsubscribe2 = (
           observable
-          .subscribe()
+          .subscribe(
+            () => {}
+          )
         )
 
         unsubscribe2()

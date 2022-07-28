@@ -3,7 +3,9 @@ import {
   useRef,
 } from 'react'
 
-import useObservableState from './useObservableState'
+import {
+  useObservableState,
+} from './useObservableState'
 
 const initialVisitations = new Set()
 

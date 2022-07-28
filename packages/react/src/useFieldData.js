@@ -1,7 +1,11 @@
 import useFieldErrorMessages from './useFieldErrorMessages.js'
-import useFieldName from './useFieldName.js'
+import {
+  useFieldName,
+} from './useFieldName'
 import useFieldRegistration from './useFieldRegistration.js'
-import useFieldValue from './useFieldValue.js'
+import {
+  useFieldValue,
+} from './useFieldValue'
 import useFieldVisitation from './useFieldVisitation.js'
 
 const useFieldData = ({

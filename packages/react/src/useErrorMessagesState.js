@@ -4,7 +4,9 @@ import {
   useRef,
 } from 'react'
 
-import useObservableState from './useObservableState.js'
+import {
+  useObservableState,
+} from './useObservableState'
 
 const externalErrorMessagesSymbol = Symbol()
 const initialErrorMessages = {}

@@ -5,11 +5,18 @@ import {
   useState,
 } from 'react'
 
-import useFieldName from './useFieldName.js'
-import ValuesContext from './ValuesContext.js'
+import {
+  FieldName,
+  useFieldName,
+} from './useFieldName'
+import {
+  ValuesContext,
+} from './ValuesContext'
 
-const useFieldValue = ({
+export const useFieldValue = ({
   name,
+}: {
+  name: FieldName,
 }) => {
   const {
     fieldName,
@@ -93,5 +100,3 @@ const useFieldValue = ({
     value: localValue,
   }
 }
-
-export default useFieldValue

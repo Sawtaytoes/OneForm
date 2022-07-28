@@ -7,7 +7,9 @@ import {
 } from 'react'
 
 import ErrorMessagesContext from './ErrorMessagesContext.js'
-import useFieldName from './useFieldName.js'
+import {
+  useFieldName,
+} from './useFieldName'
 
 const useFieldErrorMessages = ({
   name,

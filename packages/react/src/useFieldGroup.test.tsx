@@ -1,11 +1,17 @@
-/* eslint-disable react/prop-types */
 import {
   renderHook,
 } from '@testing-library/react'
+import {
+  ReactElement,
+} from 'react'
 
-import FieldGroup from './FieldGroup.jsx'
+import {
+  FieldGroup,
+} from './FieldGroup'
 import OneFormProvider from './OneFormProvider.jsx'
-import useFieldGroup from './useFieldGroup.js'
+import {
+  useFieldGroup,
+} from './useFieldGroup'
 
 describe(
   'useFieldGroup',
@@ -55,6 +61,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider>
             <FieldGroup
@@ -108,6 +116,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider>
             <FieldGroup

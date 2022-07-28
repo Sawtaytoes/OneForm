@@ -4,49 +4,171 @@ import {
   useRef,
 } from 'react'
 
-import useObservableState from './useObservableState.js'
+import {
+  ObservableIdentifier,
+  ObservableState,
+  useObservableState,
+} from './useObservableState'
 
-const initialValues = {}
 const initialLocalValues = {}
 const initialSubsequentValues = {}
 
-const useValuesState = (
+export type Values<
+  ValueType
+> = (
+  Record<
+    ObservableIdentifier,
+    (
+      | ValueType
+      | undefined
+    )
+  >
+)
+
+export type OnChange<
+  ValueType
+> = (
+  | (
+    ({
+      identifier,
+      value,
+      values,
+    }: {
+      identifier: ObservableIdentifier,
+      value: (
+        | ValueType
+        | undefined
+      ),
+      values: (
+        Values<
+          ValueType
+        >
+      ),
+    }) => (
+      Values<
+        ValueType
+      >
+    )
+  )
+  | (
+    () => void
+  )
+)
+
+export type ValuesState<
+  ValueType,
+> = {
+  getAllValues: () => (
+    Values<
+      ValueType
+    >
+  ),
+  getValue: (
+    identifier: ObservableIdentifier,
+  ) => (
+    | ValueType
+    | undefined
+  ),
+  setValue: (
+    identifier: ObservableIdentifier,
+    value: (
+      | ValueType
+      | undefined
+    ),
+  ) => (
+    void
+  ),
+  subscribeToValue: (
+    ObservableState<
+      | ValueType
+      | undefined
+    >["subscribeToValue"]
+  ),
+}
+
+const defaultProps = {
+  onChange: () => {},
+  updatedValues: {},
+  values: {},
+}
+
+export const useValuesState = <
+  ValueType
+>(
   {
     onChange = (
-      Function
-      .prototype
+      defaultProps
+      .onChange
     ),
     updatedValues = (
-      initialValues
+      defaultProps
+      .updatedValues
     ),
     values = (
-      initialValues
+      defaultProps
+      .values
+    ),
+  }: {
+    onChange?: (
+      OnChange<
+        ValueType
+      >
+    ),
+    updatedValues?: (
+      Values<
+        ValueType
+      >
+    ),
+    values?: (
+      Values<
+        ValueType
+      >
     ),
   } = {}
 ) => {
   const onChangeRef = (
-    useRef()
+    useRef(
+      onChange
+    )
   )
 
-  onChangeRef
-  .current = (
-    onChange
+  useEffect(
+    () => {
+      onChangeRef
+      .current = (
+        onChange
+      )
+    },
+    [
+      onChange,
+    ]
   )
 
   const {
     publishValue,
     subscribeToValue,
   } = (
-    useObservableState()
+    useObservableState<
+      | ValueType
+      | undefined
+    >()
   )
 
   const localValuesRef = (
-    useRef(
+    useRef<(
+      Values<
+        ValueType
+      >
+    )>(
       initialLocalValues
     )
   )
 
-  const getAllLocalValues = (
+  const getAllLocalValues: (
+    ValuesState<
+      ValueType
+    >["getAllValues"]
+  ) = (
     useCallback(
       () => (
         localValuesRef
@@ -56,7 +178,11 @@ const useValuesState = (
     )
   )
 
-  const getLocalValue = (
+  const getLocalValue: (
+    ValuesState<
+      ValueType
+    >["getValue"]
+  ) = (
     useCallback(
       (
         identifier,
@@ -71,7 +197,11 @@ const useValuesState = (
   )
 
   const subsequentValuesRef = (
-    useRef(
+    useRef<
+      Values<
+        ValueType
+      >
+    >(
       initialSubsequentValues
     )
   )
@@ -94,7 +224,11 @@ const useValuesState = (
     )
   )
 
-  const setLocalValue = (
+  const setLocalValue: (
+    ValuesState<
+      ValueType
+    >["setValue"]
+  ) = (
     useCallback(
       (
         identifier,
@@ -222,11 +356,22 @@ const useValuesState = (
   const changeLocalValue = (
     useCallback(
       (
-        identifier,
-        value,
+        identifier: ObservableIdentifier,
+        value: (
+          | ValueType
+          | (
+            (
+              value: ValueType,
+            ) => (
+              ValueType
+            )
+          )
+        ),
       ) => {
-        typeof value === 'function'
-        ? (
+        if (
+          typeof value
+          === 'function'
+        ) {
           setLocalValue(
             identifier,
             value(
@@ -235,13 +380,13 @@ const useValuesState = (
               )
             ),
           )
-        )
-        : (
+        }
+        else {
           setLocalValue(
             identifier,
             value,
           )
-        )
+        }
 
         processSubsequentChanges()
       },
@@ -269,6 +414,7 @@ const useValuesState = (
               identifier,
             ]) => ([
               identifier,
+              undefined,
             ]))
           )
         ),
@@ -325,5 +471,3 @@ const useValuesState = (
     subscribeToValue: subscribeToValue,
   }
 }
-
-export default useValuesState

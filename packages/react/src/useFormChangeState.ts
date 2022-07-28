@@ -3,12 +3,15 @@ import {
   useMemo,
 } from 'react'
 
-import createObservable from './createObservable'
+import {
+  createObservable,
+  Subscriber,
+} from './createObservable'
 
-export const formChangeStates = {
-  committed: 'committed',
-  staged: 'staged',
-  unchanged: 'unchanged',
+export enum FormChangeState {
+  committed = 'committed',
+  staged = 'staged',
+  unchanged = 'unchanged',
 }
 
 const useFormChangeState = () => {
@@ -16,7 +19,7 @@ const useFormChangeState = () => {
     useMemo(
       () => (
         createObservable(
-          formChangeStates
+          FormChangeState
           .unchanged
         )
       ),
@@ -39,7 +42,7 @@ const useFormChangeState = () => {
   const setFormChangeState = (
     useCallback(
       (
-        changeState,
+        changeState: FormChangeState,
       ) => {
         if (
           changeState
@@ -63,7 +66,11 @@ const useFormChangeState = () => {
   const subscribeToFormChangeState = (
     useCallback(
       (
-        subscriber,
+        subscriber: (
+          Subscriber<
+            FormChangeState
+          >
+        ),
       ) => (
         formChangeStateObservable
         .subscribe(

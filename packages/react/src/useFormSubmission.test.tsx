@@ -1,14 +1,16 @@
-/* eslint-disable react/prop-types */
 import {
   act,
   renderHook,
 } from '@testing-library/react'
+import {
+  ReactElement,
+} from 'react'
 
 import Field from './Field.jsx'
 import OneFormProvider from './OneFormProvider.jsx'
 import {
-  formChangeStates,
-} from './useFormChangeState.js'
+  FormChangeState,
+} from './useFormChangeState'
 import useFormSubmission from './useFormSubmission.js'
 
 // TODO: Test this later when the submission state API is finalized.
@@ -24,6 +26,8 @@ describe(
       () => {
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider>
             <Field>
@@ -51,7 +55,7 @@ describe(
           .formChangeState
         )
         .toBe(
-          formChangeStates
+          FormChangeState
           .unchanged
         )
 
@@ -111,6 +115,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider values={values}>
             {children}
@@ -134,7 +140,7 @@ describe(
           .formChangeState
         )
         .toBe(
-          formChangeStates
+          FormChangeState
           .staged
         )
       }
@@ -150,6 +156,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider values={values}>
             {children}
@@ -179,7 +187,7 @@ describe(
           .formChangeState
         )
         .toBe(
-          formChangeStates
+          FormChangeState
           .committed
         )
       }
@@ -203,6 +211,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider
             validations={validations}
@@ -265,6 +275,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider
             validations={validations}
@@ -318,6 +330,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider values={values}>
             <Field>
@@ -377,6 +391,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider values={values}>
             <Field>
@@ -440,6 +456,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider values={values}>
             <Field>
@@ -504,6 +522,8 @@ describe(
       () => {
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider>
             <Field>

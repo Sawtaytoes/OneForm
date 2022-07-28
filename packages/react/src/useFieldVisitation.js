@@ -5,7 +5,9 @@ import {
   useState,
 } from 'react'
 
-import useFieldName from './useFieldName.js'
+import {
+  useFieldName,
+} from './useFieldName'
 import VisitationContext from './VisitationContext.js'
 
 const useFieldVisitation = ({

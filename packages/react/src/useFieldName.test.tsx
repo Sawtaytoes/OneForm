@@ -1,14 +1,17 @@
-/* eslint-disable react/prop-types */
 import {
-  act,
   renderHook,
 } from '@testing-library/react'
+import {
+  ReactElement,
+} from 'react'
 
-import FieldGroup from './FieldGroup.jsx'
+import {
+  FieldGroup,
+} from './FieldGroup'
 import OneFormProvider from './OneFormProvider.jsx'
-import useFieldName, {
-  errorMessages,
-} from './useFieldName.js'
+import {
+  useFieldName,
+} from './useFieldName'
 
 describe(
   'useFieldName',
@@ -53,6 +56,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider>
             <FieldGroup
@@ -117,6 +122,8 @@ describe(
 
         const Wrapper = ({
           children,
+        }: {
+          children: ReactElement,
         }) => (
           <OneFormProvider>
             <FieldGroup
@@ -176,67 +183,6 @@ describe(
               .id
             ),
           )
-        )
-      }
-    )
-
-    test(
-      'throws an error if the field name is not a string',
-      () => {
-        expect(() => {
-          renderHook(
-            useFieldName,
-            {
-              initialProps: {
-                name: 0,
-              },
-              wrapper: OneFormProvider,
-            },
-          )
-        })
-        .toThrowError(
-          new Error(
-            errorMessages
-            .nonStringName
-          )
-        )
-      }
-    )
-
-    test(
-      'throws an error if the props object was accidentally a field name string',
-      () => {
-        expect(() => {
-          renderHook(
-            useFieldName,
-            {
-              initialProps: 'email',
-              wrapper: OneFormProvider,
-            },
-          )
-        })
-        .toThrowError(
-          new Error(
-            errorMessages
-            .undefinedName
-          )
-        )
-      }
-    )
-
-    test(
-      'throws an error if the field name is undefined',
-      () => {
-        expect(() => {
-          renderHook(
-            useFieldName,
-            {
-              wrapper: OneFormProvider,
-            },
-          )
-        })
-        .toThrowError(
-          TypeError
         )
       }
     )

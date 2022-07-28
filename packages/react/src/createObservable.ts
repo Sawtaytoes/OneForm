@@ -1,8 +1,57 @@
-const createObservable = <
-  SubscriberValueType
+export type Subscriber<
+  SubscriberValue
+> = (
+  | (
+    (
+      value: (
+        | SubscriberValue
+        | null
+      ),
+    ) => void
+  )
+  | (
+    () => void
+  )
+)
+
+export type Unsubscriber = (
+  () => void
+)
+
+export type Observable<
+  SubscriberValue,
+> = {
+  __subscribersRef: {
+    current: (
+      Subscriber<
+        SubscriberValue
+      >[]
+    ),
+  },
+  getValue: () => (
+    | SubscriberValue
+    | null
+  ),
+  publish: (
+    value: (
+      | SubscriberValue
+      | null
+    ),
+  ) => void,
+  subscribe: (
+    subscriber: (
+      Subscriber<
+        SubscriberValue
+      >
+    ),
+  ) => Unsubscriber,
+}
+
+export const createObservable = <
+  SubscriberValue,
 >(
   initialValue: (
-    | SubscriberValueType
+    | SubscriberValue
     | null
   ) = null,
 ) => {
@@ -12,23 +61,13 @@ const createObservable = <
     ),
   }
 
-  const subscribersRef = {
+  const subscribersRef: (
+    Observable<
+      SubscriberValue
+    >["__subscribersRef"]
+  ) = {
     current: (
-      [] as (
-        (
-          | (
-            (
-              value: (
-                | SubscriberValueType
-                | null
-              ),
-            ) => void
-          )
-          | (
-            () => void
-          )
-        )[]
-      )
+      []
     ),
   }
 
@@ -38,16 +77,21 @@ const createObservable = <
     ),
   }
 
-  const getValue = () => (
+  const getValue: (
+    Observable<
+      SubscriberValue
+    >["getValue"]
+  ) = () => (
     valueRef
     .current
   )
 
-  const publish = (
-    value: (
-      | SubscriberValueType
-      | null
-    ),
+  const publish: (
+    Observable<
+      SubscriberValue
+    >["publish"]
+  ) = (
+    value
   ) => {
     valueRef
     .current = (
@@ -71,9 +115,13 @@ const createObservable = <
       )
     })
   }
-
-  const subscribe = (
-    subscriber = () => {},
+  
+  const subscribe: (
+    Observable<
+      SubscriberValue
+    >["subscribe"]
+  ) = (
+    subscriber,
   ) => {
     subscribersRef
     .current = (
@@ -126,5 +174,3 @@ const createObservable = <
     subscribe,
   }
 }
-
-export default createObservable

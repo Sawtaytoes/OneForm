@@ -4,7 +4,9 @@ import {
   useMemo,
 } from 'react'
 
-import useFieldValue from './useFieldValue'
+import {
+  useFieldValue,
+} from './useFieldValue'
 
 const propTypes = {
   children: PropTypes.node,

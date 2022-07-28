@@ -5,23 +5,80 @@ import {
   useRef,
 } from 'react'
 
-import createObservable from './createObservable'
+import {
+  createObservable,
+  Subscriber,
+  Unsubscriber,
+} from './createObservable'
+import {
+  FieldName,
+} from './useFieldName'
 
-const initialRequiredFieldNames = []
+export type FormVisitationSubscriberValue = {
+  isFormVisited: boolean,
+  totalUnvisitedFields: number,
+  totalVisitedFields: number,
+}
 
-const useFormVisitationState = (
+export type FormVisitationState = {
+  getFormVisitationState: () => boolean,
+  setFormVisitationState: () => void,
+  setRequiredFieldNames: (
+    requiredFieldNames: string[]
+  ) => void,
+  subscribeToFormVisitationState: (
+    subscriber: (
+      Subscriber<
+        boolean
+      >
+    )
+  ) => Unsubscriber,
+}
+
+const initialRequiredFieldNames: (
+  FieldName[]
+) = []
+
+const defaultProps = {
+  getAllFieldVisitations: () => (
+    new Map()
+  ),
+  getIsFieldVisited: () => (
+    false
+  ),
+  getRegisteredFieldNames: () => (
+    []
+  ),
+}
+
+export const useFormVisitationState = (
   {
     getAllFieldVisitations = (
-      Function
-      .prototype
+      defaultProps
+      .getAllFieldVisitations
     ),
     getIsFieldVisited = (
-      Function
-      .prototype
+      defaultProps
+      .getIsFieldVisited
     ),
     getRegisteredFieldNames = (
-      Function
-      .prototype
+      defaultProps
+      .getRegisteredFieldNames
+    ),
+  }: {
+    getAllFieldVisitations?: () => (
+      Map<
+        string,
+        boolean
+      >
+    ),
+    getIsFieldVisited?: (
+      fieldName: FieldName,
+    ) => (
+      boolean
+    ),
+    getRegisteredFieldNames?: () => (
+      FieldName[]
     ),
   } = {},
 ) => {
@@ -34,7 +91,9 @@ const useFormVisitationState = (
   const formVisitationStateObservable = (
     useMemo(
       () => (
-        createObservable({
+        createObservable<
+          FormVisitationSubscriberValue
+        >({
           isFormVisited: false,
           totalUnvisitedFields: 0,
           totalVisitedFields: 0,
@@ -62,6 +121,10 @@ const useFormVisitationState = (
         numberOfRequiredFields,
         numberOfVisitedFields,
         requiredFieldNames,
+      }: {
+        numberOfRequiredFields: number,
+        numberOfVisitedFields: number,
+        requiredFieldNames: FieldName[],
       }) => {
         formVisitationStateObservable
         .publish({
@@ -161,7 +224,7 @@ const useFormVisitationState = (
   const setRequiredFieldNames = (
     useCallback(
       (
-        requiredFieldNames,
+        requiredFieldNames: FieldName[],
       ) => {
         requiredFieldNamesRef
         .current = (
@@ -179,7 +242,11 @@ const useFormVisitationState = (
   const subscribeToFormVisitationState = (
     useCallback(
       (
-        subscriber,
+        subscriber: (
+          Subscriber<
+            FormVisitationSubscriberValue
+          >
+        ),
       ) => (
         formVisitationStateObservable
         .subscribe(
@@ -208,5 +275,3 @@ const useFormVisitationState = (
     subscribeToFormVisitationState,
   }
 }
-
-export default useFormVisitationState

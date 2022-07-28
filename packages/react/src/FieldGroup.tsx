@@ -1,23 +1,26 @@
-import PropTypes from 'prop-types'
 import {
   memo,
+  ReactNode,
   useMemo,
 } from 'react'
 
-import FieldGroupContext from './FieldGroupContext.js'
-import useFieldGroup from './useFieldGroup.js'
-
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-}
+import {
+  FieldGroupContext,
+  FieldGroupType,
+} from './FieldGroupContext'
+import {
+  useFieldGroup,
+} from './useFieldGroup'
 
 const FieldGroup = ({
   children,
   id,
   name,
-}) => {
+}: {
+  children: ReactNode,
+} & (
+  FieldGroupType
+)) => {
   const {
     fieldGroups,
   } = (
@@ -47,8 +50,12 @@ const FieldGroup = ({
   )
 }
 
-FieldGroup.propTypes = propTypes
+const MemoizedFieldGroup = (
+  memo(
+    FieldGroup
+  )
+)
 
-const MemoizedFieldGroup = memo(FieldGroup)
-
-export default MemoizedFieldGroup
+export {
+  MemoizedFieldGroup as FieldGroup
+}

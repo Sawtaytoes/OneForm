@@ -4,7 +4,9 @@ import {
 } from '@testing-library/react'
 
 import OneFormProvider from './OneFormProvider.jsx'
-import useFieldValue from './useFieldValue.js'
+import {
+  useFieldValue,
+} from './useFieldValue'
 
 describe(
   'useFieldValue',
