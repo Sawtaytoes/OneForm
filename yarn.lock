@@ -2183,52 +2183,53 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@ghadyani-eslint/eslint-config-core@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-core/-/eslint-config-core-2.2.3.tgz#1dae5fabe922b5243c60c7b2654a542bf3af4d87"
-  integrity sha512-rTb6q5URKPqHEvJlTEJ/3t2BH0w4flPGsIJCr0RzPqFLH3/M4IyokXhdCXUP0VPh+AZxBzc4VidRb7yJYurnLQ==
+"@ghadyani-eslint/eslint-config-core@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-core/-/eslint-config-core-2.2.4.tgz#9cfe504497410dcf1826c736b436befaf78348be"
+  integrity sha512-7CilywaKJeFg0RQpPZ8xtvRTjcpWrW3uWIIU4DS+lUNGCHTkSBifhjGag0QmNG37gmD4HXJz89zoTRxeO/X8uw==
   dependencies:
-    "@ghadyani-eslint/eslint-plugin-arrow-body-parens" "^2.2.3"
-    "@ghadyani-eslint/eslint-plugin-eslint-overrides" "^2.2.3"
+    "@ghadyani-eslint/eslint-plugin-arrow-body-parens" "^2.2.4"
+    "@ghadyani-eslint/eslint-plugin-eslint-overrides" "^2.2.4"
     "@ghadyani-eslint/eslint-plugin-rules" "^2.2.3"
     eslint-plugin-sort-destructure-keys "^1.4.0"
 
-"@ghadyani-eslint/eslint-config-node@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-node/-/eslint-config-node-2.2.3.tgz#abd06a5394165b2abc616f8280c766a5144a8b2d"
-  integrity sha512-LirXFeTWbOrKAjsrccnYm8O6zWqEd3hZz0NACu/hF8b3aQWzVPHGVBD+d1SIzCY92W73w7gXTNKR88EPEI1O2w==
+"@ghadyani-eslint/eslint-config-node@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-node/-/eslint-config-node-2.2.4.tgz#6c6e017503c63d48ebabe46565ce86aaa7fca0ee"
+  integrity sha512-7Sb8iul3BHhCaj+/JeSOERND2qrxLN69C/4CqBUGOR0T5OAo2TCMYHIag04R7boB/lLVwXXa1SZqFH6Tz579GQ==
   dependencies:
-    "@ghadyani-eslint/eslint-config-core" "^2.2.3"
+    "@ghadyani-eslint/eslint-config-core" "^2.2.4"
 
-"@ghadyani-eslint/eslint-config-react@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-react/-/eslint-config-react-2.2.3.tgz#66a9a5a86bd21d60feab6b252e0f5ddae29b0d09"
-  integrity sha512-QCitqZurxUdXUN3dzlpojDG+3BUT0ZZT+BWqSzEv3IeJYFUWvMYD4eajDtV54ZXwb53YWqJkOf5UFixl/5ecyg==
+"@ghadyani-eslint/eslint-config-react@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-react/-/eslint-config-react-2.2.4.tgz#f2094727f283088d4eb62c9a59f9c4170a19bfb9"
+  integrity sha512-DLmHUT7AGaR6uxuyD3XGmgkEqu2U13lYZkeULXgqc+iklB8kpiDUauAcoeVYKujZ40YKgDJKeWOv9DRhbp24nw==
   dependencies:
-    "@ghadyani-eslint/eslint-config-web" "^2.2.3"
+    "@ghadyani-eslint/eslint-config-web" "^2.2.4"
 
-"@ghadyani-eslint/eslint-config-web@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-web/-/eslint-config-web-2.2.3.tgz#dd9b88f67a731e6b65af0b8dc6ee8a1fc5a40026"
-  integrity sha512-vj2sgF1RX2b/s5P1lrlzdqcUYnowR1RSSOHI0PPJg1oTY5pGlZiBWJAD7EP/bOMfQHpDMBBJtk/8wWeVBiUM2Q==
+"@ghadyani-eslint/eslint-config-web@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-web/-/eslint-config-web-2.2.4.tgz#165feb21c1c8277921d62e27fdb42fc12dd63b68"
+  integrity sha512-XRBYVtiNV4saC3akXv4d9cLSclZ5Kz1kmw6bksFn6oSjLZwXU01ZoDnXmu4AirIkQFfRe48BPDtV9ugB7Eecng==
   dependencies:
-    "@ghadyani-eslint/eslint-config-core" "^2.2.3"
+    "@ghadyani-eslint/eslint-config-core" "^2.2.4"
 
-"@ghadyani-eslint/eslint-plugin-arrow-body-parens@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-plugin-arrow-body-parens/-/eslint-plugin-arrow-body-parens-2.2.3.tgz#5dd9ae4b3f2af2583a1bda17bffd292b13137310"
-  integrity sha512-17ZuTm8W0C84RLzju2St6QMxsvFka3oGDiROw09+ZETqZ21zrkzqYbXCb/b23Jb/V1vhH05f2+I9nxGCPr+hNQ==
+"@ghadyani-eslint/eslint-plugin-arrow-body-parens@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-plugin-arrow-body-parens/-/eslint-plugin-arrow-body-parens-2.2.4.tgz#aef55ac014940dd7eab27a28dd3e711b7139a1b0"
+  integrity sha512-izm25kOMybsZL3EoixgE3FTlpx+03EO8Co/s/pGj29u/BOhW5Y3cPdkKYk0+e1FupFf8QVCRrjGIXDC/Q2ln5w==
   dependencies:
     "@babel/core" "^7.18.9"
     "@babel/preset-env" "^7.18.9"
     eslint-utils "^3.0.0"
     requireindex "^1.2.0"
 
-"@ghadyani-eslint/eslint-plugin-eslint-overrides@^2.2.3":
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-plugin-eslint-overrides/-/eslint-plugin-eslint-overrides-2.2.3.tgz#fac6e0578b9a81e6aa2d1b3b42bca19179b141da"
-  integrity sha512-zvNysRHadQbB9aM4VLHfQntUM2oNm62spFgx8ACbvzmSRS42TXNF3ZwjK9+aWtg3J/JrifUF8E0xnPhnYdk43g==
+"@ghadyani-eslint/eslint-plugin-eslint-overrides@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-plugin-eslint-overrides/-/eslint-plugin-eslint-overrides-2.2.4.tgz#535c36a8af972cae2370ccfdce3925b0a4eb9b57"
+  integrity sha512-TGLxhI6C2xXH/RHO9jYi8F22nAxALKmU5k3FVKdPCEnaNzscj9HWug/rwyp8bpNExLRy81RHtuBdtBz4EIXzlQ==
   dependencies:
+    eslint-utils "^3.0.0"
     functional-red-black-tree "^1.0.1"
     lodash "^4.17.21"
     requireindex "^1.2.0"
