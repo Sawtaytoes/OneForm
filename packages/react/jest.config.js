@@ -9,6 +9,14 @@ const jestConfig = {
     '/cypress/',
     '/node_modules/',
   ],
+  transform: {
+    '^.+\\.[jt]sx?$': [
+      'babel-jest',
+      {
+        configFile: './babel.config.js'
+      },
+    ],
+  },
   verbose: true,
 }
 

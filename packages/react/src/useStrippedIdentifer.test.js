@@ -1,6 +1,6 @@
 import {
   renderHook,
-} from '@testing-library/react-hooks'
+} from '@testing-library/react'
 
 import useStrippedIdentifer from './useStrippedIdentifer.js'
 

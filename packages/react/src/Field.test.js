@@ -59,7 +59,7 @@ describe(
 
     test(
       'contains the given value when changed',
-      () => {
+      async () => {
         render(
           <OneFormProvider>
             <Field>
@@ -79,10 +79,17 @@ describe(
 
         const value = 'a'
 
-        userEvent
-        .type(
-          domElement,
-          value,
+        const user = (
+          userEvent
+          .setup()
+        )
+
+        await (
+          user
+          .type(
+            domElement,
+            value,
+          )
         )
 
         expect(
@@ -97,7 +104,7 @@ describe(
 
     test(
       'contains the last given value',
-      () => {
+      async () => {
         render(
           <OneFormProvider>
             <Field>
@@ -115,16 +122,25 @@ describe(
           )
         )
 
-        userEvent
-        .type(
-          domElement,
-          'a',
+        const user = (
+          userEvent
+          .setup()
         )
 
-        userEvent
-        .type(
-          domElement,
-          'b',
+        await (
+          user
+          .type(
+            domElement,
+            'a',
+          )
+        )
+
+        await (
+          user
+          .type(
+            domElement,
+            'b',
+          )
         )
 
         expect(
@@ -139,7 +155,7 @@ describe(
 
     test(
       'calls the given function on change',
-      () => {
+      async () => {
         const valueChanged = (
           jest
           .fn()
@@ -163,16 +179,25 @@ describe(
           )
         )
 
-        userEvent
-        .type(
-          domElement,
-          'a',
+        const user = (
+          userEvent
+          .setup()
         )
 
-        userEvent
-        .type(
-          domElement,
-          'b',
+        await (
+          user
+          .type(
+            domElement,
+            'a',
+          )
+        )
+
+        await (
+          user
+          .type(
+            domElement,
+            'b',
+          )
         )
 
         expect(
@@ -186,7 +211,7 @@ describe(
 
     test(
       'sets the exact value from `onChange` if it is a non-object value.',
-      () => {
+      async () => {
         const NonStandardInput = ({
           name,
           onChange,
@@ -224,16 +249,25 @@ describe(
           )
         )
 
-        userEvent
-        .type(
-          domElement,
-          'a',
+        const user = (
+          userEvent
+          .setup()
         )
 
-        userEvent
-        .type(
-          domElement,
-          'b',
+        await (
+          user
+          .type(
+            domElement,
+            'a',
+          )
+        )
+
+        await (
+          user
+          .type(
+            domElement,
+            'b',
+          )
         )
 
         expect(
@@ -248,7 +282,7 @@ describe(
 
     test(
       'sets the exact value from `onChange` if passes an object.',
-      () => {
+      async () => {
         const NonStandardInput = ({
           name,
           onChange,
@@ -288,16 +322,25 @@ describe(
           )
         )
 
-        userEvent
-        .type(
-          domElement,
-          'a',
+        const user = (
+          userEvent
+          .setup()
         )
 
-        userEvent
-        .type(
-          domElement,
-          'b',
+        await (
+          user
+          .type(
+            domElement,
+            'a',
+          )
+        )
+
+        await (
+          user
+          .type(
+            domElement,
+            'b',
+          )
         )
 
         expect(
@@ -312,7 +355,7 @@ describe(
 
     test(
       'sets the exact value from `onChange` if passes an invalid event object.',
-      () => {
+      async () => {
         const NonStandardInput = ({
           name,
           onChange,
@@ -354,16 +397,25 @@ describe(
           )
         )
 
-        userEvent
-        .type(
-          domElement,
-          'a',
+        const user = (
+          userEvent
+          .setup()
         )
 
-        userEvent
-        .type(
-          domElement,
-          'b',
+        await (
+          user
+          .type(
+            domElement,
+            'a',
+          )
+        )
+
+        await (
+          user
+          .type(
+            domElement,
+            'b',
+          )
         )
 
         expect(

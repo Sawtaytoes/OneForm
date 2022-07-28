@@ -2,7 +2,7 @@
 import {
   act,
   renderHook,
-} from '@testing-library/react-hooks'
+} from '@testing-library/react'
 
 import FieldGroup from './FieldGroup.jsx'
 import OneFormProvider from './OneFormProvider.jsx'
@@ -183,9 +183,7 @@ describe(
     test(
       'throws an error if the field name is not a string',
       () => {
-        const {
-          result,
-        } = (
+        expect(() => {
           renderHook(
             useFieldName,
             {
@@ -195,29 +193,20 @@ describe(
               wrapper: OneFormProvider,
             },
           )
-        )
-
-        act(() => {
-          expect(
-            result
-            .error
-          )
-          .toEqual(
-            new Error(
-              errorMessages
-              .nonStringName
-            )
-          )
         })
+        .toThrowError(
+          new Error(
+            errorMessages
+            .nonStringName
+          )
+        )
       }
     )
 
     test(
       'throws an error if the props object was accidentally a field name string',
       () => {
-        const {
-          result,
-        } = (
+        expect(() => {
           renderHook(
             useFieldName,
             {
@@ -225,46 +214,30 @@ describe(
               wrapper: OneFormProvider,
             },
           )
-        )
-
-        act(() => {
-          expect(
-            result
-            .error
-          )
-          .toEqual(
-            new Error(
-              errorMessages
-              .undefinedName
-            )
-          )
         })
+        .toThrowError(
+          new Error(
+            errorMessages
+            .undefinedName
+          )
+        )
       }
     )
 
     test(
       'throws an error if the field name is undefined',
       () => {
-        const {
-          result,
-        } = (
+        expect(() => {
           renderHook(
             useFieldName,
             {
               wrapper: OneFormProvider,
             },
           )
-        )
-
-        act(() => {
-          expect(
-            result
-            .error
-          )
-          .toBeInstanceOf(
-            TypeError
-          )
         })
+        .toThrowError(
+          TypeError
+        )
       }
     )
   }

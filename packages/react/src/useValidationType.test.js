@@ -1,7 +1,7 @@
 import {
   act,
   renderHook,
-} from '@testing-library/react-hooks'
+} from '@testing-library/react'
 
 import useValidationType, {
   validationTypes,

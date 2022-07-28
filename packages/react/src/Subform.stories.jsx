@@ -32,6 +32,7 @@ export default {
 export const Values = (
   args,
 ) => (
+console.log(args)||
   <OneFormProvider>
     <Subform {...args} />
     <FieldValue name="message" />

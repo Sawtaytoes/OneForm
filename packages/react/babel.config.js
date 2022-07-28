@@ -43,8 +43,11 @@ const babelConfig = {
         [
           '@babel/preset-env',
           {
-            modules: 'auto',
+            modules: 'commonjs',
             useBuiltIns: false,
+            targets: {
+              node: 'current',
+            },
           },
         ],
         [

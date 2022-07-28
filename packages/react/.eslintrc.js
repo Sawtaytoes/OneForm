@@ -10,6 +10,7 @@ const eslintConfig = {
     '@ghadyani-eslint/node',
     '@ghadyani-eslint/web',
   ],
+  parser: '@babel/eslint-parser',
   plugins: [
     'cypress',
     'jest',

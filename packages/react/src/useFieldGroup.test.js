@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import {
   renderHook,
-} from '@testing-library/react-hooks'
+} from '@testing-library/react'
 
 import FieldGroup from './FieldGroup.jsx'
 import OneFormProvider from './OneFormProvider.jsx'
