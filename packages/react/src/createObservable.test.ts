@@ -1,4 +1,4 @@
-import createObservable from './createObservable.js'
+import createObservable from './createObservable'
 
 describe(
   'createObservable',
@@ -57,7 +57,7 @@ describe(
 
         expect(
           observable
-          ._subscribersRef
+          .__subscribersRef
           .current
         )
         .toHaveLength(0)
@@ -80,7 +80,7 @@ describe(
 
         expect(
           observable
-          ._subscribersRef
+          .__subscribersRef
           .current
         )
         .toHaveLength(0)
@@ -108,7 +108,7 @@ describe(
 
         expect(
           observable
-          ._subscribersRef
+          .__subscribersRef
           .current
         )
         .toHaveLength(1)
@@ -117,7 +117,7 @@ describe(
 
         expect(
           observable
-          ._subscribersRef
+          .__subscribersRef
           .current
         )
         .toHaveLength(0)
@@ -145,7 +145,7 @@ describe(
 
         expect(
           observable
-          ._subscribersRef
+          .__subscribersRef
           .current
         )
         .toHaveLength(1)
@@ -154,7 +154,7 @@ describe(
 
         expect(
           observable
-          ._subscribersRef
+          .__subscribersRef
           .current
         )
         .toHaveLength(0)
@@ -165,7 +165,9 @@ describe(
       'cancels subscriber when unsubscribing',
       () => {
         const observable = (
-          createObservable()
+          createObservable<
+            null
+          >()
         )
 
         const cancelator = (
@@ -183,7 +185,9 @@ describe(
         )
 
         observable
-        .publish()
+        .publish(
+          null
+        )
 
         unsubscribe()
 
@@ -200,7 +204,9 @@ describe(
       'publish to all subscribers',
       () => {
         const observable = (
-          createObservable()
+          createObservable<
+            {}
+          >()
         )
 
         const mockSubscriber1 = (
@@ -271,7 +277,9 @@ describe(
       'maintain the value that was published',
       () => {
         const observable = (
-          createObservable()
+          createObservable<
+            {}
+          >()
         )
 
         const value = {}

@@ -1,5 +1,10 @@
-const createObservable = (
-  initialValue = null,
+const createObservable = <
+  SubscriberValueType
+>(
+  initialValue: (
+    | SubscriberValueType
+    | null
+  ) = null,
 ) => {
   const valueRef = {
     current: (
@@ -9,7 +14,21 @@ const createObservable = (
 
   const subscribersRef = {
     current: (
-      []
+      [] as (
+        (
+          | (
+            (
+              value: (
+                | SubscriberValueType
+                | null
+              ),
+            ) => void
+          )
+          | (
+            () => void
+          )
+        )[]
+      )
     ),
   }
 
@@ -25,7 +44,10 @@ const createObservable = (
   )
 
   const publish = (
-    value,
+    value: (
+      | SubscriberValueType
+      | null
+    ),
   ) => {
     valueRef
     .current = (
@@ -51,7 +73,7 @@ const createObservable = (
   }
 
   const subscribe = (
-    subscriber = Function.prototype,
+    subscriber = () => {},
   ) => {
     subscribersRef
     .current = (
@@ -98,7 +120,7 @@ const createObservable = (
   }
 
   return {
-    _subscribersRef: subscribersRef,
+    __subscribersRef: subscribersRef,
     getValue,
     publish,
     subscribe,

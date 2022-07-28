@@ -3,7 +3,7 @@ import {
   useMemo,
 } from 'react'
 
-import createObservable from './createObservable.js'
+import createObservable from './createObservable'
 
 const useFormValidationState = () => {
   const formValidationStateObservable = (
