@@ -360,9 +360,7 @@ export const useValuesState = <
         value: (
           | ValueType
           | (
-            (
-              value: ValueType,
-            ) => (
+            () => (
               ValueType
             )
           )
