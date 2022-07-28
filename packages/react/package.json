@@ -9,10 +9,12 @@
     "ci:buildStorybook": "build-storybook",
     "ci:cypress": "cypress run --browser chrome --record --key 7395df6b-47f2-498e-82c6-a785cc463947",
     "ci:test": "jest --errorOnDeprecated",
+    "ci:types": "tsc",
     "dev": "npm-run-all --parallel dev:storybook dev:cypress",
     "dev:cypress": "cypress open",
     "dev:storybook": "start-storybook --port 6006 --ci",
     "dev:test": "jest --cache --onlyChanged --errorOnDeprecated --watch",
+    "dev:types": "tsc --watch",
     "start": "yarn && yarn dev"
   },
   "packageManager": "yarn@3.2.2",
