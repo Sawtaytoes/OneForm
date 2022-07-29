@@ -8,25 +8,36 @@ import {
 
 import useFormSubmission from './useFormSubmission.js'
 
+declare function FormType<
+  ReturnType
+>(
+  props: {
+    children: ReactElement,
+    translateProps?: ({
+      submitForm,
+    }: {
+      submitForm: () => void,
+    }) => (
+      | ReturnType
+      | void
+    ),
+  }
+): (
+  JSX
+  .Element
+)
+
+type FormType = typeof FormType
+
 const defaultProps = {
   translateProps: () => {},
 }
 
-const Form = ({
+const Form: FormType = ({
   children,
   translateProps = (
     defaultProps
     .translateProps
-  ),
-}: {
-  children: ReactElement,
-  translateProps: ({
-    submitForm,
-  }: {
-    submitForm: () => void,
-  }) => (
-    | object
-    | void
   ),
 }) => {
   const {
@@ -71,7 +82,8 @@ const MemoizedForm = (
   memo(
     Form
   )
-)
+// TODO: Fix this hack using a native solution. This ensures `ReturnType` is inferred when part of `translateProps`.
+) as FormType
 
 export {
   MemoizedForm as Form

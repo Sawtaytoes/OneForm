@@ -3,9 +3,11 @@ import {
   useMemo,
 } from 'react'
 
-import SubformContext from './SubformContext.js'
+import {
+  SubformContext,
+} from './SubformContext'
 
-const useSubformData = () => {
+export const useSubformData = () => {
   const subformId = (
     useMemo(
       () => (
@@ -21,7 +23,7 @@ const useSubformData = () => {
     )
   )
 
-  const identifiedSubformContext = (
+  const segmentedSubformContext = (
     useMemo(
       () => (
         Object
@@ -38,9 +40,23 @@ const useSubformData = () => {
             (
               value,
             ) => (
-              func(
-                subformId,
-                value,
+              (
+                (
+                  func
+                  .length
+                )
+                === 2
+              )
+              ? (
+                func(
+                  subformId,
+                  value,
+                )
+              )
+              : (
+                func(
+                  subformId
+                )
               )
             ),
           ]))
@@ -53,7 +69,5 @@ const useSubformData = () => {
     )
   )
 
-  return identifiedSubformContext
+  return segmentedSubformContext
 }
-
-export default useSubformData

@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 
-import GlobalStyles from './GlobalStyles.jsx'
+import {
+  GlobalStyles,
+} from './GlobalStyles'
 
 const htmlStyleDecorators = [
   (

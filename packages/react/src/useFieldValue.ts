@@ -10,10 +10,12 @@ import {
   useFieldName,
 } from './useFieldName'
 import {
-  ValuesContext,
+  ValuesContext, ValuesContextType,
 } from './ValuesContext'
 
-export const useFieldValue = ({
+export const useFieldValue = <
+  ValueType
+>({
   name,
 }: {
   name: FieldName,
@@ -31,7 +33,11 @@ export const useFieldValue = ({
     setFieldValue,
     subscribeToFieldValue,
   } = (
-    useContext(
+    useContext<
+      ValuesContextType<
+        ValueType
+      >
+    >(
       ValuesContext
     )
   )
@@ -50,7 +56,7 @@ export const useFieldValue = ({
   const setValue = (
     useCallback(
       (
-        value,
+        value: ValueType,
       ) => {
         setFieldValue(
           fieldName,

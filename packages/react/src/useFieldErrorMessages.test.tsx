@@ -4,7 +4,9 @@ import {
 } from '@testing-library/react'
 
 import OneFormProvider from './OneFormProvider.jsx'
-import useFieldErrorMessages from './useFieldErrorMessages.js'
+import {
+  useFieldErrorMessages,
+} from './useFieldErrorMessages'
 
 describe(
   'useFieldErrorMessages',

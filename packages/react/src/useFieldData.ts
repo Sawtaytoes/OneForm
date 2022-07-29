@@ -1,15 +1,26 @@
-import useFieldErrorMessages from './useFieldErrorMessages.js'
 import {
+  useFieldErrorMessages,
+} from './useFieldErrorMessages'
+import {
+  FieldName,
   useFieldName,
 } from './useFieldName'
-import useFieldRegistration from './useFieldRegistration.js'
+import {
+  useFieldRegistration,
+} from './useFieldRegistration'
 import {
   useFieldValue,
 } from './useFieldValue'
-import useFieldVisitation from './useFieldVisitation.js'
+import {
+  useFieldVisitation,
+} from './useFieldVisitation'
 
-const useFieldData = ({
+export const useFieldData = <
+  ValueType
+>({
   name,
+}: {
+  name: FieldName,
 }) => {
   const {
     fieldName,
@@ -40,7 +51,9 @@ const useFieldData = ({
     setValue,
     value,
   } = (
-    useFieldValue({
+    useFieldValue<
+      ValueType
+    >({
       name,
     })
   )
@@ -65,5 +78,3 @@ const useFieldData = ({
     value,
   }
 }
-
-export default useFieldData

@@ -3,7 +3,9 @@ import {
   memo,
 } from 'react'
 
-import useSubformEffect from './useSubformEffect.js'
+import {
+  useSubformEffect,
+} from './useSubformEffect'
 
 const propTypes = {
   errorMessages: PropTypes.object,

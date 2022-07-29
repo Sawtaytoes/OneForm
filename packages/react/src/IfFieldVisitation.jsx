@@ -3,7 +3,9 @@ import {
   memo,
 } from 'react'
 
-import useFieldVisitation from './useFieldVisitation'
+import {
+  useFieldVisitation,
+} from './useFieldVisitation'
 
 const propTypes = {
   children: PropTypes.node,

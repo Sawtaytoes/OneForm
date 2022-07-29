@@ -1,4 +1,4 @@
-const GlobalStyles = () => (
+export const GlobalStyles = () => (
   <style>
     {
       `
@@ -160,5 +160,3 @@ const GlobalStyles = () => (
     }
   </style>
 )
-
-export default GlobalStyles

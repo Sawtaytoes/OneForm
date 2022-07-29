@@ -6,7 +6,9 @@ import {
   ValuesState,
 } from './useValuesState'
 
-export type ValuesContextType<ValueType> = {
+export type ValuesContextType<
+  ValueType
+> = {
   getFieldValue: (
     ValuesState<
       ValueType
@@ -35,7 +37,11 @@ export const defaultFieldValuesContextValue: (
 }
 
 export const ValuesContext = (
-  createContext(
+  createContext<
+    ValuesContextType<
+      any
+    >
+  >(
     defaultFieldValuesContextValue
   )
 )

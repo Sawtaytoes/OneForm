@@ -3,13 +3,18 @@ import {
   useContext,
 } from 'react'
 
-import RegistrationContext from './RegistrationContext.js'
 import {
+  RegistrationContext,
+ } from './RegistrationContext'
+import {
+  FieldName,
   useFieldName,
 } from './useFieldName'
 
-const useFieldRegistration = ({
+export const useFieldRegistration = ({
   name,
+}: {
+  name: FieldName,
 }) => {
   const {
     fieldName,
@@ -45,5 +50,3 @@ const useFieldRegistration = ({
     register,
   }
 }
-
-export default useFieldRegistration

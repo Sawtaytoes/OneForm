@@ -3,15 +3,15 @@ import {
   useRef,
 } from 'react'
 
-export const validationTypes = {
-  change: 'change',
-  submit: 'submit',
+export enum ValidationType {
+  change = 'change',
+  submit = 'submit',
 }
 
-const useValidationType = () => {
+export const useValidationType = () => {
   const validationTypeRef = (
     useRef(
-      validationTypes
+      ValidationType
       .change
     )
   )
@@ -31,7 +31,7 @@ const useValidationType = () => {
       () => (
         validationTypeRef
         .current = (
-          validationTypes
+          ValidationType
           .change
         )
       ),
@@ -44,7 +44,7 @@ const useValidationType = () => {
       () => (
         validationTypeRef
         .current = (
-          validationTypes
+          ValidationType
           .submit
         )
       ),
@@ -58,5 +58,3 @@ const useValidationType = () => {
     setValidationTypeSubmit,
   }
 }
-
-export default useValidationType

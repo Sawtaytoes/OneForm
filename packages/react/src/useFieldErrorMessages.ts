@@ -7,14 +7,18 @@ import {
 } from 'react'
 
 import {
+  ErrorMessages,
   ErrorMessagesContext,
 } from './ErrorMessagesContext'
 import {
+  FieldName,
   useFieldName,
 } from './useFieldName'
 
-const useFieldErrorMessages = ({
+export const useFieldErrorMessages = ({
   name,
+}: {
+  name: FieldName,
 }) => {
   const fieldErrorMessagesSymbol = (
     useMemo(
@@ -57,7 +61,7 @@ const useFieldErrorMessages = ({
   const setErrorMessages = (
     useCallback(
       (
-        errorMessages,
+        errorMessages: ErrorMessages,
       ) => {
         setFieldErrorMessages(
           fieldName,
@@ -113,5 +117,3 @@ const useFieldErrorMessages = ({
     setErrorMessages,
   }
 }
-
-export default useFieldErrorMessages

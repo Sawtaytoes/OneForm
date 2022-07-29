@@ -2,7 +2,9 @@ import {
   useEffect,
 } from 'react'
 
-import useFieldRegistration from './useFieldRegistration.js'
+import {
+  useFieldRegistration,
+} from './useFieldRegistration'
 
 const useRegisteredFieldEffect = ({
   name,

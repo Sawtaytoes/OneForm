@@ -1,12 +1,9 @@
 export type Subscriber<
-  SubscriberValue
+  ValueType
 > = (
   | (
     (
-      value: (
-        | SubscriberValue
-        | null
-      ),
+      value: ValueType,
     ) => void
   )
   | (
@@ -19,29 +16,31 @@ export type Unsubscriber = (
 )
 
 export type Observable<
-  SubscriberValue,
+  ValueType,
 > = {
   __subscribersRef: {
     current: (
       Subscriber<
-        SubscriberValue
+        | ValueType
+        | null
       >[]
     ),
   },
   getValue: () => (
-    | SubscriberValue
+    | ValueType
     | null
   ),
   publish: (
     value: (
-      | SubscriberValue
+      | ValueType
       | null
     ),
   ) => void,
   subscribe: (
     subscriber: (
       Subscriber<
-        SubscriberValue
+        | ValueType
+        | null
       >
     ),
   ) => Unsubscriber,
@@ -74,6 +73,18 @@ export const createObservable = <
   const cancelatorsRef = {
     current: (
       new Map()
+    ) as (
+      Map<
+        Subscriber<
+          SubscriberValue
+        >,
+        (
+          | (
+            () => () => void
+          )
+          | void
+        )
+      >
     ),
   }
 

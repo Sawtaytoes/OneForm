@@ -28,8 +28,12 @@ import {
 import {
   flattenSegmentedObjectValues,
 } from './flattenSegmentedObjectValues'
-import RegistrationContext from './RegistrationContext.js'
-import SubformContext from './SubformContext.js'
+import {
+  RegistrationContext,
+} from './RegistrationContext'
+import {
+  SubformContext,
+} from './SubformContext'
 import SubmissionContext from './SubmissionContext.js'
 import useErrorMessagesState from './useErrorMessagesState.js'
 import useFormChangeState, {
@@ -48,9 +52,10 @@ import {
 } from './useSubformState'
 import useSubmissionState from './useSubmissionState.js'
 import useUpdateEffect from './useUpdateEffect.js'
-import useValidationType, {
-  validationTypes,
-} from './useValidationType.js'
+import {
+  useValidationType,
+  ValidationType,
+} from './useValidationType'
 import useValidationsState from './useValidationsState.js'
 import {
   useValuesState,
@@ -59,7 +64,9 @@ import useVisitationState from './useVisitationState.js'
 import {
   ValuesContext,
 } from './ValuesContext'
-import VisitationContext from './VisitationContext.js'
+import {
+  VisitationContext,
+} from './VisitationContext'
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -321,7 +328,7 @@ const OneFormProvider = ({
             (
               getValidationType()
               === (
-                validationTypes
+                ValidationType
                 .change
               )
             )
@@ -330,7 +337,7 @@ const OneFormProvider = ({
           || (
             getValidationType()
             === (
-              validationTypes
+              ValidationType
               .submit
             )
           )

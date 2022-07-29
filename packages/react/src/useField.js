@@ -3,7 +3,9 @@ import {
   useEffect,
 } from 'react'
 
-import useFieldData from './useFieldData.js'
+import {
+  useFieldData,
+} from './useFieldData'
 
 const useField = ({
   inputValue,

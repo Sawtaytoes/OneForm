@@ -6,12 +6,17 @@ import {
 } from 'react'
 
 import {
+  FieldName,
   useFieldName,
 } from './useFieldName'
-import VisitationContext from './VisitationContext.js'
+import {
+  VisitationContext,
+} from './VisitationContext'
 
-const useFieldVisitation = ({
+export const useFieldVisitation = ({
   name,
+}: {
+  name: FieldName,
 }) => {
   const {
     fieldName,
@@ -92,5 +97,3 @@ const useFieldVisitation = ({
     setVisited,
   }
 }
-
-export default useFieldVisitation

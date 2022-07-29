@@ -3,9 +3,10 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useValidationType, {
-  validationTypes,
-} from './useValidationType.js'
+import {
+  useValidationType,
+  ValidationType,
+} from './useValidationType'
 
 describe(
   'useValidationType',
@@ -27,7 +28,7 @@ describe(
           .getValidationType()
         )
         .toBe(
-          validationTypes
+          ValidationType
           .change
         )
       }
@@ -56,7 +57,7 @@ describe(
           .getValidationType()
         )
         .toBe(
-          validationTypes
+          ValidationType
           .submit
         )
       }
@@ -91,7 +92,7 @@ describe(
           .getValidationType()
         )
         .toBe(
-          validationTypes
+          ValidationType
           .change
         )
       }
