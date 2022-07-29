@@ -28,7 +28,16 @@ describe(
           )
         )
 
-        const unregisterRef = {
+        const unregisterRef: {
+          current: (
+            | (
+              (unregister: () => void) => (
+                void
+              )
+            )
+            | null
+          ),
+        } = {
           current: null,
         }
 
