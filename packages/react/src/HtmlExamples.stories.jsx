@@ -9,7 +9,9 @@ import {
 
 import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
-import FieldGroup from './FieldGroup.jsx'
+import {
+  FieldGroup,
+} from './FieldGroup'
 import FieldValue from './FieldValue.jsx'
 import htmlStyleDecorators from '././htmlStyleDecorators.jsx'
 import OneFormProvider from './OneFormProvider.jsx'

@@ -4,7 +4,9 @@ import {
 } from '@storybook/addon-actions'
 
 import Field from './Field.jsx'
-import FieldGroup from './FieldGroup.jsx'
+import {
+  FieldGroup,
+} from './FieldGroup'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneFormProvider from './OneFormProvider.jsx'
 

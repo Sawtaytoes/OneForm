@@ -6,39 +6,75 @@ import {
   useState,
 } from 'react'
 
+import {
+  FieldName,
+} from './useFieldName'
+
 import useUpdateEffect from './useUpdateEffect.js'
 
 const initialSegmentedValues = (
   new Map()
 )
 
-const initialFlattenSegmentedValues = (
-  Function
-  .prototype
-)
+export type SubformState<
+  ValueType,
+> = {
+  addValue: (
+    identifier: FieldName,
+    value: ValueType,
+  ) => (
+    void
+  ),
+  removeValue: (
+    identifier: FieldName,
+  ) => (
+    void
+  ),
+  value: ValueType,
+}
 
-const useSubformState = (
-  {
-    flattenSegmentedValues = (
-      initialFlattenSegmentedValues
-    ),
-    hasPermanentValues = false,
-    value,
-  } = {}
-) => {
+export const useSubformState = <
+  ValueType
+>({
+  flattenSegmentedValues,
+  hasPermanentValues = false,
+  value,
+}: {
+  flattenSegmentedValues: (
+    segmentedValues: any[],
+  ) => (
+    any
+  ),
+  hasPermanentValues: boolean,
+  value: ValueType,
+}) => {
   const segmentedValuesRef = (
-    useRef(
+    useRef<
+      Map<
+        FieldName,
+        ValueType
+      >
+    >(
       initialSegmentedValues
     )
   )
 
   const valueRef = (
-    useRef()
+    useRef(
+      value
+    )
   )
 
-  valueRef
-  .current = (
-    value
+  useEffect(
+    () => {
+      valueRef
+      .current = (
+        value
+      )
+    },
+    [
+      value,
+    ],
   )
 
   // This function initializes without updating the already-initialized `localValue`.
@@ -101,12 +137,15 @@ const useSubformState = (
     useCallback(
       () => {
         setLocalValue(
-          flattenSegmentedValues(
-            Array
-            .from(
-              segmentedValuesRef
-              .current
-              .values()
+        // The extra function is a hack for `useState` and how it handles functions.
+          () => (
+            flattenSegmentedValues(
+              Array
+              .from(
+                segmentedValuesRef
+                .current
+                .values()
+              )
             )
           )
         )
@@ -117,7 +156,11 @@ const useSubformState = (
     )
   )
 
-  const addValue = (
+  const addValue: (
+    SubformState<
+      ValueType
+    >["addValue"]
+  ) = (
     useCallback(
       (
         identifier,
@@ -143,7 +186,11 @@ const useSubformState = (
     )
   )
 
-  const removeValue = (
+  const removeValue: (
+    SubformState<
+      ValueType
+    >["removeValue"]
+  ) = (
     useCallback(
       (
         identifier,
@@ -186,7 +233,9 @@ const useSubformState = (
   )
 
   const hasPermanentValuesRef = (
-    useRef()
+    useRef(
+      hasPermanentValues
+    )
   )
 
   useEffect(() => {
@@ -225,5 +274,3 @@ const useSubformState = (
     value: localValue,
   }
 }
-
-export default useSubformState

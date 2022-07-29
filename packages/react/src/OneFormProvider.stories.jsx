@@ -12,9 +12,13 @@ import {
 
 import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
-import FieldGroup from './FieldGroup.jsx'
+import {
+  FieldGroup,
+} from './FieldGroup'
 import FieldValue from './FieldValue.jsx'
-import Form from './Form.jsx'
+import {
+  Form,
+} from './Form'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneFormProvider from './OneFormProvider.jsx'
 import SubmitField from './SubmitField.jsx'

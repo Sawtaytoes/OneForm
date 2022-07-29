@@ -6,7 +6,9 @@ import {
   useMemo,
 } from 'react'
 
-import FieldContext from './FieldContext.js'
+import {
+  FieldContext,
+} from './FieldContext'
 import useField from './useField.js'
 import useIsCheckboxElement from './useIsCheckboxElement.js'
 import useIsMultipleElement from './useIsMultipleElement.js'

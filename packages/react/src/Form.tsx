@@ -1,23 +1,32 @@
-import PropTypes from 'prop-types'
 import {
   Children,
   cloneElement,
   memo,
+  ReactElement,
   useMemo,
 } from 'react'
 
 import useFormSubmission from './useFormSubmission.js'
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  translateProps: PropTypes.func,
+const defaultProps = {
+  translateProps: () => {},
 }
 
 const Form = ({
   children,
   translateProps = (
-    Function
-    .prototype
+    defaultProps
+    .translateProps
+  ),
+}: {
+  children: ReactElement,
+  translateProps: ({
+    submitForm,
+  }: {
+    submitForm: () => void,
+  }) => (
+    | object
+    | void
   ),
 }) => {
   const {
@@ -58,8 +67,12 @@ const Form = ({
   )
 }
 
-Form.propTypes = propTypes
+const MemoizedForm = (
+  memo(
+    Form
+  )
+)
 
-const MemoizedForm = memo(Form)
-
-export default MemoizedForm
+export {
+  MemoizedForm as Form
+}

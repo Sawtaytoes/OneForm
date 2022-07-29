@@ -6,7 +6,9 @@ import {
   useState,
 } from 'react'
 
-import ErrorMessagesContext from './ErrorMessagesContext.js'
+import {
+  ErrorMessagesContext,
+} from './ErrorMessagesContext'
 import {
   useFieldName,
 } from './useFieldName'

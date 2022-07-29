@@ -1,5 +1,5 @@
-const flattenSegmentedObjectArrayValues = (
-  segmentedValuesList,
+export const flattenSegmentedObjectArrayValues = (
+  segmentedValuesList: object[],
 ) => (
   Object
   .fromEntries(
@@ -48,5 +48,3 @@ const flattenSegmentedObjectArrayValues = (
     )
   )
 )
-
-export default flattenSegmentedObjectArrayValues

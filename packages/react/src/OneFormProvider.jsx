@@ -7,15 +7,27 @@ import {
   useRef,
 } from 'react'
 
-import ErrorMessagesContext from './ErrorMessagesContext.js'
+import {
+  ErrorMessagesContext,
+} from './ErrorMessagesContext'
 import {
   FieldGroupContext,
 } from './FieldGroupContext'
-import flattenSegmentedArrayValues from './flattenSegmentedArrayValues.js'
-import flattenSegmentedFunctionObjectValues from './flattenSegmentedFunctionObjectValues.js'
-import flattenSegmentedFunctionPromiseValues from './flattenSegmentedFunctionPromiseValues.js'
-import flattenSegmentedObjectArrayValues from './flattenSegmentedObjectArrayValues.js'
-import flattenSegmentedObjectValues from './flattenSegmentedObjectValues.js'
+import {
+  flattenSegmentedArrayValues,
+} from './flattenSegmentedArrayValues'
+import {
+  flattenSegmentedFunctionObjectValues,
+} from './flattenSegmentedFunctionObjectValues'
+import {
+  flattenSegmentedFunctionPromiseValues,
+} from './flattenSegmentedFunctionPromiseValues'
+import {
+  flattenSegmentedObjectArrayValues,
+} from './flattenSegmentedObjectArrayValues'
+import {
+  flattenSegmentedObjectValues,
+} from './flattenSegmentedObjectValues'
 import RegistrationContext from './RegistrationContext.js'
 import SubformContext from './SubformContext.js'
 import SubmissionContext from './SubmissionContext.js'
@@ -31,7 +43,9 @@ import {
 } from './useFormVisitationState'
 import useGroupValidationsState from './useGroupValidationsState.js'
 import useRegistrationState from './useRegistrationState.js'
-import useSubformState from './useSubformState.js'
+import {
+  useSubformState,
+} from './useSubformState'
 import useSubmissionState from './useSubmissionState.js'
 import useUpdateEffect from './useUpdateEffect.js'
 import useValidationType, {
