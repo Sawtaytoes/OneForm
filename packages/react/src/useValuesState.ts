@@ -375,6 +375,8 @@ export const useValuesState = <
         ) {
           setLocalValue(
             identifier,
+            // TODO: Remove this when someone figures out how to fix it
+            // @ts-ignore
             value(
               getLocalValue(
                 identifier
