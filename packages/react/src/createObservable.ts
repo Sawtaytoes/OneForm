@@ -3,7 +3,10 @@ export type Subscriber<
 > = (
   | (
     (
-      value: ValueType,
+      value: (
+        | ValueType
+        | null
+      ),
     ) => void
   )
   | (
@@ -21,8 +24,7 @@ export type Observable<
   __subscribersRef: {
     current: (
       Subscriber<
-        | ValueType
-        | null
+        ValueType
       >[]
     ),
   },
@@ -39,8 +41,7 @@ export type Observable<
   subscribe: (
     subscriber: (
       Subscriber<
-        | ValueType
-        | null
+        ValueType
       >
     ),
   ) => Unsubscriber,

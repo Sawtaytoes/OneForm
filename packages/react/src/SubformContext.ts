@@ -37,11 +37,15 @@ export type SubformAddFunction<
 > = (
   subformId: symbol,
   value: ValueType,
-) => void
+) => (
+  void
+)
 
 export type SubformRemoveFunction = (
   subformId: symbol,
-) => void
+) => (
+  void
+)
 
 export type SubformContextType<
   ValueType
