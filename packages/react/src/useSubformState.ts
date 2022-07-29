@@ -136,19 +136,16 @@ export const useSubformState = <
   const updateLocalValue = (
     useCallback(
       () => {
-        setLocalValue(
-        // The extra function is a hack for `useState` and how it handles functions.
-          () => (
-            flattenSegmentedValues(
-              Array
-              .from(
-                segmentedValuesRef
-                .current
-                .values()
-              )
+        setLocalValue(() => (
+          flattenSegmentedValues(
+            Array
+            .from(
+              segmentedValuesRef
+              .current
+              .values()
             )
           )
-        )
+        ))
       },
       [
         flattenSegmentedValues,

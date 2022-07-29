@@ -2,17 +2,27 @@ import {
   flattenSegmentedObjectValues,
 } from './flattenSegmentedObjectValues'
 
-export const flattenSegmentedFunctionObjectValues = (
+export const flattenSegmentedFunctionObjectValues = <
+  FunctionArgumentsType extends any[]
+>(
   segmentedValuesList: (
-    () => object
+    (
+      ...args: FunctionArgumentsType
+    ) => (
+      object
+    )
   )[],
-) => () => (
+) => (
+  ...args: FunctionArgumentsType
+) => (
   flattenSegmentedObjectValues(
     segmentedValuesList
     .map((
       func,
     ) => (
-      func()
+      func(
+        ...args
+      )
     ))
   )
 )
