@@ -3,9 +3,34 @@ import {
 } from 'react'
 
 import {
+  ErrorMessages,
+} from './ErrorMessagesContext'
+import {
   OnChange,
   Values,
 } from './useValuesState'
+
+export type GroupValidations = {
+  fieldNames: string[],
+  getErrorMessages: () => (
+    | {
+      string: (
+        | boolean
+        | ErrorMessages
+        | string
+      ),
+    }
+    | null
+  )
+}[]
+
+export type OnSubmit = (
+  () => void
+)
+
+export type Validations = {
+  string: (() => boolean)[],
+}
 
 export type SubformAddFunction<
   ValueType
@@ -18,55 +43,52 @@ export type SubformRemoveFunction = (
   subformId: symbol,
 ) => void
 
-export type SubformContextType = {
+export type SubformContextType<
+  ValueType
+> = {
   addErrorMessages: (
     SubformAddFunction<
-      // TODO: Make this use the `ErrorMessage` type
-      string[]
+      ErrorMessages
     >
   ),
   addGroupValidations: (
     SubformAddFunction<
-      // TODO: Make this use the `GroupValidation` type
-      object[]
+      GroupValidations
     >
   ),
   addOnChange: (
     SubformAddFunction<
       OnChange<
-        any
+        ValueType
       >
     >
   ),
   addOnSubmit: (
     SubformAddFunction<
-      // TODO: Make this use the `OnSubmit` type
-      Function
+      OnSubmit
     >
   ),
   addUpdatedErrorMessages: (
     SubformAddFunction<
-      // TODO: Make this use the `ErrorMessage` type
-      string[]
+      ErrorMessages
     >
   ),
   addUpdatedValues: (
     SubformAddFunction<
       Values<
-        any
+        ValueType
       >
     >
   ),
   addValidations: (
     SubformAddFunction<
-      // TODO: Make this use the `Validation` type
-      object
+      Validations
     >
   ),
   addValues: (
     SubformAddFunction<
       Values<
-        any
+        ValueType
       >
     >
   ),
@@ -97,7 +119,9 @@ export type SubformContextType = {
 }
 
 export const defaultSubformContextValue: (
-  SubformContextType
+  SubformContextType<
+    any
+  >
 ) = {
   addErrorMessages: () => {},
   addGroupValidations: () => {},

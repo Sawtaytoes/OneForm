@@ -3,10 +3,24 @@ import {
 } from 'react'
 
 import {
+  ErrorMessages,
+} from './ErrorMessagesContext'
+import {
+  GroupValidations,
+  OnSubmit,
+  Validations,
+} from './SubformContext'
+import {
   useSubformData,
 } from './useSubformData'
+import {
+  OnChange,
+  Values,
+} from './useValuesState'
 
-export const useSubformEffect = (
+export const useSubformEffect = <
+  ValueType
+>(
   {
     errorMessages,
     groupValidations,
@@ -16,6 +30,27 @@ export const useSubformEffect = (
     updatedValues,
     validations,
     values,
+  }: {
+    errorMessages?: ErrorMessages,
+    groupValidations?: GroupValidations,
+    onChange?: (
+      OnChange<
+        ValueType
+      >
+    ),
+    onSubmit?: OnSubmit,
+    updatedErrorMessages?: ErrorMessages,
+    updatedValues?: (
+      Values<
+        ValueType
+      >
+    ),
+    validations?: Validations,
+    values?: (
+      Values<
+        ValueType
+      >
+    ),
   } = {}
 ) => {
   const {
@@ -36,7 +71,9 @@ export const useSubformEffect = (
     removeValidations,
     removeValues,
   } = (
-    useSubformData()
+    useSubformData<
+      ValueType
+    >()
   )
 
   useEffect(

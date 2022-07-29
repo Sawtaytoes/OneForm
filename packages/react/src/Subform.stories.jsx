@@ -9,6 +9,9 @@ import {
 import Field from './Field.jsx'
 import FieldErrorMessage from './FieldErrorMessage.jsx'
 import FieldValue from './FieldValue.jsx'
+import {
+  Form,
+} from './Form'
 import SubmitField from './SubmitField.jsx'
 import htmlStyleDecorators from './htmlStyleDecorators.jsx'
 import OneFormProvider from './OneFormProvider.jsx'
@@ -19,12 +22,8 @@ import {
 
 export default {
   args: {
-    onChange: action(),
-    onSubmit: action(),
-  },
-  argTypes: {
-    onChange: 'changed',
-    onSubmit: 'submitted',
+    onChange: action('changed'),
+    onSubmit: action('submitted'),
   },
   component: Subform,
   decorators: htmlStyleDecorators,
@@ -34,7 +33,6 @@ export default {
 export const Values = (
   args,
 ) => (
-console.log(args)||
   <OneFormProvider>
     <Subform {...args} />
     <FieldValue name="message" />
@@ -327,12 +325,14 @@ export const OnChange = (
 
 OnChange
 .args = {
-  onChange: ({
-    value,
-  }) => ({
-    copiedMessage: value,
-    message: value,
-  }),
+  onChange: (
+    action(({
+      value,
+    }) => ({
+      copiedMessage: value,
+      message: value,
+    }))
+  ),
 }
 
 export const OnSubmit = (
@@ -341,8 +341,12 @@ export const OnSubmit = (
   <OneFormProvider>
     <Subform {...args} />
 
-    <button type="submit">
-      Submit
-    </button>
+    <Form>
+      <form>
+        <button type="submit">
+          Submit
+        </button>
+      </form>
+    </Form>
   </OneFormProvider>
 )

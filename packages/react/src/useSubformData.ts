@@ -5,9 +5,12 @@ import {
 
 import {
   SubformContext,
+  SubformContextType,
 } from './SubformContext'
 
-export const useSubformData = () => {
+export const useSubformData = <
+  ValueType
+>() => {
   const subformId = (
     useMemo(
       () => (
@@ -18,7 +21,11 @@ export const useSubformData = () => {
   )
 
   const subformContext = (
-    useContext(
+    useContext<
+      SubformContextType<
+        ValueType
+      >
+    >(
       SubformContext
     )
   )
@@ -38,24 +45,30 @@ export const useSubformData = () => {
           ]) => ([
             functionName,
             (
-              value,
-            ) => (
               (
-                (
-                  func
-                  .length
-                )
-                === 2
+                func
+                .length
               )
-              ? (
+              === 2
+            )
+            ? (
+              (
+                value: (
+                  Parameters<
+                    typeof func
+                  >[1]
+                ),
+              ) => (
                 func(
                   subformId,
                   value,
                 )
               )
-              : (
+            )
+            : (
+              () => (
                 func(
-                  subformId
+                  subformId,
                 )
               )
             ),
