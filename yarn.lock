@@ -2183,36 +2183,36 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@ghadyani-eslint/eslint-config-core@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-core/-/eslint-config-core-2.2.4.tgz#9cfe504497410dcf1826c736b436befaf78348be"
-  integrity sha512-7CilywaKJeFg0RQpPZ8xtvRTjcpWrW3uWIIU4DS+lUNGCHTkSBifhjGag0QmNG37gmD4HXJz89zoTRxeO/X8uw==
+"@ghadyani-eslint/eslint-config-core@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-core/-/eslint-config-core-2.2.5.tgz#f04b4c9d4a946d462861eb64e37b8d92dccdfb29"
+  integrity sha512-HrMczko8dMteLoeDym2W1jgVbgBzU+E2QxEds5yPzDSZ8PcV/ESkGqPr/E3/DXW5F8ELKHXGLSt/UJpvUmCZsg==
   dependencies:
     "@ghadyani-eslint/eslint-plugin-arrow-body-parens" "^2.2.4"
-    "@ghadyani-eslint/eslint-plugin-eslint-overrides" "^2.2.4"
+    "@ghadyani-eslint/eslint-plugin-eslint-overrides" "^2.2.5"
     "@ghadyani-eslint/eslint-plugin-rules" "^2.2.3"
     eslint-plugin-sort-destructure-keys "^1.4.0"
 
-"@ghadyani-eslint/eslint-config-node@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-node/-/eslint-config-node-2.2.4.tgz#6c6e017503c63d48ebabe46565ce86aaa7fca0ee"
-  integrity sha512-7Sb8iul3BHhCaj+/JeSOERND2qrxLN69C/4CqBUGOR0T5OAo2TCMYHIag04R7boB/lLVwXXa1SZqFH6Tz579GQ==
+"@ghadyani-eslint/eslint-config-node@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-node/-/eslint-config-node-2.2.5.tgz#f1ae179f5a612027515761df8335393bcc47c9df"
+  integrity sha512-EeUY8KKh3AoWYNKPMAsHd12p5lR8AK2XgpQXpxO2FZ7LwFyWvpiO/KzGA93CkT9f1cohtSRH8swyRSaECeU/Sg==
   dependencies:
-    "@ghadyani-eslint/eslint-config-core" "^2.2.4"
+    "@ghadyani-eslint/eslint-config-core" "^2.2.5"
 
-"@ghadyani-eslint/eslint-config-react@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-react/-/eslint-config-react-2.2.4.tgz#f2094727f283088d4eb62c9a59f9c4170a19bfb9"
-  integrity sha512-DLmHUT7AGaR6uxuyD3XGmgkEqu2U13lYZkeULXgqc+iklB8kpiDUauAcoeVYKujZ40YKgDJKeWOv9DRhbp24nw==
+"@ghadyani-eslint/eslint-config-react@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-react/-/eslint-config-react-2.2.5.tgz#bc83388aba345af58dca843b5b69b5967ed9011e"
+  integrity sha512-lOerp0fziq3eDYVcwQjCd2zSXXBK7l/95tf0l012qJTY2bwEvcJBox9iHzGmjMjacVXyhJC06MicaOB+4seXBw==
   dependencies:
-    "@ghadyani-eslint/eslint-config-web" "^2.2.4"
+    "@ghadyani-eslint/eslint-config-web" "^2.2.5"
 
-"@ghadyani-eslint/eslint-config-web@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-web/-/eslint-config-web-2.2.4.tgz#165feb21c1c8277921d62e27fdb42fc12dd63b68"
-  integrity sha512-XRBYVtiNV4saC3akXv4d9cLSclZ5Kz1kmw6bksFn6oSjLZwXU01ZoDnXmu4AirIkQFfRe48BPDtV9ugB7Eecng==
+"@ghadyani-eslint/eslint-config-web@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-config-web/-/eslint-config-web-2.2.5.tgz#db19cd8cf78dc27d24f18927b65a3703c3815bfc"
+  integrity sha512-8saUSobK6iurZyKEK+SN/iXTx9WWk+wTjxAR8zevu3B77fTHPOFc8+NrhwWLbcV6bnCSemn7cFyxBRdsev4Ccg==
   dependencies:
-    "@ghadyani-eslint/eslint-config-core" "^2.2.4"
+    "@ghadyani-eslint/eslint-config-core" "^2.2.5"
 
 "@ghadyani-eslint/eslint-plugin-arrow-body-parens@^2.2.4":
   version "2.2.4"
@@ -2224,10 +2224,10 @@
     eslint-utils "^3.0.0"
     requireindex "^1.2.0"
 
-"@ghadyani-eslint/eslint-plugin-eslint-overrides@^2.2.4":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-plugin-eslint-overrides/-/eslint-plugin-eslint-overrides-2.2.4.tgz#535c36a8af972cae2370ccfdce3925b0a4eb9b57"
-  integrity sha512-TGLxhI6C2xXH/RHO9jYi8F22nAxALKmU5k3FVKdPCEnaNzscj9HWug/rwyp8bpNExLRy81RHtuBdtBz4EIXzlQ==
+"@ghadyani-eslint/eslint-plugin-eslint-overrides@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@ghadyani-eslint/eslint-plugin-eslint-overrides/-/eslint-plugin-eslint-overrides-2.2.5.tgz#be21e11fa36f5ad51568f37ba3e4ef810096f258"
+  integrity sha512-8DlGlObJLf6+zW7hNxt9SdFM6G/N9XT2xstbKsEP/ouMxE2toZNKTa3UgA3YL/+S+L98i7XCTg4U2uFwq1qIJQ==
   dependencies:
     eslint-utils "^3.0.0"
     functional-red-black-tree "^1.0.1"
