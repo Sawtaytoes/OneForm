@@ -1,3 +1,5 @@
+const path = require('path')
+
 const eslintConfig = {
   env: {
     'cypress/globals': true,
@@ -11,6 +13,23 @@ const eslintConfig = {
     '@ghadyani-eslint/react',
   ],
   parser: '@babel/eslint-parser',
+  parserOptions: {
+    babelOptions: {
+      configFile: (
+        require
+        .resolve(
+          path
+          .join(
+            (
+              process
+              .cwd()
+            ),
+            'babel.config.js',
+          )
+        )
+      ),
+    },
+  },
   plugins: [
     'cypress',
     'jest',

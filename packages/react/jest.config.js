@@ -13,7 +13,7 @@ const jestConfig = {
     '^.+\\.[jt]sx?$': [
       'babel-jest',
       {
-        configFile: './babel.config.js'
+        configFile: './babel.config.js',
       },
     ],
   },
