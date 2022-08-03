@@ -15,6 +15,7 @@
     "dev:test": "jest --cache --onlyChanged --errorOnDeprecated --watch",
     "start": "yarn && yarn dev"
   },
+  "packageManager": "yarn@3.2.2",
   "browser": "dist/oneform.umd.min.js",
   "main": "dist/cjs",
   "umd:main": "dist/oneform.umd.js",
@@ -51,7 +52,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^5.1.0",
-    "@testing-library/user-event": "^13.0.6",
+    "@testing-library/user-event": "13.5.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "cypress": "^8.0.0",
