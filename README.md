@@ -6,11 +6,9 @@ description: What is OneForm?
 
 ## What is OneForm?
 
-OneForm is a form library.
+OneForm is a form state mangement library for [ReactJS](https://github.com/Sawtaytoes/OneForm/tree/master/packages/react#oneform) & [SolidJS](https://github.com/Sawtaytoes/OneForm/tree/master/packages/solid#oneform).
 
 > Okay... So what's that mean to me?
-
-OneForm is a way to manage the state of your form.
 
 Just about every developer uses forms, and you'll almost always run into a situation where your requirements are too complex for a simple solution.
 

@@ -7,7 +7,7 @@ _The OneForm you need!_
 
 ## Features
 
-* No external dependencies \(except Solid\).
+* No external dependencies \(except [Solid](https://www.solidjs.com/)\).
 * Super clean API.
 * Validation and group validation built-in.
 * Write your own validations or use your favorite library.
