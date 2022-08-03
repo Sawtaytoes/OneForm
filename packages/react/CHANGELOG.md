@@ -1,3 +1,8 @@
+# 4.0.0
+_August 3, 2022_
+
+- ♻️ Refactored everything to use TypeScript.
+
 # 3.1.0
 _August 3, 2022_
 
