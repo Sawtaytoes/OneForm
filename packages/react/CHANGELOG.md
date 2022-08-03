@@ -1,3 +1,9 @@
+# 3.1.0
+_August 3, 2022_
+
+- ✨ Re-added `OneForm` component with original functionality, but now using `OneFormProvider` and `Form` internally.
+- ✨ `formElementProps` added to `OneForm`, so you can control the internal `<form>`  HTML element; something previously impossible.
+
 # 3.0.0
 _July 27, 2022_
 

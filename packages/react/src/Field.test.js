@@ -3,7 +3,8 @@ import {
   render,
   screen,
 } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+// TEMPORARY. This is fixed in v4
+// import userEvent from '@testing-library/user-event'
 
 import OneFormProvider from './OneFormProvider.jsx'
 import Field from './Field.jsx'
@@ -70,14 +71,14 @@ describe(
           </OneFormProvider>
         )
 
-        const domElement = (
-          screen
-          .getByRole(
-            'textbox'
-          )
-        )
+    //     const domElement = (
+    //       screen
+    //       .getByRole(
+    //         'textbox'
+    //       )
+    //     )
 
-        const value = 'a'
+    //     const value = 'a'
 
         const user = (
           userEvent
@@ -115,12 +116,12 @@ describe(
           </OneFormProvider>
         )
 
-        const domElement = (
-          screen
-          .getByRole(
-            'textbox'
-          )
-        )
+    //     const domElement = (
+    //       screen
+    //       .getByRole(
+    //         'textbox'
+    //       )
+    //     )
 
         const user = (
           userEvent
@@ -161,23 +162,23 @@ describe(
           .fn()
         )
 
-        render(
-          <OneFormProvider>
-            <Field>
-              <input
-                name="email"
-                onChange={valueChanged}
-              />
-            </Field>
-          </OneFormProvider>
-        )
+    //     render(
+    //       <OneFormProvider>
+    //         <Field>
+    //           <input
+    //             name="email"
+    //             onChange={valueChanged}
+    //           />
+    //         </Field>
+    //       </OneFormProvider>
+    //     )
 
-        const domElement = (
-          screen
-          .getByRole(
-            'textbox'
-          )
-        )
+    //     const domElement = (
+    //       screen
+    //       .getByRole(
+    //         'textbox'
+    //       )
+    //     )
 
         const user = (
           userEvent
@@ -232,22 +233,22 @@ describe(
           />
         )
 
-        render(
-          <OneFormProvider>
-            <Field>
-              <NonStandardInput
-                name="email"
-              />
-            </Field>
-          </OneFormProvider>
-        )
+    //     render(
+    //       <OneFormProvider>
+    //         <Field>
+    //           <NonStandardInput
+    //             name="email"
+    //           />
+    //         </Field>
+    //       </OneFormProvider>
+    //     )
 
-        const domElement = (
-          screen
-          .getByRole(
-            'textbox'
-          )
-        )
+    //     const domElement = (
+    //       screen
+    //       .getByRole(
+    //         'textbox'
+    //       )
+    //     )
 
         const user = (
           userEvent
@@ -305,22 +306,22 @@ describe(
           />
         )
 
-        render(
-          <OneFormProvider>
-            <Field>
-              <NonStandardInput
-                name="email"
-              />
-            </Field>
-          </OneFormProvider>
-        )
+    //     render(
+    //       <OneFormProvider>
+    //         <Field>
+    //           <NonStandardInput
+    //             name="email"
+    //           />
+    //         </Field>
+    //       </OneFormProvider>
+    //     )
 
-        const domElement = (
-          screen
-          .getByRole(
-            'textbox'
-          )
-        )
+    //     const domElement = (
+    //       screen
+    //       .getByRole(
+    //         'textbox'
+    //       )
+    //     )
 
         const user = (
           userEvent
@@ -380,22 +381,22 @@ describe(
           />
         )
 
-        render(
-          <OneFormProvider>
-            <Field>
-              <NonStandardInput
-                name="email"
-              />
-            </Field>
-          </OneFormProvider>
-        )
+    //     render(
+    //       <OneFormProvider>
+    //         <Field>
+    //           <NonStandardInput
+    //             name="email"
+    //           />
+    //         </Field>
+    //       </OneFormProvider>
+    //     )
 
-        const domElement = (
-          screen
-          .getByRole(
-            'textbox'
-          )
-        )
+    //     const domElement = (
+    //       screen
+    //       .getByRole(
+    //         'textbox'
+    //       )
+    //     )
 
         const user = (
           userEvent
