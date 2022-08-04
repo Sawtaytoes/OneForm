@@ -1,42 +1,118 @@
 import {
   useCallback,
+  useEffect,
   useRef,
 } from 'react'
 
+import {
+  FieldName,
+} from './useFieldName'
+
+export type Unregister = () => (
+  void
+)
+
+export type Registrations = (
+  Record<
+    string,
+    number
+  >
+)
+
+export type RegistrationState = {
+  getAllRegistrations: () => (
+    Registrations
+  ),
+  getIsRegistered: () => (
+    boolean
+  ),
+  register: (
+    identifier: (
+      FieldName
+    ),
+  ) => (
+    Unregister
+  ),
+}
+
 const initialRegistrations = {}
 
-const useRegistrationState = (
+const defaultProps = {
+  onRegister: (
+    () => {}
+  ),
+  onUnregister: (
+    () => {}
+  ),
+}
+
+export const useRegistrationState = (
   {
     onRegister = (
-      Function
-      .prototype
+      defaultProps
+      .onRegister
     ),
     onUnregister = (
-      Function
-      .prototype
+      defaultProps
+      .onUnregister
+    ),
+  }: {
+    onRegister?: (
+      identifier: (
+        FieldName
+      )
+    ) => (
+      void
+    ),
+    onUnregister?: (
+      identifier: (
+        FieldName
+      )
+    ) => (
+      void
     ),
   } = {}
 ) => {
   const onRegisterRef = (
-    useRef()
+    useRef(
+      onRegister
+    )
   )
 
-  onRegisterRef
-  .current = (
-    onRegister
+  useEffect(
+    () => {
+      onRegisterRef
+      .current = (
+        onRegister
+      )
+    },
+    [
+      onRegister,
+    ],
   )
 
   const onUnregisterRef = (
-    useRef()
+    useRef(
+      onUnregister
+    )
   )
 
-  onUnregisterRef
-  .current = (
-    onUnregister
+  useEffect(
+    () => {
+      onUnregisterRef
+      .current = (
+        onUnregister
+      )
+    },
+    [
+      onUnregister,
+    ],
   )
 
   const registrationsRef = (
-    useRef(
+    useRef<
+      Registrations
+    >(
       initialRegistrations
     )
   )
@@ -134,11 +210,11 @@ const useRegistrationState = (
     )
   )
 
-  return {
+  const returnType = {
     getAllRegistrations,
     getIsRegistered,
     register,
   }
-}
 
-export default useRegistrationState
+  return returnType
+}

@@ -57,7 +57,11 @@ export const useFieldValue = <
   const setValue = (
     useCallback(
       (
-        value: ValueType,
+        value: (
+          Parameters<
+            typeof setFieldValue
+          >[1]
+        ),
       ) => {
         setFieldValue(
           fieldName,

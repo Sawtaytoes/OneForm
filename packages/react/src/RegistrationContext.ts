@@ -3,16 +3,12 @@ import {
 } from 'react'
 
 import {
-  FieldName,
-} from './useFieldName'
+  RegistrationState,
+} from './useRegistrationState'
 
 export type RegistrationContextType = {
   registerFieldName: (
-    identifier: FieldName,
-  ) => (
-    unregister: () => void
-  ) => (
-    void
+    RegistrationState["register"]
   ),
 }
 

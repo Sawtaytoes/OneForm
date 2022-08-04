@@ -10,23 +10,24 @@ import {
   useObservableState,
 } from './useObservableState'
 
-const initialLocalValues = {}
-const initialSubsequentValues = {}
+export type NotUndefined = (
+  | {} // Accounts for all non-nullable.
+  | null
+)
 
 export type Values<
-  ValueType
+  ValueType extends (
+    NotUndefined
+  ),
 > = (
   Record<
     ObservableIdentifier,
-    (
-      | ValueType
-      | undefined
-    )
+    ValueType
   >
 )
 
 export type OnChange<
-  ValueType
+  ValueType = any
 > = (
   | (
     ({
@@ -34,7 +35,9 @@ export type OnChange<
       value,
       values,
     }: {
-      identifier: ObservableIdentifier,
+      identifier: (
+        ObservableIdentifier
+      ),
       value: (
         | ValueType
         | undefined
@@ -56,7 +59,9 @@ export type OnChange<
 )
 
 export type ValuesState<
-  ValueType,
+  ValueType extends (
+    NotUndefined
+  ),
 > = {
   getAllValues: () => (
     Values<
@@ -64,18 +69,28 @@ export type ValuesState<
     >
   ),
   getValue: (
-    identifier: ObservableIdentifier,
+    identifier: (
+      ObservableIdentifier
+    ),
   ) => (
     | ValueType
     | undefined
   ),
   setValue: (
-    identifier: ObservableIdentifier,
+    identifier: (
+      ObservableIdentifier
+    ),
     value: (
       | ValueType
       | (
-        () => (
-          ValueType
+        (
+          value: (
+            | ValueType
+            | undefined
+          ),
+        ) => (
+          | ValueType
+          | undefined
         )
       )
       | undefined
@@ -91,6 +106,9 @@ export type ValuesState<
   ),
 }
 
+const initialLocalValues = {}
+const initialSubsequentValues = {}
+
 const defaultProps = {
   onChange: () => {},
   updatedValues: {},
@@ -98,7 +116,9 @@ const defaultProps = {
 }
 
 export const useValuesState = <
-  ValueType
+  ValueType extends (
+    NotUndefined
+  )
 >(
   {
     onChange = (
@@ -214,7 +234,14 @@ export const useValuesState = <
   const queueSubsequentChanges = (
     useCallback(
       (
-        subsequentValues,
+        subsequentValues: (
+          | (
+            Values<
+              ValueType
+            >
+          )
+          | void
+        ),
       ) => {
         subsequentValuesRef
         .current = {
@@ -232,10 +259,11 @@ export const useValuesState = <
   const setLocalValue = (
     useCallback(
       (
-        identifier: ObservableIdentifier,
+        identifier: (
+          ObservableIdentifier
+        ),
         value: (
-          | ValueType
-          | undefined
+          ValueType
         ),
       ) => {
         if (
@@ -249,33 +277,12 @@ export const useValuesState = <
           return
         }
 
-        if (
-          value
-          === undefined
-        ) {
-          const copiedAllLocalValues = {
-            ...getAllLocalValues(),
-          }
-
-          Reflect
-          .deleteProperty(
-            copiedAllLocalValues,
-            identifier,
-          )
-
-          localValuesRef
-          .current = (
-            copiedAllLocalValues
-          )
-        }
-        else {
-          localValuesRef
-          .current = {
-            ...getAllLocalValues(),
-            [identifier]: (
-              value
-            ),
-          }
+        localValuesRef
+        .current = {
+          ...getAllLocalValues(),
+          [identifier]: (
+            value
+          ),
         }
 
         queueSubsequentChanges(
@@ -296,6 +303,54 @@ export const useValuesState = <
       },
       [
         getAllLocalValues,
+        publishValue,
+        queueSubsequentChanges,
+      ],
+    )
+  )
+
+  const deleteLocalValue = (
+    useCallback(
+      (
+        identifier: (
+          ObservableIdentifier
+        ),
+      ) => {
+        const copiedAllLocalValues = {
+          ...getAllLocalValues(),
+        }
+
+        Reflect
+        .deleteProperty(
+          copiedAllLocalValues,
+          identifier,
+        )
+
+        localValuesRef
+        .current = (
+          copiedAllLocalValues
+        )
+
+        const value = undefined
+
+        queueSubsequentChanges(
+          onChangeRef
+          .current({
+            identifier,
+            value,
+            values: (
+              getAllLocalValues()
+            ),
+          })
+        )
+
+        publishValue(
+          identifier,
+          value,
+        )
+      },
+      [
+        getLocalValue,
         publishValue,
         queueSubsequentChanges,
       ],
@@ -357,6 +412,40 @@ export const useValuesState = <
     )
   )
 
+  const configureLocalValue = (
+    useCallback(
+      (
+        identifier: (
+          ObservableIdentifier
+        ),
+        value: (
+          | ValueType
+          | undefined
+        ),
+      ) => {
+        (
+          value
+          === undefined
+        )
+        ? (
+          deleteLocalValue(
+            identifier
+          )
+        )
+        : (
+          setLocalValue(
+            identifier,
+            value,
+          )
+        )
+      },
+      [
+        deleteLocalValue,
+        setLocalValue,
+      ],
+    )
+  )
+
   const changeLocalValue: (
     ValuesState<
       ValueType
@@ -373,19 +462,19 @@ export const useValuesState = <
             === 'function'
           )
         ) {
-          setLocalValue(
+          configureLocalValue(
             identifier,
-            // TODO: Remove this when someone figures out how to fix it
-            // @ts-ignore
-            value(
-              getLocalValue(
-                identifier
+            (
+              value(
+                getLocalValue(
+                  identifier
+                )
               )
             ),
           )
         }
         else {
-          setLocalValue(
+          configureLocalValue(
             identifier,
             value,
           )
@@ -394,9 +483,9 @@ export const useValuesState = <
         processSubsequentChanges()
       },
       [
+        configureLocalValue,
         getLocalValue,
         processSubsequentChanges,
-        setLocalValue,
       ],
     )
   )
@@ -427,7 +516,7 @@ export const useValuesState = <
         identifier,
         value,
       ]) => {
-        setLocalValue(
+        configureLocalValue(
           identifier,
           value,
         )
@@ -452,7 +541,7 @@ export const useValuesState = <
         identifier,
         value,
       ]) => {
-        setLocalValue(
+        configureLocalValue(
           identifier,
           value,
         )
@@ -467,10 +556,22 @@ export const useValuesState = <
     ],
   )
 
-  return {
-    getAllValues: getAllLocalValues,
-    getValue: getLocalValue,
-    setValue: changeLocalValue,
-    subscribeToValue: subscribeToValue,
+  const returnValue: (
+    ValuesState<
+      ValueType
+    >
+  ) = {
+    getAllValues: (
+      getAllLocalValues
+    ),
+    getValue: (
+      getLocalValue
+    ),
+    setValue: (
+      changeLocalValue
+    ),
+    subscribeToValue,
   }
+
+  return returnValue
 }

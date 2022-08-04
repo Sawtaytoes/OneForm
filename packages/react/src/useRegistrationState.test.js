@@ -3,7 +3,9 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useRegistrationState from './useRegistrationState.js'
+import {
+  useRegistrationState,
+} from './useRegistrationState'
 
 describe(
   'useRegistrationState',

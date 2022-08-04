@@ -46,7 +46,9 @@ import {
   useFormVisitationState,
 } from './useFormVisitationState'
 import useGroupValidationsState from './useGroupValidationsState.js'
-import useRegistrationState from './useRegistrationState.js'
+import {
+  useRegistrationState,
+} from './useRegistrationState'
 import {
   useSubformState,
 } from './useSubformState'

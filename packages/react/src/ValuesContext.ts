@@ -7,7 +7,7 @@ import {
 } from './useValuesState'
 
 export type ValuesContextType<
-  ValueType
+  ValueType = any
 > = {
   getFieldValue: (
     ValuesState<
@@ -27,9 +27,7 @@ export type ValuesContextType<
 }
 
 export const defaultFieldValuesContextValue: (
-  ValuesContextType<
-    null
-  >
+  ValuesContextType
 ) = {
   getFieldValue: () => null,
   setFieldValue: () => {},

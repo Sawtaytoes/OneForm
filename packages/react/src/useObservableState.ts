@@ -19,26 +19,36 @@ export type ObservableState<
   ObservableValue
 > = {
   publishValue: (
-    identifier: ObservableIdentifier,
-    value: ObservableValue,
-  ) => void,
+    identifier: (
+      ObservableIdentifier
+    ),
+    value: (
+      ObservableValue
+    ),
+  ) => (
+    void
+  ),
   subscribeToValue: ({
     identifier,
     subscriber,
   }: {
-    identifier: ObservableIdentifier,
+    identifier: (
+      ObservableIdentifier
+    ),
     subscriber: (
       Subscriber<
         ObservableValue
       >
     ),
-  }) => Unsubscriber,
+  }) => (
+    Unsubscriber
+  ),
 }
 
 const initialObservables = {}
 
 export const useObservableState = <
-  ObservableValue
+  ObservableValue = any,
 >() => {
   const observablesRef = (
     useRef<(
@@ -58,7 +68,9 @@ export const useObservableState = <
   const getObservable = (
     useCallback(
       (
-        identifier: ObservableIdentifier,
+        identifier: (
+          ObservableIdentifier
+        ),
       ) => {
         if (
           !(
@@ -137,8 +149,14 @@ export const useObservableState = <
     )
   )
 
-  return {
+  const returnValue: (
+    ObservableState<
+      ObservableValue
+    >
+  ) = {
     publishValue,
     subscribeToValue,
   }
+
+  return returnValue
 }

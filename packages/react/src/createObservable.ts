@@ -4,18 +4,21 @@ export type Subscriber<
   | (
     (
       value: (
-        | ValueType
-        | null
+        ValueType
       ),
-    ) => void
+    ) => (
+      void
+    )
   )
   | (
-    () => void
+    () => (
+      void
+    )
   )
 )
 
-export type Unsubscriber = (
-  () => void
+export type Unsubscriber = () => (
+  void
 )
 
 export type Observable<
@@ -34,8 +37,7 @@ export type Observable<
   ),
   publish: (
     value: (
-      | ValueType
-      | null
+      ValueType
     ),
   ) => void,
   subscribe: (
@@ -44,7 +46,9 @@ export type Observable<
         ValueType
       >
     ),
-  ) => Unsubscriber,
+  ) => (
+    Unsubscriber
+  ),
 }
 
 export const createObservable = <
@@ -127,7 +131,7 @@ export const createObservable = <
       )
     })
   }
-  
+
   const subscribe: (
     Observable<
       SubscriberValue
@@ -179,10 +183,16 @@ export const createObservable = <
     }
   }
 
-  return {
+  const returnValue: (
+    Observable<
+      SubscriberValue
+    >
+  ) = {
     __subscribersRef: subscribersRef,
     getValue,
     publish,
     subscribe,
   }
+
+  return returnValue
 }
