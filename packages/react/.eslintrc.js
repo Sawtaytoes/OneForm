@@ -9,6 +9,7 @@ const eslintConfig = {
     'plugin:cypress/recommended',
     'plugin:jest/recommended',
     'plugin:jest/style',
+    'plugin:react-hooks/recommended',
     '@ghadyani-eslint/node',
     '@ghadyani-eslint/react',
   ],
@@ -37,7 +38,8 @@ const eslintConfig = {
   ],
   rules: {
     '@getify/proper-ternary/nested': 'off',
-    '@ghadyani-eslint/arrow-body-parens/parens': 'warn',
+    '@ghadyani-eslint/arrow-body-parens/parens': 'off',
+    '@ghadyani-eslint/eslint-overrides/indent': 'off',
     'array-bracket-newline': [
       'warn',
       {

@@ -3,7 +3,9 @@ import {
   screen,
 } from '@testing-library/react'
 
-import IfFieldVisitation from './IfFieldVisitation.jsx'
+import {
+  IfFieldVisitation,
+} from './IfFieldVisitation'
 import OneFormProvider from './OneFormProvider.jsx'
 
 describe(

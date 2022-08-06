@@ -3,9 +3,22 @@ import {
   useRef,
 } from 'react'
 
-const useUpdateEffect = (
-  callback,
-  dependencies = [],
+const defaultProps = {
+  callback: () => {},
+  dependencies: [],
+}
+
+export const useUpdateEffect = (
+  callback = (
+    defaultProps
+    .callback
+  ),
+  dependencies: (
+    any[]
+  ) = (
+    defaultProps
+    .dependencies
+  ),
 ) => {
   const isFirstUpdateRef = (
     useRef(
@@ -14,7 +27,9 @@ const useUpdateEffect = (
   )
 
   const callbackRef = (
-    useRef()
+    useRef(
+      callback
+    )
   )
 
   callbackRef
@@ -45,5 +60,3 @@ const useUpdateEffect = (
     dependencies,
   )
 }
-
-export default useUpdateEffect

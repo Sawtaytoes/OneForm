@@ -2,38 +2,80 @@ import {
   useCallback,
 } from 'react'
 
+import {
+  FieldName,
+} from './useFieldName'
 import useStrippedIdentifer from './useStrippedIdentifer'
 import useUpdateEffect from './useUpdateEffect'
 
-export const validationsSymbol = Symbol()
+export const validationsSymbol = (
+  Symbol()
+)
 
-const initialValidations = {}
+const defaultProps = {
+  getAllIdentifiers: (
+    () => []
+  ),
+  getIsReadyForValidation: (
+    () => {}
+  ),
+  getValidationType: (
+    () => {}
+  ),
+  getValue: (
+    () => {}
+  ),
+  setErrorMessages: (
+    () => {}
+  ),
+  validations: (
+    {}
+  ),
+}
 
-const useValidationsState = (
+export const useValidationsState = (
   {
     getAllIdentifiers = (
-      Function
-      .prototype
+      defaultProps
+      .getAllIdentifiers
     ),
     getIsReadyForValidation = (
-      Function
-      .prototype
+      defaultProps
+      .getIsReadyForValidation
     ),
     getValidationType = (
-      Function
-      .prototype
+      defaultProps
+      .getValidationType
     ),
     getValue = (
-      Function
-      .prototype
+      defaultProps
+      .getValue
     ),
     setErrorMessages = (
-      Function
-      .prototype
+      defaultProps
+      .setErrorMessages
     ),
     validations = (
-      initialValidations
+      defaultProps
+      .validations
     ),
+  }: {
+    getAllIdentifiers?: () => (
+      FieldName[]
+    ),
+    getIsReadyForValidation?: () => (
+      void
+    ),
+    getValidationType?: () => (
+      void
+    ),
+    getValue?: () => (
+      void
+    ),
+    setErrorMessages?: () => (
+      void
+    ),
+    validations?: {},
   } = {}
 ) => {
   const {
@@ -162,5 +204,3 @@ const useValidationsState = (
     validate,
   }
 }
-
-export default useValidationsState

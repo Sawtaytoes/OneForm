@@ -3,9 +3,10 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useValidationsState, {
+import {
+  useValidationsState,
   validationsSymbol,
-} from './useValidationsState.js'
+} from './useValidationsState'
 
 describe(
   'useValidationsState',

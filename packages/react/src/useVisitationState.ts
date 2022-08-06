@@ -4,12 +4,56 @@ import {
 } from 'react'
 
 import {
+  FieldName,
+} from './useFieldName'
+import {
+  ObservableState,
   useObservableState,
 } from './useObservableState'
 
-const initialVisitations = new Set()
+export type Visitation = boolean
 
-const useVisitationState = (
+export type Visitations = (
+  Set<
+    FieldName
+  >
+)
+
+export type VisitationState = {
+  getAllVisitations: () => (
+    Visitations
+  ),
+  getIsVisited: (
+    identifier: (
+      FieldName
+    ),
+  ) => (
+    Visitation
+  ),
+  resetAllVisitations: () => (
+    void
+  ),
+  setVisited: (
+    identifier: (
+      FieldName
+    ),
+  ) => (
+    void
+  ),
+  subscribeToIsVisited: (
+    ObservableState<
+      boolean
+    >['subscribeToValue']
+  ),
+}
+
+const initialVisitations: (
+  Visitations
+) = (
+  new Set()
+)
+
+export const useVisitationState = (
   {
     onVisit = (
       Function
@@ -18,7 +62,9 @@ const useVisitationState = (
   } = {}
 ) => {
   const onVisitRef = (
-    useRef()
+    useRef(
+      onVisit
+    )
   )
 
   onVisitRef
@@ -39,7 +85,9 @@ const useVisitationState = (
     )
   )
 
-  const getAllVisitations = (
+  const getAllVisitations: (
+    VisitationState['getAllVisitations']
+  ) = (
     useCallback(
       () => (
         visitationsRef
@@ -49,7 +97,9 @@ const useVisitationState = (
     )
   )
 
-  const getIsVisited = (
+  const getIsVisited: (
+    VisitationState['getIsVisited']
+  ) = (
     useCallback(
       (
         identifier,
@@ -91,7 +141,9 @@ const useVisitationState = (
     )
   )
 
-  const resetAllVisitations = (
+  const resetAllVisitations: (
+    VisitationState['resetAllVisitations']
+  ) = (
     useCallback(
       () => {
         Array
@@ -120,7 +172,9 @@ const useVisitationState = (
     )
   )
 
-  const setVisited = (
+  const setVisited: (
+    VisitationState['setVisited']
+  ) = (
     useCallback(
       (
         identifier,
@@ -149,13 +203,17 @@ const useVisitationState = (
     )
   )
 
-  return {
+  const returnValue: (
+    VisitationState
+  ) = {
     getAllVisitations,
     getIsVisited,
     resetAllVisitations,
     setVisited,
-    subscribeToIsVisited: subscribeToValue,
+    subscribeToIsVisited: (
+      subscribeToValue
+    ),
   }
-}
 
-export default useVisitationState
+  return returnValue
+}

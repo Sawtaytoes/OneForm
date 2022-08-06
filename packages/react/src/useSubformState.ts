@@ -10,7 +10,9 @@ import {
   FieldName,
 } from './useFieldName'
 
-import useUpdateEffect from './useUpdateEffect.js'
+import {
+  useUpdateEffect,
+} from './useUpdateEffect'
 
 const initialSegmentedValues = (
   new Map()

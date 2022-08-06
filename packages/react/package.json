@@ -12,6 +12,7 @@
     "ci:types": "tsc",
     "dev": "npm-run-all --parallel dev:storybook dev:cypress",
     "dev:cypress": "cypress open",
+    "dev:lint": "eslint . **/*.{js|json|jsx|ts|tsx}",
     "dev:storybook": "start-storybook --port 6006 --ci",
     "dev:test": "jest --cache --onlyChanged --errorOnDeprecated --watch",
     "dev:types": "tsc --watch",
