@@ -9,7 +9,7 @@ import {
 import useFormSubmission from './useFormSubmission.js'
 
 declare function FormType<
-  ReturnType
+  TranslatePropsReturnType
 >(
   props: {
     children: ReactElement,
@@ -18,7 +18,7 @@ declare function FormType<
     }: {
       submitForm: () => void,
     }) => (
-      | ReturnType
+      | TranslatePropsReturnType
       | void
     ),
   }

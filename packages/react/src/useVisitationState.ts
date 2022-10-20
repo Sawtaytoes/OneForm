@@ -76,7 +76,9 @@ export const useVisitationState = (
     publishValue,
     subscribeToValue,
   } = (
-    useObservableState()
+    useObservableState<
+      boolean
+    >()
   )
 
   const visitationsRef = (

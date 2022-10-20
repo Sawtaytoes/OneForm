@@ -20,7 +20,7 @@ import {
  *
  * @warning This hook is meant for writing custom <Field /> components. A better option might be `useFieldData` which is designed for generic unopinionated use cases.
  */
-const useField = <
+export const useField = <
   ValueType = string,
 >({
   inputValue,
@@ -107,144 +107,139 @@ const useField = <
   const updateFieldValue = (
     useCallback(
       (
-        event: (
-          | SyntheticEvent
-          | ValueType
-        ),
+        event: SyntheticEvent,
       ) => {
-        if (
+        const {
+          checked: isTargetChecked,
+          selectedOptions: targetSelectedOptions,
+          type: targetType,
+          value: targetValue,
+        } = (
           (
-            typeof event
-            !== 'object'
-          )
-          || (
             event
-            === null
+            ?.currentTarget
+          ) as (
+            HTMLInputElement
+            & HTMLSelectElement
           )
-          || (
-            !(
-              'currentTarget'
-              in event
-            )
-          )
+          || {}
+        )
+
+        if (
+          targetType
+          === 'checkbox'
         ) {
-          setValue(
-            event
-          )
-        }
-        else {
-          const {
-            checked: isTargetChecked,
-            selectedOptions: targetSelectedOptions,
-            type: targetType,
-            value: targetValue,
-          } = (
-            (
-              event
-              ?.currentTarget
-            ) as (
-              HTMLInputElement
-              & HTMLSelectElement
-            )
-            || {}
-          )
+          setVisited()
 
-          if (
-            targetType
-            === 'checkbox'
-          ) {
-            setVisited()
-
-            setValue((
-              value,
-            ) => {
-              if (
-                isMultipleElement
-                || (
-                  Array
-                  .isArray(
-                    value
-                  )
+          setValue((
+            value,
+          ): (
+            | ValueType
+            | undefined
+          ) => {
+            if (
+              isMultipleElement
+              || (
+                Array
+                .isArray(
+                  value
                 )
-              ) {
-                const valueArray = (
-                  (
-                    (
-                      Array
-                      .isArray(
-                        value
-                      )
-                    )
-                    ? value
-                    : (
-                      [] as (
-                        string[]
-                      )
-                    )
-                  )
-                )
-
-                return (
-                  isTargetChecked
-                  ? (
-                    valueArray
-                    .concat(
-                      targetValue
-                    )
-                  )
-                  : (
-                    valueArray
-                    .filter((
-                      subValue,
-                    ) => (
-                      subValue
-                      !== targetValue
-                    ))
-                  )
-                )
-              }
-              else if (
+              )
+            ) {
+              const valueArray = (
                 (
-                  inputValue
-                  === undefined
-                )
-                || (
-                  typeof value
-                  === 'boolean'
-                )
-              ) {
-                return isTargetChecked
-              }
-              else {
-                return (
-                  isTargetChecked
-                  ? (
-                    inputValue
-                    || targetValue
+                  (
+                    Array
+                    .isArray(
+                      value
+                    )
                   )
-                  : ''
+                  ? value
+                  : (
+                    [] as (
+                      string[]
+                    )
+                  )
                 )
-              }
-            })
-          }
-          else if (
-            targetType
-            === 'radio'
-          ) {
-            setVisited()
+              )
 
-            setValue(
+              return (
+                isTargetChecked
+                ? (
+                  valueArray
+                  .concat(
+                    targetValue
+                  )
+                )
+                : (
+                  valueArray
+                  .filter((
+                    subValue,
+                  ) => (
+                    subValue
+                    !== targetValue
+                  ))
+                )
+              ) as (
+                Extract<
+                  ValueType,
+                  string[]
+                >
+              )
+            }
+            else if (
+              (
+                inputValue
+                === undefined
+              )
+              || (
+                typeof value
+                === 'boolean'
+              )
+            ) {
+              return (
+                isTargetChecked
+              ) as (
+                ValueType
+              )
+            }
+            else {
+              return (
+                isTargetChecked
+                ? (
+                  inputValue
+                  || targetValue
+                )
+                : ''
+              ) as (
+                ValueType
+              )
+            }
+          })
+        }
+        else if (
+          targetType
+          === 'radio'
+        ) {
+          setVisited()
+
+          setValue(
+            (
               inputValue
               || targetValue
+            ) as (
+              ValueType
             )
-          }
-          else if (
-            targetType
-            === 'select-multiple'
-          ) {
-            setVisited()
+          )
+        }
+        else if (
+          targetType
+          === 'select-multiple'
+        ) {
+          setVisited()
 
-            setValue(
+          setValue(
+            (
               Array
               .from(
                 targetSelectedOptions
@@ -254,23 +249,33 @@ const useField = <
               }) => (
                 value
               ))
+            ) as (
+              ValueType
             )
-          }
-          else if (
-            targetType
-            === 'select-one'
-          ) {
-            setVisited()
+          )
+        }
+        else if (
+          targetType
+          === 'select-one'
+        ) {
+          setVisited()
 
-            setValue(
+          setValue(
+            (
               targetValue
+            ) as (
+              ValueType
             )
-          }
-          else {
-            setValue(
+          )
+        }
+        else {
+          setValue(
+            (
               targetValue
+            ) as (
+              ValueType
             )
-          }
+          )
         }
 
         onChange?.(
@@ -369,6 +374,7 @@ const useField = <
       )
     ),
     isVisited,
+    setValue,
     updateFieldValue,
     value: (
       (
@@ -401,5 +407,3 @@ const useField = <
     visitField,
   }
 }
-
-export default useField

@@ -146,7 +146,7 @@ describe(
           unsubscribe1()
           unsubscribe2()
         })
-        
+
         expect(
           subscriber
         )
@@ -257,7 +257,7 @@ describe(
               null,
             )
           })
-          
+
           unsubscribe1()
           unsubscribe2()
         })

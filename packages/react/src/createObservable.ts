@@ -1,19 +1,12 @@
 export type Subscriber<
   ValueType
 > = (
-  | (
-    (
-      value: (
-        ValueType
-      ),
-    ) => (
-      void
-    )
-  )
-  | (
-    () => (
-      void
-    )
+  (
+    value: (
+      ValueType
+    ),
+  ) => (
+    void
   )
 )
 
@@ -58,7 +51,17 @@ export const createObservable = <
     | SubscriberValue
     | null
   ) = null,
+): (
+  Observable<
+    SubscriberValue
+  >
 ) => {
+  type ReturnType = (
+    Observable<
+      SubscriberValue
+    >
+  )
+
   const valueRef = {
     current: (
       initialValue
@@ -66,9 +69,7 @@ export const createObservable = <
   }
 
   const subscribersRef: (
-    Observable<
-      SubscriberValue
-    >["__subscribersRef"]
+    ReturnType["__subscribersRef"]
   ) = {
     current: (
       []
@@ -77,9 +78,7 @@ export const createObservable = <
 
   const cancelatorsRef = {
     current: (
-      new Map()
-    ) as (
-      Map<
+      new Map<
         Subscriber<
           SubscriberValue
         >,
@@ -89,23 +88,19 @@ export const createObservable = <
           )
           | void
         )
-      >
+      >()
     ),
   }
 
   const getValue: (
-    Observable<
-      SubscriberValue
-    >["getValue"]
+    ReturnType["getValue"]
   ) = () => (
     valueRef
     .current
   )
 
   const publish: (
-    Observable<
-      SubscriberValue
-    >["publish"]
+    ReturnType["publish"]
   ) = (
     value
   ) => {
@@ -133,9 +128,7 @@ export const createObservable = <
   }
 
   const subscribe: (
-    Observable<
-      SubscriberValue
-    >["subscribe"]
+    ReturnType["subscribe"]
   ) = (
     subscriber,
   ) => {
@@ -183,16 +176,10 @@ export const createObservable = <
     }
   }
 
-  const returnValue: (
-    Observable<
-      SubscriberValue
-    >
-  ) = {
+  return ({
     __subscribersRef: subscribersRef,
     getValue,
     publish,
     subscribe,
-  }
-
-  return returnValue
+  })
 }

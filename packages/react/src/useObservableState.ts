@@ -48,8 +48,12 @@ export type ObservableState<
 const initialObservables = {}
 
 export const useObservableState = <
-  ObservableValue = any,
->() => {
+  ObservableValue,
+>(): (
+  ObservableState<
+    ObservableValue
+  >
+) => {
   const observablesRef = (
     useRef<(
       Record<
@@ -149,14 +153,8 @@ export const useObservableState = <
     )
   )
 
-  const returnValue: (
-    ObservableState<
-      ObservableValue
-    >
-  ) = {
+  return {
     publishValue,
     subscribeToValue,
   }
-
-  return returnValue
 }
