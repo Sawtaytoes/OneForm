@@ -7,7 +7,7 @@
     "mui": "yarn workspace @oneform/material-ui",
     "react": "yarn workspace @oneform/react"
   },
-  "packageManager": "yarn@3.2.4",
+  "packageManager": "yarn@3.4.1",
   "workspaces": [
     "packages/*"
   ],
