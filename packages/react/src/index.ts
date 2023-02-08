@@ -1,4 +1,4 @@
-export { default as FieldErrorMessage } from './FieldErrorMessage'
+export * from './FieldErrorMessage'
 export { default as MaterialUiField } from './MaterialUiField'
 export { default as OneForm } from './OneForm'
 export { default as OneFormProvider } from './OneFormProvider'
