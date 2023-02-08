@@ -52,7 +52,10 @@ import {
 import {
   useFormVisitationState,
 } from './useFormVisitationState'
-import useGroupValidationsState from './useGroupValidationsState'
+import {
+  GroupValidationsType,
+  useGroupValidationsState,
+} from './useGroupValidationsState'
 import {
   useRegistrationState,
 } from './useRegistrationState'
@@ -70,7 +73,7 @@ import {
   ValidationType,
 } from './useValidationType'
 import {
-  useValidationsState,
+  useValidationsState, ValidationsType,
 } from './useValidationsState'
 import {
   OnChange,
@@ -87,42 +90,16 @@ import {
   VisitationContext,
 } from './VisitationContext'
 
-export type ValidationsProps = {
-  [fieldName: string]: {
-    errorMessage: string,
-    getIsValid: (value: any) => boolean
-  }
-}
-
-type getErrorMessagesProps = {
-  reverseLookup?: any,
-  validationType: string,
-  values: any,
-}
-
-export type GroupValidationsProps = {
-  fieldNames: string[],
-  // getErrorMessages: ReturnType<typeof useErrorMessagesState['getErrorMessages']>,
-  getErrorMessages: (
-    reverseLookup: any,
-    validationType: string,
-    values: any,
-  ) => (
-    Record<any, any>
-  ),
-  groupNames?: string[],
-}
-
 export type OneFormProviderProps = {
   children: ReactNode,
   errorMessages?: Errors,
-  groupValidations?: GroupValidationsProps[],
+  groupValidations?: GroupValidationsType[],
   hasFieldChangeValidation?: boolean,
   onChange?: OnChange,
   onSubmit?: OnSubmit,
   updatedErrorMessages?: Errors,
   updatedValues?: Values<any>,
-  validations?: ValidationsProps,
+  validations?: ValidationsType,
   values?: Values<any>,
 }
 
