@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types'
 import {
   memo,
+  PropsWithChildren,
+  ReactNode,
   useMemo,
 } from 'react'
 
@@ -8,23 +9,32 @@ import {
   useFieldValue,
 } from './useFieldValue'
 
-const propTypes = {
-  children: PropTypes.node,
-  fallback: PropTypes.node,
-  getIsVisible: PropTypes.func,
-  name: PropTypes.string.isRequired,
-}
-
-const IfFieldValue = ({
+const IfFieldValue = <
+  ValueType,
+>({
   children,
   fallback = null,
   getIsVisible = Boolean,
   name,
+}: {
+  children: ReactNode,
+  fallback?: ReactNode,
+  getIsVisible?: (
+    value: (
+      | ValueType
+      | undefined
+    )
+  ) => (
+    boolean
+  ),
+  name: string,
 }) => {
   const {
-    value = '',
+    value,
   } = (
-    useFieldValue({
+    useFieldValue<
+      ValueType
+    >({
       name,
     })
   )
@@ -50,8 +60,12 @@ const IfFieldValue = ({
   )
 }
 
-IfFieldValue.propTypes = propTypes
+const MemoizedIfFieldValue = (
+  memo(
+    IfFieldValue
+  )
+)
 
-const MemoizedIfFieldValue = memo(IfFieldValue)
-
-export default MemoizedIfFieldValue
+export {
+  MemoizedIfFieldValue as IfFieldValue
+}
