@@ -4,11 +4,16 @@ import {
   useRef,
 } from 'react'
 
+import {
+  FieldName,
+} from './useFieldName'
+import useFilteredValuesState from './useFilteredValuesState'
 import useItemGroupState from './useItemGroupState'
 import useStrippedIdentifer from './useStrippedIdentifer'
-import useFilteredValuesState from './useFilteredValuesState'
 import useSymbolFunctionStore from './useSymbolFunctionStore'
-import useUpdateEffect from './useUpdateEffect'
+import { ValidationType } from './useValidationType'
+import { useUpdateEffect } from './useUpdateEffect'
+import { Errors } from './useErrorMessagesState'
 
 const grouplessGroup = {
   groupId: '',
@@ -28,33 +33,90 @@ const grouplessGroupValidationGroup = [
   },
 ]
 
-const initialGroupValidations = []
 const initialRegisteredIdentifiers = new Set()
 
-const useGroupValidationsState = (
+export type GroupValidationsType = {
+  fieldNames: string[],
+  getErrorMessages: ({
+    reverseLookup,
+    validationType,
+    values,
+  }: {
+    reverseLookup?: any,
+    validationType: string,
+    values: any,
+  }) => (
+    Errors
+  ),
+  groupNames?: string[],
+}
+
+const defaultProps = {
+  getAllIdentifiers: (
+    () => []
+  ),
+  getIsReadyForValidation: (
+    () => false
+  ),
+  getValidationType: (
+    () => ValidationType.change
+  ),
+  getValue: (
+    () => null
+  ),
+  groupValidations: (
+    []
+  ),
+  setErrorMessages: (
+    () => {}
+  ),
+}
+
+export const useGroupValidationsState = (
   {
     getAllIdentifiers = (
-      Function
-      .prototype
+      defaultProps
+      .getAllIdentifiers
     ),
     getIsReadyForValidation = (
-      Function
-      .prototype
+      defaultProps
+      .getIsReadyForValidation
     ),
     getValidationType = (
-      Function
-      .prototype
+      defaultProps
+      .getValidationType
     ),
     getValue = (
-      Function
-      .prototype
+      defaultProps
+      .getValue
     ),
     groupValidations = (
-      initialGroupValidations
+      defaultProps
+      .groupValidations
     ),
     setErrorMessages = (
-      Function
-      .prototype
+      defaultProps
+      .setErrorMessages
+    ),
+  }: {
+    getAllIdentifiers?: () => (
+      FieldName[]
+    ),
+    getIsReadyForValidation?: () => (
+      boolean
+    ),
+    getValidationType?: () => (
+      ValidationType
+    ),
+    getValue?: () => (
+      any
+    ),
+    groupValidations?: GroupValidationsType,
+    setErrorMessages?: (
+      identifier: string,
+      error: any,
+    ) => (
+      void
     ),
   } = {}
 ) => {
@@ -912,5 +974,3 @@ const useGroupValidationsState = (
     validateGroups,
   }
 }
-
-export default useGroupValidationsState
