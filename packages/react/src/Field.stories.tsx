@@ -1,42 +1,70 @@
-/* eslint-disable react/prop-types */
 import {
-  action,
-} from '@storybook/addon-actions'
+  ComponentMeta,
+  ComponentStory,
+} from '@storybook/react'
+import {
+  InputHTMLAttributes,
+  ReactNode,
+} from 'react'
 
-import Field from './Field'
-import FieldValue from './FieldValue'
-import htmlStyleDecorators from './htmlStyleDecorators'
-import OneFormProvider from './OneFormProvider'
+import {
+  Field,
+} from './Field'
+import {
+  FieldValue,
+} from './FieldValue'
+import {
+  Form,
+} from './Form'
+import {
+  htmlStyleDecorators,
+} from './htmlStyleDecorators'
+import {
+  OneFormProvider ,
+} from './OneFormProvider '
 
-export default {
-  args: {
-    onChange: action(),
-    onSubmit: action(),
-  },
-  argTypes: {
-    onChange: 'changed',
-    onSubmit: 'submitted',
-  },
+const storybookMeta: (
+  ComponentMeta<
+    typeof Field
+  >
+) = {
   component: Field,
   decorators: htmlStyleDecorators,
   title: 'Fields/Field',
 }
 
-export const HTMLInput = (
+export default storybookMeta
+
+export const HTMLInput: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input name="message" />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
 const Input = ({
   name,
   onChange,
+}: {
+  name?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['name']
+  ),
+  onChange?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['onChange']
+  )
 }) => (
   <input
     name={name}
@@ -48,25 +76,33 @@ const Input = ({
   />
 )
 
-export const ReactInputComponent = (
+export const ReactInputComponent: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <Input name="message" />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLCheckbox = (
+export const HTMLCheckbox: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
+  <OneFormProvider>
+    <Form>
       <label>
-        <Field>
+        <Field {...args}>
           <input
             name="checkbox"
             type="checkbox"
@@ -75,11 +111,11 @@ export const HTMLCheckbox = (
 
         Check me!
       </label>
-    </div>
+    </Form>
 
-    <div>
+    <Form>
       <FieldValue name="checkbox" />
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
@@ -88,6 +124,27 @@ const Checkbox = ({
   name,
   onChange,
   value,
+}: {
+  isChecked?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['checked']
+  ),
+  name?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['name']
+  ),
+  onChange?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['onChange']
+  ),
+  value?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['value']
+  ),
 }) => (
   <label
     style={{
@@ -107,27 +164,35 @@ const Checkbox = ({
   </label>
 )
 
-export const ReactCheckboxComponent = (
+export const ReactCheckboxComponent: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <Checkbox
           name="checkbox"
           value="This is my checkbox value."
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLRadio = (
+export const HTMLRadio: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
+  <OneFormProvider>
     <label>
-      <Field>
+      <Field {...args}>
         <input
           name="item"
           type="radio"
@@ -139,7 +204,7 @@ export const HTMLRadio = (
     </label>
 
     <label>
-      <Field>
+      <Field {...args}>
         <input
           name="item"
           type="radio"
@@ -157,6 +222,25 @@ const Radio = ({
   name,
   onChange,
   value,
+}: {
+  children?: (
+    ReactNode
+  ),
+  name?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['name']
+  ),
+  onChange?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['onChange']
+  ),
+  value?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['value']
+  ),
 }) => (
   <label
     style={{
@@ -175,12 +259,16 @@ const Radio = ({
   </label>
 )
 
-export const ReactRadioComponent = (
+export const ReactRadioComponent: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <Radio
           name="item"
           value="first"
@@ -188,10 +276,10 @@ export const ReactRadioComponent = (
           First
         </Radio>
       </Field>
-    </div>
+    </Form>
 
-    <div>
-      <Field>
+    <Form>
+      <Field {...args}>
         <Radio
           name="item"
           value="second"
@@ -199,19 +287,23 @@ export const ReactRadioComponent = (
           Second
         </Radio>
       </Field>
-    </div>
+    </Form>
 
-    <div>
+    <Form>
       Selected Item: <FieldValue name="item" />
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLSelect = (
+export const HTMLSelect: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <Field>
+  <OneFormProvider>
+    <Field {...args}>
       <select name="color">
         <option value="">
           Select a color.
@@ -235,17 +327,21 @@ export const HTMLSelect = (
       </select>
     </Field>
 
-    <div>
+    <Form>
       Selected Color: <FieldValue name="color" />
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLSelectOptionGroupValue = (
+export const HTMLSelectOptionGroupValue: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <Field>
+  <OneFormProvider>
+    <Field {...args}>
       <select name="color">
         <option value="">
           Select a color.
@@ -273,17 +369,21 @@ export const HTMLSelectOptionGroupValue = (
       </select>
     </Field>
 
-    <div>
+    <Form>
       Selected Color: <FieldValue name="color" />
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLMultiSelect = (
+export const HTMLMultiSelect: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <Field>
+  <OneFormProvider>
+    <Field {...args}>
       <select
         multiple
         name="color"
@@ -306,9 +406,9 @@ export const HTMLMultiSelect = (
       </select>
     </Field>
 
-    <div>
+    <Form>
       Selected Colors: <FieldValue name="color" />
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
@@ -316,13 +416,27 @@ const MultiPicker = ({
   name,
   onChange,
   value,
+}: {
+  name?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['name']
+  ),
+  onChange?: (
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['onChange']
+  ),
+  value?: (
+    string
+  ),
 }) => (
   <div>
     <label htmlFor="red">
       <input
         checked={
           value
-          .includes(
+          ?.includes(
             'red'
           )
         }
@@ -340,7 +454,7 @@ const MultiPicker = ({
       <input
         checked={
           value
-          .includes(
+          ?.includes(
             'yellow'
           )
         }
@@ -358,7 +472,7 @@ const MultiPicker = ({
       <input
         checked={
           value
-          .includes(
+          ?.includes(
             'green'
           )
         }
@@ -376,7 +490,7 @@ const MultiPicker = ({
       <input
         checked={
           value
-          .includes(
+          ?.includes(
             'blue'
           )
         }
@@ -392,10 +506,14 @@ const MultiPicker = ({
   </div>
 )
 
-export const MultiPickerComponent = (
+export const MultiPickerComponent: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
+  <OneFormProvider>
     <label>
       <Field isMultipleElement>
         <MultiPicker
@@ -404,144 +522,180 @@ export const MultiPickerComponent = (
       </Field>
     </label>
 
-    <div>
+    <Form>
       Selected Colors: <FieldValue name="color" />
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLColor = (
+export const HTMLColor: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="color"
           type="color"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLDate = (
+export const HTMLDate: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="date"
           type="date"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLTime = (
+export const HTMLTime: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="time"
           type="time"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLDateTime = (
+export const HTMLDateTime: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="datetime"
           type="datetime-local"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLMonth = (
+export const HTMLMonth: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="month"
           type="month"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLWeek = (
+export const HTMLWeek: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="week"
           type="week"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLFile = (
+export const HTMLFile: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="file"
           type="file"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLFiles = (
+export const HTMLFiles: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           multiple
           name="file"
           type="file"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )
 
-export const HTMLRange = (
+export const HTMLRange: (
+  ComponentStory<
+    typeof Field
+  >
+) = (
   args,
 ) => (
-  <OneFormProvider {...args}>
-    <div>
-      <Field>
+  <OneFormProvider>
+    <Form>
+      <Field {...args}>
         <input
           name="range"
           type="range"
         />
       </Field>
-    </div>
+    </Form>
   </OneFormProvider>
 )

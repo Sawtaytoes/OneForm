@@ -3,8 +3,12 @@ import {
   action,
 } from '@storybook/addon-actions'
 
-import htmlStyleDecorators from './htmlStyleDecorators'
-import OneFormProvider from './OneFormProvider'
+import {
+  htmlStyleDecorators,
+} from './htmlStyleDecorators'
+import {
+  OneFormProvider ,
+} from './OneFormProvider '
 import { SubmitField } from './SubmitField'
 
 export default {

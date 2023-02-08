@@ -7,7 +7,9 @@ import userEvent from '@testing-library/user-event'
 import {
   Field,
 } from './Field'
-import OneFormProvider from './OneFormProvider'
+import {
+  OneFormProvider ,
+} from './OneFormProvider '
 
 describe(
   'Field',

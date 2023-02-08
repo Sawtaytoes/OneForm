@@ -5,7 +5,9 @@ import {
 
 import { FieldErrorMessage } from './FieldErrorMessage'
 import IfFieldErrorMessage from './IfFieldErrorMessage'
-import OneFormProvider from './OneFormProvider'
+import {
+  OneFormProvider ,
+} from './OneFormProvider '
 
 describe(
   'IfFieldErrorMessage',

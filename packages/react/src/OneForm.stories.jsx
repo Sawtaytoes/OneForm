@@ -14,7 +14,9 @@ import Field from './Field'
 import { FieldErrorMessage } from './FieldErrorMessage'
 import FieldGroup from './FieldGroup'
 import FieldValue from './FieldValue'
-import htmlStyleDecorators from './htmlStyleDecorators'
+import {
+  htmlStyleDecorators,
+} from './htmlStyleDecorators'
 import { OneForm } from './OneForm'
 import { SubmitField } from './SubmitField'
 import useFieldValue from './useFieldValue'

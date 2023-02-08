@@ -7,8 +7,12 @@ import Field from './Field'
 import {
   FieldGroup,
 } from './FieldGroup'
-import htmlStyleDecorators from './htmlStyleDecorators'
-import OneFormProvider from './OneFormProvider'
+import {
+  htmlStyleDecorators,
+} from './htmlStyleDecorators'
+import {
+  OneFormProvider ,
+} from './OneFormProvider '
 
 export default {
   args: {

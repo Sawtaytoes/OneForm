@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
 import FieldValue from './FieldValue'
-import htmlStyleDecorators from './htmlStyleDecorators'
-import OneFormProvider from './OneFormProvider'
+import {
+  htmlStyleDecorators,
+} from './htmlStyleDecorators'
+import {
+  OneFormProvider ,
+} from './OneFormProvider '
 
 export default {
   decorators: htmlStyleDecorators,
