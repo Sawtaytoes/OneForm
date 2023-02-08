@@ -1,5 +1,6 @@
-/* eslint-disable react/prop-types */
-import { FieldErrorMessage } from './FieldErrorMessage'
+import {
+  FieldErrorMessage
+} from './FieldErrorMessage'
 import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
