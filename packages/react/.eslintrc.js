@@ -19,14 +19,7 @@ const eslintConfig = {
       configFile: (
         require
         .resolve(
-          path
-          .join(
-            (
-              process
-              .cwd()
-            ),
-            'babel.config.js',
-          )
+          './babel.config.js',
         )
       ),
     },
