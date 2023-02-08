@@ -7,10 +7,11 @@ import {
   Unsubscriber,
 } from './createObservable'
 import {
+  ErrorMessages,
+} from './useErrorMessagesState'
+import {
   FieldName,
 } from './useFieldName'
-
-export type ErrorMessages = string[]
 
 export type ErrorMessagesContextType = {
   getFieldErrorMessages: (

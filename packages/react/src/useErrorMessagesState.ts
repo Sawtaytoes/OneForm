@@ -5,17 +5,17 @@ import {
 } from 'react'
 
 import {
-  ErrorMessages,
-} from './ErrorMessagesContext'
-import {
   ObservableIdentifier,
   useObservableState,
 } from './useObservableState'
 
-const externalErrorMessagesSymbol = Symbol()
-const initialErrorMessages = {}
-const initialLocalErrorMessages = {}
-const initialLocalErrorMessagesList = []
+export type ErrorMessages = (
+  string[]
+)
+
+export type ErrorMessageSegmentId = (
+  symbol
+)
 
 export type Errors = (
   Record<
@@ -23,6 +23,20 @@ export type Errors = (
     ErrorMessages
   >
 )
+
+const externalErrorMessagesSymbol = Symbol()
+
+const initialErrorMessages: (
+  Errors
+) = {}
+
+const initialLocalErrorMessages: (
+  Errors
+) = {}
+
+const initialLocalErrorMessagesList: (
+  ErrorMessages
+) = []
 
 export const useErrorMessagesState = (
   {
@@ -39,19 +53,30 @@ export const useErrorMessagesState = (
   } = {}
 ) => {
   const onErrorMessagesRef = (
-    useRef()
+    useRef(
+      onErrorMessages
+    )
   )
 
-  onErrorMessagesRef
-  .current = (
-    onErrorMessages
+  useEffect(
+    () => {
+      onErrorMessagesRef
+      .current = (
+        onErrorMessages
+      )
+    },
+    [
+      onErrorMessages,
+    ]
   )
 
   const {
     publishValue,
     subscribeToValue,
   } = (
-    useObservableState()
+    useObservableState<
+      ErrorMessages
+    >()
   )
 
   const localErrorMessagesRef = (
@@ -79,7 +104,7 @@ export const useErrorMessagesState = (
   const getLocalErrorMessages = (
     useCallback(
       (
-        identifier,
+        identifier: ObservableIdentifier,
       ) => (
         getAllLocalErrorMessages()
         [identifier]
@@ -141,7 +166,7 @@ export const useErrorMessagesState = (
   const getLocalErrorMessagesList = (
     useCallback(
       (
-        identifier,
+        identifier: ObservableIdentifier,
       ) => (
         Array
         .from(
@@ -193,10 +218,13 @@ export const useErrorMessagesState = (
   const setLocalErrorMessages = (
     useCallback(
       (
-        identifier,
+        identifier: ObservableIdentifier,
         {
           errorMessages: nextErrorMessages,
           symbol,
+        }: {
+          errorMessages: ErrorMessages,
+          symbol: ErrorMessageSegmentId,
         },
       ) => {
         localErrorMessagesRef
