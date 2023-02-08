@@ -1,15 +1,14 @@
-import PropTypes from 'prop-types'
 import {
-  memo,
+  memo, ReactNode,
 } from 'react'
 
-import Form from './Form'
+import { Form } from './Form'
 import OneFormProvider from './OneFormProvider'
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  formElementProps: PropTypes.object,
-  oneFormProviderProps: PropTypes.object,
+export type OneFormType = {
+  children: ReactNode,
+  formElementProps?: Record<any, any>,
+  oneFormProviderProps?: Record<any, any>,
 }
 
 const defaultProps = {
@@ -24,7 +23,9 @@ const OneForm = ({
     .formElementProps
   ),
   ...oneFormProviderProps
-}) => (
+}: (
+  OneFormType
+)) => (
   <OneFormProvider
     {...oneFormProviderProps}
   >
@@ -39,12 +40,10 @@ const OneForm = ({
   </OneFormProvider>
 )
 
-OneForm.propTypes = propTypes
-
 const MemoizedOneForm = (
   memo(
     OneForm
   )
 )
 
-export default MemoizedOneForm
+export { MemoizedOneForm as OneForm }
