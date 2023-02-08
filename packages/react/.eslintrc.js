@@ -1,5 +1,3 @@
-const path = require('path')
-
 const eslintConfig = {
   env: {
     'cypress/globals': true,

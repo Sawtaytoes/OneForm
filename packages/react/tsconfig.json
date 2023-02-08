@@ -10,7 +10,6 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "noEmit": true,
-    // "noEmitOnError": true,
     "lib": [
       "DOM",
       "ESNext"
