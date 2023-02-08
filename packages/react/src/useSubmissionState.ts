@@ -9,15 +9,15 @@ import {
   createObservable,
 } from './createObservable'
 
-export const submissionStates = {
-  failedSubmission: 'failedSubmission',
-  invalidSubmission: 'invalidSubmission',
-  notSubmitted: 'notSubmitted',
-  pendingSubmission: 'pendingSubmission',
-  submitted: 'submitted',
+export enum SubmissionState {
+  failedSubmission = 'failedSubmission',
+  invalidSubmission = 'invalidSubmission',
+  notSubmitted = 'notSubmitted',
+  pendingSubmission = 'pendingSubmission',
+  submitted = 'submitted',
 }
 
-const useSubmissionState = (
+export const useSubmissionState = (
   {
     getAllIdentifiers = (
       Function
@@ -76,7 +76,7 @@ const useSubmissionState = (
     useMemo(
       () => (
         createObservable(
-          submissionStates
+          SubmissionState
           .notSubmitted
         )
       ),
@@ -123,7 +123,7 @@ const useSubmissionState = (
         ) {
           submissionStateObservable
           .publish(
-            submissionStates
+            SubmissionState
             .pendingSubmission
           )
         }
@@ -133,7 +133,7 @@ const useSubmissionState = (
 
           submissionStateObservable
           .publish(
-            submissionStates
+            SubmissionState
             .invalidSubmission
           )
         }
@@ -153,7 +153,7 @@ const useSubmissionState = (
         if (
           submissionState
           !== (
-            submissionStates
+            SubmissionState
             .pendingSubmission
           )
         ) {
@@ -212,7 +212,7 @@ const useSubmissionState = (
 
           submissionStateObservable
           .publish(
-            submissionStates
+            SubmissionState
             .submitted
           )
         })
@@ -227,7 +227,7 @@ const useSubmissionState = (
 
           submissionStateObservable
           .publish(
-            submissionStates
+            SubmissionState
             .failedSubmission
           )
         })
@@ -262,5 +262,3 @@ const useSubmissionState = (
     subscribeToSubmissionState,
   }
 }
-
-export default useSubmissionState

@@ -14,7 +14,7 @@ export enum FormChangeState {
   unchanged = 'unchanged',
 }
 
-const useFormChangeState = () => {
+export const useFormChangeState = () => {
   const formChangeStateObservable = (
     useMemo(
       () => (
@@ -89,5 +89,3 @@ const useFormChangeState = () => {
     subscribeToFormChangeState,
   }
 }
-
-export default useFormChangeState

@@ -3,8 +3,9 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useSubmissionState, {
-  submissionStates,
+import {
+  SubmissionState,
+  useSubmissionState,
 } from './useSubmissionState'
 
 describe(
@@ -27,7 +28,7 @@ describe(
           .getSubmissionState()
         )
         .toBe(
-          submissionStates
+          SubmissionState
           .notSubmitted
         )
       }
@@ -131,7 +132,7 @@ describe(
           .getSubmissionState()
         )
         .toBe(
-          submissionStates
+          SubmissionState
           .invalidSubmission
         )
       }
@@ -258,7 +259,7 @@ describe(
           .getSubmissionState()
         )
         .toBe(
-          submissionStates
+          SubmissionState
           .pendingSubmission
         )
       }
@@ -309,7 +310,7 @@ describe(
               .getSubmissionState()
             )
             .toBe(
-              submissionStates
+              SubmissionState
               .submitted
             )
           })
@@ -366,7 +367,7 @@ describe(
               .getSubmissionState()
             )
             .toBe(
-              submissionStates
+              SubmissionState
               .failedSubmission
             )
           })

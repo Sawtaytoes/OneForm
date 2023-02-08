@@ -23,7 +23,11 @@ export type RegistrationState = {
   getAllRegistrations: () => (
     Registrations
   ),
-  getIsRegistered: () => (
+  getIsRegistered: (
+    identifier: (
+      FieldName
+    ),
+  ) => (
     boolean
   ),
   register: (

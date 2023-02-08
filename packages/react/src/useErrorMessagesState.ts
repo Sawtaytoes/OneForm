@@ -5,6 +5,10 @@ import {
 } from 'react'
 
 import {
+  ErrorMessages,
+} from './ErrorMessagesContext'
+import {
+  ObservableIdentifier,
   useObservableState,
 } from './useObservableState'
 
@@ -13,7 +17,14 @@ const initialErrorMessages = {}
 const initialLocalErrorMessages = {}
 const initialLocalErrorMessagesList = []
 
-const useErrorMessagesState = (
+export type Errors = (
+  Record<
+    ObservableIdentifier,
+    ErrorMessages
+  >
+)
+
+export const useErrorMessagesState = (
   {
     errorMessages = (
       initialErrorMessages
@@ -355,5 +366,3 @@ const useErrorMessagesState = (
     subscribeToErrorMessages: subscribeToValue,
   }
 }
-
-export default useErrorMessagesState

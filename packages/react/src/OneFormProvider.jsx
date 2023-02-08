@@ -34,10 +34,13 @@ import {
 import {
   SubformContext,
 } from './SubformContext'
-import SubmissionContext from './SubmissionContext'
+import {
+  SubmissionContext,
+} from './SubmissionContext'
 import useErrorMessagesState from './useErrorMessagesState'
-import useFormChangeState, {
+import {
   FormChangeState,
+  useFormChangeState,
 } from './useFormChangeState'
 import {
   useFormValidationState,

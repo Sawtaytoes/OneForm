@@ -4,17 +4,26 @@ import {
   useState,
 } from 'react'
 
-import SubmissionContext from './SubmissionContext'
 import {
-  submissionStates,
+  SubmissionContext,
+} from './SubmissionContext'
+import {
+  FieldName,
+} from './useFieldName'
+import {
+  SubmissionState,
 } from './useSubmissionState'
 
-const initialRequiredFieldNames = []
+const initialRequiredFieldNames: (
+  FieldName[]
+) = []
 
 const useFormSubmission = (
   {
     requiredFieldNames = initialRequiredFieldNames,
-  } = {}
+  }: {
+    requiredFieldNames: FieldName[],
+  }
 ) => {
   const {
     getAllFieldValues,
@@ -182,7 +191,7 @@ const useFormSubmission = (
     isSubmitting: (
       submissionState
       === (
-        submissionStates
+        SubmissionState
         .pendingSubmission
       )
     ),
