@@ -12,6 +12,13 @@ export const validationsSymbol = (
   Symbol()
 )
 
+export type ValidationsType = {
+  [fieldName: string]: {
+    errorMessage: string,
+    getIsValid: (value: any) => boolean
+  }
+}
+
 const defaultProps = {
   getAllIdentifiers: (
     () => []
@@ -75,7 +82,7 @@ export const useValidationsState = (
     setErrorMessages?: () => (
       void
     ),
-    validations?: {},
+    validations?: ValidationsType,
   } = {}
 ) => {
   const {
