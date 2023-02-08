@@ -2,14 +2,17 @@ import {
   memo, ReactNode,
 } from 'react'
 
-import { Form } from './Form'
+import {
+  Form,
+  FormType,
+} from './Form'
 import {
   OneFormProvider ,
 } from './OneFormProvider '
 
-export type OneFormType = {
+export type OneFormProps = {
   children: ReactNode,
-  formElementProps?: Record<any, any>,
+  formElementProps?: Omit<FormType, 'children'>,
   oneFormProviderProps?: Record<any, any>,
 }
 
@@ -26,7 +29,7 @@ const OneForm = ({
   ),
   ...oneFormProviderProps
 }: (
-  OneFormType
+  OneFormProps
 )) => (
   <OneFormProvider
     {...oneFormProviderProps}
