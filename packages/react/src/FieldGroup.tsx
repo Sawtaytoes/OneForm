@@ -12,14 +12,19 @@ import {
   useFieldGroup,
 } from './useFieldGroup'
 
+export type FieldGroupProps = (
+  FieldGroupType
+  & {
+    children: ReactNode,
+  }
+)
+
 const FieldGroup = ({
   children,
   id,
   name,
-}: {
-  children: ReactNode,
-} & (
-  FieldGroupType
+}: (
+  FieldGroupProps
 )) => {
   const {
     fieldGroups,
