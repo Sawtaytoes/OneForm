@@ -20,10 +20,14 @@ const initialRequiredFieldNames: (
 
 const useFormSubmission = (
   {
-    requiredFieldNames = initialRequiredFieldNames,
+    requiredFieldNames = (
+      initialRequiredFieldNames
+    ),
   }: {
-    requiredFieldNames: FieldName[],
-  }
+    requiredFieldNames?: (
+      FieldName[]
+    ),
+  } = {}
 ) => {
   const {
     getAllFieldValues,
