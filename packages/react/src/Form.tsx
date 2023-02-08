@@ -1,8 +1,10 @@
 import {
   Children,
   cloneElement,
+  Fragment,
   memo,
   ReactElement,
+  ReactNode,
   useMemo,
 } from 'react'
 
@@ -12,7 +14,7 @@ declare function FormType<
   TranslatePropsReturnType
 >(
   props: {
-    children: ReactElement,
+    children: ReactNode,
     translateProps?: ({
       submitForm,
     }: {
@@ -67,10 +69,14 @@ const Form: FormType = ({
   return (
     cloneElement(
       (
-        Children
-        .only(
-          children
-        )
+        <Fragment>
+          {
+            Children
+            .only(
+              children
+            )
+          }
+        </Fragment>
       ),
       childProps,
     )
