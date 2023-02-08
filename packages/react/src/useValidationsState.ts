@@ -7,6 +7,7 @@ import {
 } from './useFieldName'
 import useStrippedIdentifer from './useStrippedIdentifer'
 import useUpdateEffect from './useUpdateEffect'
+import { ValidationType } from './useValidationType'
 
 export const validationsSymbol = (
   Symbol()
@@ -24,10 +25,10 @@ const defaultProps = {
     () => []
   ),
   getIsReadyForValidation: (
-    () => {}
+    () => false
   ),
   getValidationType: (
-    () => {}
+    () => ValidationType.change
   ),
   getValue: (
     () => {}
@@ -71,15 +72,18 @@ export const useValidationsState = (
       FieldName[]
     ),
     getIsReadyForValidation?: () => (
-      void
+      boolean
     ),
     getValidationType?: () => (
-      void
+      ValidationType
     ),
     getValue?: () => (
-      void
+      any
     ),
-    setErrorMessages?: () => (
+    setErrorMessages?: (
+      identifier: string,
+      error: any,
+    ) => (
       void
     ),
     validations?: ValidationsType,
