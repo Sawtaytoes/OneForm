@@ -1,8 +1,10 @@
-import PropTypes from 'prop-types'
 import {
   Children,
   cloneElement,
+  Fragment,
   memo,
+  ReactElement,
+  ReactNode,
   useMemo,
 } from 'react'
 
@@ -12,14 +14,26 @@ const defaultGetIsVisible = () => (
   true
 )
 
-const propTypes = {
-  children: PropTypes.node,
-  fallback: PropTypes.node,
-  getIsVisible: PropTypes.func,
-  isDisabledWhenInvalid: PropTypes.bool,
-}
+declare function SubmitFieldType<
+  ValueType
+>(
+  props: {
+    children: ReactNode,
+    fallback?: ReactNode,
+    getIsVisible?: (
+      value: ValueType
+    ) => (
+      boolean
+    ),
+    isDisabledWhenInvalid: boolean,
+  }
+): (
+  ReactElement
+)
 
-const SubmitField = ({
+type SubmitFieldType = typeof SubmitFieldType
+
+const SubmitField: SubmitFieldType = ({
   children,
   fallback,
   getIsVisible = defaultGetIsVisible,
@@ -123,14 +137,20 @@ const SubmitField = ({
       )
     )
     : (
-      fallback
-      || null
+      <Fragment>
+        {
+          fallback
+          || null
+        }
+      </Fragment>
     )
   )
 }
 
-SubmitField.propTypes = propTypes
+const MemoizedSubmitField = (
+  memo(
+  SubmitField
+  )
+)
 
-const MemoizedSubmitField = memo(SubmitField)
-
-export default MemoizedSubmitField
+export { MemoizedSubmitField as SubmitField }

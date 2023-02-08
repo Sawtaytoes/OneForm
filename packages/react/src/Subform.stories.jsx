@@ -12,7 +12,7 @@ import FieldValue from './FieldValue'
 import {
   Form,
 } from './Form'
-import SubmitField from './SubmitField'
+import { SubmitField } from './SubmitField'
 import htmlStyleDecorators from './htmlStyleDecorators'
 import OneFormProvider from './OneFormProvider'
 import Subform from './Subform'
