@@ -6,7 +6,9 @@ import {
 import {
   OneFormProvider,
 } from './OneFormProvider'
-import FieldValue from './FieldValue'
+import {
+  FieldValue,
+} from './FieldValue'
 
 describe(
   'FieldValue',

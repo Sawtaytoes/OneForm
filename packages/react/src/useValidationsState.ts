@@ -5,20 +5,29 @@ import {
 import {
   FieldName,
 } from './useFieldName'
-import useStrippedIdentifer from './useStrippedIdentifer'
-import useUpdateEffect from './useUpdateEffect'
-import { ValidationType } from './useValidationType'
+import {
+  useStrippedIdentifer,
+} from './useStrippedIdentifer'
+import {
+  useUpdateEffect,
+} from './useUpdateEffect'
+import {
+  ValidationType,
+} from './useValidationType'
 
 export const validationsSymbol = (
   Symbol()
 )
 
-export type ValidationsType = {
-  [fieldName: string]: {
-    errorMessage: string,
-    getIsValid: (value: any) => boolean
-  }
-}
+export type ValidationsType = (
+  Record<
+    FieldName,
+    {
+      errorMessage: string,
+      getIsValid: (value: any) => boolean
+    }
+  >
+)
 
 const defaultProps = {
   getAllIdentifiers: (
@@ -28,7 +37,10 @@ const defaultProps = {
     () => false
   ),
   getValidationType: (
-    () => ValidationType.change
+    () => (
+      ValidationType
+      .change
+    )
   ),
   getValue: (
     () => {}

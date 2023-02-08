@@ -87,8 +87,8 @@ const MemoizedForm = (
   memo(
     Form
   )
-// TODO: Fix this hack using a native solution. This ensures `ReturnType` is inferred when part of `translateProps`.
 ) as (
+  // TODO: Fix this hack using a native solution. This ensures `ReturnType` is inferred when part of `translateProps`.
   typeof Form
 )
 

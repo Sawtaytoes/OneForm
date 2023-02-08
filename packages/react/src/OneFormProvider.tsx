@@ -73,7 +73,8 @@ import {
   ValidationType,
 } from './useValidationType'
 import {
-  useValidationsState, ValidationsType,
+  useValidationsState,
+  ValidationsType,
 } from './useValidationsState'
 import {
   OnChange,
@@ -91,16 +92,40 @@ import {
 } from './VisitationContext'
 
 export type OneFormProviderProps = {
-  children: ReactNode,
-  errorMessages?: Errors,
-  groupValidations?: GroupValidationsType[],
-  hasFieldChangeValidation?: boolean,
-  onChange?: OnChange,
-  onSubmit?: OnSubmit,
-  updatedErrorMessages?: Errors,
-  updatedValues?: Values<any>,
-  validations?: ValidationsType,
-  values?: Values<any>,
+  children: (
+    ReactNode
+  ),
+  errorMessages?: (
+    Errors
+  ),
+  groupValidations?: (
+    GroupValidationsType[]
+  ),
+  hasFieldChangeValidation?: (
+    boolean
+  ),
+  onChange?: (
+    OnChange
+  ),
+  onSubmit?: (
+    OnSubmit
+  ),
+  updatedErrorMessages?: (
+    Errors
+  ),
+  updatedValues?: (
+    Values<
+      any
+    >
+  ),
+  validations?: (
+    ValidationsType
+  ),
+  values?: (
+    Values<
+      any
+    >
+  ),
 }
 
 const defaultProps = {

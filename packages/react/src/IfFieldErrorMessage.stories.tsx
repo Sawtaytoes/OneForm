@@ -1,18 +1,33 @@
-import { FieldErrorMessage } from './FieldErrorMessage'
+import {
+  Story,
+} from '@storybook/react'
+
+import {
+  FieldErrorMessage,
+} from './FieldErrorMessage'
 import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
-import IfFieldErrorMessage from './IfFieldErrorMessage'
+import {
+  IfFieldErrorMessage,
+} from './IfFieldErrorMessage'
 import {
   OneFormProvider,
 } from './OneFormProvider'
+import {
+  Errors,
+} from './useErrorMessagesState'
 
 export default {
   decorators: htmlStyleDecorators,
   title: 'Fields/IfFieldErrorMessage',
 }
 
-export const Default = (
+export const Default: (
+  Story<
+    Errors
+  >
+) = (
   updatedErrorMessages,
 ) => (
   <OneFormProvider
@@ -29,7 +44,11 @@ Default
   message: 'This is my field error.',
 }
 
-export const Fallback = (
+export const Fallback: (
+  Story<
+    Errors
+  >
+) = (
   updatedErrorMessages,
 ) => (
   <OneFormProvider
@@ -53,7 +72,11 @@ Fallback
   message: '',
 }
 
-export const CustomVisibility = (
+export const CustomVisibility: (
+  Story<
+    Errors
+  >
+) = (
   updatedErrorMessages,
 ) => (
   <OneFormProvider

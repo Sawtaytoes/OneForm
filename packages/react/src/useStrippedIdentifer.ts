@@ -6,7 +6,7 @@ import {
 const initialMemoizedIdentifierGroups = {}
 const initialStrippedIdentifiers = {}
 
-const useStrippedIdentifer = () => {
+export const useStrippedIdentifer = () => {
   const identifierGroupsRef = (
     useRef(
       initialMemoizedIdentifierGroups
@@ -178,5 +178,3 @@ const useStrippedIdentifer = () => {
     getStrippedIdentifierData,
   }
 }
-
-export default useStrippedIdentifer

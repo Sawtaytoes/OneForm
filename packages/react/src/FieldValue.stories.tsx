@@ -1,17 +1,40 @@
-import FieldValue from './FieldValue'
+import {
+  ComponentMeta,
+  Story,
+} from '@storybook/react'
+
+import {
+  FieldValue,
+} from './FieldValue'
 import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
 import {
   OneFormProvider,
 } from './OneFormProvider'
+import {
+  Values,
+} from './useValuesState'
 
-export default {
+const storybookMeta: (
+  ComponentMeta<
+    typeof FieldValue
+  >
+) = {
+  component: FieldValue,
   decorators: htmlStyleDecorators,
   title: 'Fields/FieldValue',
 }
 
-export const Text = (
+export default storybookMeta
+
+export const Text: (
+  Story<
+    Values<
+      string
+    >
+  >
+) = (
   updatedValues,
 ) => (
   <OneFormProvider
@@ -26,7 +49,13 @@ Text
   message: 'This is my field value.',
 }
 
-export const StyledText = (
+export const StyledText: (
+  Story<
+    Values<
+      string
+    >
+  >
+) = (
   updatedValues,
 ) => (
   <OneFormProvider

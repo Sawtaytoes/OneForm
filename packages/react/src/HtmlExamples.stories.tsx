@@ -1,37 +1,50 @@
 import {
-  action,
-} from '@storybook/addon-actions'
+  ComponentMeta,
+  ComponentStory,
+} from '@storybook/react'
 import {
   useCallback,
   useState,
 } from 'react'
 
-import Field from './Field'
-import { FieldErrorMessage } from './FieldErrorMessage'
+import {
+  Field,
+} from './Field'
+import {
+  FieldErrorMessage,
+} from './FieldErrorMessage'
 import {
   FieldGroup,
 } from './FieldGroup'
-import FieldValue from './FieldValue'
-import htmlStyleDecorators from '././htmlStyleDecorators'
+import {
+  FieldValue,
+} from './FieldValue'
+import {
+  htmlStyleDecorators,
+} from './htmlStyleDecorators'
 import {
   OneFormProvider,
 } from './OneFormProvider'
-import { SubmitField } from './SubmitField'
+import {
+  SubmitField,
+} from './SubmitField'
 
-export default {
-  args: {
-    onChange: action(),
-    onSubmit: action(),
-  },
-  argTypes: {
-    onChange: 'changed',
-    onSubmit: 'submitted',
-  },
+const storybookMeta: (
+  ComponentMeta<
+    typeof OneFormProvider
+  >
+) = {
   decorators: htmlStyleDecorators,
   title: 'Examples/HTML',
 }
 
-export const Registration = (
+export default storybookMeta
+
+export const Registration: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => {
   const [
@@ -204,7 +217,11 @@ const products = [
   },
 ]
 
-export const ProductSelection = (
+export const ProductSelection: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => {
   const [
