@@ -34,8 +34,8 @@ import {
 import {
   SubformContext,
 } from './SubformContext'
-import SubmissionContext from './SubmissionContext.js'
-import useErrorMessagesState from './useErrorMessagesState.js'
+import SubmissionContext from './SubmissionContext'
+import useErrorMessagesState from './useErrorMessagesState'
 import useFormChangeState, {
   FormChangeState,
 } from './useFormChangeState'
@@ -45,14 +45,14 @@ import {
 import {
   useFormVisitationState,
 } from './useFormVisitationState'
-import useGroupValidationsState from './useGroupValidationsState.js'
+import useGroupValidationsState from './useGroupValidationsState'
 import {
   useRegistrationState,
 } from './useRegistrationState'
 import {
   useSubformState,
 } from './useSubformState'
-import useSubmissionState from './useSubmissionState.js'
+import useSubmissionState from './useSubmissionState'
 import {
   useUpdateEffect,
 } from './useUpdateEffect'

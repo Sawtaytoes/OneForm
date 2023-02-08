@@ -3,7 +3,7 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useGroupValidationsState from './useGroupValidationsState.js'
+import useGroupValidationsState from './useGroupValidationsState'
 
 const getSymbol = (
   values

@@ -3,9 +3,9 @@ import {
   screen,
 } from '@testing-library/react'
 
-import FieldValue from './FieldValue.jsx'
-import IfFieldValue from './IfFieldValue.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
+import FieldValue from './FieldValue'
+import IfFieldValue from './IfFieldValue'
+import OneFormProvider from './OneFormProvider'
 
 describe(
   'IfFieldValue',

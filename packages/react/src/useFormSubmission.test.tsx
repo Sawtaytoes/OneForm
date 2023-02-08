@@ -6,17 +6,17 @@ import {
   ReactElement,
 } from 'react'
 
-import Field from './Field.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
+import Field from './Field'
+import OneFormProvider from './OneFormProvider'
 import {
   FormChangeState,
 } from './useFormChangeState'
-import useFormSubmission from './useFormSubmission.js'
+import useFormSubmission from './useFormSubmission'
 
 // TODO: Test this later when the submission state API is finalized.
 // import {
 //   submissionStates,
-// } from './useSubmissionState.js'
+// } from './useSubmissionState'
 
 describe(
   'useFormSubmission',

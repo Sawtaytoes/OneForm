@@ -6,16 +6,16 @@ import {
   useMemo,
 } from 'react'
 
-import Field from './Field.jsx'
-import FieldErrorMessage from './FieldErrorMessage.jsx'
-import FieldValue from './FieldValue.jsx'
+import Field from './Field'
+import FieldErrorMessage from './FieldErrorMessage'
+import FieldValue from './FieldValue'
 import {
   Form,
 } from './Form'
-import SubmitField from './SubmitField.jsx'
-import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
-import Subform from './Subform.jsx'
+import SubmitField from './SubmitField'
+import htmlStyleDecorators from './htmlStyleDecorators'
+import OneFormProvider from './OneFormProvider'
+import Subform from './Subform'
 import {
   useFieldValue,
 } from './useFieldValue'

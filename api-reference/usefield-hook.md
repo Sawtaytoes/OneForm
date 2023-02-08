@@ -179,7 +179,7 @@ import {
   OneForm,
 } from '@oneform/react'
 
-import CustomFieldExample from './CustomFieldExample.jsx'
+import CustomFieldExample from './CustomFieldExample'
 
 const CustomFieldContainerExample = () => (
   <OneFormProvider>

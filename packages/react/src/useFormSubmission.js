@@ -4,7 +4,7 @@ import {
   useState,
 } from 'react'
 
-import SubmissionContext from './SubmissionContext.js'
+import SubmissionContext from './SubmissionContext'
 import {
   submissionStates,
 } from './useSubmissionState'

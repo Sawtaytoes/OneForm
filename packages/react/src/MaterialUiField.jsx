@@ -4,7 +4,7 @@ import {
   useCallback,
 } from 'react'
 
-import Field from './Field.jsx'
+import Field from './Field'
 
 const propTypes = {
   children: PropTypes.node.isRequired,

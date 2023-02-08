@@ -6,7 +6,7 @@ import {
 import {
   IfFieldVisitation,
 } from './IfFieldVisitation'
-import OneFormProvider from './OneFormProvider.jsx'
+import OneFormProvider from './OneFormProvider'
 
 describe(
   'IfFieldVisitation',

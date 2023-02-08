@@ -100,7 +100,7 @@ import {
   OneForm,
 } from '@oneform/react'
 
-import FieldsComponentExample from './FieldsComponentExample.jsx'
+import FieldsComponentExample from './FieldsComponentExample'
 
 const FieldsParentComponentExample = () => (
   <OneFormProvider>

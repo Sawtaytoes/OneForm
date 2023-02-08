@@ -3,8 +3,8 @@ import {
   memo,
 } from 'react'
 
-import Form from './Form.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
+import Form from './Form'
+import OneFormProvider from './OneFormProvider'
 
 const propTypes = {
   children: PropTypes.node.isRequired,

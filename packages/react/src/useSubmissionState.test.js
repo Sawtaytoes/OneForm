@@ -5,7 +5,7 @@ import {
 
 import useSubmissionState, {
   submissionStates,
-} from './useSubmissionState.js'
+} from './useSubmissionState'
 
 describe(
   'useSubmissionState',

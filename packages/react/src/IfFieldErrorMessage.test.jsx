@@ -3,9 +3,9 @@ import {
   screen,
 } from '@testing-library/react'
 
-import FieldErrorMessage from './FieldErrorMessage.jsx'
-import IfFieldErrorMessage from './IfFieldErrorMessage.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
+import FieldErrorMessage from './FieldErrorMessage'
+import IfFieldErrorMessage from './IfFieldErrorMessage'
+import OneFormProvider from './OneFormProvider'
 
 describe(
   'IfFieldErrorMessage',

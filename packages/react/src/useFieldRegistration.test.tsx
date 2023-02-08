@@ -3,7 +3,7 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import OneFormProvider from './OneFormProvider.jsx'
+import OneFormProvider from './OneFormProvider'
 import {
   useFieldRegistration,
 } from './useFieldRegistration'

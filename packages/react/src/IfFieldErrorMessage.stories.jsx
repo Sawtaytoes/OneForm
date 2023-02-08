@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import FieldErrorMessage from './FieldErrorMessage.jsx'
-import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import IfFieldErrorMessage from './IfFieldErrorMessage.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
+import FieldErrorMessage from './FieldErrorMessage'
+import htmlStyleDecorators from './htmlStyleDecorators'
+import IfFieldErrorMessage from './IfFieldErrorMessage'
+import OneFormProvider from './OneFormProvider'
 
 export default {
   decorators: htmlStyleDecorators,

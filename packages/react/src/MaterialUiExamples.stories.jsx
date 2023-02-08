@@ -18,12 +18,12 @@ import {
   useCallback,
 } from 'react'
 
-import Field from './Field.jsx'
-import FieldErrorMessage from './FieldErrorMessage.jsx'
-import FieldValue from './FieldValue.jsx'
-import MaterialUiField from './MaterialUiField.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
-import SubmitField from './SubmitField.jsx'
+import Field from './Field'
+import FieldErrorMessage from './FieldErrorMessage'
+import FieldValue from './FieldValue'
+import MaterialUiField from './MaterialUiField'
+import OneFormProvider from './OneFormProvider'
+import SubmitField from './SubmitField'
 
 export default {
   args: {

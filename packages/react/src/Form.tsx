@@ -6,7 +6,7 @@ import {
   useMemo,
 } from 'react'
 
-import useFormSubmission from './useFormSubmission.js'
+import useFormSubmission from './useFormSubmission'
 
 declare function FormType<
   TranslatePropsReturnType

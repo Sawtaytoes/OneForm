@@ -10,14 +10,14 @@ import {
   useState,
 } from 'react'
 
-import Field from './Field.jsx'
-import FieldErrorMessage from './FieldErrorMessage.jsx'
-import FieldGroup from './FieldGroup.jsx'
-import FieldValue from './FieldValue.jsx'
-import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneForm from './OneForm.jsx'
-import SubmitField from './SubmitField.jsx'
-import useFieldValue from './useFieldValue.js'
+import Field from './Field'
+import FieldErrorMessage from './FieldErrorMessage'
+import FieldGroup from './FieldGroup'
+import FieldValue from './FieldValue'
+import htmlStyleDecorators from './htmlStyleDecorators'
+import OneForm from './OneForm'
+import SubmitField from './SubmitField'
+import useFieldValue from './useFieldValue'
 
 export default {
   args: {

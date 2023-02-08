@@ -3,12 +3,12 @@ import {
   action,
 } from '@storybook/addon-actions'
 
-import Field from './Field.jsx'
+import Field from './Field'
 import {
   FieldGroup,
 } from './FieldGroup'
-import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
+import htmlStyleDecorators from './htmlStyleDecorators'
+import OneFormProvider from './OneFormProvider'
 
 export default {
   args: {

@@ -3,7 +3,7 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useErrorMessagesState from './useErrorMessagesState.js'
+import useErrorMessagesState from './useErrorMessagesState'
 
 describe(
   'useErrorMessagesState',

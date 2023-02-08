@@ -3,9 +3,9 @@ import {
   action,
 } from '@storybook/addon-actions'
 
-import htmlStyleDecorators from './htmlStyleDecorators.jsx'
-import OneFormProvider from './OneFormProvider.jsx'
-import SubmitField from './SubmitField.jsx'
+import htmlStyleDecorators from './htmlStyleDecorators'
+import OneFormProvider from './OneFormProvider'
+import SubmitField from './SubmitField'
 
 export default {
   args: {

@@ -8,7 +8,7 @@ import {
 import {
   FieldGroup,
 } from './FieldGroup'
-import OneFormProvider from './OneFormProvider.jsx'
+import OneFormProvider from './OneFormProvider'
 import {
   useFieldGroup,
 } from './useFieldGroup'

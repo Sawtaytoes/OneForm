@@ -3,8 +3,8 @@ import {
   screen,
 } from '@testing-library/react'
 
-import OneFormProvider from './OneFormProvider.jsx'
-import FieldValue from './FieldValue.jsx'
+import OneFormProvider from './OneFormProvider'
+import FieldValue from './FieldValue'
 
 describe(
   'FieldValue',
