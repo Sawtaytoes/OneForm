@@ -3,7 +3,7 @@ import {
   screen,
 } from '@testing-library/react'
 
-import FieldErrorMessage from './FieldErrorMessage'
+import { FieldErrorMessage } from './FieldErrorMessage'
 import IfFieldErrorMessage from './IfFieldErrorMessage'
 import OneFormProvider from './OneFormProvider'
 

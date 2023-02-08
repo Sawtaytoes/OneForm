@@ -8,7 +8,7 @@ import {
 } from 'react'
 
 import Field from './Field'
-import FieldErrorMessage from './FieldErrorMessage'
+import { FieldErrorMessage } from './FieldErrorMessage'
 import {
   FieldGroup,
 } from './FieldGroup'
