@@ -1,6 +1,6 @@
 import {
   ComponentMeta,
-  ComponentStory,
+  Story,
 } from '@storybook/react'
 
 import {
@@ -29,13 +29,11 @@ const storybookMeta: (
 export default storybookMeta
 
 export const Text: (
-  ComponentStory<
-    typeof OneFormProvider
+  Story<
+    Errors
   >
 ) = (
-  updatedErrorMessages: (
-    Errors
-  ),
+  updatedErrorMessages,
 ) => (
   <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
@@ -50,13 +48,11 @@ Text
 }
 
 export const StyledText: (
-  ComponentStory<
-    typeof OneFormProvider
+  Story<
+    Errors
   >
 ) = (
-  updatedErrorMessages: (
-    Errors
-  ),
+  updatedErrorMessages,
 ) => (
   <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}

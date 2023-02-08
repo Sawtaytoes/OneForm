@@ -9,8 +9,12 @@ import {
   useObservableState,
 } from './useObservableState'
 
+export type ErrorMessage = (
+  string
+)
+
 export type ErrorMessages = (
-  string[]
+  ErrorMessage[]
 )
 
 export type ErrorMessageSegmentId = (
@@ -20,18 +24,30 @@ export type ErrorMessageSegmentId = (
 export type Errors = (
   Record<
     ObservableIdentifier,
-    ErrorMessages
+    (
+      | true
+      | ErrorMessage
+      | ErrorMessages
+    )
   >
 )
 
 const externalErrorMessagesSymbol = Symbol()
 
-const initialErrorMessages: (
-  Errors
-) = {}
+const defaultProps = {
+  errorMessages: {},
+  onErrorMessages: () => {},
+  updatedErrorMessages: {},
+}
 
 const initialLocalErrorMessages: (
-  Errors
+  Record<
+    ObservableIdentifier,
+    Map<
+      symbol,
+      ErrorMessages
+    >
+  >
 ) = {}
 
 const initialLocalErrorMessagesList: (
@@ -41,15 +57,36 @@ const initialLocalErrorMessagesList: (
 export const useErrorMessagesState = (
   {
     errorMessages = (
-      initialErrorMessages
+      defaultProps
+      .errorMessages
     ),
     onErrorMessages = (
-      Function
-      .prototype
+      defaultProps
+      .onErrorMessages
     ),
     updatedErrorMessages = (
-      initialErrorMessages
+      defaultProps
+      .updatedErrorMessages
     ),
+  }: {
+    errorMessages?: Errors,
+    onErrorMessages?: (
+      | (
+        ({
+          errorMessages,
+          identifier,
+        }: {
+          errorMessages: ErrorMessages,
+          identifier: ObservableIdentifier,
+        }) => (
+          void
+        )
+      )
+      | (
+        () => void
+      )
+    ),
+    updatedErrorMessages?: Errors,
   } = {}
 ) => {
   const onErrorMessagesRef = (
@@ -129,12 +166,14 @@ export const useErrorMessagesState = (
             errorsMap,
           ]) => [
             fieldName,
-            Array
-            .from(
-              errorsMap
-              .values()
-            )
-            .flat(),
+            (
+              Array
+              .from(
+                errorsMap
+                .values()
+              )
+              .flat()
+            ),
           ]
         )
         .map(
@@ -223,7 +262,11 @@ export const useErrorMessagesState = (
           errorMessages: nextErrorMessages,
           symbol,
         }: {
-          errorMessages: ErrorMessages,
+          errorMessages: (
+            | true
+            | ErrorMessage
+            | ErrorMessages
+          ),
           symbol: ErrorMessageSegmentId,
         },
       ) => {
@@ -324,28 +367,30 @@ export const useErrorMessagesState = (
   useEffect(
     () => {
       Object
-      .entries({
-        ...(
-          localErrorMessagesRef
-          .current
-        ),
-        ...errorMessages,
-      })
-      .map(([
+      .keys(
+        localErrorMessagesRef
+        .current
+      )
+      .forEach((
+        identifier,
+      ) => (
+        setLocalErrorMessages(
+          identifier,
+          {
+            errorMessages: [],
+            symbol: externalErrorMessagesSymbol,
+          },
+        )
+      ))
+
+      Object
+      .entries(
+        errorMessages,
+      )
+      .forEach(([
         identifier,
         errorMessages,
-      ]) => ({
-        errorMessages: (
-          errorMessages instanceof Map
-          ? undefined
-          : errorMessages
-        ),
-        identifier,
-      }))
-      .forEach(({
-        errorMessages,
-        identifier,
-      }) => {
+      ]) => {
         setLocalErrorMessages(
           identifier,
           {

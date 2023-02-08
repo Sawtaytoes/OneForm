@@ -8,6 +8,7 @@ import {
 } from './createObservable'
 import {
   ErrorMessages,
+  ErrorMessageSegmentId,
 } from './useErrorMessagesState'
 import {
   FieldName,
@@ -26,7 +27,7 @@ export type ErrorMessagesContextType = {
       symbol,
     }: {
       errorMessages: ErrorMessages,
-      symbol: symbol,
+      symbol: ErrorMessageSegmentId,
     },
   ) => (
     void

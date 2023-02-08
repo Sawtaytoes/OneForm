@@ -7,9 +7,12 @@ import {
 } from 'react'
 
 import {
-  ErrorMessages,
   ErrorMessagesContext,
 } from './ErrorMessagesContext'
+import {
+  ErrorMessages,
+  ErrorMessageSegmentId,
+} from './useErrorMessagesState'
 import {
   FieldName,
   useFieldName,
@@ -21,7 +24,9 @@ export const useFieldErrorMessages = ({
   name: FieldName,
 }) => {
   const fieldErrorMessagesSymbol = (
-    useMemo(
+    useMemo<
+      ErrorMessageSegmentId
+    >(
       () => (
         Symbol()
       ),
