@@ -1,39 +1,48 @@
 import {
+  Fragment,
   memo,
-  PropsWithChildren,
+  ReactElement,
   ReactNode,
   useMemo,
 } from 'react'
 
 import {
+  FieldName,
+} from './useFieldName'
+import {
   useFieldValue,
 } from './useFieldValue'
 
-const IfFieldValue = <
-  ValueType,
->({
+declare function IfFieldValueType<
+  ValueType
+>(
+  props: {
+    children: ReactNode,
+    fallback?: ReactNode,
+    getIsVisible?: (
+      value: ValueType
+    ) => (
+      boolean
+    ),
+    name: FieldName,
+  }
+): (
+  ReactElement
+)
+
+type IfFieldValueType = typeof IfFieldValueType
+
+const IfFieldValue: IfFieldValueType = ({
   children,
   fallback = null,
   getIsVisible = Boolean,
   name,
-}: {
-  children: ReactNode,
-  fallback?: ReactNode,
-  getIsVisible?: (
-    value: (
-      | ValueType
-      | undefined
-    )
-  ) => (
-    boolean
-  ),
-  name: string,
 }) => {
   const {
-    value,
+    value = '',
   } = (
     useFieldValue<
-      ValueType
+      any
     >({
       name,
     })
@@ -54,9 +63,13 @@ const IfFieldValue = <
   )
 
   return (
-    isVisible
-    ? children
-    : fallback
+    <Fragment>
+      {
+        isVisible
+        ? children
+        : fallback
+      }
+    </Fragment>
   )
 }
 
@@ -64,6 +77,8 @@ const MemoizedIfFieldValue = (
   memo(
     IfFieldValue
   )
+) as (
+  typeof IfFieldValue
 )
 
 export {

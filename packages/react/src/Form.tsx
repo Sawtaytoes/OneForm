@@ -23,8 +23,7 @@ declare function FormType<
     ),
   }
 ): (
-  JSX
-  .Element
+  ReactElement
 )
 
 type FormType = typeof FormType
@@ -83,7 +82,9 @@ const MemoizedForm = (
     Form
   )
 // TODO: Fix this hack using a native solution. This ensures `ReturnType` is inferred when part of `translateProps`.
-) as FormType
+) as (
+  typeof Form
+)
 
 export {
   MemoizedForm as Form
