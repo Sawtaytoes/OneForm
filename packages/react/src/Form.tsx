@@ -26,7 +26,7 @@ declare function FormType<
   ReactElement
 )
 
-type FormType = typeof FormType
+export type FormType = typeof FormType
 
 const defaultProps = {
   translateProps: () => {},
