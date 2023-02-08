@@ -7,14 +7,14 @@ import {
   useFieldErrorMessages,
 } from './useFieldErrorMessages'
 
-export type FieldErrorMessageType = {
+export type FieldErrorMessageProps = {
   name: string,
 }
 
 const FieldErrorMessage = ({
   name,
 }: (
-  FieldErrorMessageType
+  FieldErrorMessageProps
 )) => {
   const {
     errorMessages = [],

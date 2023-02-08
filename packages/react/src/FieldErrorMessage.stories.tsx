@@ -1,4 +1,9 @@
 import {
+  ComponentMeta,
+  ComponentStory,
+} from '@storybook/react'
+
+import {
   FieldErrorMessage
 } from './FieldErrorMessage'
 import {
@@ -7,14 +12,30 @@ import {
 import {
   OneFormProvider ,
 } from './OneFormProvider '
+import {
+  Errors,
+} from './useErrorMessagesState'
 
-export default {
+const storybookMeta: (
+  ComponentMeta<
+    typeof FieldErrorMessage
+  >
+) = {
+  component: FieldErrorMessage,
   decorators: htmlStyleDecorators,
   title: 'Fields/FieldErrorMessage',
 }
 
-export const Text = (
-  updatedErrorMessages,
+export default storybookMeta
+
+export const Text: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
+  updatedErrorMessages: (
+    Errors
+  ),
 ) => (
   <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
@@ -28,8 +49,14 @@ Text
   message: 'This is my field error.',
 }
 
-export const StyledText = (
-  updatedErrorMessages,
+export const StyledText: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
+  updatedErrorMessages: (
+    Errors
+  ),
 ) => (
   <OneFormProvider
     updatedErrorMessages={updatedErrorMessages}
