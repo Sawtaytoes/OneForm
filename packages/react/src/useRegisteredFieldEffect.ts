@@ -3,11 +3,16 @@ import {
 } from 'react'
 
 import {
+  FieldName,
+} from './useFieldName'
+import {
   useFieldRegistration,
 } from './useFieldRegistration'
 
 const useRegisteredFieldEffect = ({
   name,
+}: {
+  name: FieldName
 }) => {
   const {
     register,
