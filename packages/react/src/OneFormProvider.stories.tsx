@@ -1,3 +1,9 @@
+import {
+  ComponentMeta,
+  ComponentStory,
+  Story,
+} from '@storybook/react'
+
 /* eslint-disable react-hooks/rules-of-hooks */
 import {
   action,
@@ -9,12 +15,18 @@ import {
   useState,
 } from 'react'
 
-import Field from './Field'
-import { FieldErrorMessage } from './FieldErrorMessage'
+import {
+  Field,
+} from './Field'
+import {
+  FieldErrorMessage,
+} from './FieldErrorMessage'
 import {
   FieldGroup,
 } from './FieldGroup'
-import FieldValue from './FieldValue'
+import {
+  FieldValue,
+} from './FieldValue'
 import {
   Form,
 } from './Form'
@@ -24,26 +36,30 @@ import {
 import {
   OneFormProvider,
 } from './OneFormProvider'
-import { SubmitField } from './SubmitField'
+import {
+  SubmitField,
+} from './SubmitField'
 import {
   useFieldValue,
 } from './useFieldValue'
 
-export default {
-  args: {
-    onChange: action(),
-    onSubmit: action(),
-  },
-  argTypes: {
-    onChange: 'changed',
-    onSubmit: 'submitted',
-  },
+const storybookMeta: (
+  ComponentMeta<
+    typeof OneFormProvider
+  >
+) = {
   component: OneFormProvider,
   decorators: htmlStyleDecorators,
   title: 'Forms/OneFormProvider',
 }
 
-export const DisplayTextValue = (
+export default storybookMeta
+
+export const DisplayTextValue: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -59,7 +75,11 @@ export const DisplayTextValue = (
   </OneFormProvider>
 )
 
-export const InitialTextValues = (
+export const InitialTextValues: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -82,7 +102,11 @@ InitialTextValues
   },
 }
 
-export const CheckboxWithValue = (
+export const CheckboxWithValue: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -111,7 +135,11 @@ CheckboxWithValue
   },
 }
 
-export const InitialCheckboxValues = (
+export const InitialCheckboxValues: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -148,7 +176,11 @@ InitialCheckboxValues
   },
 }
 
-export const InitialRadioValues = (
+export const InitialRadioValues: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -189,7 +221,11 @@ InitialRadioValues
   },
 }
 
-export const SelectValue = (
+export const SelectValue: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -223,7 +259,11 @@ export const SelectValue = (
   </OneFormProvider>
 )
 
-export const SelectOptionGroupValue = (
+export const SelectOptionGroupValue: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -261,7 +301,11 @@ export const SelectOptionGroupValue = (
   </OneFormProvider>
 )
 
-export const InitialSelectValue = (
+export const InitialSelectValue: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -307,7 +351,11 @@ InitialSelectValue
   },
 }
 
-export const InitialMultiSelect = (
+export const InitialMultiSelect: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -361,7 +409,11 @@ InitialMultiSelect
   },
 }
 
-export const Submit = (
+export const Submit: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -385,7 +437,11 @@ export const Submit = (
   </OneFormProvider>
 )
 
-export const ValueStateChange = (
+export const ValueStateChange: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -423,7 +479,11 @@ ValueStateChange
   },
 }
 
-export const CyclicValueStateChange = (
+export const CyclicValueStateChange: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -457,7 +517,11 @@ CyclicValueStateChange
   }),
 }
 
-export const UpdatingOnChange = () => {
+export const UpdatingOnChange: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = () => {
   const [
     count,
     setCount,
@@ -525,7 +589,11 @@ export const UpdatingOnChange = () => {
   )
 }
 
-export const Validation = (
+export const Validation: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -615,7 +683,11 @@ Validation
   },
 }
 
-export const GroupValidation = (
+export const GroupValidation: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -693,7 +765,11 @@ GroupValidation
   ],
 }
 
-export const FieldGroupValidation = (
+export const FieldGroupValidation: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>
@@ -799,7 +875,7 @@ FieldGroupValidation
   },
 }
 
-export const Spreadsheet = () => {
+export const Spreadsheet: Story = () => {
   const numberOfColumns = 3
 
   const cells = (

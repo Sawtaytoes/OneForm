@@ -3,8 +3,12 @@ import {
   screen,
 } from '@testing-library/react'
 
-import FieldValue from './FieldValue'
-import IfFieldValue from './IfFieldValue'
+import {
+  FieldValue,
+} from './FieldValue'
+import {
+  IfFieldValue,
+} from './IfFieldValue'
 import {
   OneFormProvider,
 } from './OneFormProvider'

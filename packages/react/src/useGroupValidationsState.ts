@@ -9,7 +9,9 @@ import {
 } from './useFieldName'
 import useFilteredValuesState from './useFilteredValuesState'
 import useItemGroupState from './useItemGroupState'
-import useStrippedIdentifer from './useStrippedIdentifer'
+import {
+  useStrippedIdentifer,
+} from './useStrippedIdentifer'
 import useSymbolFunctionStore from './useSymbolFunctionStore'
 import { ValidationType } from './useValidationType'
 import { useUpdateEffect } from './useUpdateEffect'
@@ -38,10 +40,12 @@ const initialRegisteredIdentifiers = new Set()
 export type GroupValidationsType = {
   fieldNames: string[],
   getErrorMessages: ({
+    groups,
     reverseLookup,
     validationType,
     values,
   }: {
+    groups: any[],
     reverseLookup?: any,
     validationType: string,
     values: any,

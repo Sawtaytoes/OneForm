@@ -6,7 +6,7 @@ import {
 const initialIdentifiersList = []
 const initialSubscribedValues = {}
 
-const useFilteredValuesState = ({
+export const useFilteredValuesState = ({
   identifiersList = (
     initialIdentifiersList
   ),
@@ -102,5 +102,3 @@ const useFilteredValuesState = ({
     setFilteredValue,
   }
 }
-
-export default useFilteredValuesState

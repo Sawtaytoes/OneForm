@@ -1,4 +1,9 @@
 import {
+  ComponentMeta,
+  ComponentStory,
+} from '@storybook/react'
+
+import {
   Button,
   Card,
   CardActions,
@@ -11,34 +16,36 @@ import {
   Alert,
 } from '@material-ui/lab'
 import {
-  action,
-} from '@storybook/addon-actions'
-import {
   useCallback,
 } from 'react'
 
-import Field from './Field'
-import { FieldErrorMessage } from './FieldErrorMessage'
-import FieldValue from './FieldValue'
-import MaterialUiField from './MaterialUiField'
+import {
+  FieldValue,
+} from './FieldValue'
+import {
+  MaterialUiField,
+} from './MaterialUiField'
 import {
   OneFormProvider,
 } from './OneFormProvider'
 import { SubmitField } from './SubmitField'
 
-export default {
-  args: {
-    onChange: action(),
-    onSubmit: action(),
-  },
-  argTypes: {
-    onChange: 'changed',
-    onSubmit: 'submitted',
-  },
+const storybookMeta: (
+  ComponentMeta<
+    typeof MaterialUiField
+  >
+) = {
+  component: MaterialUiField,
   title: 'Examples/Material UI',
 }
 
-export const Basic = (
+export default storybookMeta
+
+export const Basic: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => {
   const formSubmitted = (

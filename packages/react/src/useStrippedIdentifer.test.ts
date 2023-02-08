@@ -2,7 +2,9 @@ import {
   renderHook,
 } from '@testing-library/react'
 
-import useStrippedIdentifer from './useStrippedIdentifer'
+import {
+  useStrippedIdentifer,
+} from './useStrippedIdentifer'
 
 describe(
   'useStrippedIdentifer',

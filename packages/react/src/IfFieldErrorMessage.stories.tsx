@@ -1,4 +1,5 @@
 import {
+  ComponentMeta,
   Story,
 } from '@storybook/react'
 
@@ -18,10 +19,17 @@ import {
   Errors,
 } from './useErrorMessagesState'
 
-export default {
+const storybookMeta: (
+  ComponentMeta<
+    typeof IfFieldErrorMessage
+  >
+) = {
+  component: IfFieldErrorMessage,
   decorators: htmlStyleDecorators,
   title: 'Fields/IfFieldErrorMessage',
 }
+
+export default storybookMeta
 
 export const Default: (
   Story<

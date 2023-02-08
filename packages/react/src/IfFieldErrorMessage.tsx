@@ -6,12 +6,14 @@ import {
 } from 'react'
 
 import {
+  ErrorMessages,
+} from './useErrorMessagesState'
+import {
   FieldName,
 } from './useFieldName'
 import {
   useFieldErrorMessages,
 } from './useFieldErrorMessages'
-import { ErrorMessages } from './ErrorMessagesContext'
 
 const defaultGetIsVisible = (
   errorMessages: ErrorMessages

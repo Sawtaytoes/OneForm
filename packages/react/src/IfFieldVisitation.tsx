@@ -1,5 +1,5 @@
 import {
-  FunctionComponent,
+  Fragment,
   memo,
   ReactNode,
 } from 'react'
@@ -17,15 +17,13 @@ export type IfFieldVisitationProps = {
   name: FieldName,
 }
 
-const IfFieldVisitation: (
-  FunctionComponent<
-    IfFieldVisitationProps
-  >
-) = ({
+const IfFieldVisitation = ({
   children,
   fallback = null,
   name,
-}) => {
+}: (
+  IfFieldVisitationProps
+)) => {
   const {
     isVisited,
   } = (
@@ -35,9 +33,13 @@ const IfFieldVisitation: (
   )
 
   return (
-    isVisited
-    ? children
-    : fallback
+    <Fragment>
+      {
+        isVisited
+        ? children
+        : fallback
+      }
+    </Fragment>
   )
 }
 

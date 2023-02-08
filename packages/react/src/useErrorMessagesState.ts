@@ -174,7 +174,7 @@ export const useErrorMessagesState = (
               )
               .flat()
             ),
-          ]
+          ] as const
         )
         .map(
           ([

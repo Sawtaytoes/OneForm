@@ -18,7 +18,7 @@ const initialRequiredFieldNames: (
   FieldName[]
 ) = []
 
-const useFormSubmission = (
+export const useFormSubmission = (
   {
     requiredFieldNames = (
       initialRequiredFieldNames
@@ -233,5 +233,3 @@ const useFormSubmission = (
     ),
   }
 }
-
-export default useFormSubmission

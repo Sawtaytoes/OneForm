@@ -3,7 +3,7 @@ import {
 } from 'react'
 
 import {
-  ErrorMessages,
+  Errors,
 } from './useErrorMessagesState'
 import {
   GroupValidations,
@@ -30,7 +30,7 @@ export const useSubformEffect = <
   validations,
   values,
 }: {
-  errorMessages?: ErrorMessages,
+  errorMessages?: Errors,
   groupValidations?: GroupValidations,
   onChange?: (
     OnChange<
@@ -38,7 +38,7 @@ export const useSubformEffect = <
     >
   ),
   onSubmit?: OnSubmit,
-  updatedErrorMessages?: ErrorMessages,
+  updatedErrorMessages?: Errors,
   updatedValues?: (
     Values<
       ValueType

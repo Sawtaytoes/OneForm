@@ -1,39 +1,56 @@
 import {
-  action,
-} from '@storybook/addon-actions'
+  ComponentMeta,
+  ComponentStory,
+} from '@storybook/react'
 import {
   useMemo,
 } from 'react'
 
-import Field from './Field'
-import { FieldErrorMessage } from './FieldErrorMessage'
-import FieldValue from './FieldValue'
+import {
+  Field,
+} from './Field'
+import {
+  FieldErrorMessage,
+} from './FieldErrorMessage'
+import {
+  FieldValue,
+} from './FieldValue'
 import {
   Form,
 } from './Form'
-import { SubmitField } from './SubmitField'
+import {
+  SubmitField,
+} from './SubmitField'
 import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
 import {
   OneFormProvider,
 } from './OneFormProvider'
-import { Subform } from './Subform'
+import {
+  Subform,
+} from './Subform'
 import {
   useFieldValue,
 } from './useFieldValue'
 
-export default {
-  args: {
-    onChange: action('changed'),
-    onSubmit: action('submitted'),
-  },
+const storybookMeta: (
+  ComponentMeta<
+    typeof Subform
+  >
+) = {
   component: Subform,
   decorators: htmlStyleDecorators,
   title: 'Forms/Subform',
 }
 
-export const Values = (
+export default storybookMeta
+
+export const Values: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>
@@ -49,7 +66,11 @@ Values
   },
 }
 
-export const CombinedValues = (
+export const CombinedValues: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => {
   const oneformValues = (
@@ -84,7 +105,11 @@ CombinedValues
   },
 }
 
-export const UpdatedValues = (
+export const UpdatedValues: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>
@@ -121,7 +146,11 @@ const RandomNumberFieldValue = () => {
   )
 }
 
-export const MultipleUpdatedValues = (
+export const MultipleUpdatedValues: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>
@@ -150,7 +179,11 @@ MultipleUpdatedValues
   },
 }
 
-export const ErrorMessages = (
+export const ErrorMessages: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>
@@ -168,7 +201,11 @@ ErrorMessages
   },
 }
 
-export const UpdatedErrorMessages = (
+export const UpdatedErrorMessages: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>
@@ -229,7 +266,11 @@ Validations
   },
 }
 
-export const GroupValidation = (
+export const GroupValidation: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>
@@ -305,7 +346,11 @@ GroupValidation
   ],
 }
 
-export const OnChange = (
+export const OnChange: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>
@@ -338,7 +383,11 @@ OnChange
   ),
 }
 
-export const OnSubmit = (
+export const OnSubmit: (
+  ComponentStory<
+    typeof Subform
+  >
+) = (
   args,
 ) => (
   <OneFormProvider>

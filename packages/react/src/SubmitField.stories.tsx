@@ -1,6 +1,7 @@
 import {
-  action,
-} from '@storybook/addon-actions'
+  ComponentMeta,
+  ComponentStory,
+} from '@storybook/react'
 
 import {
   htmlStyleDecorators,
@@ -8,23 +9,27 @@ import {
 import {
   OneFormProvider,
 } from './OneFormProvider'
-import { SubmitField } from './SubmitField'
+import {
+  SubmitField,
+} from './SubmitField'
 
-export default {
-  args: {
-    onChange: action(),
-    onSubmit: action(),
-  },
-  argTypes: {
-    onChange: 'changed',
-    onSubmit: 'submitted',
-  },
-  // component: SubmitField,
+const storybookMeta: (
+  ComponentMeta<
+    typeof SubmitField
+  >
+) = {
+  component: SubmitField,
   decorators: htmlStyleDecorators,
   title: 'Fields/SubmitField',
 }
 
-export const Submission = (
+export default storybookMeta
+
+export const Submission: (
+  ComponentStory<
+    typeof OneFormProvider
+  >
+) = (
   args,
 ) => (
   <OneFormProvider {...args}>

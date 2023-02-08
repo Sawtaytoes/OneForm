@@ -1,18 +1,43 @@
-import FieldValue from './FieldValue'
+import {
+  ComponentMeta,
+  Story,
+} from '@storybook/react'
+
+import {
+  FieldValue,
+} from './FieldValue'
 import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
-import IfFieldValue from './IfFieldValue'
+import {
+  IfFieldValue,
+} from './IfFieldValue'
 import {
   OneFormProvider,
 } from './OneFormProvider'
+import {
+  Values,
+} from './useValuesState'
 
-export default {
+const storybookMeta: (
+  ComponentMeta<
+    typeof IfFieldValue
+  >
+) = {
+  component: IfFieldValue,
   decorators: htmlStyleDecorators,
   title: 'Fields/IfFieldValue',
 }
 
-export const Default = (
+export default storybookMeta
+
+export const Default: (
+  Story<
+    Values<
+      string
+    >
+  >
+) = (
   updatedValues,
 ) => (
   <OneFormProvider
@@ -29,7 +54,13 @@ Default
   message: '',
 }
 
-export const Fallback = (
+export const Fallback: (
+  Story<
+    Values<
+      string
+    >
+  >
+) = (
   updatedValues,
 ) => (
   <OneFormProvider
@@ -53,7 +84,13 @@ Fallback
   message: '',
 }
 
-export const CustomVisibility = (
+export const CustomVisibility: (
+  Story<
+    Values<
+      string
+    >
+  >
+) = (
   updatedValues,
 ) => (
   <OneFormProvider

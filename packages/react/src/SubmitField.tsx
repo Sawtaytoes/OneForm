@@ -8,7 +8,9 @@ import {
   useMemo,
 } from 'react'
 
-import useFormSubmission from './useFormSubmission'
+import {
+  useFormSubmission,
+} from './useFormSubmission'
 
 const defaultGetIsVisible = () => (
   true
@@ -25,7 +27,7 @@ declare function SubmitFieldType<
     ) => (
       boolean
     ),
-    isDisabledWhenInvalid: boolean,
+    isDisabledWhenInvalid?: boolean,
   }
 ): (
   ReactElement
@@ -43,8 +45,11 @@ const SubmitField: SubmitFieldType = ({
     disabled,
     isDisabled,
   } = (
-    children
-    .props
+    (
+      children
+      ?.props
+    )
+    || {}
   )
 
   const {
@@ -128,10 +133,14 @@ const SubmitField: SubmitFieldType = ({
     ? (
       cloneElement(
         (
-          Children
-          .only(
-            children
-          )
+          <Fragment>
+            {
+              Children
+              .only(
+                children
+              )
+            }
+          </Fragment>
         ),
         childProps,
       )

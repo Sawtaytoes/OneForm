@@ -6,7 +6,9 @@ import {
   useSubformEffect,
 } from './useSubformEffect'
 
-const Subform = <ValueType,>({
+const Subform = <
+  ValueType,
+>({
   errorMessages,
   groupValidations,
   onChange,
@@ -16,7 +18,11 @@ const Subform = <ValueType,>({
   validations,
   values,
 }: (
-  Parameters<typeof useSubformEffect<ValueType>>[0]
+  Parameters<
+    typeof useSubformEffect<
+      ValueType
+    >
+  >[0]
 )) => {
   useSubformEffect({
     errorMessages,
@@ -38,4 +44,6 @@ const MemoizedSubform = (
   )
 )
 
-export { MemoizedSubform as Subform}
+export {
+  MemoizedSubform as Subform
+}

@@ -7,18 +7,29 @@ import {
   FormType,
 } from './Form'
 import {
-  OneFormProvider,
+  OneFormProvider, OneFormProviderProps,
 } from './OneFormProvider'
 
-export type OneFormProps = {
-  children: ReactNode,
-  formElementProps?: Omit<FormType, 'children'>,
-  oneFormProviderProps?: Record<any, any>,
-}
+export type OneFormProps = (
+  Omit<
+    OneFormProviderProps,
+    'children'
+  >
+  & {
+    children: (
+      ReactNode
+    ),
+    formElementProps?: (
+      Omit<
+        FormType,
+        'children'
+      >
+    ),
+  }
+)
 
 const defaultProps = {
   formElementProps: {},
-  oneFormProviderProps: {},
 }
 
 const OneForm = ({

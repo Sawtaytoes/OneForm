@@ -5,7 +5,7 @@ import {
 
 const initialValues = {}
 
-const useSymbolFunctionStore = () => {
+export const useSymbolFunctionStore = () => {
   const valuesRef = (
     useRef(
       initialValues
@@ -176,5 +176,3 @@ const useSymbolFunctionStore = () => {
     setValue,
   }
 }
-
-export default useSymbolFunctionStore
