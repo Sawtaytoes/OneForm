@@ -3,8 +3,8 @@ import {
 } from 'react'
 
 import {
-  FieldName,
-} from './useFieldName'
+  ObservableIdentifier,
+} from './useObservableState'
 import {
   useStrippedIdentifer,
 } from './useStrippedIdentifer'
@@ -21,11 +21,17 @@ export const validationsSymbol = (
 
 export type ValidationsType = (
   Record<
-    FieldName,
-    {
-      errorMessage: string,
-      getIsValid: (value: any) => boolean
-    }
+    ObservableIdentifier,
+    (
+      Array<{
+        errorMessage: string,
+        getIsValid: (
+          value: any,
+        ) => (
+          boolean
+        )
+      }>
+    )
   >
 )
 
@@ -81,7 +87,7 @@ export const useValidationsState = (
     ),
   }: {
     getAllIdentifiers?: () => (
-      FieldName[]
+      ObservableIdentifier[]
     ),
     getIsReadyForValidation?: () => (
       boolean
@@ -89,7 +95,9 @@ export const useValidationsState = (
     getValidationType?: () => (
       ValidationType
     ),
-    getValue?: () => (
+    getValue?: (
+      identifier: ObservableIdentifier,
+    ) => (
       any
     ),
     setErrorMessages?: (
@@ -112,6 +120,9 @@ export const useValidationsState = (
       ({
         identifier,
         strippedIdentifier,
+      }: {
+        identifier: ObservableIdentifier,
+        strippedIdentifier: ObservableIdentifier,
       }) => (
         (
           (

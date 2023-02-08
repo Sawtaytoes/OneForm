@@ -4,6 +4,7 @@ import {
 } from '@testing-library/react'
 
 import {
+  Unregister,
   useRegistrationState,
 } from './useRegistrationState'
 
@@ -62,7 +63,12 @@ describe(
           )
         )
 
-        const unregisterRef = {
+        const unregisterRef: {
+          current: (
+            | Unregister
+            | null
+          )
+        } = {
           current: null,
         }
 

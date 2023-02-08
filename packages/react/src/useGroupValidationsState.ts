@@ -5,25 +5,79 @@ import {
 } from 'react'
 
 import {
+  Errors,
+} from './useErrorMessagesState'
+import {
   FieldName,
 } from './useFieldName'
-import useFilteredValuesState from './useFilteredValuesState'
-import useItemGroupState from './useItemGroupState'
 import {
+  useFilteredValuesState,
+} from './useFilteredValuesState'
+import {
+  useItemGroupState,
+} from './useItemGroupState'
+import {
+  IdentifierGroup,
   useStrippedIdentifer,
 } from './useStrippedIdentifer'
-import useSymbolFunctionStore from './useSymbolFunctionStore'
-import { ValidationType } from './useValidationType'
-import { useUpdateEffect } from './useUpdateEffect'
-import { Errors } from './useErrorMessagesState'
+import {
+  useSymbolFunctionStore,
+} from './useSymbolFunctionStore'
+import {
+  ValidationType,
+} from './useValidationType'
+import {
+  useUpdateEffect,
+} from './useUpdateEffect'
 
-const grouplessGroup = {
+const initialRegisteredIdentifiers = (
+  new Set()
+)
+
+export type GroupValidation = {
+  fieldNames: FieldName[],
+  getErrorMessages: ({
+    groups,
+    reverseLookup,
+    validationType,
+    values,
+  }: {
+    groups: string[],
+    reverseLookup?: (
+      Record<
+        string,
+        string
+      >
+    ),
+    validationType: string,
+    values: (
+      Record<
+        string,
+        string
+      >
+    ),
+  }) => (
+    Errors
+  ),
+  groupNames?: string[],
+}
+
+export type GroupValidationGroup = {
+  group: IdentifierGroup,
+  groupName: IdentifierGroup['groupName'],
+}
+
+const grouplessGroup: (
+  IdentifierGroup
+) = {
   groupId: '',
   groupName: '',
   groupString: '',
 }
 
-const grouplessGroupValidationGroup = [
+const grouplessGroupValidationGroup: (
+  GroupValidationGroup[]
+) = [
   {
     group: (
       grouplessGroup
@@ -35,26 +89,6 @@ const grouplessGroupValidationGroup = [
   },
 ]
 
-const initialRegisteredIdentifiers = new Set()
-
-export type GroupValidationsType = {
-  fieldNames: string[],
-  getErrorMessages: ({
-    groups,
-    reverseLookup,
-    validationType,
-    values,
-  }: {
-    groups: any[],
-    reverseLookup?: any,
-    validationType: string,
-    values: any,
-  }) => (
-    Errors
-  ),
-  groupNames?: string[],
-}
-
 const defaultProps = {
   getAllIdentifiers: (
     () => []
@@ -63,7 +97,10 @@ const defaultProps = {
     () => false
   ),
   getValidationType: (
-    () => ValidationType.change
+    () => (
+      ValidationType
+      .change
+    )
   ),
   getValue: (
     () => null
@@ -115,7 +152,9 @@ export const useGroupValidationsState = (
     getValue?: () => (
       any
     ),
-    groupValidations?: GroupValidationsType,
+    groupValidations?: (
+      GroupValidation[]
+    ),
     setErrorMessages?: (
       identifier: string,
       error: any,
@@ -151,7 +190,10 @@ export const useGroupValidationsState = (
     resetItemGroups,
     setItemGroup,
   } = (
-    useItemGroupState()
+    useItemGroupState<
+      GroupValidationGroup['groupName'],
+      GroupValidationGroup['group']
+    >()
   )
 
   const groupValidationsList = (
@@ -259,6 +301,9 @@ export const useGroupValidationsState = (
       ({
         groupValidation,
         groupValidationGroups,
+      }: {
+        groupValidation: GroupValidation,
+        groupValidationGroups: GroupValidationGroup[],
       }) => {
         const missingGroupNames = (
           groupValidationGroups

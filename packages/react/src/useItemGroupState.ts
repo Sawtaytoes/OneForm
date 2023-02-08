@@ -3,11 +3,25 @@ import {
   useRef,
 } from 'react'
 
-const initialItemGroups = new Map()
+const initialItemGroups = (
+  new Map()
+)
 
-const useItemGroupState = () => {
+export const useItemGroupState = <
+  GroupIdentifierType,
+  ItemType,
+>() => {
   const itemGroupsRef = (
-    useRef(
+    useRef<
+      Map<
+        GroupIdentifierType,
+        (
+          Set<
+            ItemType
+          >
+        )
+      >
+    >(
       initialItemGroups
     )
   )
@@ -15,7 +29,7 @@ const useItemGroupState = () => {
   const getItemGroup = (
     useCallback(
       (
-        groupIdentifier,
+        groupIdentifier: GroupIdentifierType,
       ) => (
         itemGroupsRef
         .current
@@ -32,6 +46,9 @@ const useItemGroupState = () => {
       ({
         groupIdentifiers,
         item,
+      }: {
+        groupIdentifiers: GroupIdentifierType[],
+        item: ItemType,
       }) => {
         itemGroupsRef
         .current = (
@@ -88,5 +105,3 @@ const useItemGroupState = () => {
     setItemGroup,
   }
 }
-
-export default useItemGroupState

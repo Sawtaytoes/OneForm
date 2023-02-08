@@ -3,8 +3,38 @@ import {
   useRef,
 } from 'react'
 
-const initialMemoizedIdentifierGroups = {}
-const initialStrippedIdentifiers = {}
+export type IdentifierGroup = {
+  groupId: string,
+  groupName: string,
+  groupString: string,
+}
+
+export type StrippedIdentifierGroup = {
+  groups: (
+    Record<
+      string,
+      IdentifierGroup
+    >
+  ),
+  groupsList: IdentifierGroup[],
+  groupsString: string,
+  identifier: string,
+  strippedIdentifier: string,
+}
+
+const initialMemoizedIdentifierGroups: (
+  Record<
+    string,
+    IdentifierGroup
+  >
+) = {}
+
+const initialStrippedIdentifiers: (
+  Record<
+    string,
+    StrippedIdentifierGroup
+  >
+) = {}
 
 export const useStrippedIdentifer = () => {
   const identifierGroupsRef = (
@@ -22,7 +52,7 @@ export const useStrippedIdentifer = () => {
   const getIdentifierGroup = (
     useCallback(
       (
-        groupString,
+        groupString: string,
       ) => {
         if (
           !(
@@ -71,9 +101,12 @@ export const useStrippedIdentifer = () => {
   const getStrippedIdentifierData = (
     useCallback(
       (
-        identifier,
+        identifier: string,
       ) => {
-        if (typeof identifier !== 'string') {
+        if (
+          typeof identifier
+          !== 'string'
+        ) {
           throw new Error(
             'You\'re trying to get data on an identifier and didn\'t pass in a valid one. You passed in:'
             .concat(
