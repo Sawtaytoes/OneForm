@@ -59,7 +59,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.3.0",
     "babel-loader": "^8.2.5",
-    "cypress": "^10.3.1",
+    "cypress": "^12.5.1",
     "eslint": "^8.20.0",
     "eslint-plugin-compat": "^4.0.2",
     "eslint-plugin-cypress": "^2.12.1",
