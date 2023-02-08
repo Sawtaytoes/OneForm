@@ -1,7 +1,7 @@
 # 4.0.0
-_August 3, 2022_
+_February 8, 2022_
 
-- ♻️ Refactored everything to use TypeScript.
+- ♻️ Entire library now natively written in TypeScript with _zero_ changes to existing behavior.
 
 # 3.1.0
 _August 3, 2022_
