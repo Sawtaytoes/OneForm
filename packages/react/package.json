@@ -7,6 +7,7 @@
     "ci:buildAll": "npm-run-all --sequential ci:test --race --parallel dev:storybook ci:cypress --sequential ci:buildPackage",
     "ci:buildPackage": "rollup --config",
     "ci:buildStorybook": "build-storybook",
+    "ci:buildTypes": "tsc --build tsconfig.types.json",
     "ci:cypress": "cypress run --browser chrome --record --key 7395df6b-47f2-498e-82c6-a785cc463947",
     "ci:test": "jest --errorOnDeprecated",
     "ci:types": "tsc",
