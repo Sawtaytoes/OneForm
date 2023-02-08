@@ -126,7 +126,7 @@ export type OneFormProviderProps = {
   values?: Values<any>,
 }
 
-const initialProps = {
+const defaultProps = {
   errorMessages: {},
   groupValidations: [],
   hasFieldChangeValidation: true,
@@ -141,39 +141,39 @@ const initialProps = {
 const OneFormProvider = ({
   children,
   errorMessages: rootErrorMessages = (
-    initialProps
+    defaultProps
     .errorMessages
   ),
   groupValidations: rootGroupValidations = (
-    initialProps
+    defaultProps
     .groupValidations
   ),
   hasFieldChangeValidation = (
-    initialProps
+    defaultProps
     .hasFieldChangeValidation
   ),
   onChange: rootOnChange = (
-    initialProps
+    defaultProps
     .onChange
   ),
   onSubmit: rootOnSubmit = (
-    initialProps
+    defaultProps
     .onSubmit
   ),
   updatedErrorMessages: rootUpdatedErrorMessages = (
-    initialProps
+    defaultProps
     .updatedErrorMessages
   ),
   updatedValues: rootUpdatedValues = (
-    initialProps
+    defaultProps
     .updatedValues
   ),
   validations: rootValidations = (
-    initialProps
+    defaultProps
     .validations
   ),
   values: rootValues = (
-    initialProps
+    defaultProps
     .values
   ),
 }: (
