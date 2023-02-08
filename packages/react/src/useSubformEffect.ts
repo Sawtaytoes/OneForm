@@ -20,39 +20,37 @@ import {
 
 export const useSubformEffect = <
   ValueType
->(
-  {
-    errorMessages,
-    groupValidations,
-    onChange,
-    onSubmit,
-    updatedErrorMessages,
-    updatedValues,
-    validations,
-    values,
-  }: {
-    errorMessages?: ErrorMessages,
-    groupValidations?: GroupValidations,
-    onChange?: (
-      OnChange<
-        ValueType
-      >
-    ),
-    onSubmit?: OnSubmit,
-    updatedErrorMessages?: ErrorMessages,
-    updatedValues?: (
-      Values<
-        ValueType
-      >
-    ),
-    validations?: Validations,
-    values?: (
-      Values<
-        ValueType
-      >
-    ),
-  } = {}
-) => {
+>({
+  errorMessages,
+  groupValidations,
+  onChange,
+  onSubmit,
+  updatedErrorMessages,
+  updatedValues,
+  validations,
+  values,
+}: {
+  errorMessages?: ErrorMessages,
+  groupValidations?: GroupValidations,
+  onChange?: (
+    OnChange<
+      ValueType
+    >
+  ),
+  onSubmit?: OnSubmit,
+  updatedErrorMessages?: ErrorMessages,
+  updatedValues?: (
+    Values<
+      ValueType
+    >
+  ),
+  validations?: Validations,
+  values?: (
+    Values<
+      ValueType
+    >
+  ),
+}) => {
   const {
     addErrorMessages,
     addGroupValidations,
