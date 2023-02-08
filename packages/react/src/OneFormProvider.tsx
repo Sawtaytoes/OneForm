@@ -32,6 +32,7 @@ import {
   RegistrationContext,
 } from './RegistrationContext'
 import {
+  OnSubmit,
   SubformContext,
 } from './SubformContext'
 import {
@@ -72,7 +73,9 @@ import {
   useValidationsState,
 } from './useValidationsState'
 import {
+  OnChange,
   useValuesState,
+  Values,
 } from './useValuesState'
 import {
   useVisitationState,
@@ -115,12 +118,12 @@ export type OneFormProviderProps = {
   errorMessages?: Errors,
   groupValidations?: GroupValidationsProps[],
   hasFieldChangeValidation?: boolean,
-  onChange?: () => void,
-  onSubmit?: () => void,
-  updatedErrorMessages?: Record<string, any>,
-  updatedValues?: Record<string, any>,
+  onChange?: OnChange,
+  onSubmit?: OnSubmit,
+  updatedErrorMessages?: Errors,
+  updatedValues?: Values<any>,
   validations?: ValidationsProps,
-  values?: Record<any, any>,
+  values?: Values<any>,
 }
 
 const initialProps = {
