@@ -992,6 +992,12 @@ const OneFormProvider = ({
   )
 }
 
-const MemoizedOneFormProvider = memo(OneFormProvider)
+const MemoizedOneFormProvider = (
+  memo(
+    OneFormProvider
+  )
+)
 
-export { MemoizedOneFormProvider as OneFormProvider }
+export {
+  MemoizedOneFormProvider as OneFormProvider
+}
