@@ -1,7 +1,7 @@
 import {
+  ChangeEvent,
   ChangeEventHandler,
   FocusEventHandler,
-  SyntheticEvent,
   useCallback,
   useEffect,
 } from 'react'
@@ -34,8 +34,7 @@ export const useField = <
 }: {
   /** This is only used for checkbox, radio, single-, and multi-select elements; nothing else. */
   inputValue?: (
-    | boolean
-    | string
+    string
   ),
 
   /** Use for checkboxes. `<input type="checkbox">` has to be handled differently to other input types:
@@ -76,10 +75,17 @@ export const useField = <
 
   /** Typically, this is your input element's `onBlur`. */
   onVisit?: (
-    FocusEventHandler<
-      | HTMLInputElement
-      | HTMLSelectElement
-    >
+    | (
+      FocusEventHandler<
+        | HTMLInputElement
+        | HTMLSelectElement
+      >
+    )
+    | (
+      () => (
+        void
+      )
+    )
   ),
 }) => {
   const {
@@ -99,9 +105,21 @@ export const useField = <
   )
 
   const visitField = (
-    useCallback(
+    useCallback<
+      | (
+        FocusEventHandler<
+          | HTMLInputElement
+          | HTMLSelectElement
+        >
+      )
+      | (
+        () => (
+          void
+        )
+      )
+    >(
       (
-        event: SyntheticEvent,
+        event,
       ) => {
         setVisited()
 
@@ -117,9 +135,33 @@ export const useField = <
   )
 
   const updateFieldValue = (
-    useCallback(
+    useCallback<
+      | (
+        ChangeEventHandler<
+          | HTMLInputElement
+          | HTMLSelectElement
+        >
+      )
+      | (
+        (
+          value: (
+            ValueType
+          ),
+        ) => (
+          void
+        )
+      )
+    >(
       (
-        event: SyntheticEvent,
+        event: (
+          (
+            ChangeEvent<
+              HTMLInputElement
+              & HTMLSelectElement
+            >
+          )
+          & ValueType
+        ),
       ) => {
         const {
           checked: isTargetChecked,
@@ -130,9 +172,6 @@ export const useField = <
           (
             event
             ?.currentTarget
-          ) as (
-            HTMLInputElement
-            & HTMLSelectElement
           )
           || {}
         )
@@ -410,7 +449,9 @@ export const useField = <
           )
         )
       )
-      ? []
+      ? (
+        [] as readonly string[]
+      )
       : (
         inputValue
         || value

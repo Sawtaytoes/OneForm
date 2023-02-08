@@ -1,6 +1,8 @@
 import {
+  ChangeEventHandler,
   createContext,
-  SyntheticEvent,
+  FocusEventHandler,
+  InputHTMLAttributes,
 } from 'react'
 
 export type FieldContextType = {
@@ -15,29 +17,41 @@ export type FieldContextType = {
   ),
   'name': string,
   'onBlur': (
-    event: (
-      SyntheticEvent<
-        Element,
-        Event
+    | (
+      FocusEventHandler<
+        | HTMLInputElement
+        | HTMLSelectElement
       >
-    ),
-  ) => (
-    void
+    )
+    | (
+      () => (
+        void
+      )
+    )
   ),
   'onChange': (
-    event: (
-      SyntheticEvent<
-        Element,
-        Event
+    | (
+      ChangeEventHandler<
+        | HTMLInputElement
+        | HTMLSelectElement
       >
-    ),
-  ) => (
-    void
+    )
+    | (
+      (
+        value: (
+          InputHTMLAttributes<
+            HTMLInputElement
+          >['value']
+        ),
+      ) => (
+        void
+      )
+    )
   ),
   'value': (
-    | string
-    | true
-    | never[]
+    InputHTMLAttributes<
+      HTMLInputElement
+    >['value']
   ),
 }
 

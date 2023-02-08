@@ -9,6 +9,7 @@ import {
 
 import {
   FieldContext,
+  FieldContextType,
 } from './FieldContext'
 import {
   useField,
@@ -41,7 +42,7 @@ declare function FieldType<
       props: (
         ReturnType<
           typeof useField<
-            string
+            FieldContextType['value']
           >
         >
       )
@@ -51,8 +52,7 @@ declare function FieldType<
     ),
   }
 ): (
-  JSX
-  .Element
+  ReactElement
 )
 
 type FieldType = typeof FieldType
@@ -106,7 +106,9 @@ const Field: FieldType = ({
     value,
     visitField,
   } = (
-    useField({
+    useField<
+      FieldContextType['value']
+    >({
       inputValue,
       isCheckboxElement: (
         isCheckboxElement
