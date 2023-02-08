@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
 import {
   memo,
+  ReactNode,
   useCallback,
   useEffect,
   useMemo,
@@ -37,7 +37,10 @@ import {
 import {
   SubmissionContext,
 } from './SubmissionContext'
-import useErrorMessagesState from './useErrorMessagesState'
+import {
+  Errors,
+  useErrorMessagesState
+} from './useErrorMessagesState'
 import {
   FormChangeState,
   useFormChangeState,
@@ -55,7 +58,9 @@ import {
 import {
   useSubformState,
 } from './useSubformState'
-import useSubmissionState from './useSubmissionState'
+import {
+  useSubmissionState
+} from './useSubmissionState'
 import {
   useUpdateEffect,
 } from './useUpdateEffect'
@@ -79,25 +84,51 @@ import {
   VisitationContext,
 } from './VisitationContext'
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  errorMessages: PropTypes.object,
-  groupValidations: PropTypes.array,
-  hasFieldChangeValidation: PropTypes.bool,
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func,
-  updatedErrorMessages: PropTypes.object,
-  updatedValues: PropTypes.object,
-  validations: PropTypes.object,
-  values: PropTypes.object,
+export type ValidationsProps = {
+  [fieldName: string]: {
+    errorMessage: string,
+    getIsValid: (value: any) => boolean
+  }
+}
+
+type getErrorMessagesProps = {
+  reverseLookup?: any,
+  validationType: string,
+  values: any,
+}
+
+export type GroupValidationsProps = {
+  fieldNames: string[],
+  // getErrorMessages: ReturnType<typeof useErrorMessagesState['getErrorMessages']>,
+  getErrorMessages: (
+    reverseLookup: any,
+    validationType: string,
+    values: any,
+  ) => (
+    Record<any, any>
+  ),
+  groupNames?: string[],
+}
+
+export type OneFormProviderProps = {
+  children: ReactNode,
+  errorMessages?: Errors,
+  groupValidations?: GroupValidationsProps[],
+  hasFieldChangeValidation?: boolean,
+  onChange?: () => void,
+  onSubmit?: () => void,
+  updatedErrorMessages?: Record<string, any>,
+  updatedValues?: Record<string, any>,
+  validations?: ValidationsProps,
+  values?: Record<any, any>,
 }
 
 const initialProps = {
   errorMessages: {},
   groupValidations: [],
   hasFieldChangeValidation: true,
-  onChange: Function.prototype,
-  onSubmit: Function.prototype,
+  onChange: () => {},
+  onSubmit: () => {},
   updatedErrorMessages: {},
   updatedValues: {},
   validations: {},
@@ -142,7 +173,9 @@ const OneFormProvider = ({
     initialProps
     .values
   ),
-}) => {
+}: (
+  OneFormProviderProps
+)) => {
   const {
     addValue: addErrorMessages,
     removeValue: removeErrorMessages,
@@ -959,8 +992,6 @@ const OneFormProvider = ({
   )
 }
 
-OneFormProvider.propTypes = propTypes
-
 const MemoizedOneFormProvider = memo(OneFormProvider)
 
-export default MemoizedOneFormProvider
+export { MemoizedOneFormProvider as OneFormProvider }
