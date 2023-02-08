@@ -7,8 +7,8 @@ import {
   IfFieldVisitation,
 } from './IfFieldVisitation'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 describe(
   'IfFieldVisitation',

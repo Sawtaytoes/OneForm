@@ -8,8 +8,8 @@ import {
 
 import Field from './Field'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 import {
   FormChangeState,
 } from './useFormChangeState'

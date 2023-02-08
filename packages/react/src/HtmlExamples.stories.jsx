@@ -14,8 +14,8 @@ import {
 import FieldValue from './FieldValue'
 import htmlStyleDecorators from '././htmlStyleDecorators'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 import { SubmitField } from './SubmitField'
 
 export default {

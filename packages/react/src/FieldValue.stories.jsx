@@ -3,8 +3,8 @@ import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 export default {
   decorators: htmlStyleDecorators,

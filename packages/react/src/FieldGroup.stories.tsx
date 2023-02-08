@@ -1,8 +1,11 @@
 import {
-  action,
-} from '@storybook/addon-actions'
+  ComponentMeta,
+  ComponentStory,
+} from '@storybook/react'
 
-import Field from './Field'
+import {
+  Field,
+} from './Field'
 import {
   FieldGroup,
 } from './FieldGroup'
@@ -10,23 +13,26 @@ import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
-export default {
-  args: {
-    onChange: action(),
-    onSubmit: action(),
-  },
-  argTypes: {
-    onChange: 'changed',
-    onSubmit: 'submitted',
-  },
+const storybookMeta: (
+  ComponentMeta<
+    typeof FieldGroup
+  >
+) = {
+  component: FieldGroup,
   decorators: htmlStyleDecorators,
   title: 'Fields/FieldGroup',
 }
 
-export const Sample = () => (
+export default storybookMeta
+
+export const Sample: (
+  ComponentStory<
+    typeof FieldGroup
+  >
+) = () => (
   <OneFormProvider>
     <FieldGroup
       id="1"

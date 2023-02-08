@@ -16,8 +16,8 @@ import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 import { Subform } from './Subform'
 import {
   useFieldValue,

@@ -20,8 +20,8 @@ import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 const storybookMeta: (
   ComponentMeta<

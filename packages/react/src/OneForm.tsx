@@ -7,8 +7,8 @@ import {
   FormType,
 } from './Form'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 export type OneFormProps = {
   children: ReactNode,

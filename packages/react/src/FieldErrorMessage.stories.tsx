@@ -10,8 +10,8 @@ import {
   htmlStyleDecorators,
 } from './htmlStyleDecorators'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 import {
   Errors,
 } from './useErrorMessagesState'

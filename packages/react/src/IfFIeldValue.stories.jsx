@@ -4,8 +4,8 @@ import {
 } from './htmlStyleDecorators'
 import IfFieldValue from './IfFieldValue'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 export default {
   decorators: htmlStyleDecorators,

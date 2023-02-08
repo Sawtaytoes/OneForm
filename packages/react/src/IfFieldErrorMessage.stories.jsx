@@ -4,8 +4,8 @@ import {
 } from './htmlStyleDecorators'
 import IfFieldErrorMessage from './IfFieldErrorMessage'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 export default {
   decorators: htmlStyleDecorators,

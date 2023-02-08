@@ -7,8 +7,8 @@ import {
   FieldErrorMessage,
 } from './FieldErrorMessage'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 describe(
   'FieldErrorMessage',

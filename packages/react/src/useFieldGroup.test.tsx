@@ -9,8 +9,8 @@ import {
   FieldGroup,
 } from './FieldGroup'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 import {
   useFieldGroup,
 } from './useFieldGroup'

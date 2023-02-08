@@ -6,8 +6,8 @@ import {
 import FieldValue from './FieldValue'
 import IfFieldValue from './IfFieldValue'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 describe(
   'IfFieldValue',

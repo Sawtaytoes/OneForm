@@ -8,8 +8,8 @@ import {
   Field,
 } from './Field'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 
 describe(
   'Field',

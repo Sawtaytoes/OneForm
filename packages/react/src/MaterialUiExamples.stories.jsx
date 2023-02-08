@@ -22,8 +22,8 @@ import { FieldErrorMessage } from './FieldErrorMessage'
 import FieldValue from './FieldValue'
 import MaterialUiField from './MaterialUiField'
 import {
-  OneFormProvider ,
-} from './OneFormProvider '
+  OneFormProvider,
+} from './OneFormProvider'
 import { SubmitField } from './SubmitField'
 
 export default {
