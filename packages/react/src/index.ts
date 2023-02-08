@@ -1,7 +1,7 @@
 export { default as MaterialUiField } from './MaterialUiField'
 export { default as OneForm } from './OneForm'
 export { default as OneFormProvider } from './OneFormProvider'
-export { default as Subform } from './Subform'
+export * from './Subform'
 export * from './SubmitField'
 export { default as useFormSubmission } from './useFormSubmission'
 export * from './Field'

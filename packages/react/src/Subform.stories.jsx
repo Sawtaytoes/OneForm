@@ -15,7 +15,7 @@ import {
 import { SubmitField } from './SubmitField'
 import htmlStyleDecorators from './htmlStyleDecorators'
 import OneFormProvider from './OneFormProvider'
-import Subform from './Subform'
+import { Subform } from './Subform'
 import {
   useFieldValue,
 } from './useFieldValue'
