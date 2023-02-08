@@ -1,19 +1,26 @@
-import PropTypes from 'prop-types'
 import {
   memo,
+  ReactNode,
   useCallback,
 } from 'react'
 
-import Field from './Field'
+import {
+  Field,
+} from './Field'
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-}
+export type MaterialUiFieldProps = (
+  Parameters<typeof Field>[0]
+  & {
+    children: ReactNode,
+  }
+)
 
 const MaterialUiField = ({
   children,
   ...otherProps
-}) => {
+}: (
+  MaterialUiFieldProps
+)) => {
   const translateProps = (
     useCallback(
       ({
@@ -55,8 +62,12 @@ const MaterialUiField = ({
   )
 }
 
-MaterialUiField.propTypes = propTypes
+const MemoizedMaterialUiField = (
+  memo(
+    MaterialUiField
+  )
+)
 
-const MemoizedMaterialUiField = memo(MaterialUiField)
-
-export default MemoizedMaterialUiField
+export {
+  MemoizedMaterialUiField as MaterialUiField
+}

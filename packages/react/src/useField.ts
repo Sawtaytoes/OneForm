@@ -1,4 +1,6 @@
 import {
+  ChangeEventHandler,
+  FocusEventHandler,
   SyntheticEvent,
   useCallback,
   useEffect,
@@ -55,19 +57,29 @@ export const useField = <
 
   /** Typically, this is your input element's `onChange`. */
   onChange?: (
-    event: (
-      | SyntheticEvent
-      | ValueType
-    ),
-  ) => (
-    void
+    | (
+      ChangeEventHandler<
+        | HTMLInputElement
+        | HTMLSelectElement
+      >
+    )
+    | (
+      (
+        value: (
+          ValueType
+        ),
+      ) => (
+        void
+      )
+    )
   ),
 
   /** Typically, this is your input element's `onBlur`. */
   onVisit?: (
-    event: SyntheticEvent,
-  ) => (
-    void
+    FocusEventHandler<
+      | HTMLInputElement
+      | HTMLSelectElement
+    >
   ),
 }) => {
   const {
