@@ -43,12 +43,16 @@ export const useSubformState = <
   value,
 }: {
   flattenSegmentedValues: (
-    segmentedValues: any[],
+    segmentedValues: ValueType[],
   ) => (
-    any
+    ValueType
   ),
-  hasPermanentValues: boolean,
-  value: ValueType,
+  hasPermanentValues: (
+    boolean
+  ),
+  value: (
+    ValueType
+  ),
 }) => {
   const segmentedValuesRef = (
     useRef<

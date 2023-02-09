@@ -1,5 +1,14 @@
-export const flattenSegmentedObjectArrayValues = (
-  segmentedValuesList: object[],
+export const flattenSegmentedObjectArrayValues = <
+  ValueType extends (
+    Record<
+      any,
+      any
+    >
+  )
+>(
+  segmentedValuesList: (
+    ValueType[]
+  ),
 ) => (
   Object
   .fromEntries(

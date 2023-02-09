@@ -53,7 +53,7 @@ import {
   useFormVisitationState,
 } from './useFormVisitationState'
 import {
-  GroupValidationsType,
+  GroupValidation,
   useGroupValidationsState,
 } from './useGroupValidationsState'
 import {
@@ -99,7 +99,7 @@ export type OneFormProviderProps = {
     Errors
   ),
   groupValidations?: (
-    GroupValidationsType[]
+    GroupValidation[]
   ),
   hasFieldChangeValidation?: (
     boolean

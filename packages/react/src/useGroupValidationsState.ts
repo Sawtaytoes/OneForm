@@ -5,9 +5,6 @@ import {
 } from 'react'
 
 import {
-  Errors,
-} from './useErrorMessagesState'
-import {
   FieldName,
 } from './useFieldName'
 import {
@@ -21,6 +18,7 @@ import {
   useStrippedIdentifer,
 } from './useStrippedIdentifer'
 import {
+  GroupValidation,
   useSymbolFunctionStore,
 } from './useSymbolFunctionStore'
 import {
@@ -33,34 +31,6 @@ import {
 const initialRegisteredIdentifiers = (
   new Set()
 )
-
-export type GroupValidation = {
-  fieldNames: FieldName[],
-  getErrorMessages: ({
-    groups,
-    reverseLookup,
-    validationType,
-    values,
-  }: {
-    groups: string[],
-    reverseLookup?: (
-      Record<
-        string,
-        string
-      >
-    ),
-    validationType: string,
-    values: (
-      Record<
-        string,
-        string
-      >
-    ),
-  }) => (
-    Errors
-  ),
-  groupNames?: string[],
-}
 
 export type GroupValidationGroup = {
   group: IdentifierGroup,
@@ -441,7 +411,7 @@ export const useGroupValidationsState = (
             (
               (
                 identifierCategories
-                [false]
+                ['false']
                 .length
               )
               === 0
@@ -449,7 +419,7 @@ export const useGroupValidationsState = (
             ? [
               (
                 identifierCategories
-                [true]
+                ['true']
               ),
             ]
             : (
@@ -457,14 +427,14 @@ export const useGroupValidationsState = (
                 (
                   (
                     identifierCategories
-                    [true]
+                    ['true']
                     .length
                   )
                   > 0
                 )
                 ? (
                   identifierCategories
-                  [true]
+                  ['true']
                   .map((
                     identifierData,
                   ) => (
@@ -473,14 +443,14 @@ export const useGroupValidationsState = (
                     ]
                     .concat(
                       identifierCategories
-                      [false]
+                      ['false']
                     )
                   ))
                 )
                 : [
                   (
                     identifierCategories
-                    [false]
+                    ['false']
                   ),
                 ]
               )

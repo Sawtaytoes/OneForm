@@ -1,6 +1,8 @@
 export const flattenSegmentedFunctionPromiseValues = <
-  FunctionArgumentsType extends any[],
-  PromiseValueType
+  FunctionArgumentsType extends (
+    any[]
+  ),
+  PromiseValueType,
 >(
   segmentedValuesList: (
     (

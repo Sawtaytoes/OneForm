@@ -3,7 +3,9 @@ import {
 } from './flattenSegmentedObjectValues'
 
 export const flattenSegmentedFunctionObjectValues = <
-  FunctionArgumentsType extends any[]
+  FunctionArgumentsType extends (
+    any[]
+  )
 >(
   segmentedValuesList: (
     (

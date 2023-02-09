@@ -3,7 +3,60 @@ import {
   useRef,
 } from 'react'
 
-const initialValues = {}
+import {
+  ErrorMessages,
+  Errors,
+} from './useErrorMessagesState'
+import {
+  FieldName,
+} from './useFieldName'
+
+export type IdentifierGroup = {
+  identifier: (
+    | string
+    | symbol
+  ),
+}
+
+export type GroupValidation = {
+  fieldNames: FieldName[],
+  getErrorMessages: ({
+    groups,
+    reverseLookup,
+    validationType,
+    values,
+  }: {
+    groups: string[],
+    reverseLookup?: (
+      Record<
+        string,
+        string
+      >
+    ),
+    validationType: string,
+    values: (
+      Record<
+        string,
+        string
+      >
+    ),
+  }) => (
+    Errors
+  ),
+  groupNames?: string[],
+}
+
+const initialValues: (
+  Record<
+    symbol,
+    (
+      Map<
+        any,
+        any
+      >
+    )
+  >
+) = {}
 
 export const useSymbolFunctionStore = () => {
   const valuesRef = (
@@ -17,6 +70,9 @@ export const useSymbolFunctionStore = () => {
       ({
         groupValidation,
         identifierGroup,
+      }: {
+        groupValidation: GroupValidation,
+        identifierGroup: IdentifierGroup[],
       }) => (
         Symbol
         .for(
@@ -68,17 +124,17 @@ export const useSymbolFunctionStore = () => {
         .map((
           symbol,
         ) => ({
-          key: symbol,
-          value: (
+          functionsMap: (
             valuesRef
             .current
             [symbol]
           ),
-        }))
-        .map(([
           symbol,
+        }))
+        .map(({
           functionsMap,
-        ]) => (
+          symbol,
+        }) => (
           Array
           .from(
             functionsMap
@@ -137,6 +193,12 @@ export const useSymbolFunctionStore = () => {
         errorMessages,
         func,
         symbol,
+      }: {
+        errorMessages: ErrorMessages,
+        func: (
+          GroupValidation['getErrorMessages']
+        ),
+        symbol: symbol,
       }) => {
         valuesRef
         .current

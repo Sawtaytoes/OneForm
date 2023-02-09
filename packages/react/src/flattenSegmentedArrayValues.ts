@@ -1,5 +1,9 @@
-export const flattenSegmentedArrayValues = (
-  segmentedValuesList: [],
+export const flattenSegmentedArrayValues = <
+  ValueType
+>(
+  segmentedValuesList: (
+    ValueType[]
+  ),
 ) => (
   segmentedValuesList
   .flat()

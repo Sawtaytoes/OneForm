@@ -1,4 +1,5 @@
 import {
+  DependencyList,
   useEffect,
   useRef,
 } from 'react'
@@ -9,12 +10,15 @@ const defaultProps = {
 }
 
 export const useUpdateEffect = (
-  callback = (
+  callback: (
+    Function
+  ) = (
     defaultProps
     .callback
   ),
   dependencies: (
-    any[]
+    | DependencyList
+    | undefined
   ) = (
     defaultProps
     .dependencies
@@ -56,7 +60,6 @@ export const useUpdateEffect = (
         .current()
       )
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     dependencies,
   )
 }
