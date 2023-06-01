@@ -783,7 +783,7 @@ const OneFormProvider = ({
         setValidationTypeChange()
       },
       onSubmit: (
-        ...args
+        ...args: any
       ) => {
         const promise = (
           onSubmit(

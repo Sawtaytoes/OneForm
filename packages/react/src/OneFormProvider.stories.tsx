@@ -368,7 +368,7 @@ export const InitialMultiSelect: (
         id="color"
         multiple
         name="color"
-        size="4"
+        size={4}
       >
         <option
           hidden
@@ -885,7 +885,7 @@ export const Spreadsheet: Story = () => {
           numberOfColumns
           * 3
         )
-        .fill()
+        .fill(null)
         .map((
           value,
           index,

@@ -857,7 +857,7 @@ export const Spreadsheet: Story = () => {
           numberOfColumns
           * 3
         )
-        .fill()
+        .fill(null)
         .map((
           value,
           index,

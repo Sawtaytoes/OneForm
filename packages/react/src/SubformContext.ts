@@ -25,7 +25,7 @@ export type GroupValidations = {
 }[]
 
 export type OnSubmit = (
-  (registeredValues: any) => void
+  (...args: any) => void
 )
 
 export type Validations = {
