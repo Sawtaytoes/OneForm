@@ -79,7 +79,7 @@ describe(
         rerender({
           callback,
           dependencies: [
-            '',
+            null,
           ],
         })
 

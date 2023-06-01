@@ -104,7 +104,7 @@ export const SubmissionContext = (
   >({
     getAllFieldValues: () => ({}),
     getErrorMessages: () => [],
-    getErrors: () => ({}),
+    getErrors: () => ([]),
     getFormChangeState: () => null,
     getFormValidationState: () => null,
     getFormVisitationState: () => null,
