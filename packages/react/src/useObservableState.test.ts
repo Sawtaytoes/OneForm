@@ -4,10 +4,6 @@ import {
 } from '@testing-library/react'
 
 import {
-  Unsubscriber,
-} from './createObservable'
-
-import {
   useObservableState,
 } from './useObservableState'
 
