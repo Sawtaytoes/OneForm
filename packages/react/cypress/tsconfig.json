@@ -7,6 +7,7 @@
     "composite": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "incremental": true,
     "jsx": "react-jsx",
     "noEmit": true,
     "lib": [
