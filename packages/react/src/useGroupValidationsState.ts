@@ -29,7 +29,9 @@ import {
 } from './useUpdateEffect'
 
 const initialRegisteredIdentifiers = (
-  new Set()
+  new Set<
+    FieldName
+  >()
 )
 
 export type GroupValidationGroup = {
@@ -203,7 +205,7 @@ export const useGroupValidationsState = (
   const registerIdentifierForGroupValidation = (
     useCallback(
       (
-        identifier,
+        identifier: FieldName,
       ) => {
         if (
           registeredIdentifiersRef
@@ -908,7 +910,12 @@ export const useGroupValidationsState = (
                 )
               )
             },
-            new Map(),
+            (
+              new Map<
+                GroupValidation,
+                any
+              >()
+            ),
           )
         )
 
