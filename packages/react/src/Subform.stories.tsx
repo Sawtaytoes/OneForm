@@ -249,10 +249,17 @@ Validations
         errorMessage: (
           'No lowercase letters.'
         ),
-        getIsValid: ({
-          value,
+        getIsValid: <
+          ValueType,
+        >({
+          value
+        }: {
+          value: ValueType
         }) => (
           value
+          && (
+            typeof value === 'string'
+          )
           && (
             value
             === (
