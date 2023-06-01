@@ -113,13 +113,13 @@ export const useGroupValidationsState = (
     getAllIdentifiers?: () => (
       FieldName[]
     ),
-    getIsReadyForValidation?: () => (
+    getIsReadyForValidation?: (...args : any[]) => (
       boolean
     ),
     getValidationType?: () => (
       ValidationType
     ),
-    getValue?: () => (
+    getValue?: (...args : any[]) => (
       any
     ),
     groupValidations?: (

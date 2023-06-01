@@ -10,15 +10,13 @@ import {
   useObservableState,
 } from './useObservableState'
 
-export type NotUndefined = (
-  | {} // Accounts for all non-nullable.
-  | null
-)
+// export type NotUndefined = (
+//   | {} // Accounts for all non-nullable.
+//   | null
+// )
 
 export type Values<
-  ValueType extends (
-    NotUndefined
-  ),
+  ValueType,
 > = (
   Record<
     ObservableIdentifier,
@@ -59,9 +57,7 @@ export type OnChange<
 )
 
 export type ValuesState<
-  ValueType extends (
-    NotUndefined
-  ),
+  ValueType,
 > = {
   getAllValues: () => (
     Values<
@@ -74,7 +70,6 @@ export type ValuesState<
     ),
   ) => (
     | ValueType
-    | undefined
   ),
   setValue: (
     identifier: (
@@ -86,14 +81,11 @@ export type ValuesState<
         (
           value: (
             | ValueType
-            | undefined
           ),
         ) => (
           | ValueType
-          | undefined
         )
       )
-      | undefined
     ),
   ) => (
     void
@@ -101,7 +93,6 @@ export type ValuesState<
   subscribeToValue: (
     ObservableState<
       | ValueType
-      | undefined
     >["subscribeToValue"]
   ),
 }
@@ -116,9 +107,7 @@ const defaultProps = {
 }
 
 export const useValuesState = <
-  ValueType extends (
-    NotUndefined
-  )
+  ValueType
 >(
   {
     onChange = (
@@ -465,7 +454,7 @@ export const useValuesState = <
           configureLocalValue(
             identifier,
             (
-              value(
+              (value as (value: ValueType) => ValueType)(
                 getLocalValue(
                   identifier
                 )

@@ -8,7 +8,7 @@ import {
 } from './useGroupValidationsState'
 
 const getSymbol = (
-  values
+  values: any[]
 ) => (
   Symbol
   .for(
@@ -676,9 +676,10 @@ describe(
                             .email
                             .includes('@')
                           )
-                          && (
+                          ? (
                             errorMessage1
                           )
+                          : ''
                         ),
                         (
                           !(
@@ -686,9 +687,10 @@ describe(
                             .email
                             .includes('.com')
                           )
-                          && (
+                          ? (
                             errorMessage2
                           )
+                          : ''
                         ),
                       ],
                     }),
