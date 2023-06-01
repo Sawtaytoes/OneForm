@@ -11,10 +11,6 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "noEmit": true,
-    "lib": [
-      "DOM",
-      "ES2022"
-    ],
     "module": "ESNext",
     "moduleResolution": "node",
     "noImplicitAny": true,
