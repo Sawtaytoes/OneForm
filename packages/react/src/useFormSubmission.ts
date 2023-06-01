@@ -201,35 +201,35 @@ export const useFormSubmission = (
     ),
     isValid: (
       formValidationState
-      .isFormValid
+      ?.isFormValid
     ),
     isValidForSubmission: (
       (
         formValidationState
-        .isFormValid
+        ?.isFormValid
       )
       && (
         formVisitationState
-        .isFormVisited
+        ?.isFormVisited
       )
     ),
     isVisited: (
       formVisitationState
-      .isFormVisited
+      ?.isFormVisited
     ),
     submissionState,
     submitForm,
     totalErrorMessages: (
       formValidationState
-      .totalErrorMessages
+      ?.totalErrorMessages
     ),
     totalUnvisitedFields: (
       formVisitationState
-      .totalUnvisitedFields
+      ?.totalUnvisitedFields
     ),
     totalVisitedFields: (
       formVisitationState
-      .totalVisitedFields
+      ?.totalVisitedFields
     ),
   }
 }
