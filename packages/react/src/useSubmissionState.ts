@@ -46,7 +46,7 @@ export const useSubmissionState = (
   } = {}
 ) => {
   const onBeforeSubmitRef = (
-    useRef()
+    useRef(onBeforeSubmit)
   )
 
   onBeforeSubmitRef
@@ -55,7 +55,7 @@ export const useSubmissionState = (
   )
 
   const onInvalidSubmitRef = (
-    useRef()
+    useRef(onInvalidSubmit)
   )
 
   onInvalidSubmitRef
@@ -64,7 +64,7 @@ export const useSubmissionState = (
   )
 
   const onSubmitRef = (
-    useRef()
+    useRef(onSubmit)
   )
 
   onSubmitRef
@@ -148,7 +148,7 @@ export const useSubmissionState = (
   useEffect(
     () => {
       const subscriber = (
-        submissionState,
+        submissionState: SubmissionState,
       ) => {
         if (
           submissionState
