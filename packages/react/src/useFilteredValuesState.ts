@@ -2,9 +2,30 @@ import {
   useCallback,
   useRef,
 } from 'react'
+import {
+  FieldName,
+} from './useFieldName'
+import {
+  GroupValidation,
+} from './useSymbolFunctionStore'
 
-const initialIdentifiersList = []
-const initialSubscribedValues = {}
+export type GroupValidationIdentifier = {
+  identifiers: FieldName[],
+  value: GroupValidation,
+}
+
+const initialIdentifiersList: (
+  Array<
+    GroupValidationIdentifier
+  >
+) = []
+
+const initialSubscribedValues: (
+  Record<
+    FieldName,
+    GroupValidation[]
+  >
+) = {}
 
 export const useFilteredValuesState = ({
   identifiersList = (
@@ -18,7 +39,9 @@ export const useFilteredValuesState = ({
   )
 
   const identifiersListRef = (
-    useRef()
+    useRef(
+      identifiersList
+    )
   )
 
   identifiersListRef
@@ -44,6 +67,9 @@ export const useFilteredValuesState = ({
       ({
         identifier,
         listIdentifier,
+      }: {
+        identifier: FieldName,
+        listIdentifier: FieldName,
       }) => {
         if (
           getFilteredValue(
