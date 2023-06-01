@@ -7,12 +7,13 @@
     "composite": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "incremental": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "noEmit": true,
     "lib": [
       "DOM",
-      "ESNext"
+      "ES2022"
     ],
     "module": "ESNext",
     "moduleResolution": "node",
@@ -28,7 +29,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "ES2017",
+    "target": "ES2019",
   },
   "include": [
     "./src/**/*",
