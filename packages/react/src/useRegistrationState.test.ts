@@ -8,6 +8,13 @@ import {
   useRegistrationState,
 } from './useRegistrationState'
 
+type UnregisterRefType = {
+  current: (
+    | Unregister
+    | null
+  )
+}
+
 describe(
   'useRegistrationState',
   () => {
@@ -63,12 +70,9 @@ describe(
           )
         )
 
-        const unregisterRef: {
-          current: (
-            | Unregister
-            | null
-          )
-        } = {
+        const unregisterRef: (
+          UnregisterRefType
+        ) = {
           current: null,
         }
 
@@ -84,7 +88,7 @@ describe(
         })
 
         unregisterRef
-        .current()
+        .current?.()
 
         expect(
           result
@@ -119,7 +123,9 @@ describe(
           )
         )
 
-        const unregister1Ref = {
+        const unregister1Ref: (
+          UnregisterRefType
+        ) = {
           current: null,
         }
 
@@ -134,7 +140,9 @@ describe(
           )
         })
 
-        const unregister2Ref = {
+        const unregister2Ref: (
+          UnregisterRefType
+        ) = {
           current: null,
         }
 
@@ -170,10 +178,10 @@ describe(
         })
 
         unregister1Ref
-        .current()
+        .current?.()
 
         unregister2Ref
-        .current()
+        .current?.()
 
         expect(
           result
@@ -208,7 +216,9 @@ describe(
           )
         )
 
-        const unregister1Ref = {
+        const unregister1Ref: (
+          UnregisterRefType
+        ) = {
           current: null,
         }
 
@@ -223,7 +233,9 @@ describe(
           )
         })
 
-        const unregister2Ref = {
+        const unregister2Ref: (
+          UnregisterRefType
+        ) = {
           current: null,
         }
 
@@ -271,10 +283,10 @@ describe(
         })
 
         unregister1Ref
-        .current()
+        .current?.()
 
         unregister2Ref
-        .current()
+        .current?.()
 
         expect(
           result
@@ -375,7 +387,9 @@ describe(
           )
         )
 
-        const unregisterRef = {
+        const unregisterRef: (
+          UnregisterRefType
+        ) = {
           current: null,
         }
 
@@ -391,7 +405,7 @@ describe(
         })
 
         unregisterRef
-        .current()
+        .current?.()
 
         expect(
           onUnregister
