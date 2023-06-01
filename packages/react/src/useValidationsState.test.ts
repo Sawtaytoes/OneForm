@@ -35,7 +35,7 @@ describe(
         act(() => {
           result
           .current
-          .validate()
+          .validate('')
         })
 
         expect(
